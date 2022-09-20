@@ -1,5 +1,5 @@
-import { Dictionary, SnakeToCamelCaseKeys } from "./index";
-import { camelCase } from "./string";
+import { camelCase } from "../string";
+import { Dictionary, SnakeToCamelCaseKeys } from "../types";
 
 /**
  * Checks if a prop exists in obj and tells TypeScript that obj has this prop.

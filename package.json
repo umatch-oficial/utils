@@ -4,11 +4,7 @@
     "description": "Math, array, string &amp; object-related functions and types.",
     "types": "lib/index.d.ts",
     "exports": {
-        "./src/*": {
-            "types": "./dist/*.d.ts",
-            "import": "./dist/*.js",
-            "default": "./dist/*.js"
-        }
+        "./*": "./lib/*"
     },
     "scripts": {
         "build": "tsc --build src",
