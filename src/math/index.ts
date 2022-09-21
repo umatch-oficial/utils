@@ -25,7 +25,8 @@ export function limitToRange(num: number, lower: number, upper: number): number 
  * Returns the nth element with overflow.
  *
  * @example
- * nthElement([0,1,2,3], 5) // => 1
+ * // returns 1
+ * nthElement([0,1,2,3], 5)
  */
 export function nthElement<T>(array: T[], n: number): T {
   return array[n % array.length];
