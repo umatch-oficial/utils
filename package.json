@@ -2,9 +2,19 @@
     "name": "@umatch/utils",
     "version": "1.0.2",
     "description": "Math, array, string &amp; object-related functions and types.",
-    "types": "lib/index.d.ts",
     "exports": {
-        "./*": "./lib/*"
+        "./array": "./lib/array/index.js",
+        "./math": "./lib/math/index.js",
+        "./object": "./lib/object/index.js",
+        "./string": "./lib/string/index.js"
+    },
+    "typesVersions": {
+        "*": {
+            "array": ["lib/array"],
+            "math": ["lib/math"],
+            "object": ["lib/object"],
+            "string": ["lib/string"]
+        }
     },
     "scripts": {
         "build": "tsc --build src",
@@ -14,7 +24,8 @@
         "postversion": "git push && git push --tags"
     },
     "files": [
-        "lib/**/*"
+        "lib/**/*.ts",
+        "lib/**/*.js"
     ],
     "repository": {
         "type": "git",
