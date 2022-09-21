@@ -14,7 +14,7 @@
     ],
     "plugins": ["@typescript-eslint", "prettier"],
     "settings": { "import/resolver": { "node": { }, "typescript": { } } },
-    "ignorePatterns": ["node_modules/", "lib", "*.lock"],
+    "ignorePatterns": ["node_modules", "lib", "*.lock"],
     "rules": {
         "react/jsx-filename-extension": "off",
         "@typescript-eslint/no-shadow": "off",

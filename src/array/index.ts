@@ -1,7 +1,7 @@
 /**
  * Returns the cartesian product of n arrays.
  */
-import { DeepNode, DeepArray } from "../types";
+import { DeepNode, DeepArray } from "../index";
 
 export function cartesian<X extends unknown[] | [], Y extends X[]>(
   ...arrays: Y

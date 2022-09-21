@@ -33,6 +33,7 @@
     },
     "files": [
         "lib/**/*.ts",
+        "lib/**/*.ts.map",
         "lib/**/*.js"
     ],
     "repository": {
