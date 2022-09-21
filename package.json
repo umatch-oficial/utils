@@ -3,6 +3,7 @@
     "version": "1.2.2",
     "description": "Math, array, string &amp; object-related functions and types.",
     "exports": {
+        ".": "./lib/index.js",
         "./array": "./lib/array/index.js",
         "./math": "./lib/math/index.js",
         "./object": "./lib/object/index.js",
