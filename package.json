@@ -1,6 +1,6 @@
 {
     "name": "@umatch/utils",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Math, array, string &amp; object-related functions and types.",
     "exports": {
         "./array": "./lib/array/index.js",
@@ -10,10 +10,18 @@
     },
     "typesVersions": {
         "*": {
-            "array": ["lib/array"],
-            "math": ["lib/math"],
-            "object": ["lib/object"],
-            "string": ["lib/string"]
+            "array": [
+                "lib/array"
+            ],
+            "math": [
+                "lib/math"
+            ],
+            "object": [
+                "lib/object"
+            ],
+            "string": [
+                "lib/string"
+            ]
         }
     },
     "scripts": {
