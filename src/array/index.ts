@@ -34,6 +34,13 @@ export function deepFlat<T>(array: DeepNode<T>[]): Exclude<DeepNode<T>, DeepArra
 }
 
 /**
+ * Returns the intersection of two arrays.
+ */
+export function intersection<X, Y>(arr1: X[], arr2: (X | Y)[]): (X | Y)[] {
+  return arr1.filter((v) => arr2.includes(v));
+}
+
+/**
  * Returns all length-2 permutations of the elements in the array.
  */
 export function permutations<T>(array: T[]): [T, T][] {
