@@ -8,6 +8,22 @@ export function average(array: number[]): number {
 }
 
 /**
+ * Returns the difference between each element and the previous in an array.
+ *
+ * @example
+ * // returns [2,4,3]
+ * diff([1,3,7,10])
+ */
+export function diff(array: number[]): number[] {
+  return array
+    .map((current, i) => {
+      if (i === 0) return 0;
+      return current - array[i - 1];
+    })
+    .slice(1);
+}
+
+/**
  * Returns the quotient and remainder of x/y.
  */
 export function divmod(x: number, y: number): [number, number] {

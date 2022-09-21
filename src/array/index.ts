@@ -21,22 +21,6 @@ export function cartesian(...arrays: any[]): any[][] {
 }
 
 /**
- * Calculates the difference between each element and the previous in an array.
- *
- * @example
- * // returns [2,4,3]
- * diff([1,3,7,10])
- */
-export function diff(array: number[]): number[] {
-  return array
-    .map((current, i) => {
-      if (i === 0) return 0;
-      return current - array[i - 1];
-    })
-    .slice(1);
-}
-
-/**
  * Array.flat() for n-dimensional arrays.
  */
 export function deepFlat<T>(array: DeepNode<T>[]): Exclude<DeepNode<T>, DeepArray<T>>[] {
