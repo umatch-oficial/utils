@@ -27,8 +27,10 @@
     "scripts": {
         "build": "tsc --build src",
         "test": "jest --config jest.json",
+        "lint": "eslint --fix .",
+        "prepublishOnly": "npm test && npm run lint",
         "prepare": "npm run build",
-        "prepublishOnly": "npm test",
+        "preversion" : "npm run lint",
         "postversion": "git push && git push --tags"
     },
     "files": [
