@@ -34,6 +34,23 @@ export function deepFlat<T>(array: DeepNode<T>[]): Exclude<DeepNode<T>, DeepArra
 }
 
 /**
+ * Same as Array.filter, but accepts async callbacks
+ */
+export async function filter<T>(
+  array: T[],
+  callback: (t: T) => Promise<boolean>
+): Promise<T[]> {
+  return (
+    await Promise.all(
+      array.map(async (a) => {
+        const res = await callback(a);
+        return res ? a : [];
+      })
+    )
+  ).flat() as T[];
+}
+
+/**
  * Returns the intersection of two arrays.
  */
 export function intersection<X, Y>(arr1: X[], arr2: (X | Y)[]): (X | Y)[] {
@@ -59,6 +76,15 @@ export function permutations<T>(array: T[]): [T, T][] {
 export function range(a: number, b?: number): number[] {
   const [start, end] = b ? [a, b] : [0, a];
   return Array.from({ length: end - start }).map((_, i) => i + start);
+}
+
+/**
+ * Removes an item from an array.
+ */
+export function remove<T>(array: T[], item: T): T[] {
+  const i = array.indexOf(item);
+  if (i > -1) array.splice(i, 1);
+  return array;
 }
 
 /**
