@@ -40,7 +40,11 @@ export function deepFlat<T>(array: DeepNode<T>[]): Exclude<DeepNode<T>, DeepArra
 export async function filter<X, T extends X[]>(
   array: T,
   callback: (x: X) => Promise<boolean>
-): Promise<T> {
+): Promise<T extends (infer R)[] ? R[] : never>;
+export async function filter(
+  array: any[],
+  callback: (x: any) => Promise<boolean>
+): Promise<any[]> {
   return (
     await Promise.all(
       array.map(async (a) => {
@@ -48,7 +52,7 @@ export async function filter<X, T extends X[]>(
         return res ? a : [];
       })
     )
-  ).flat() as T;
+  ).flat();
 }
 
 /**
@@ -61,8 +65,11 @@ export function intersection<X, Y>(arr1: X[], arr2: (X | Y)[]): (X | Y)[] {
 /**
  * Returns all length-2 permutations of the elements in the array.
  */
-export function permutations<X, T extends X[]>(array: T): [X, X][] {
-  const perms: [X, X][] = [];
+export function permutations<T extends unknown[]>(
+  array: T
+): T extends (infer R)[] ? [R, R][] : never;
+export function permutations(array: any[]): [any, any][] {
+  const perms: [any, any][] = [];
   for (const i of range(array.length)) {
     for (const j of range(i + 1, array.length)) {
       perms.push([array[i], array[j]]);
@@ -74,6 +81,10 @@ export function permutations<X, T extends X[]>(array: T): [X, X][] {
 /**
  * Removes an item from an array.
  */
+export function remove<X, T extends X[]>(
+  array: T,
+  item: X
+): T extends (infer R)[] ? R[] : never;
 export function remove<X, T extends X[]>(array: T, item: X): X[] {
   const i = array.indexOf(item);
   if (i > -1) array.splice(i, 1);
@@ -83,7 +94,11 @@ export function remove<X, T extends X[]>(array: T, item: X): X[] {
 /**
  * Repeats an array enough times to have n elements.
  */
-export function replicate<X, T extends X[]>(array: T, n: number): X[] {
+export function replicate<T extends unknown[]>(
+  array: T,
+  n: number
+): T extends (infer R)[] ? R[] : never;
+export function replicate(array: any[], n: number): any[] {
   const length = Math.ceil(n / array.length);
   return Array.from({ length }, () => array)
     .flat()
@@ -94,7 +109,10 @@ export function replicate<X, T extends X[]>(array: T, n: number): X[] {
  * Returns a shuffled copy of the array.
  * https://stackoverflow.com/a/12646864/9193449
  */
-export function shuffle<X, T extends X[]>(array: T): X[] {
+export function shuffle<T extends unknown[]>(
+  array: T
+): T extends (infer R)[] ? R[] : never;
+export function shuffle(array: any[]): any[] {
   const copy = array.slice();
   for (let i = copy.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -106,21 +124,24 @@ export function shuffle<X, T extends X[]>(array: T): X[] {
 /**
  * Same as slice, but overflows to guarantee there are (end - start) elements.
  */
-export function sliceWithOverflow<X, T extends X[]>(
+export function sliceWithOverflow<T extends unknown[]>(
   array: T,
   start: number,
   end: number
-): X[] {
+): T extends (infer R)[] ? R[] : never;
+export function sliceWithOverflow(array: any[], start: number, end: number): any[] {
   const overflow = end - array.length;
   if (overflow <= 0) return array.slice(start, end);
-
-  return [...array.slice(start), ...(sliceWithOverflow(array, 0, overflow) as X[])];
+  return [...array.slice(start), ...sliceWithOverflow(array, 0, overflow)];
 }
 
 /**
  * Returns a copy of an array without duplicates.
  */
-export function uniques<X, T extends X[]>(array: T): X[] {
+export function uniques<T extends unknown[]>(
+  array: T
+): T extends (infer R)[] ? R[] : never;
+export function uniques(array: any[]): any[] {
   return Array.from(new Set(array));
 }
 
