@@ -1,14 +1,15 @@
+import { DeepNode, DeepArray } from "../index";
+import { range } from "../math";
+
 /**
  * Returns the cartesian product of n arrays.
  */
-import { DeepNode, DeepArray } from "../index";
-
-export function cartesian<X extends unknown[] | [], Y extends X[]>(
+export function cartesian<X extends unknown[], Y extends X[]>(
   ...arrays: Y
-): Y extends [(infer Type1)[], (infer Type2)[]]
-  ? [Type1, Type2][]
-  : Y extends [(infer Type1)[], (infer Type2)[], (infer Type3)[]]
-  ? [Type1, Type2, Type3][]
+): Y extends [(infer T1)[], (infer T2)[]]
+  ? [T1, T2][]
+  : Y extends [(infer T1)[], (infer T2)[], (infer T3)[]]
+  ? [T1, T2, T3][]
   : never;
 export function cartesian(...arrays: any[]): any[][] {
   return arrays.reduce(
@@ -36,10 +37,10 @@ export function deepFlat<T>(array: DeepNode<T>[]): Exclude<DeepNode<T>, DeepArra
 /**
  * Same as Array.filter, but accepts async callbacks
  */
-export async function filter<T>(
-  array: T[],
-  callback: (t: T) => Promise<boolean>
-): Promise<T[]> {
+export async function filter<X, T extends X[]>(
+  array: T,
+  callback: (x: X) => Promise<boolean>
+): Promise<T> {
   return (
     await Promise.all(
       array.map(async (a) => {
@@ -47,7 +48,7 @@ export async function filter<T>(
         return res ? a : [];
       })
     )
-  ).flat() as T[];
+  ).flat() as T;
 }
 
 /**
@@ -60,8 +61,8 @@ export function intersection<X, Y>(arr1: X[], arr2: (X | Y)[]): (X | Y)[] {
 /**
  * Returns all length-2 permutations of the elements in the array.
  */
-export function permutations<T>(array: T[]): [T, T][] {
-  const perms: [T, T][] = [];
+export function permutations<X, T extends X[]>(array: T): [X, X][] {
+  const perms: [X, X][] = [];
   for (const i of range(array.length)) {
     for (const j of range(i + 1, array.length)) {
       perms.push([array[i], array[j]]);
@@ -71,17 +72,9 @@ export function permutations<T>(array: T[]): [T, T][] {
 }
 
 /**
- * Returns a range from **a** to **b**, or from **0** to **a** if **b** is null.
- */
-export function range(a: number, b?: number): number[] {
-  const [start, end] = b ? [a, b] : [0, a];
-  return Array.from({ length: end - start }).map((_, i) => i + start);
-}
-
-/**
  * Removes an item from an array.
  */
-export function remove<T>(array: T[], item: T): T[] {
+export function remove<X, T extends X[]>(array: T, item: X): X[] {
   const i = array.indexOf(item);
   if (i > -1) array.splice(i, 1);
   return array;
@@ -90,9 +83,8 @@ export function remove<T>(array: T[], item: T): T[] {
 /**
  * Repeats an array enough times to have n elements.
  */
-export function replicate<T>(array: T[], n: number): T[] {
+export function replicate<X, T extends X[]>(array: T, n: number): X[] {
   const length = Math.ceil(n / array.length);
-
   return Array.from({ length }, () => array)
     .flat()
     .slice(0, n);
@@ -102,7 +94,7 @@ export function replicate<T>(array: T[], n: number): T[] {
  * Returns a shuffled copy of the array.
  * https://stackoverflow.com/a/12646864/9193449
  */
-export function shuffle<T>(array: T[]): T[] {
+export function shuffle<X, T extends X[]>(array: T): X[] {
   const copy = array.slice();
   for (let i = copy.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -114,18 +106,21 @@ export function shuffle<T>(array: T[]): T[] {
 /**
  * Same as slice, but overflows to guarantee there are (end - start) elements.
  */
-export function sliceWithOverflow<T>(array: T[], start: number, end: number): T[] {
+export function sliceWithOverflow<X, T extends X[]>(
+  array: T,
+  start: number,
+  end: number
+): X[] {
   const overflow = end - array.length;
-  if (overflow <= 0) {
-    return array.slice(start, end);
-  }
-  return [...array.slice(start), ...sliceWithOverflow(array, 0, overflow)];
+  if (overflow <= 0) return array.slice(start, end);
+
+  return [...array.slice(start), ...(sliceWithOverflow(array, 0, overflow) as X[])];
 }
 
 /**
  * Returns a copy of an array without duplicates.
  */
-export function uniques<T>(array: T[]): T[] {
+export function uniques<X, T extends X[]>(array: T): X[] {
   return Array.from(new Set(array));
 }
 

@@ -130,6 +130,16 @@ export function randomNumber(min?: number, max?: number): number {
 }
 
 /**
+ * Returns [start, end[ or [0, end[.
+ */
+export function range(end: number): number[];
+export function range(start: number, end: number): number[];
+export function range(a: number, b?: number): number[] {
+  const [start, end] = b ? [a, b] : [0, a];
+  return Array.from({ length: end - start }).map((_, i) => i + start);
+}
+
+/**
  * Returns the number rounded to the specified amount of digits.
  */
 export function round(number: number, digits: number = 1): number {
