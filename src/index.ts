@@ -14,17 +14,14 @@ export type Flatten<Y extends unknown[], Acc extends unknown[] = []> = Y extends
 ]
   ? Flatten<T, [...Acc, H]>
   : Acc;
+// https://github.com/Microsoft/TypeScript/issues/27024#issuecomment-421529650
+export type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
+  ? 1
+  : 2
+  ? true
+  : false;
 
-export type SnakeToCamelCase<S extends string> = S extends `${infer H}_${infer T}`
-  ? `${H}${Capitalize<SnakeToCamelCase<T>>}`
-  : S;
-export type SnakeToCamelCaseKeys<T extends Dictionary<string>> = {
-  [K in keyof T as SnakeToCamelCase<K & string>]: T[K];
-};
-export type CamelToSnakeCaseKeys<T extends Dictionary<string>> = {
-  [K in keyof T as CamelToSnakeCase<K & string>]: T[K];
-};
-
+// https://javascript.plainenglish.io/advanced-typescript-type-level-nested-object-paths-7f3d8901f29a
 export type Join<
   L extends PropertyKey | undefined = undefined,
   R extends PropertyKey | undefined = undefined,
@@ -76,6 +73,14 @@ export type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
   ? UnionToTuple<Exclude<T, W>, [W, ...Acc]>
   : Acc;
 
+export type SnakeToCamelCase<
+  S extends string,
+  Acc extends string = ""
+> = S extends `${infer H}_${infer T}`
+  ? SnakeToCamelCase<Capitalize<T>, Join<Acc, H, "">>
+  : S extends `${infer H}${infer T}`
+  ? SnakeToCamelCase<T, Join<Acc, H, "">>
+  : Acc;
 /*
 Iterates one letter at a time, keeping the result in an accumulator and consecutive
 uppercase letters in a buffer.
@@ -114,3 +119,9 @@ export type CamelToSnakeCase<
       H extends Uppercase<H> ? Join<Buffer, H, ""> : undefined
     >
   : Acc & string;
+export type SnakeToCamelCaseKeys<T extends Dictionary> = {
+  [K in keyof T as SnakeToCamelCase<K & string>]: T[K];
+};
+export type CamelToSnakeCaseKeys<T extends Dictionary> = {
+  [K in keyof T as CamelToSnakeCase<K & string>]: T[K];
+};
