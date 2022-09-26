@@ -8,6 +8,12 @@ export type ValueOf<T> = T[keyof T];
 export type Exact<T> = {
   [K in keyof T]: T[K] extends infer P | undefined ? P : T[K];
 };
+export type Flatten<Y extends unknown[], Acc extends unknown[] = []> = Y extends [
+  (infer H)[],
+  ...infer T
+]
+  ? Flatten<T, [...Acc, H]>
+  : Acc;
 
 export type SnakeToCamelCase<S extends string> = S extends `${infer H}_${infer T}`
   ? `${H}${Capitalize<SnakeToCamelCase<T>>}`
@@ -58,3 +64,16 @@ export type TypeFromPath<O extends Dictionary, P extends string> = P extends key
     ? TypeFromPath<O[H], T>
     : never
   : never;
+
+// https://medium.hexlabs.io/building-complex-types-in-typescript-804c973ce66f
+export type TupleToUnion<T> = T extends any[] ? T[number] : T;
+export type UnionToIntersection<T> = (
+  T extends never ? never : (arg: T) => void
+) extends (arg: infer I) => void
+  ? I
+  : never;
+export type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
+  T extends never ? never : (arg: T) => T
+> extends (_: never) => infer W
+  ? UnionToTuple<Exclude<T, W>, [W, ...Acc]>
+  : Acc;

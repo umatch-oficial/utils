@@ -1,21 +1,17 @@
-import { DeepNode, DeepArray } from "../index";
+import { DeepNode, DeepArray, Flatten, UnionToTuple } from "../index";
 import { range } from "../math";
 
 /**
  * Returns the cartesian product of n arrays.
  */
-export function cartesian<X extends unknown[], Y extends X[]>(
+export function cartesian<Y extends unknown[][]>(
   ...arrays: Y
-): Y extends [(infer T1)[], (infer T2)[]]
-  ? [T1, T2][]
-  : Y extends [(infer T1)[], (infer T2)[], (infer T3)[]]
-  ? [T1, T2, T3][]
-  : never;
+): Y extends (infer R)[] ? Flatten<UnionToTuple<R>>[] : never;
 export function cartesian(...arrays: any[]): any[][] {
   return arrays.reduce(
-    (accumulated, current) =>
-      accumulated.flatMap((newArrayElement: any) =>
-        current.map((oldArrayElement: any) => [newArrayElement, oldArrayElement].flat())
+    (finalArray, currentArray) =>
+      finalArray.flatMap((element: any) =>
+        currentArray.map((newElement: any) => [element, newElement].flat())
       ),
     []
   );
