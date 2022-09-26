@@ -18,9 +18,6 @@ export type Flatten<Y extends unknown[], Acc extends unknown[] = []> = Y extends
 export type SnakeToCamelCase<S extends string> = S extends `${infer H}_${infer T}`
   ? `${H}${Capitalize<SnakeToCamelCase<T>>}`
   : S;
-export type CamelToSnakeCase<S extends string> = S extends `${infer H}${infer T}`
-  ? `${H extends Capitalize<H> ? "_" : ""}${Lowercase<H>}${CamelToSnakeCase<T>}`
-  : Lowercase<S>;
 export type SnakeToCamelCaseKeys<T extends Dictionary<string>> = {
   [K in keyof T as SnakeToCamelCase<K & string>]: T[K];
 };
@@ -30,10 +27,11 @@ export type CamelToSnakeCaseKeys<T extends Dictionary<string>> = {
 
 export type Join<
   L extends PropertyKey | undefined = undefined,
-  R extends PropertyKey | undefined = undefined
+  R extends PropertyKey | undefined = undefined,
+  Sep extends string = "."
 > = L extends string | number
   ? R extends string | number
-    ? `${L}.${R}`
+    ? `${L}${Sep}${R}`
     : L
   : R extends string | number
   ? R
@@ -77,3 +75,42 @@ export type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
 > extends (_: never) => infer W
   ? UnionToTuple<Exclude<T, W>, [W, ...Acc]>
   : Acc;
+
+/*
+Iterates one letter at a time, keeping the result in an accumulator and consecutive
+uppercase letters in a buffer.
+
+The loop goes as follows:
+Is the current letter uppercase?
+  - Yes: add the letter to the buffer. Is there another letter afterwards?
+    - Yes: is it uppercase too?
+      - Yes: continue.
+      - No: is there anything in the buffer?
+        - Yes: add `buffer_letter` to the accumulator.
+        - No: add letter to the accumulator.
+    - No: is there anything in the buffer?
+      - Yes: add `buffer_letter` to the accumulator.
+      - No: add letter to the accumulator.
+  - No: add letter to the accumulator.
+ */
+export type CamelToSnakeCase<
+  S extends string,
+  Acc extends string | undefined = undefined,
+  Buffer extends string | undefined = undefined
+> = S extends `${infer H}${infer T}`
+  ? CamelToSnakeCase<
+      T,
+      H extends Uppercase<H>
+        ? T extends `${infer H2}${infer _}`
+          ? H2 extends Lowercase<H2>
+            ? Buffer extends string
+              ? Join<Acc, Join<Lowercase<Buffer>, Lowercase<H>, "_">, "">
+              : Join<Acc, Lowercase<H>, "_">
+            : undefined
+          : Buffer extends string
+          ? Join<Acc, Join<Lowercase<Buffer>, Lowercase<H>, "_">, "">
+          : Join<Acc, Lowercase<H>, "_">
+        : Join<Acc, H, "">,
+      H extends Uppercase<H> ? Join<Buffer, H, ""> : undefined
+    >
+  : Acc & string;
