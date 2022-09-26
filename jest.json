@@ -5,6 +5,6 @@
         "src"
     ],
     "transform": {
-        "^.+\\.(t|j)sx?$": ["ts-jest", {"tsconfig":  "tsconfig.base.json"}]
+        "^.+\\.(t|j)sx?$": ["ts-jest", { "tsconfig": "tsconfig.base.json" }]
     }
 }
