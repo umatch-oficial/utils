@@ -1,6 +1,6 @@
 {
     "name": "@umatch/utils",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "description": "Math, array, string &amp; object-related functions and types.",
     "main": "./lib/index.js",
     "exports": {
