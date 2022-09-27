@@ -1,6 +1,6 @@
 export type Primitive = string | number | boolean;
 export type Dictionary<T = any> = { [_: string]: T };
-export type Payload = Dictionary<Primitive>;
+export type Payload<T = Primitive> = Dictionary<T>;
 export type DeepNode<T = any> = T | DeepArray<T> | DeepObject<T>;
 export type DeepArray<T = any> = Array<DeepNode<T>>;
 export type DeepObject<T = any> = { [_: string]: DeepNode<T> };
