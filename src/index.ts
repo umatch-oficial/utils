@@ -91,10 +91,10 @@ Is the current letter uppercase?
     - Yes: is it uppercase too?
       - Yes: continue.
       - No: is there anything in the buffer?
-        - Yes: add `buffer_letter` to the accumulator.
+        - Yes: add `buffer_letter` to the accumulator. Reset buffer.
         - No: add letter to the accumulator.
     - No: is there anything in the buffer?
-      - Yes: add `buffer_letter` to the accumulator.
+      - Yes: add `buffer_letter` to the accumulator. Reset buffer.
       - No: add letter to the accumulator.
   - No: add letter to the accumulator.
  */
