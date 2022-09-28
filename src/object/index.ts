@@ -136,7 +136,10 @@ export function isDeepEmpty(obj: Dictionary): boolean {
 /**
  * Assigns all properties from one object to another.
  */
-export function merge<X extends Dictionary, Y extends Partial<X> & Dictionary>(
+export function merge<
+  X extends Dictionary,
+  Y extends (Partial<X> & Dictionary) | Dictionary
+>(
   target: X,
   source: Y
 ): {

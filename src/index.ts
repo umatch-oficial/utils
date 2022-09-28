@@ -1,9 +1,9 @@
 export type Primitive = string | number | boolean;
 export type Dictionary<T = any> = { [_: string]: T };
 export type Payload<T = Primitive> = Dictionary<T>;
-export type DeepNode<T = any> = T | DeepArray<T> | DeepObject<T>;
-export type DeepArray<T = any> = Array<DeepNode<T>>;
-export type DeepObject<T = any> = { [_: string]: DeepNode<T> };
+export type DeepNode<T = unknown> = T | DeepArray<T> | DeepObject<T>;
+export type DeepArray<T = unknown> = DeepNode<T>[];
+export type DeepObject<T = unknown> = { [_: string]: DeepNode<T> };
 export type ValueOf<T> = T[keyof T];
 export type Exact<T> = {
   [K in keyof T]: T[K] extends infer P | undefined ? P : T[K];
@@ -14,6 +14,10 @@ export type Flatten<Y extends unknown[], Acc extends unknown[] = []> = Y extends
 ]
   ? Flatten<T, [...Acc, H]>
   : Acc;
+
+// https://medium.com/@KevinBGreene/surviving-the-typescript-ecosystem-branding-and-type-tagging-6cf6e516523d
+export type Brand<T, Brand extends string> = T & { __brand: Brand };
+
 // https://github.com/Microsoft/TypeScript/issues/27024#issuecomment-421529650
 export type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
   ? 1
