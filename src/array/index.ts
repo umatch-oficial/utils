@@ -8,12 +8,10 @@ export function cartesian<Y extends unknown[][]>(
   ...arrays: Y
 ): Y extends (infer R)[] ? Flatten<UnionToTuple<R>>[] : never;
 export function cartesian(...arrays: any[]): any[][] {
-  return arrays.reduce(
-    (finalArray, currentArray) =>
-      finalArray.flatMap((element: any) =>
-        currentArray.map((newElement: any) => [element, newElement].flat())
-      ),
-    []
+  return arrays.reduce((finalArray, currentArray) =>
+    finalArray.flatMap((element: any) =>
+      currentArray.map((newElement: any) => [element, newElement].flat())
+    )
   );
 }
 
