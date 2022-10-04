@@ -1,5 +1,5 @@
-import { Dictionary, SnakeToCamelCaseKeys } from "../index";
-import { camelCase } from "../string";
+import { CamelToSnakeCaseKeys, Dictionary, SnakeToCamelCaseKeys } from "../index";
+import { camelCase, snakeCase } from "../string";
 
 /**
  * Checks if a prop exists in obj and tells TypeScript that obj has this prop.
@@ -30,7 +30,7 @@ export function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKey
 
 /**
  * Filters the keys of an object, which contain the prefix/suffix.
- * If OnlyAffix is true, then returns only the prefix/suffix part
+ * If OnlyAffix is true, then subtracts the prefix/suffix part
  * of those keys.
  */
 type PickAffixes<
@@ -211,4 +211,8 @@ export function rename(
   return Object.fromEntries(
     entries.map(([key, val]) => [keys.includes(key) ? mapper[key] : key, val])
   );
+}
+
+export function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKeys<T> {
+  return rename(obj, snakeCase) as CamelToSnakeCaseKeys<T>;
 }
