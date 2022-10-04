@@ -18,32 +18,50 @@ export function parseBool(str?: string): boolean {
   }
 }
 
-export function capitalizeFirstLetter<S extends string>(str: S): Capitalize<S> {
+/**
+ * Converts the first character of a string to uppercase.
+ */
+export function capitalize<S extends string>(str: S): Capitalize<S> {
   const [first, ...rest] = str;
   if (!first) return "" as Capitalize<S>;
   return (first.toUpperCase() + rest.join("")) as Capitalize<S>;
 }
 
-export function decapitalizeFirstLetter(str: string): string {
+/**
+ * Converts the first character of a string to lowercase.
+ */
+export function uncapitalize<S extends string>(str: S): Uncapitalize<S> {
   const [first, ...rest] = str;
-  if (!first) return "";
-  return first.toLowerCase() + rest.join("");
+  if (!first) return "" as Uncapitalize<S>;
+  return (first.toLowerCase() + rest.join("")) as Uncapitalize<S>;
 }
+
+const WORD_REGEX = /[A-Za-z]([a-z\d]+)|[A-Z]+(?=[A-Z])/g;
+
 export function camelCase(str: string): string {
-  const words = str.match(/[A-Za-z]([a-z\d]+)|[A-Z]+(?=[A-Z])/g);
+  const words = str.match(WORD_REGEX);
   if (!words) return "";
 
   const [first, ...rest] = words;
-  return [decapitalizeFirstLetter(first), ...rest.map(capitalizeFirstLetter)].join("");
+  return [uncapitalize(first), ...rest.map(capitalize)].join("");
 }
 
 export function pascalCase(str: string): string {
-  const words = str.match(/[A-Za-z]([a-z\d]+)|[A-Z]+(?=[A-Z])/g);
+  const words = str.match(WORD_REGEX);
   if (!words) return "";
-  return words.map(capitalizeFirstLetter).join("");
+  return words.map(capitalize).join("");
+}
+
+export function snakeCase(str: string): string {
+  const words = str.match(WORD_REGEX);
+  if (!words) return "";
+  return words.map(uncapitalize).join("_");
 }
 
 export function titleCase(str: string): string {
-  const words = str.split(/(\s)/);
-  return words.map(capitalizeFirstLetter).join(" ");
+  const words = str.match(WORD_REGEX);
+  if (!words) return "";
+
+  const [first, ...rest] = words;
+  return [capitalize(first), ...rest.map(uncapitalize)].join(" ");
 }
