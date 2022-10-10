@@ -29,6 +29,22 @@ export function deepFlat<T>(array: DeepNode<T>[]): Exclude<DeepNode<T>, DeepArra
 }
 
 /**
+ * Returns the elements of a that are not present in b.
+ */
+export function diff<X, Y>(a: X[], b: (X | Y)[]): X[] {
+  const result = [];
+  const map = {};
+  for (let i = 0; i < b.length; i += 1) {
+    // @ts-ignore
+    map[b[i]] = true;
+  }
+  for (let i = 0; i < a.length; i += 1) {
+    if (!(a[i] in map)) result.push(a[i]);
+  }
+  return result;
+}
+
+/**
  * Same as Array.filter, but accepts async callbacks
  */
 export async function filter<X, T extends X[]>(
@@ -52,12 +68,22 @@ export async function filter(
 /**
  * Returns the intersection of two arrays.
  */
-export function intersection<X, Y>(arr1: X[], arr2: (X | Y)[]): (X | Y)[] {
-  return arr1.filter((v) => arr2.includes(v));
+export function intersect<X, Y>(a: X[], b: (X | Y)[]): X[] {
+  const result = [];
+  const map = {};
+  for (let i = 0; i < b.length; i += 1) {
+    // @ts-ignore
+    map[b[i]] = true;
+  }
+  for (let i = 0; i < a.length; i += 1) {
+    if (a[i] in map) result.push(a[i]);
+  }
+  return result;
 }
 
 /**
- * Returns all length-2 permutations of the elements in the array.
+ * Returns all length-2 tuples of the elements, in sorted order,
+ * without repeated elements. (equivalent of python's itertool's combinations)
  */
 export function permutations<T extends unknown[]>(
   array: T
