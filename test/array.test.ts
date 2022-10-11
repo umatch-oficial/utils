@@ -4,7 +4,7 @@ test("cartesian", () => {
   expect(
     cartesian(["a"], ["b", "c"])
       .map((a) => a.join(""))
-      .sort()
+      .sort(),
   ).toEqual(["ab", "ac"].sort());
 });
 
@@ -38,6 +38,6 @@ test("permutations", () => {
   expect(
     permutations(["a", "b", "c", "d"])
       .map((a) => a.join(""))
-      .sort()
+      .sort(),
   ).toEqual(["ab", "ac", "ad", "bc", "bd", "cd"].sort());
 });

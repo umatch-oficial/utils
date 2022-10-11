@@ -6,7 +6,7 @@ import { camelCase, snakeCase } from "../string";
  */
 export function hasOwnProperty<X extends Dictionary, Y extends PropertyKey>(
   obj: X,
-  prop: Y
+  prop: Y,
 ): obj is X & Record<Y, unknown> {
   // eslint-disable-next-line no-prototype-builtins
   return obj.hasOwnProperty(prop);
@@ -17,10 +17,10 @@ export function hasOwnProperty<X extends Dictionary, Y extends PropertyKey>(
  */
 export function apply<T, O extends Dictionary<T>, R>(
   obj: O,
-  func: (val: T) => R
+  func: (val: T) => R,
 ): { [K in keyof O]: R } {
   return Object.fromEntries(
-    Object.entries(obj).map(([key, val]) => [key, func(val)] as [keyof O, R][])
+    Object.entries(obj).map(([key, val]) => [key, func(val)] as [keyof O, R][]),
   );
 }
 
@@ -37,7 +37,7 @@ type PickAffixes<
   Obj extends Dictionary,
   Prefix extends string | null,
   Suffix extends string | null,
-  OnlyAffix extends boolean
+  OnlyAffix extends boolean,
 > = Prefix extends string
   ? {
       [Key in keyof Obj]: Key extends `${Prefix}${infer T}`
@@ -56,7 +56,7 @@ type PickAffixes<
 type RenameKeys<
   Obj extends Dictionary,
   Prefix extends string | null,
-  Suffix extends string | null
+  Suffix extends string | null,
 > = Prefix extends string
   ? {
       [Key in PickAffixes<Obj, Prefix, null, true>[keyof Obj]]: Obj[`${Prefix}${Key}`];
@@ -83,10 +83,10 @@ type ExtractOptions = ({ prefix: string } | { suffix: string } | { custom: RegEx
 export function extract<
   R extends Dictionary,
   Obj extends Dictionary,
-  Options extends ExtractOptions
+  Options extends ExtractOptions,
 >(
   obj: Obj,
-  options: Options
+  options: Options,
 ): Options extends { prefix: string }
   ? Options extends { rename: false }
     ? Pick<Obj, PickAffixes<Obj, Options["prefix"], null, false>[keyof Obj]>
@@ -138,10 +138,10 @@ export function isDeepEmpty(obj: Dictionary): boolean {
  */
 export function merge<
   X extends Dictionary,
-  Y extends (Partial<X> & Dictionary) | Dictionary
+  Y extends (Partial<X> & Dictionary) | Dictionary,
 >(
   target: X,
-  source: Y
+  source: Y,
 ): {
   [K in keyof X | keyof Y]: K extends keyof Y ? Y[K] : K extends keyof X ? X[K] : never;
 };
@@ -157,10 +157,10 @@ export function merge(target: Dictionary, source: Dictionary): Dictionary {
  */
 export function omit<T extends Dictionary, K extends keyof T>(
   obj: T,
-  keys: K[]
+  keys: K[],
 ): Omit<T, K> {
   return Object.fromEntries(
-    Object.entries(obj).filter(([key]) => !keys.includes(key as K))
+    Object.entries(obj).filter(([key]) => !keys.includes(key as K)),
   ) as Omit<T, K>;
 }
 
@@ -172,7 +172,7 @@ export function omit<T extends Dictionary, K extends keyof T>(
  */
 export function pick<T extends Dictionary, K extends keyof T>(
   obj: T,
-  keys: K[]
+  keys: K[],
 ): Pick<T, K> {
   return Object.fromEntries(keys.map((key) => [key, obj[key]])) as Pick<T, K>;
 }
@@ -182,7 +182,7 @@ export function pick<T extends Dictionary, K extends keyof T>(
  */
 export function remove<T extends Dictionary, K extends keyof T>(
   obj: T,
-  keys: K[]
+  keys: K[],
 ): Omit<T, K> {
   keys.forEach((k) => delete obj[k]);
   return obj;
@@ -193,14 +193,14 @@ export function remove<T extends Dictionary, K extends keyof T>(
  */
 export function rename<
   Obj extends Dictionary,
-  Mapper extends Dictionary<string> | ((a: string) => string)
+  Mapper extends Dictionary<string> | ((a: string) => string),
 >(
   obj: Obj,
-  mapper: Mapper
+  mapper: Mapper,
 ): Mapper extends Dictionary ? { [K in keyof Mapper]: Obj[Mapper[K]] } : Obj;
 export function rename(
   obj: Dictionary,
-  mapper: Dictionary<string> | ((a: string) => string)
+  mapper: Dictionary<string> | ((a: string) => string),
 ): Dictionary {
   const entries = Object.entries(obj);
   if (typeof mapper === "function") {
@@ -209,7 +209,7 @@ export function rename(
 
   const keys = Object.keys(mapper);
   return Object.fromEntries(
-    entries.map(([key, val]) => [keys.includes(key) ? mapper[key] : key, val])
+    entries.map(([key, val]) => [keys.includes(key) ? mapper[key] : key, val]),
   );
 }
 

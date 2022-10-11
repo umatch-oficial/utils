@@ -10,7 +10,7 @@ export type Exact<T> = {
 };
 export type Flatten<Y extends unknown[], Acc extends unknown[] = []> = Y extends [
   (infer H)[],
-  ...infer T
+  ...infer T,
 ]
   ? Flatten<T, [...Acc, H]>
   : Acc;
@@ -29,7 +29,7 @@ export type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T ext
 export type Join<
   L extends PropertyKey | undefined = undefined,
   R extends PropertyKey | undefined = undefined,
-  Sep extends string = "."
+  Sep extends string = ".",
 > = L extends string | number
   ? R extends string | number
     ? `${L}${Sep}${R}`
@@ -39,7 +39,7 @@ export type Join<
   : undefined;
 export type Union<
   L extends unknown | undefined,
-  R extends unknown | undefined
+  R extends unknown | undefined,
 > = L extends undefined
   ? R extends undefined
     ? undefined
@@ -50,7 +50,7 @@ export type Union<
 export type NestedPaths<
   O,
   Base extends PropertyKey | undefined = undefined,
-  Prev extends PropertyKey | undefined = undefined
+  Prev extends PropertyKey | undefined = undefined,
 > = ValueOf<{
   [K in keyof O]: O[K] extends Dictionary
     ? NestedPaths<O[K], Union<Base, Prev>, Join<Prev, K>>
@@ -79,7 +79,7 @@ export type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
 
 export type SnakeToCamelCase<
   S extends string,
-  Acc extends string = ""
+  Acc extends string = "",
 > = S extends `${infer H}_${infer T}`
   ? SnakeToCamelCase<Capitalize<T>, Join<Acc, H, "">>
   : S extends `${infer H}${infer T}`
@@ -105,7 +105,7 @@ Is the current letter uppercase?
 export type CamelToSnakeCase<
   S extends string,
   Acc extends string | undefined = undefined,
-  Buffer extends string | undefined = undefined
+  Buffer extends string | undefined = undefined,
 > = S extends `${infer H}${infer T}`
   ? CamelToSnakeCase<
       T,

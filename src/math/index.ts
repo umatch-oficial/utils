@@ -62,7 +62,7 @@ export function pickRandom<T>(options: T[]): T {
  * Picks a random option from an array of { option, weight }.
  */
 export function pickWeighted<T extends { option: unknown; weight: number }>(
-  options: T[]
+  options: T[],
 ): T["option"] {
   const totalWeight = options.reduce((partial, { weight }) => {
     return partial + weight;
