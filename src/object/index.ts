@@ -1,4 +1,10 @@
-import { CamelToSnakeCaseKeys, Dictionary, SnakeToCamelCaseKeys } from "../index";
+import {
+  CamelToSnakeCaseKeys,
+  Dictionary,
+  SnakeToCamelCaseKeys,
+  TupleToUnion,
+  ValueOf,
+} from "../index";
 import { camelCase, snakeCase } from "../string";
 
 /**
@@ -13,14 +19,30 @@ export function hasOwnProperty<X extends Dictionary, Y extends PropertyKey>(
 }
 
 /**
- * Copies an object and applies func to each value.
+ * Copies an object and applies func to all keys.
  */
-export function apply<T, O extends Dictionary<T>, R>(
-  obj: O,
-  func: (val: T) => R,
-): { [K in keyof O]: R } {
+export function apply<T extends Dictionary, R>(
+  obj: T,
+  func: (val: ValueOf<T>) => R,
+): { [K in keyof T]: R };
+/**
+ * Copies an object and applies func to some keys.
+ */
+export function apply<T extends Dictionary, R, K extends (keyof T)[]>(
+  obj: T,
+  func: (val: ValueOf<T>) => R,
+  keys: K,
+): { [_ in TupleToUnion<K>]: R };
+export function apply(
+  obj: Dictionary,
+  func: (val: unknown) => unknown,
+  keys?: string[],
+): Dictionary {
   return Object.fromEntries(
-    Object.entries(obj).map(([key, val]) => [key, func(val)] as [keyof O, R][]),
+    Object.entries(obj).map(([key, val]) => [
+      key,
+      keys ? (keys.includes(key) ? func(val) : val) : func(val),
+    ]),
   );
 }
 
