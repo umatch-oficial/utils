@@ -2,7 +2,6 @@ import {
   CamelToSnakeCaseKeys,
   Dictionary,
   SnakeToCamelCaseKeys,
-  TupleToUnion,
   ValueOf,
 } from "../index";
 import { camelCase, snakeCase } from "../string";
@@ -28,11 +27,11 @@ export function apply<T extends Dictionary, R>(
 /**
  * Copies an object and applies func to some keys.
  */
-export function apply<T extends Dictionary, R, K extends (keyof T)[]>(
+export function apply<T extends Dictionary, R, Keys extends keyof T>(
   obj: T,
   func: (val: ValueOf<T>) => R,
-  keys: K,
-): { [_ in TupleToUnion<K>]: R };
+  keys: Keys[],
+): { [K in keyof T]: K extends Keys ? R : T[K] };
 export function apply(
   obj: Dictionary,
   func: (val: unknown) => unknown,
