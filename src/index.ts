@@ -14,6 +14,16 @@ export type Flatten<Y extends unknown[], Acc extends unknown[] = []> = Y extends
 ]
   ? Flatten<T, [...Acc, H]>
   : Acc;
+// changes the type of value to B for keys in A
+export type TransformValuesByKey<T, A extends keyof T, B> = {
+  [K in keyof T]: K extends A ? (T[K] extends undefined ? B | undefined : B) : T[K];
+};
+// changes the type of values matching A to B
+export type TransformValues<T, A, B> = {
+  [K in keyof T]: T[K] extends A ? B : T[K] extends A | undefined ? B | undefined : T[K];
+};
+// changes the type of values matching A to A | B
+export type ExtendValues<T, A, B> = TransformValues<T, A, A | B>;
 
 // https://medium.com/@KevinBGreene/surviving-the-typescript-ecosystem-branding-and-type-tagging-6cf6e516523d
 export type Brand<T, Brand extends string> = T & { __brand: Brand };
@@ -91,16 +101,16 @@ uppercase letters in a buffer.
 
 The loop goes as follows:
 Is the current letter uppercase?
+  - No: add letter to the accumulator.
   - Yes: add the letter to the buffer. Is there another letter afterwards?
+    - No: is there anything in the buffer?
+      - Yes: add buffer and letter to the accumulator. Reset buffer.
+      - No: add letter to the accumulator.
     - Yes: is it uppercase too?
       - Yes: continue.
       - No: is there anything in the buffer?
-        - Yes: add `buffer_letter` to the accumulator. Reset buffer.
+        - Yes: add buffer and letter to the accumulator. Reset buffer.
         - No: add letter to the accumulator.
-    - No: is there anything in the buffer?
-      - Yes: add `buffer_letter` to the accumulator. Reset buffer.
-      - No: add letter to the accumulator.
-  - No: add letter to the accumulator.
  */
 export type CamelToSnakeCase<
   S extends string,
