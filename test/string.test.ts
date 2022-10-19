@@ -1,7 +1,14 @@
 import { parseBool, titleCase, camelCase, snakeCase, pascalCase } from "../src/string";
 
-test("parseBool", () => {
-  expect(parseBool("yes ")).toBe(true);
+describe.each([
+  ["yes ", true],
+  ["NO", false],
+  ["1", true],
+  ["0", false],
+])("parseBool()", (input, output) => {
+  test(`parseBool('${input}') = '${output}'`, () => {
+    expect(parseBool(input)).toBe(output);
+  });
 });
 
 describe.each([
@@ -21,8 +28,8 @@ describe.each([
   [titleCase, "PascalCase", "Pascal case"],
   [titleCase, "snake_case", "Snake case"],
   [titleCase, "Title case", "Title case"],
-])("%p('%s')", (func, input, output) => {
-  test(`returns '${output}'`, () => {
+])("Case functions", (func, input, output) => {
+  test(`${func.name}('${input}') = '${output}'`, () => {
     expect(func(input)).toBe(output);
   });
 });

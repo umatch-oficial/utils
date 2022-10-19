@@ -1,6 +1,6 @@
 import { cartesian, permutations, intersect, diff } from "../src/array";
 
-test("cartesian", () => {
+test("cartesian()", () => {
   expect(
     cartesian(["a"], ["b", "c"])
       .map((a) => a.join(""))
@@ -11,8 +11,8 @@ test("cartesian", () => {
 describe.each([
   [[1, 2, 3], [2, 3], [1]],
   [[1, 2, 3], [3, 2], [1]],
-])("", (a, b, output) => {
-  test(`diff(${a}, ${b}) = ${output}`, () => {
+])("diff()", (a, b, output) => {
+  test(`diff([${a}], [${b}]) = [${output}]`, () => {
     expect(diff(a, b).sort()).toEqual(output.sort());
   });
 });
@@ -28,13 +28,13 @@ describe.each([
     [3, 2],
     [3, 2],
   ],
-])("", (a, b, output) => {
-  test(`intersect(${a}, ${b}) = ${output}`, () => {
+])("intersect()", (a, b, output) => {
+  test(`intersect([${a}], [${b}]) = [${output}]`, () => {
     expect(intersect(a, b).sort()).toEqual(output.sort());
   });
 });
 
-test("permutations", () => {
+test("permutations()", () => {
   expect(
     permutations(["a", "b", "c", "d"])
       .map((a) => a.join(""))
