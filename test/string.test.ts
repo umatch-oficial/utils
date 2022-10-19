@@ -1,4 +1,22 @@
-import { parseBool, titleCase, camelCase, snakeCase, pascalCase } from "../src/string";
+import {
+  parseBool,
+  joinUrl,
+  camelCase,
+  pascalCase,
+  snakeCase,
+  titleCase,
+} from "../src/string";
+
+describe.each([
+  ["https://abc.com", "example"],
+  ["https://abc.com/", "example"],
+  ["https://abc.com/", "/example"],
+])("joinUrl()", (...parts) => {
+  const output = "https://abc.com/example";
+  test(`joinUrl(${JSON.stringify(parts)}) = '${output}'`, () => {
+    expect(joinUrl(...parts)).toBe(output);
+  });
+});
 
 describe.each([
   ["yes ", true],

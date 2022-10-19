@@ -1,3 +1,16 @@
+/**
+ * Joins parts of a URL with '/'.
+ *
+ * Removes / from the beginning and end of each part before joining.
+ *
+ * @example
+ * // returns 'https://abc.com/example'
+ * joinUrl('https://abc.com/', 'example/')
+ */
+export function joinUrl(...parts: string[]) {
+  return parts.map((s) => s.replace(/^\/|\/$/g, "")).join("/");
+}
+
 export function parse(str: string): string {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
