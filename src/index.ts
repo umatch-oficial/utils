@@ -26,7 +26,7 @@ export type TransformValues<T, A, B> = {
 export type ExtendValues<T, A, B> = TransformValues<T, A, A | B>;
 
 // https://medium.com/@KevinBGreene/surviving-the-typescript-ecosystem-branding-and-type-tagging-6cf6e516523d
-export type Brand<T, Brand extends string> = T & { __brand: Brand };
+export type Brand<T, B extends string> = T & { __brand: B };
 
 // https://github.com/Microsoft/TypeScript/issues/27024#issuecomment-421529650
 export type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y

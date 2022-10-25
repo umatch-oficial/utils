@@ -1,4 +1,4 @@
-const { cos, floor, log, max, min, PI, random, sqrt, trunc } = Math;
+const { cos, floor, log, PI, random, sqrt, trunc } = Math;
 
 /**
  * Returns the average of an array of numbers.
@@ -34,7 +34,7 @@ export function divmod(x: number, y: number): [number, number] {
  * Returns the number or min/max if it is below/above the thresholds, respectively.
  */
 export function limitToRange(num: number, lower: number, upper: number): number {
-  return min(max(num, lower), upper);
+  return Math.min(Math.max(num, lower), upper);
 }
 
 /**
@@ -123,16 +123,19 @@ export function randomNumber(max: number): number;
 /**
  * Returns a random number between min and max.
  */
-export function randomNumber(min?: number, max?: number): number;
+export function randomNumber(min: number, max: number): number;
 export function randomNumber(min?: number, max?: number): number {
   const roll = random();
   return min ? (max ? min + (max - min) * roll : min * roll) : roll;
 }
 
 /**
- * Returns [start, end[ or [0, end[.
+ * Returns [0, end[.
  */
 export function range(end: number): number[];
+/**
+ * Returns [start, end[.
+ */
 export function range(start: number, end: number): number[];
 export function range(a: number, b?: number): number[] {
   const [start, end] = b ? [a, b] : [0, a];
@@ -159,7 +162,7 @@ export function sampleNormal(): number {
 export function splitInChunks<T>(array: T[], size: number): T[][] {
   const chunks: any[] = [];
   for (let i = 0; i < array.length; i += size) {
-    const n = min(array.length - i, size);
+    const n = Math.min(array.length - i, size);
     const chunk = array.slice(i, i + n);
     chunks.push(chunk);
   }
