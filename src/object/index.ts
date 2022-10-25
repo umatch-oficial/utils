@@ -31,7 +31,7 @@ export function apply<T extends Dictionary, R>(
 export function apply<T extends Dictionary, R, Keys extends keyof T>(
   obj: T,
   func: (val: ValueOf<T>) => R,
-  keys: Keys[],
+  keys?: Keys[],
 ): { [K in keyof T]: K extends Keys ? R : T[K] };
 export function apply(
   obj: Dictionary,

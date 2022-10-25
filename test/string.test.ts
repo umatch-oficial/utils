@@ -23,8 +23,10 @@ describe.each([
   ["NO", false],
   ["1", true],
   ["0", false],
+  [" TRUE", true],
+  ["False", false],
 ])("parseBool()", (input, output) => {
-  test(`parseBool('${input}') = '${output}'`, () => {
+  test(`parseBool('${input}') = ${output}`, () => {
     expect(parseBool(input)).toBe(output);
   });
 });
