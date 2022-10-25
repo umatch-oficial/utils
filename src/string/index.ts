@@ -15,8 +15,7 @@ export function parse(str: string): string {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-export function parseBool(str?: string): boolean {
-  if (!str) return false;
+export function parseBool(str: string, def?: boolean): boolean {
   switch (str.toLowerCase().trim()) {
     case "true":
     case "yes":
@@ -27,7 +26,8 @@ export function parseBool(str?: string): boolean {
     case "0":
       return false;
     default:
-      return false;
+      if (def === undefined) throw new Error(`Failed to parse bool from string '${str}'`);
+      return def;
   }
 }
 
