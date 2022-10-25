@@ -1,5 +1,6 @@
 import {
   CamelToSnakeCaseKeys,
+  DeepArray,
   Dictionary,
   SnakeToCamelCaseKeys,
   ValueOf,
@@ -47,6 +48,14 @@ export function apply(
 
 export function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKeys<T> {
   return rename(obj, camelCase) as SnakeToCamelCaseKeys<T>;
+}
+
+/**
+ * Maps the function over deeply nested elements of the object,
+ * which are not arrays.
+ */
+export function deepMap<T extends DeepArray>(x: T, f: (val: any) => any): T {
+  return x.map((val) => (Array.isArray(val) ? deepMap(val, f) : f(val))) as T;
 }
 
 /**
