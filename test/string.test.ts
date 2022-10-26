@@ -1,11 +1,23 @@
 import {
-  parseBool,
+  join,
   joinUrl,
+  parseBool,
   camelCase,
   pascalCase,
   snakeCase,
   titleCase,
 } from "../src/string";
+
+describe.each([
+  [["mango"], "mango"],
+  [["mango", "banana"], "mango and banana"],
+  [["mango", "banana", "grape"], "mango, banana and grape"],
+  [["mango", "banana", "grape", "lime"], "mango, banana, grape and lime"],
+])("Language.join()", (parts, res) => {
+  test(`join(${JSON.stringify(parts)}) = ${res}`, () => {
+    expect(join(parts, "and")).toBe(res);
+  });
+});
 
 describe.each([
   ["https://abc.com", "example"],

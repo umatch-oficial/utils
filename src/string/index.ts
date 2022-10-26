@@ -1,4 +1,14 @@
 /**
+ * Joins words as in a sentence.
+ */
+export function join(parts: string[], and = "&"): string {
+  const firstParts = parts.slice(0, -1);
+  const lastPart = parts.slice(-1)[0];
+  if (firstParts.length === 0) return lastPart;
+  return [firstParts.join(", "), lastPart].join(` ${and} `);
+}
+
+/**
  * Joins parts of a URL with '/'.
  *
  * Removes / from the beginning and end of each part before joining.
