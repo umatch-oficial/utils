@@ -66,6 +66,19 @@ export async function filter(
 }
 
 /**
+ * Array.prototype.findLastIndex is not yet supported in Node.
+ */
+export function findLastIndex<T>(
+  array: T[],
+  predicate: (value: T, index: number, obj: T[]) => boolean,
+): number {
+  const reversed = [...array].reverse();
+  const indexReversed = reversed.findIndex(predicate);
+  if (indexReversed === -1) return -1;
+  return array.length - 1 - indexReversed;
+}
+
+/**
  * Returns the intersection of two arrays.
  */
 export function intersect<X, Y>(a: X[], b: (X | Y)[]): X[] {
@@ -153,6 +166,24 @@ export function sliceWithOverflow(array: any[], start: number, end: number): any
   const overflow = end - array.length;
   if (overflow <= 0) return array.slice(start, end);
   return [...array.slice(start), ...sliceWithOverflow(array, 0, overflow)];
+}
+
+/**
+ * Returns a copy of the array, where values for which the predicate
+ * is false are removed from both ends.
+ *
+ * Similar to filtering the array, except that the elements between
+ * the first and last valid elements are not removed.
+ */
+export function trim<T>(
+  array: T[],
+  predicate: (value: T, index: number, obj: T[]) => boolean,
+): T[] {
+  const firstIndex = array.findIndex(predicate);
+  if (firstIndex === -1) return [];
+
+  const lastIndex = findLastIndex(array, predicate);
+  return array.slice(firstIndex, lastIndex + 1);
 }
 
 /**
