@@ -1,4 +1,5 @@
 import {
+  formatTime,
   join,
   joinUrl,
   parseBool,
@@ -9,11 +10,32 @@ import {
 } from "../src/string";
 
 describe.each([
+  // provide fewer parts than informed
+  [{ seconds: 10 }, 2, "10 seconds"],
+  // provide more parts than informed
+  [{ hours: 1, minutes: 2, seconds: 10 }, 2, "1 hour and 2 minutes"],
+  // hoist onto implicit undefined
+  [{ hours: 1, seconds: 130 }, 2, "1 hour and 2 minutes"],
+  // hoist onto explicit undefined
+  [{ hours: 1, minutes: undefined, seconds: 130 }, 2, "1 hour and 2 minutes"],
+  // hoist onto 0
+  [{ hours: 1, minutes: 0, seconds: 130 }, 2, "1 hour and 2 minutes"],
+  // hoist onto existing value
+  [{ hours: 1, minutes: 2, seconds: 130 }, 2, "1 hour and 4 minutes"],
+  // hoist twice
+  [{ hours: 1, minutes: 2, seconds: 3600 }, 2, "2 hours and 2 minutes"],
+])("formatTime()", (time, parts, res) => {
+  test(`formatTime(${JSON.stringify(time)}) = '${res}'`, () => {
+    expect(formatTime(time, { parts })).toBe(res);
+  });
+});
+
+describe.each([
   [["mango"], "mango"],
   [["mango", "banana"], "mango and banana"],
   [["mango", "banana", "grape"], "mango, banana and grape"],
   [["mango", "banana", "grape", "lime"], "mango, banana, grape and lime"],
-])("Language.join()", (parts, res) => {
+])("join()", (parts, res) => {
   test(`join(${JSON.stringify(parts)}) = ${res}`, () => {
     expect(join(parts, "and")).toBe(res);
   });

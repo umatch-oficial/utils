@@ -1,3 +1,96 @@
+import { zip } from "../array";
+import { divmod } from "../math";
+
+type Pluralizer = (word: string, quantity?: number) => string;
+
+export function basicPluralizer(word: string, quantity?: number): string {
+  if (quantity === undefined) return `${word}s`;
+
+  if (quantity !== 0 && Math.abs(quantity) <= 1) {
+    return `${quantity} ${word}`;
+  }
+  return `${quantity} ${word}s`;
+}
+
+/**
+ * Formats the duration-like object, using up to the specified number
+ * of parts starting from the largest non-zero unit. Values are
+ * converted into larger units, so that 70 seconds becomes 1 minute
+ * and 10 seconds, for example.
+ * @example
+ * // returns "10 minutes and 5 seconds"
+ * formatTime(
+ *     { hours: 0, minutes: 10, seconds: 5, milliseconds: 300},
+ *     { parts: 2 },
+ * )
+ * @param time Duration-like object
+ * @param options
+ * @param {{ and: string; hour: string; minute: string; second: string; millisecond: string }}[options.dictionary] Words to substitute. Default: english words
+ * @param [options.parts] The number of parts to include in the output. Default: 2
+ * @param {Pluralizer} [options.pluralizer] A pluralizer function. Default: adds 's' to the end the word
+ */
+export function formatTime(
+  time: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+    milliseconds?: number;
+  },
+  options?: {
+    dictionary?: {
+      and: string;
+      hour: string;
+      minute: string;
+      second: string;
+      millisecond: string;
+    };
+    parts?: number;
+    pluralizer?: Pluralizer;
+  },
+): string {
+  const { hours, minutes, seconds, milliseconds } = time;
+  const { parts, pluralizer, dictionary } = {
+    parts: 2,
+    pluralizer: basicPluralizer,
+    ...options,
+  };
+  const { and, hour, minute, second, millisecond } = {
+    and: "and",
+    hour: "hour",
+    minute: "minute",
+    second: "second",
+    millisecond: "millisecond",
+    ...dictionary,
+  };
+
+  const ordered = [hours, minutes, seconds, milliseconds];
+  const rounded = ordered.map((n) => (n ? Math.ceil(n) : n));
+  // hours to minutes, minutes to seconds, seconds to milliseconds
+  const conversions = [60, 60, 1000];
+  // "hoist" units — 70 seconds become 1 minute and 10 seconds, and so on
+  for (let i = rounded.length - 1; i > 0; i -= 1) {
+    const cur = rounded[i];
+    const above = rounded[i - 1];
+    if (cur === undefined) continue;
+
+    const conversion = conversions[i - 1];
+    const [quo, rem] = divmod(cur, conversion);
+    rounded[i] = rem;
+    if (above !== undefined || quo > 0) {
+      rounded[i - 1] = (above ?? 0) + quo;
+    }
+  }
+
+  const withNames = zip(rounded, [hour, minute, second, millisecond]);
+  const filtered = withNames.filter(([quantity]) => quantity !== undefined) as [
+    number,
+    string,
+  ][];
+  const sliced = filtered.slice(0, parts);
+  const strings = sliced.map(([quantity, word]) => pluralizer(word, quantity));
+  return join(strings, and);
+}
+
 /**
  * Joins words as in a sentence.
  */
