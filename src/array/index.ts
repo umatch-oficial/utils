@@ -1,4 +1,12 @@
-import { DeepNode, DeepArray, Flatten, UnionToTuple } from "../index";
+import {
+  DeepArray,
+  DeepNode,
+  Dictionary,
+  Flatten,
+  Primitive,
+  UnionToTuple,
+  ValueOf,
+} from "../index";
 import { range } from "../math";
 
 /**
@@ -76,6 +84,54 @@ export function findLastIndex<T>(
   const indexReversed = reversed.findIndex(predicate);
   if (indexReversed === -1) return -1;
   return array.length - 1 - indexReversed;
+}
+
+/**
+ * Groups the elements in an array by the value of the specified key.
+ *
+ * The key must have a primitive value for every object in the array.
+ * If the value is boolean, it becomes an index of the resulting
+ * object as a string.
+ */
+export function groupBy<
+  T extends Dictionary[],
+  ValidKey extends ValueOf<{
+    [Key in keyof T[number]]: T[number][Key] extends Primitive ? Key : never;
+  }> &
+    string,
+>(
+  array: T,
+  key: ValidKey,
+): T extends (infer R)[]
+  ? ValidKey extends keyof R
+    ? {
+        [_ in R[ValidKey] as R[ValidKey] extends number ? number : string]: R[];
+      }
+    : never
+  : never;
+export function groupBy<
+  T extends { [_: string]: unknown }[],
+  ValidKey extends ValueOf<{
+    [Key in keyof T[number]]: T[number][Key] extends Primitive ? Key : never;
+  }> &
+    string,
+>(array: T, key: ValidKey) {
+  return array.reduce((partial: { [_: string]: T[number][] }, element: T[number]) => {
+    const keyVal = element[key];
+    if (!["string", "number", "boolean"].includes(typeof keyVal)) {
+      throw new Error(
+        `Cannot use value of '${key}' to index result - must be a string, number or boolean for all array elements`,
+      );
+    }
+
+    const index = String(keyVal);
+    if (partial[index] === undefined) {
+      partial[index] = [element];
+    } else {
+      partial[index].push(element);
+    }
+    return partial;
+  }, {} as { [_: string]: T[number][] });
 }
 
 /**
