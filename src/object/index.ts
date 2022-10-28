@@ -153,7 +153,7 @@ export function extract(obj: Dictionary, options: ExtractOptions): Dictionary {
  * A deep empty object only has values that are empty strings, empty
  * arrays, empty objects or deep empty objects.
  */
-export function isDeepEmpty(obj: Dictionary): boolean {
+export function isDeepEmpty(obj: Dictionary<any>): boolean {
   if (hasOwnProperty(obj, "length")) {
     return obj.length === 0;
   }
@@ -227,7 +227,7 @@ export function rename<
 >(
   obj: Obj,
   mapper: Mapper,
-): Mapper extends Dictionary ? { [K in keyof Mapper]: Obj[Mapper[K]] } : Obj;
+): Mapper extends Dictionary<any> ? { [K in keyof Mapper]: Obj[Mapper[K]] } : Obj;
 export function rename(
   obj: Dictionary,
   mapper: Dictionary<string> | ((a: string) => string),

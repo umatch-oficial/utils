@@ -1,5 +1,5 @@
 export type Primitive = string | number | boolean;
-export type Dictionary<T = any> = { [_: string]: T };
+export type Dictionary<T = unknown> = { [_: string]: T };
 export type Payload<T = Primitive> = Dictionary<T>;
 export type DeepNode<T = unknown> = T | DeepArray<T> | DeepObject<T>;
 export type DeepArray<T = unknown> = DeepNode<T>[];
@@ -66,7 +66,7 @@ export type NestedPaths<
     ? NestedPaths<O[K], Union<Base, Prev>, Join<Prev, K>>
     : Union<Base, Union<Prev, Join<Prev, K>>>;
 }>;
-export type TypeFromPath<O extends Dictionary, P extends string> = P extends keyof O
+export type TypeFromPath<O extends Dictionary<any>, P extends string> = P extends keyof O
   ? O[P]
   : P extends `${infer H}.${infer T}`
   ? H extends keyof O
