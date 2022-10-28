@@ -28,7 +28,7 @@
     },
     "scripts": {
         "build": "tsc --build src",
-        "test": "jest --config jest.json",
+        "test": "jest",
         "lint": "eslint . --ext=.ts",
         "prepublishOnly": "npm test && npm run lint",
         "prepare": "npm run build",
