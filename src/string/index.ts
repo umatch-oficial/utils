@@ -4,6 +4,14 @@ import { divmod } from "../math";
 type Pluralizer = (word: string, quantity?: number) => string;
 
 const ENGLISH_ARTICLES = ["a", "an", "the"];
+// the following approach is a good approximation, but fails for
+// letters like: Ú, Ù, Ý
+const LOWERCASE_LETTER = "a-zØ-öø-ÿ";
+const UPPERCASE_LETTER = "A-ZÀ-Ö";
+const WORD_REGEX = new RegExp(
+  `[${UPPERCASE_LETTER}]?([${LOWERCASE_LETTER}\d]+)|[${UPPERCASE_LETTER}]+(?=[${UPPERCASE_LETTER}])`,
+  "g",
+);
 
 export function basicPluralizer(word: string, quantity?: number): string {
   if (quantity === undefined) return `${word}s`;
@@ -154,13 +162,11 @@ export function uncapitalize<S extends string>(str: S): Uncapitalize<S> {
   return (first.toLowerCase() + rest.join("")) as Uncapitalize<S>;
 }
 
-const WORD_REGEX = /[A-Za-z]([a-z\d]+)|[A-Z]+(?=[A-Z])/g;
-
 /**
  * Converts a string to camelCase.
  */
-export function camelCase(str: string): string {
-  const words = str.match(WORD_REGEX);
+export function camelCase(word: string): string {
+  const words = word.match(WORD_REGEX);
   if (!words) return "";
 
   const [first, ...rest] = words;
@@ -170,8 +176,8 @@ export function camelCase(str: string): string {
 /**
  * Converts a string to camelCase.
  */
-export function pascalCase(str: string): string {
-  const words = str.match(WORD_REGEX);
+export function pascalCase(word: string): string {
+  const words = word.match(WORD_REGEX);
   if (!words) return "";
   return words.map(capitalize).join("");
 }
@@ -179,8 +185,8 @@ export function pascalCase(str: string): string {
 /**
  * Converts a string to snake_case.
  */
-export function snakeCase(str: string): string {
-  const words = str.match(WORD_REGEX);
+export function snakeCase(word: string): string {
+  const words = word.match(WORD_REGEX);
   if (!words) return "";
   return words.map(uncapitalize).join("_");
 }
@@ -188,8 +194,8 @@ export function snakeCase(str: string): string {
 /**
  * Converts a string to Sentence case.
  */
-export function sentenceCase(str: string): string {
-  const words = str.match(WORD_REGEX);
+export function sentenceCase(word: string): string {
+  const words = word.match(WORD_REGEX);
   if (!words) return "";
 
   const [first, ...rest] = words;
@@ -200,7 +206,7 @@ export function sentenceCase(str: string): string {
  * Converts a string to Title Case.
  */
 export function titleCase(str: string, articles: string[] = ENGLISH_ARTICLES): string {
-  const words = str.match(WORD_REGEX);
+  const words = str.split(/[_\s]/);
   if (!words) return "";
 
   const capitalizeExceptArticles = (word: string) =>
