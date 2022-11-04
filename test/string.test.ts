@@ -6,6 +6,7 @@ import {
   camelCase,
   pascalCase,
   snakeCase,
+  sentenceCase,
   titleCase,
 } from "../src/string";
 
@@ -78,10 +79,15 @@ describe.each([
   [snakeCase, "PascalCase", "pascal_case"],
   [snakeCase, "snake_case", "snake_case"],
   [snakeCase, "Title case", "title_case"],
-  [titleCase, "camelCase", "Camel case"],
-  [titleCase, "PascalCase", "Pascal case"],
-  [titleCase, "snake_case", "Snake case"],
-  [titleCase, "Title case", "Title case"],
+  [sentenceCase, "camelCase", "Camel case"],
+  [sentenceCase, "PascalCase", "Pascal case"],
+  [sentenceCase, "snake_case", "Snake case"],
+  [sentenceCase, "Title case", "Title case"],
+  [titleCase, "camelCase", "Camel Case"],
+  [titleCase, "PascalCase", "Pascal Case"],
+  [titleCase, "snake_case", "Snake Case"],
+  [titleCase, "Title case", "Title Case"],
+  [titleCase, "the man in the High Castle", "The Man In the High Castle"],
 ])("Case functions", (func, input, output) => {
   test(`${func.name}('${input}') = '${output}'`, () => {
     expect(func(input)).toBe(output);

@@ -3,6 +3,8 @@ import { divmod } from "../math";
 
 type Pluralizer = (word: string, quantity?: number) => string;
 
+const ENGLISH_ARTICLES = ["a", "an", "the"];
+
 export function basicPluralizer(word: string, quantity?: number): string {
   if (quantity === undefined) return `${word}s`;
 
@@ -154,6 +156,9 @@ export function uncapitalize<S extends string>(str: S): Uncapitalize<S> {
 
 const WORD_REGEX = /[A-Za-z]([a-z\d]+)|[A-Z]+(?=[A-Z])/g;
 
+/**
+ * Converts a string to camelCase.
+ */
 export function camelCase(str: string): string {
   const words = str.match(WORD_REGEX);
   if (!words) return "";
@@ -162,22 +167,44 @@ export function camelCase(str: string): string {
   return [uncapitalize(first), ...rest.map(capitalize)].join("");
 }
 
+/**
+ * Converts a string to camelCase.
+ */
 export function pascalCase(str: string): string {
   const words = str.match(WORD_REGEX);
   if (!words) return "";
   return words.map(capitalize).join("");
 }
 
+/**
+ * Converts a string to snake_case.
+ */
 export function snakeCase(str: string): string {
   const words = str.match(WORD_REGEX);
   if (!words) return "";
   return words.map(uncapitalize).join("_");
 }
 
-export function titleCase(str: string): string {
+/**
+ * Converts a string to Sentence case.
+ */
+export function sentenceCase(str: string): string {
   const words = str.match(WORD_REGEX);
   if (!words) return "";
 
   const [first, ...rest] = words;
   return [capitalize(first), ...rest.map(uncapitalize)].join(" ");
+}
+
+/**
+ * Converts a string to Title Case.
+ */
+export function titleCase(str: string, articles: string[] = ENGLISH_ARTICLES): string {
+  const words = str.match(WORD_REGEX);
+  if (!words) return "";
+
+  const capitalizeExceptArticles = (word: string) =>
+    articles.includes(word.toLowerCase()) ? word : capitalize(word);
+  const [first, ...rest] = words;
+  return [capitalize(first), ...rest.map(capitalizeExceptArticles)].join(" ");
 }
