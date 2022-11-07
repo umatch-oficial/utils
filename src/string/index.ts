@@ -5,11 +5,15 @@ type Pluralizer = (word: string, quantity?: number) => string;
 
 const ENGLISH_ARTICLES = ["a", "an", "the"];
 // the following approach is a good approximation, but fails for
-// letters like: Ú, Ù, Ý
-const LOWERCASE_LETTER = "a-zØ-öø-ÿ";
-const UPPERCASE_LETTER = "A-ZÀ-Ö";
+//  letters like: Ú, Ù, Ý
+const LOWERCASE_LETTER = "[a-zØ-öø-ÿ\\d']";
+const UPPERCASE_LETTER = "[A-ZÀ-Ö]";
+/*
+This regex splits words where lowercase letters or numbers precede
+an uppercase letter.
+*/
 const WORD_REGEX = new RegExp(
-  `[${UPPERCASE_LETTER}]?([${LOWERCASE_LETTER}\d]+)|[${UPPERCASE_LETTER}]+(?=[${UPPERCASE_LETTER}])`,
+  `${UPPERCASE_LETTER}+${LOWERCASE_LETTER}*|${UPPERCASE_LETTER}?${LOWERCASE_LETTER}+`,
   "g",
 );
 
@@ -162,55 +166,66 @@ export function uncapitalize<S extends string>(str: S): Uncapitalize<S> {
   return (first.toLowerCase() + rest.join("")) as Uncapitalize<S>;
 }
 
-/**
- * Converts a string to camelCase.
- */
-export function camelCase(word: string): string {
-  const words = word.match(WORD_REGEX);
-  if (!words) return "";
+function toCase(
+  firstWordFunction: (str: string) => string,
+  otherWordsFunction: (str: string) => string,
+  separator: string,
+): (str: string) => string {
+  return (str) => {
+    const words = str.match(WORD_REGEX);
+    if (!words) return str;
 
-  const [first, ...rest] = words;
-  return [uncapitalize(first), ...rest.map(capitalize)].join("");
+    const [first, ...rest] = words;
+    return [firstWordFunction(first), ...rest.map(otherWordsFunction)].join(separator);
+  };
 }
 
 /**
  * Converts a string to camelCase.
  */
-export function pascalCase(word: string): string {
-  const words = word.match(WORD_REGEX);
-  if (!words) return "";
-  return words.map(capitalize).join("");
-}
+export const camelCase: (str: string) => string = Object.defineProperty(
+  toCase(uncapitalize, capitalize, ""),
+  "name",
+  { value: "camelCase" },
+);
+
+/**
+ * Converts a string to camelCase.
+ */
+export const pascalCase: (str: string) => string = Object.defineProperty(
+  toCase(capitalize, capitalize, ""),
+  "name",
+  { value: "pascalCase" },
+);
 
 /**
  * Converts a string to snake_case.
  */
-export function snakeCase(word: string): string {
-  const words = word.match(WORD_REGEX);
-  if (!words) return "";
-  return words.map(uncapitalize).join("_");
-}
+export const snakeCase: (str: string) => string = Object.defineProperty(
+  toCase(uncapitalize, uncapitalize, "_"),
+  "name",
+  { value: "snakeCase" },
+);
 
 /**
  * Converts a string to Sentence case.
  */
-export function sentenceCase(word: string): string {
-  const words = word.match(WORD_REGEX);
-  if (!words) return "";
-
-  const [first, ...rest] = words;
-  return [capitalize(first), ...rest.map(uncapitalize)].join(" ");
-}
+export const sentenceCase: (str: string) => string = Object.defineProperty(
+  toCase(capitalize, uncapitalize, " "),
+  "name",
+  { value: "sentenceCase" },
+);
 
 /**
  * Converts a string to Title Case.
+ *
+ * Some words should not be capitalized, depending on the language.
+ * In english, for example, the articles.
  */
-export function titleCase(str: string, articles: string[] = ENGLISH_ARTICLES): string {
-  const words = str.split(/[_\s]/);
-  if (!words) return "";
-
-  const capitalizeExceptArticles = (word: string) =>
-    articles.includes(word.toLowerCase()) ? word : capitalize(word);
-  const [first, ...rest] = words;
-  return [capitalize(first), ...rest.map(capitalizeExceptArticles)].join(" ");
+export function titleCase(str: string, skipWords: string[] = ENGLISH_ARTICLES): string {
+  return toCase(
+    capitalize,
+    (word) => (skipWords.includes(word.toLowerCase()) ? word : capitalize(word)),
+    " ",
+  )(str);
 }
