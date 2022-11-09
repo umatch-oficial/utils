@@ -1,7 +1,11 @@
+import { DateTime } from "luxon";
+
 import { zip } from "../array";
 import { divmod } from "../math";
 
-type Pluralizer = (word: string, quantity?: number) => string;
+import type { DateTimeUnit } from "luxon";
+
+export type Pluralizer = (word: string, quantity?: number) => string;
 
 const ENGLISH_ARTICLES = ["a", "an", "the"];
 // the following approach is a good approximation, but fails for
@@ -40,7 +44,7 @@ export function basicPluralizer(word: string, quantity?: number): string {
  * @param time Duration-like object
  * @param options
  * @param {{ and: string; hour: string; minute: string; second: string; millisecond: string }}[options.dictionary] Words to substitute. Default: english words
- * @param [options.parts] The number of parts to include in the output. Default: 2
+ * @param {number}[options.parts] The number of parts to include in the output. Default: 2
  * @param {Pluralizer} [options.pluralizer] A pluralizer function. Default: adds 's' to the end the word
  */
 export function formatTime(
@@ -228,4 +232,77 @@ export function titleCase(str: string, skipWords: string[] = ENGLISH_ARTICLES): 
     (word) => (skipWords.includes(word.toLowerCase()) ? word : capitalize(word)),
     " ",
   )(str);
+}
+
+type DateTimeDict = { [_ in DateTimeUnit]?: string } & {
+  day: string;
+  hour: string;
+  minute: string;
+};
+/**
+ * Returns a human-readable count-down until a certain date.
+ *
+ * Starts from the largest unit of time (default: day) to the
+ * smallest (default: minute). Returns the count-down in the
+ * first unit for which the difference from date until now
+ * exceeds the threshold for the unit (default: 1).
+ *
+ * @example
+ * // returns '3 days'
+ * const date = DateTime.now().plus({ days: 3 });
+ * getCountDown(date);
+ * // returns '3d'
+ * getCountDown(date, { short: true });
+ * // returns '72 hours'
+ * getCountDown(date, { unitsThresholds: [['day', 5], ['hour', 1]] });
+ *
+ * @param {string | DateTime} date If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true}).
+ * @param options
+ * @param {{ and: string; hour: string; minute: string; second: string; millisecond: string }}[options.dictionary] Words to substitute. Default: english words
+ * @param {Pluralizer} [options.pluralizer] A pluralizer function. Default: adds 's' to the end the word
+ * @param {boolean}[options.short] Shorten the duration identifier
+ * @param {[DateTimeUnit, number][]}[options.unitsThresholds] Threshold per unit
+ */
+export function getCountDown(
+  date: string | DateTime,
+  options?: {
+    dictionary?: DateTimeDict;
+    short?: boolean;
+    unitsThresholds?: [DateTimeUnit, number][];
+  },
+): string {
+  const { pluralizer, dictionary } = {
+    dictionary: {
+      day: "day",
+      hour: "hour",
+      minute: "minute",
+    } as DateTimeDict,
+    pluralizer: basicPluralizer,
+    ...options,
+  };
+  const now = DateTime.now();
+  const then =
+    date instanceof DateTime ? date : DateTime.fromISO(date, { setZone: true });
+  const unitsThresholds = options?.unitsThresholds ?? [
+    ["day", 1],
+    ["hour", 1],
+    ["minute", 1],
+  ];
+  if (unitsThresholds.length === 0) {
+    throw new Error("unitsThresholds must have at least one element");
+  }
+
+  let [finalUnit, finalNumber] = unitsThresholds.at(-1)!;
+  for (const [unit, threshold] of unitsThresholds) {
+    const diff = then.diff(now, unit).as(unit);
+    if (diff >= threshold) {
+      finalNumber = Math.trunc(diff);
+      finalUnit = unit;
+      break;
+    }
+  }
+
+  const entry = dictionary[finalUnit];
+  if (!entry) throw new Error(`Dictionary missing entry for ${finalUnit}`);
+  return options?.short ? `${finalNumber}${entry[0]}` : pluralizer(entry, finalNumber);
 }
