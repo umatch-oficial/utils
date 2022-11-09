@@ -267,6 +267,7 @@ export function getCountDown(
   date: string | DateTime,
   options?: {
     dictionary?: DateTimeDict;
+    pluralizer: Pluralizer;
     short?: boolean;
     unitsThresholds?: [DateTimeUnit, number][];
   },
