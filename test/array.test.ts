@@ -9,10 +9,6 @@ const FRUITS = [
   { name: "watermelon", size: 3, color: "green" },
 ];
 
-function prettyPrint(x: any): string {
-  return JSON.stringify(x, null, 2);
-}
-
 test("cartesian()", () => {
   expect(
     cartesian(["a"], ["b", "c"])
@@ -34,22 +30,40 @@ describe.each([
   [
     "color",
     {
-      green: FRUITS.filter((fruit) => fruit.color === "green"),
-      red: FRUITS.filter((fruit) => fruit.color === "red"),
-      yellow: FRUITS.filter((fruit) => fruit.color === "yellow"),
+      green: [
+        { name: "grape", size: 1, color: "green" },
+        { name: "watermelon", size: 3, color: "green" },
+      ],
+      red: [
+        { name: "apple", size: 2, color: "red" },
+        { name: "strawberry", size: 1, color: "red" },
+      ],
+      yellow: [
+        { name: "banana", size: 2, color: "yellow" },
+        { name: "melon", size: 3, color: "yellow" },
+      ],
     },
   ],
   [
     "size",
     {
-      1: FRUITS.filter((fruit) => fruit.size === 1),
-      2: FRUITS.filter((fruit) => fruit.size === 2),
-      3: FRUITS.filter((fruit) => fruit.size === 3),
+      1: [
+        { name: "grape", size: 1, color: "green" },
+        { name: "strawberry", size: 1, color: "red" },
+      ],
+      2: [
+        { name: "apple", size: 2, color: "red" },
+        { name: "banana", size: 2, color: "yellow" },
+      ],
+      3: [
+        { name: "melon", size: 3, color: "yellow" },
+        { name: "watermelon", size: 3, color: "green" },
+      ],
     },
   ],
-])("groupBy()", (key, res) => {
-  test(`groupBy(FRUITS, '${key}') = ${prettyPrint(res)}`, () => {
-    expect(groupBy(FRUITS, key as keyof typeof FRUITS[number])).toEqual(res);
+])("groupBy()", (key, output) => {
+  test(`groupBy(FRUITS, '${key}')`, () => {
+    expect(groupBy(FRUITS, key as keyof typeof FRUITS[number])).toEqual(output);
   });
 });
 

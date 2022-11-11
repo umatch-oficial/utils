@@ -53,7 +53,9 @@ export function diff<X, Y>(a: X[], b: (X | Y)[]): X[] {
 }
 
 /**
- * Same as Array.filter, but accepts async callbacks
+ * Same as Array.filter, but accepts async callbacks.
+ *
+ * Uses Promise.all under the hood, so beware of the consequences.
  */
 export async function filter<X, T extends X[]>(
   array: T,
@@ -74,7 +76,10 @@ export async function filter(
 }
 
 /**
- * Array.prototype.findLastIndex is not yet supported in Node.
+ * Same as Array.prototype.findIndex, but starting from the end.
+ *
+ * Array.prototype.findLastIndex is already available in some runtimes,
+ * but not in Node.
  */
 export function findLastIndex<T>(
   array: T[],
