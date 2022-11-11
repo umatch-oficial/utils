@@ -1,4 +1,11 @@
-import { cartesian, permutations, intersect, diff, groupBy } from "../src/array";
+import {
+  cartesian,
+  diff,
+  filterWithComplement,
+  groupBy,
+  intersect,
+  permutations,
+} from "../src/array";
 
 const FRUITS = [
   { name: "apple", size: 2, color: "red" },
@@ -23,6 +30,21 @@ describe.each([
 ])("diff()", (a, b, output) => {
   test(`diff([${a}], [${b}]) = [${output}]`, () => {
     expect(diff(a, b).sort()).toEqual(output.sort());
+  });
+});
+
+describe.each([
+  [[1, 2, 3], (x: number) => x < 2, [[1], [2, 3]], ["integers", "x < 2"]],
+  [
+    [new Date("2022-01-10"), new Date("2022-01-20"), new Date("2022-01-30")],
+    (x: Date) => x.getDate() < 10,
+    [[new Date("2022-01-10")], [new Date("2022-01-20"), new Date("2022-01-30")]],
+    ["dates", "day < 10"],
+  ],
+])("filterWithComplement()", (array, predicate, output, description) => {
+  test(`filterWithComplement(${description[0]}, ${description[1]})`, () => {
+    // @ts-ignore
+    expect(filterWithComplement(array, predicate)).toEqual(output);
   });
 });
 

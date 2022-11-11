@@ -76,6 +76,25 @@ export async function filter(
 }
 
 /**
+ * Returns the filtered array and the complement as well (elements
+ * removed by the filter).
+ * @param array
+ * @param predicate
+ */
+export function filterWithComplement<T extends unknown[]>(
+  array: T,
+  predicate: (x: T[number]) => boolean,
+): T extends (infer R)[] ? [R[], R[]] : never;
+export function filterWithComplement<T extends unknown[]>(
+  array: T,
+  predicate: (x: T[number]) => boolean,
+): any[] {
+  const filtered = array.filter(predicate);
+  const complement = array.filter((element) => !filtered.includes(element));
+  return [filtered, complement];
+}
+
+/**
  * Same as Array.prototype.findIndex, but starting from the end.
  *
  * Array.prototype.findLastIndex is already available in some runtimes,
