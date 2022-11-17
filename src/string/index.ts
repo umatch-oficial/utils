@@ -136,7 +136,7 @@ export function parse(str: string): string {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-export function parseBool(str: string, def?: boolean): boolean {
+export function parseBool(str: string = "", def?: boolean): boolean {
   switch (str.toLowerCase().trim()) {
     case "true":
     case "yes":
