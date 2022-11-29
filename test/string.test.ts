@@ -2,6 +2,7 @@ import {
   formatTime,
   join,
   joinUrl,
+  parse,
   parseBool,
   camelCase,
   pascalCase,
@@ -68,6 +69,10 @@ describe.each([
   test(`parseBool('${input}') = ${output}`, () => {
     expect(parseBool(input)).toBe(output);
   });
+});
+
+test(`parse()`, () => {
+  expect(parse("àèìòùâêîôûäëïöüÿáéíóúýçãõ")).toBe("aeiouaeiouaeiouyaeiouycao");
 });
 
 describe.each([

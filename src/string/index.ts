@@ -137,6 +137,9 @@ export function joinUrl(...parts: string[]) {
   return parts.map((s) => s.replace(/^\/|\/$/g, "")).join("/");
 }
 
+/**
+ * Replaces accented letters with their standard versions.
+ */
 export function parse(str: string): string {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
