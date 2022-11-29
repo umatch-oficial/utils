@@ -64,10 +64,11 @@ export function formatTime(
     };
     parts?: number;
     pluralizer?: Pluralizer;
+    short?: boolean;
   },
 ): string {
   const { hours, minutes, seconds, milliseconds } = time;
-  const { parts, pluralizer, dictionary } = {
+  const { parts, pluralizer, dictionary, short } = {
     parts: 2,
     pluralizer: basicPluralizer,
     ...options,
@@ -83,30 +84,34 @@ export function formatTime(
 
   const ordered = [hours, minutes, seconds, milliseconds];
   const rounded = ordered.map((n) => (n ? Math.ceil(n) : n));
-  // hours to minutes, minutes to seconds, seconds to milliseconds
+  // hours => minutes, minutes => seconds, seconds => milliseconds
   const conversions = [60, 60, 1000];
   // "hoist" units — 70 seconds become 1 minute and 10 seconds, and so on
   for (let i = rounded.length - 1; i > 0; i -= 1) {
     const cur = rounded[i];
     const above = rounded[i - 1];
-    if (cur === undefined) continue;
+    if (!cur) continue;
 
     const conversion = conversions[i - 1];
     const [quo, rem] = divmod(cur, conversion);
     rounded[i] = rem;
-    if (above !== undefined || quo > 0) {
+    if (quo > 0) {
       rounded[i - 1] = (above ?? 0) + quo;
     }
   }
 
   const withNames = zip(rounded, [hour, minute, second, millisecond]);
-  const filtered = withNames.filter(([quantity]) => quantity !== undefined) as [
-    number,
-    string,
-  ][];
+  const filtered = withNames.filter(
+    ([quantity]) => quantity !== undefined && quantity !== 0,
+  ) as [number, string][];
   const sliced = filtered.slice(0, parts);
-  const strings = sliced.map(([quantity, word]) => pluralizer(word, quantity));
-  return join(strings, and);
+  if (short) {
+    const strings = sliced.map(([quantity, word]) => `${quantity} ${word[0]}`);
+    return strings.join(" ");
+  } else {
+    const strings = sliced.map(([quantity, word]) => pluralizer(word, quantity));
+    return join(strings, and);
+  }
 }
 
 /**

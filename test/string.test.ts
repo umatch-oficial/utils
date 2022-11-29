@@ -11,23 +11,27 @@ import {
 } from "../src/string";
 
 describe.each([
-  // provide fewer parts than informed
-  [{ seconds: 10 }, 2, "10 seconds"],
-  // provide more parts than informed
-  [{ hours: 1, minutes: 2, seconds: 10 }, 2, "1 hour and 2 minutes"],
+  // provide fewer parts than requested
+  [{ seconds: 10 }, "10 seconds", { parts: 2 }],
+  // provide more parts than requested
+  [{ hours: 1, minutes: 2, seconds: 10 }, "1 hour and 2 minutes", { parts: 2 }],
+  // ignore zeros
+  [{ hours: 0, minutes: 2, seconds: 10 }, "2 minutes and 10 seconds", {}],
   // hoist onto implicit undefined
-  [{ hours: 1, seconds: 130 }, 2, "1 hour and 2 minutes"],
+  [{ hours: 1, seconds: 130 }, "1 hour and 2 minutes", {}],
   // hoist onto explicit undefined
-  [{ hours: 1, minutes: undefined, seconds: 130 }, 2, "1 hour and 2 minutes"],
+  [{ hours: 1, minutes: undefined, seconds: 130 }, "1 hour and 2 minutes", {}],
   // hoist onto 0
-  [{ hours: 1, minutes: 0, seconds: 130 }, 2, "1 hour and 2 minutes"],
+  [{ hours: 1, minutes: 0, seconds: 130 }, "1 hour and 2 minutes", {}],
   // hoist onto existing value
-  [{ hours: 1, minutes: 2, seconds: 130 }, 2, "1 hour and 4 minutes"],
+  [{ hours: 1, minutes: 2, seconds: 130 }, "1 hour and 4 minutes", {}],
   // hoist twice
-  [{ hours: 1, minutes: 2, seconds: 3600 }, 2, "2 hours and 2 minutes"],
-])("formatTime()", (time, parts, res) => {
+  [{ hours: 1, minutes: 2, seconds: 3600 }, "2 hours and 2 minutes", {}],
+  // short
+  [{ minutes: 2, seconds: 10 }, "2 m 10 s", { short: true }],
+])("formatTime()", (time, res, opts) => {
   test(`formatTime(${JSON.stringify(time)}) = '${res}'`, () => {
-    expect(formatTime(time, { parts })).toBe(res);
+    expect(formatTime(time, opts)).toBe(res);
   });
 });
 
