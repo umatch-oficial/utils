@@ -1,3 +1,5 @@
+import bluebird from "bluebird";
+
 import {
   DeepArray,
   DeepNode,
@@ -57,24 +59,20 @@ export function diff<X extends string | number, Y extends string | number>(
 /**
  * Same as Array.filter, but accepts async callbacks.
  *
- * Uses Promise.all under the hood, so beware of the consequences.
+ * Uses bluebird.map to limit concurrency.
  */
-export async function filter<X, T extends X[]>(
-  array: T,
-  callback: (x: X) => Promise<boolean>,
-): Promise<T extends (infer R)[] ? R[] : never>;
-export async function filter(
-  array: any[],
-  callback: (x: any) => Promise<boolean>,
-): Promise<any[]> {
+export async function filter<T>(
+  array: T[],
+  callback: (x: T) => Promise<boolean>,
+  concurrency = 50,
+): Promise<T[]> {
   return (
-    await Promise.all(
-      array.map(async (a) => {
-        const res = await callback(a);
-        return res ? a : [];
-      }),
+    await bluebird.map(
+      array,
+      async (element) => ((await callback(element)) ? element : []),
+      { concurrency },
     )
-  ).flat();
+  ).flat() as T[];
 }
 
 /**

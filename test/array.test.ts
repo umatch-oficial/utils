@@ -1,6 +1,7 @@
 import {
   cartesian,
   diff,
+  filter,
   filterWithComplement,
   groupBy,
   intersect,
@@ -31,6 +32,10 @@ describe.each([
   test(`diff([${a}], [${b}]) = [${output}]`, () => {
     expect(diff(a, b).sort()).toEqual(output.sort());
   });
+});
+
+test("filter()", async () => {
+  expect(await filter([1, 2, 3], async (x) => x < 2)).toEqual([1]);
 });
 
 describe.each([
