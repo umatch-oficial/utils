@@ -39,15 +39,17 @@ export function deepFlat<T>(array: DeepNode<T>[]): Exclude<DeepNode<T>, DeepArra
 /**
  * Returns the elements of a that are not present in b.
  */
-export function diff<X, Y>(a: X[], b: (X | Y)[]): X[] {
+export function diff<X extends string | number, Y extends string | number>(
+  a: X[],
+  b: (X | Y)[],
+): X[] {
   const result = [];
-  const map = {};
+  const map = {} as { [_ in X | Y]: boolean };
   for (let i = 0; i < b.length; i += 1) {
-    // @ts-ignore
     map[b[i]] = true;
   }
   for (let i = 0; i < a.length; i += 1) {
-    if (!(a[i] in map)) result.push(a[i]);
+    if (!(a[i] in map)) result.push(a[i] as X);
   }
   return result;
 }
@@ -161,15 +163,17 @@ export function groupBy<
 /**
  * Returns the intersection of two arrays.
  */
-export function intersect<X, Y>(a: X[], b: (X | Y)[]): X[] {
+export function intersect<X extends string | number, Y extends string | number>(
+  a: X[],
+  b: (X | Y)[],
+): X[] {
   const result = [];
-  const map = {};
+  const map = {} as { [_ in X | Y]: boolean };
   for (let i = 0; i < b.length; i += 1) {
-    // @ts-ignore
     map[b[i]] = true;
   }
   for (let i = 0; i < a.length; i += 1) {
-    if (a[i] in map) result.push(a[i]);
+    if (a[i] in map) result.push(a[i] as X);
   }
   return result;
 }

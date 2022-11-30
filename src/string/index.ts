@@ -133,7 +133,7 @@ export function join(parts: string[], and = "&"): string {
  * // returns 'https://abc.com/example'
  * joinUrl('https://abc.com/', 'example/')
  */
-export function joinUrl(...parts: string[]) {
+export function joinUrl(...parts: string[]): string {
   return parts.map((s) => s.replace(/^\/|\/$/g, "")).join("/");
 }
 
