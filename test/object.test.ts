@@ -1,4 +1,4 @@
-import { apply, deepMap, getDeepProperty, setDeepProperty } from "../src/object";
+import { apply, deepMap, getDeepProperty, merge, setDeepProperty } from "../src/object";
 
 describe.each([
   ["all keys", undefined, { a: false, b: true }],
@@ -28,6 +28,48 @@ describe.each([
   const obj = { a: { b: [1, { c: 2 }] } };
   test(path, () => {
     expect(getDeepProperty(obj, path)).toEqual(output);
+  });
+});
+
+describe.each([
+  ["flat", { a: 1, b: [2, 3] }, { b: 2, c: 3 }, undefined, { a: 1, b: 2, c: 3 }],
+  [
+    "flat concat",
+    { a: 1, b: [2, 3] },
+    { b: [4], c: 3 },
+    "concat",
+    { a: 1, b: [2, 3, 4], c: 3 },
+  ],
+  [
+    "flat concat error",
+    { a: 1, b: [2, 3] },
+    { b: 4 },
+    "concat",
+    "Cannot concat array with number (field b)",
+  ],
+  [
+    "deep",
+    { a: 1, b: { c: [2, 3] } },
+    { b: { c: [4] }, d: 3 },
+    undefined,
+    { a: 1, b: { c: [4] }, d: 3 },
+  ],
+  [
+    "deep concat",
+    { a: [{ b: 1 }] },
+    { a: [{ c: 2 }] },
+    "concat",
+    { a: [{ b: 1 }, { c: 2 }] },
+  ],
+] as const)("merge()", (name, a, b, strategy, output) => {
+  test(name, () => {
+    if (typeof output === "string") {
+      expect(() => {
+        merge(a, b, strategy);
+      }).toThrow(output);
+    } else {
+      expect(merge(a, b, strategy)).toEqual(output);
+    }
   });
 });
 

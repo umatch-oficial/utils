@@ -189,21 +189,61 @@ export function isPlainObject(obj: any): obj is DeepObject {
 }
 
 /**
- * Assigns all properties from one object to another.
+ * Deep merge two objects.
+ *
+ * Values from the second object override those in the first one,
+ * except when both objects hold an array on the same key and the
+ * strategy is set to "concat", in which case both arrays are merged.
  */
 export function merge<
-  X extends Dictionary,
-  Y extends (Partial<X> & Dictionary) | Dictionary,
+  X extends DeepObject,
+  Y extends (Partial<X> & DeepObject) | DeepObject,
 >(
   target: X,
   source: Y,
+  strategy?: "override" | "concat",
 ): {
   [K in keyof X | keyof Y]: K extends keyof Y ? Y[K] : K extends keyof X ? X[K] : never;
 };
-export function merge(target: Dictionary, source: Dictionary): Dictionary {
-  Object.entries(source).forEach(([k, v]) => {
-    target[k] = v;
-  });
+export function merge(
+  target: DeepObject,
+  source: DeepObject,
+  strategy: "override" | "concat" = "override",
+): DeepObject {
+  const sep = ";;";
+  const toVisit = new Set<string>(Object.keys(source));
+  while (toVisit.size > 0) {
+    for (const path of toVisit) {
+      toVisit.delete(path);
+
+      const val = getDeepProperty(source, path, sep);
+      if (isPlainObject(val)) {
+        Object.keys(val).forEach((key) => toVisit.add([path, key].join(sep)));
+      } else {
+        switch (strategy) {
+          case "override":
+            setDeepProperty(target, path, val, sep);
+            break;
+          case "concat":
+            let curr;
+            try {
+              curr = getDeepProperty(target, path, sep);
+            } catch (error) {}
+            if (Array.isArray(curr)) {
+              if (!Array.isArray(val)) {
+                throw new Error(`Cannot concat array with ${typeof val} (field ${path})`);
+              }
+              setDeepProperty(target, path, curr.concat(val), sep);
+            } else {
+              setDeepProperty(target, path, val, sep);
+            }
+            break;
+          default:
+            throw new Error(`Unexpected strategy: ${strategy}`);
+        }
+      }
+    }
+  }
   return target;
 }
 
