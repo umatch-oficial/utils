@@ -1,6 +1,7 @@
 import {
   CamelToSnakeCaseKeys,
   DeepArray,
+  DeepObject,
   Dictionary,
   SnakeToCamelCaseKeys,
   ValueOf,
@@ -169,6 +170,22 @@ export function isDeepEmpty(obj: Dictionary<any>): boolean {
     return Object.values(obj).reduce((empty, value) => empty && isDeepEmpty(value), true);
   }
   return true;
+}
+
+function isObject(obj: any): boolean {
+  return Object.prototype.toString.call(obj) === "[object Object]";
+}
+
+export function isPlainObject(obj: any): obj is DeepObject {
+  if (!isObject(obj)) return false;
+  // If has modified constructor
+  if (obj.constructor === undefined) return true;
+
+  // If has modified prototype
+  const proto = obj.constructor.prototype;
+  if (!isObject(proto)) return false;
+  // If constructor does not have an Object-specific method
+  return proto.hasOwnProperty("isPrototypeOf");
 }
 
 /**
