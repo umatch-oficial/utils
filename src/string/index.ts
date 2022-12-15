@@ -160,6 +160,16 @@ export function parseBool(str: string | null | undefined, def?: boolean): boolea
   }
 }
 
+export function rsplit(str: string | null | undefined, n = -1, sep = ","): string[] {
+  if (!str) return [];
+
+  const parts = str.split(sep);
+  if (n === -1) return parts;
+  n = Math.min(n, parts.length - 1);
+
+  return [parts.slice(0, -n).join(sep), ...parts.slice(parts.length - n)];
+}
+
 /**
  * Converts the first character of a string to uppercase.
  */

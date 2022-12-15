@@ -9,6 +9,7 @@ import {
   snakeCase,
   sentenceCase,
   titleCase,
+  rsplit,
 } from "../src/string";
 
 describe.each([
@@ -73,6 +74,18 @@ describe.each([
 
 test(`parse()`, () => {
   expect(parse("àèìòùâêîôûäëïöüÿáéíóúýçãõ")).toBe("aeiouaeiouaeiouyaeiouycao");
+});
+
+describe.each([
+  ["a,b,c,d", undefined, ["a", "b", "c", "d"]],
+  ["a,b,c,d", 1, ["a,b,c", "d"]],
+  ["a,b,c,d", 2, ["a,b", "c", "d"]],
+  ["a,b,c,d", 3, ["a", "b", "c", "d"]],
+  ["a,b,c,d", 4, ["a", "b", "c", "d"]],
+])("rsplit()", (str, n, output) => {
+  test(`rsplit('${str}'${n ? ", " + n : ""}) = ${JSON.stringify(output)}`, () => {
+    expect(rsplit(str, n, ",")).toEqual(output);
+  });
 });
 
 describe.each([
