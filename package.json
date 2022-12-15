@@ -1,10 +1,13 @@
 {
     "name": "@umatch/utils",
-    "version": "1.17.0",
+    "version": "1.17.1",
     "description": "Math, array, string &amp; object-related functions and types.",
     "author": "Gabriel Okamoto <gabrielokamoto@hotmail.com>",
     "license": "MIT",
-    "keywords": ["utils", "typescript"],
+    "keywords": [
+        "utils",
+        "typescript"
+    ],
     "homepage": "https://github.com/umatch-oficial/utils#readme",
     "repository": "https://github.com/umatch-oficial/utils.git",
     "bugs": "https://github.com/umatch-oficial/utils/issues",
@@ -23,10 +26,18 @@
     },
     "typesVersions": {
         "*": {
-            "array": ["lib/array"],
-            "math": ["lib/math"],
-            "object": ["lib/object"],
-            "string": ["lib/string"]
+            "array": [
+                "lib/array"
+            ],
+            "math": [
+                "lib/math"
+            ],
+            "object": [
+                "lib/object"
+            ],
+            "string": [
+                "lib/string"
+            ]
         }
     },
     "scripts": {
