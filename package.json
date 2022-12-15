@@ -2,7 +2,18 @@
     "name": "@umatch/utils",
     "version": "1.17.0",
     "description": "Math, array, string &amp; object-related functions and types.",
+    "author": "Gabriel Okamoto <gabrielokamoto@hotmail.com>",
+    "license": "MIT",
+    "keywords": ["utils", "typescript"],
+    "homepage": "https://github.com/umatch-oficial/utils#readme",
+    "repository": "https://github.com/umatch-oficial/utils.git",
+    "bugs": "https://github.com/umatch-oficial/utils/issues",
     "main": "./lib/index.js",
+    "files": [
+        "lib/**/*.ts",
+        "lib/**/*.ts.map",
+        "lib/**/*.js"
+    ],
     "exports": {
         ".": "./lib/index.js",
         "./array": "./lib/array/index.js",
@@ -12,18 +23,10 @@
     },
     "typesVersions": {
         "*": {
-            "array": [
-                "lib/array"
-            ],
-            "math": [
-                "lib/math"
-            ],
-            "object": [
-                "lib/object"
-            ],
-            "string": [
-                "lib/string"
-            ]
+            "array": ["lib/array"],
+            "math": ["lib/math"],
+            "object": ["lib/object"],
+            "string": ["lib/string"]
         }
     },
     "scripts": {
@@ -35,18 +38,10 @@
         "preversion": "npm run lint",
         "postversion": "git push && git push --tags"
     },
-    "files": [
-        "lib/**/*.ts",
-        "lib/**/*.ts.map",
-        "lib/**/*.js"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/umatch-oficial/utils.git"
+    "dependencies": {
+        "bluebird": "^3.7.2",
+        "luxon": "^3.1.0"
     },
-    "keywords": [],
-    "author": "Gabriel Okamoto <gabrielokamoto@hotmail.com>",
-    "license": "MIT",
     "devDependencies": {
         "@types/bluebird": "^3.5.38",
         "@types/jest": "^29.2.4",
@@ -64,13 +59,5 @@
         "ts-jest": "^29.0.3",
         "ts-node": "^10.9.1",
         "typescript": "^4.9.4"
-    },
-    "bugs": {
-        "url": "https://github.com/umatch-oficial/utils/issues"
-    },
-    "homepage": "https://github.com/umatch-oficial/utils#readme",
-    "dependencies": {
-        "bluebird": "^3.7.2",
-        "luxon": "^3.1.0"
     }
 }
