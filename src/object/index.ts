@@ -147,6 +147,14 @@ export function extract(obj: Dictionary, options: ExtractOptions): Dictionary {
   return newObj;
 }
 
+export function getDeepProperty(obj: DeepObject, str: string, sep = "."): unknown {
+  if (!str) return obj;
+  // replace bracket with dot notation
+  str = str.replace(/\[(\w+)]/, ".$1");
+
+  return str.split(sep).reduce<DeepObject<any>>((prev, key) => prev[key], obj);
+}
+
 /**
  * Returns true if the object is deep empty.
  *
@@ -241,6 +249,25 @@ export function rename(
   return Object.fromEntries(
     entries.map(([key, val]) => [keys.includes(key) ? mapper[key] : key, val]),
   );
+}
+
+export function setDeepProperty(
+  obj: DeepObject,
+  str: string,
+  value: any,
+  sep = ".",
+): unknown {
+  if (!str) return obj;
+  // replace bracket with dot notation
+  str = str.replace(/\[(\w+)]/, ".$1");
+
+  str.split(sep).reduce<DeepObject>((prev, key, i, array) => {
+    if (i === array.length - 1) {
+      prev[key] = value;
+    }
+    return prev[key] as DeepObject;
+  }, obj);
+  return obj;
 }
 
 export function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKeys<T> {
