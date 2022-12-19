@@ -1,4 +1,11 @@
-import { apply, deepMap, getDeepProperty, merge, setDeepProperty } from "../src/object";
+import {
+  apply,
+  deepMap,
+  getDeepProperty,
+  merge,
+  setDeepProperty,
+  rename,
+} from "../src/object";
 
 describe.each([
   ["all keys", undefined, { a: false, b: true }],
@@ -70,6 +77,16 @@ describe.each([
     } else {
       expect(merge(a, b, strategy)).toEqual(output);
     }
+  });
+});
+
+describe.each([
+  ["dictionary", { a: "d" }, { d: 1, b: 2, c: 3 }],
+  ["function", (key: string) => `${key}_`, { a_: 1, b_: 2, c_: 3 }],
+])("rename()", (path, mapper, output) => {
+  const obj = { a: 1, b: 2, c: 3 };
+  test(path, () => {
+    expect(rename(obj, mapper)).toEqual(output);
   });
 });
 
