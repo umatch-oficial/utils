@@ -48,7 +48,8 @@ export function apply(
 }
 
 export function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKeys<T> {
-  return rename(obj, camelCase) as SnakeToCamelCaseKeys<T>;
+  // @ts-ignore
+  return rename(obj, camelCase);
 }
 
 /**
@@ -287,12 +288,14 @@ export function remove<T extends Dictionary, K extends keyof T>(
  * Returns a copy of an object, with renamed first-level keys.
  */
 export function rename<
-  Obj extends Dictionary,
-  Mapper extends Dictionary<string> | ((a: string) => string),
+  T extends Dictionary,
+  Mapper extends { [_ in keyof T]?: string } | ((a: string) => string),
 >(
-  obj: Obj,
+  obj: T,
   mapper: Mapper,
-): Mapper extends Dictionary<any> ? { [K in keyof Mapper]: Obj[Mapper[K]] } : Obj;
+): Mapper extends Dictionary<string>
+  ? { [K in keyof T as K extends keyof Mapper ? Mapper[K] : K]: T[K] }
+  : { [_: string]: ValueOf<T> };
 export function rename(
   obj: Dictionary,
   mapper: Dictionary<string> | ((a: string) => string),
