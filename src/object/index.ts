@@ -219,6 +219,7 @@ export function merge(
 
       const val = getDeepProperty(source, path, sep);
       if (isPlainObject(val)) {
+        setDeepProperty(target, path, {}, sep);
         Object.keys(val).forEach((key) => toVisit.add([path, key].join(sep)));
       } else {
         switch (strategy) {
