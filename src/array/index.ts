@@ -61,11 +61,11 @@ export function diff<X extends string | number, Y extends string | number>(
  *
  * Uses bluebird.map to limit concurrency.
  */
-export async function filter<T>(
-  array: T[],
-  callback: (x: T) => Promise<boolean>,
+export async function filter<T extends unknown[] | readonly unknown[]>(
+  array: T,
+  callback: (x: T[number]) => Promise<boolean>,
   concurrency = 50,
-): Promise<T[]> {
+): Promise<T[number][]> {
   return (
     await bluebird.map(
       array,
@@ -81,11 +81,11 @@ export async function filter<T>(
  * @param array
  * @param predicate
  */
-export function filterWithComplement<T extends unknown[]>(
+export function filterWithComplement<T extends unknown[] | readonly unknown[]>(
   array: T,
   predicate: (x: T[number]) => boolean,
 ): T extends (infer R)[] ? [R[], R[]] : never;
-export function filterWithComplement<T extends unknown[]>(
+export function filterWithComplement<T extends unknown[] | readonly unknown[]>(
   array: T,
   predicate: (x: T[number]) => boolean,
 ): any[] {
@@ -100,15 +100,17 @@ export function filterWithComplement<T extends unknown[]>(
  * Array.prototype.findLastIndex is already available in some runtimes,
  * but not in Node.
  */
-export function findLastIndex<T>(
-  array: T[],
-  predicate: (value: T, index: number, obj: T[]) => boolean,
+export function findLastIndex<T extends unknown[] | readonly unknown[]>(
+  array: T,
+  predicate: (value: T[number], index: number, arr: T[number][]) => boolean,
 ): number {
   const reversed = [...array].reverse();
   const indexReversed = reversed.findIndex(predicate);
   if (indexReversed === -1) return -1;
   return array.length - 1 - indexReversed;
 }
+
+const A = [1, 2, 3, 4] as const;
 
 /**
  * Groups the elements in an array by the value of the specified key.
@@ -257,16 +259,18 @@ export function sliceWithOverflow(array: any[], start: number, end: number): any
  * Similar to filtering the array, except that the elements between
  * the first and last valid elements are not removed.
  */
-export function trim<T>(
-  array: T[],
-  predicate: (value: T, index: number, obj: T[]) => boolean,
-): T[] {
-  const firstIndex = array.findIndex(predicate);
+export function trim<T extends unknown[] | readonly unknown[]>(
+  array: T,
+  predicate: (value: T[number], index: number, arr: T[number][]) => boolean,
+): T[number][] {
+  const firstIndex = (array as T[number][]).findIndex(predicate);
   if (firstIndex === -1) return [];
 
   const lastIndex = findLastIndex(array, predicate);
   return array.slice(firstIndex, lastIndex + 1);
 }
+
+trim(A, (x) => x > 2);
 
 /**
  * Returns a copy of an array without duplicates.
