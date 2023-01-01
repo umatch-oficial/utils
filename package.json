@@ -1,6 +1,6 @@
 {
     "name": "@umatch/utils",
-    "version": "1.17.3",
+    "version": "1.17.4",
     "description": "Math, array, string &amp; object-related functions and types.",
     "author": "Gabriel Okamoto <gabrielokamoto@hotmail.com>",
     "license": "MIT",
