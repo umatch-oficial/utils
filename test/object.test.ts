@@ -5,6 +5,7 @@ import {
   merge,
   setDeepProperty,
   rename,
+  stringify,
 } from "../src/object";
 
 describe.each([
@@ -101,5 +102,45 @@ describe.each([
   const obj = { a: { b: [1, { c: 2 }] } };
   test(path, () => {
     expect(setDeepProperty(obj, path, value)).toEqual(output);
+  });
+});
+
+describe.each([
+  [{ indent: 0, pad: false }, '{ "a": 1, "deep": [ { "b": [ 3, 4 ] }, "test" ] }'],
+  [{ indent: 0, pad: true }, '{ "a": 1, "deep": [ { "b": [ 3, 4 ] }, "test" ] }'],
+  [
+    { indent: 2, pad: false },
+    `{
+  "a": 1,
+  "deep": [
+    {
+      "b": [
+        3,
+        4
+      ]
+    },
+    "test"
+  ]
+}`,
+  ],
+  [
+    { indent: 2, pad: true },
+    `{
+  "a":    1,
+  "deep": [
+    {
+      "b": [
+        3,
+        4
+      ]
+    },
+    "test"
+  ]
+}`,
+  ],
+])("stringify()", (options, output) => {
+  const obj = { a: 1, deep: [{ b: [3, 4] }, "test"] };
+  test(JSON.stringify(options), () => {
+    expect(stringify(obj, options)).toBe(output);
   });
 });

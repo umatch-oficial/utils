@@ -173,7 +173,7 @@ export function isDeepEmpty(obj: Dictionary<any>): boolean {
   return true;
 }
 
-function isObject(obj: any): boolean {
+function isObject(obj: any): obj is Dictionary {
   return Object.prototype.toString.call(obj) === "[object Object]";
 }
 
@@ -319,7 +319,7 @@ export function setDeepProperty(
   sep = ".",
 ): unknown {
   if (!str) return obj;
-  // replace bracket with dot notation
+  // bracket notation -> dot notation
   str = str.replace(/\[(\w+)]/, ".$1");
 
   str.split(sep).reduce<DeepObject>((prev, key, i, array) => {
@@ -333,4 +333,43 @@ export function setDeepProperty(
 
 export function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKeys<T> {
   return rename(obj, snakeCase) as CamelToSnakeCaseKeys<T>;
+}
+
+/**
+ * Similar to JSON.stringify(), but optionally pads entries between
+ * the key and value to make all lines have the same width.
+ */
+export function stringify(
+  obj: Dictionary | unknown[] | unknown,
+  options?: { indent?: number; pad?: boolean; doubleQuotes?: boolean },
+  inheritedIndent = "",
+): string {
+  const opts = { indent: 2, pad: false, doubleQuotes: true, ...options };
+  const { indent, pad, doubleQuotes } = opts;
+  const quote = doubleQuotes ? '"' : "'";
+
+  if (!(isObject(obj) || Array.isArray(obj))) {
+    return typeof obj === "string" ? `${quote}${obj}${quote}` : String(obj);
+  }
+
+  const indenter = inheritedIndent + " ".repeat(indent); // at the start of each line
+  let start: string, end: string, formattedEntries: string[];
+  if (isObject(obj)) {
+    [start, end] = ["{", "}"];
+
+    // padding
+    const maxKeyLength = Math.max(...Object.keys(obj).map((key) => key.length));
+    formattedEntries = Object.entries(obj).map(([key, value], _) => {
+      const spacer = " ".repeat(pad && indent > 0 ? maxKeyLength - key.length : 0);
+      return `${quote}${key}${quote}: ${spacer}${stringify(value, opts, indenter)}`;
+    });
+  } else {
+    [start, end] = ["[", "]"];
+    formattedEntries = obj.map((element) => stringify(element, opts, indenter));
+  }
+
+  // indenting
+  const separator = indent === 0 ? " " : "\n"; // between elements
+  const entriesStr = formattedEntries.join("," + separator + indenter);
+  return start + separator + indenter + entriesStr + separator + inheritedIndent + end;
 }
