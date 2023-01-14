@@ -47,6 +47,9 @@ export function apply(
   );
 }
 
+/**
+ * Renames all keys to camel case.
+ */
 export function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKeys<T> {
   // @ts-ignore
   return rename(obj, camelCase);
@@ -149,6 +152,13 @@ export function extract(obj: Dictionary, options: ExtractOptions): Dictionary {
   return newObj;
 }
 
+/**
+ * Returns a deep property of an object given a path-like string.
+ *
+ * @example
+ * // returns 9
+ * getDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]')
+ */
 export function getDeepProperty(obj: DeepObject, str: string, sep = "."): unknown {
   if (!str) return obj;
   // replace bracket with dot notation
@@ -177,24 +187,30 @@ function isObject(obj: any): obj is Dictionary {
   return Object.prototype.toString.call(obj) === "[object Object]";
 }
 
+/**
+ * Returns whether an object is plain, like a dictionary.
+ */
 export function isPlainObject(obj: any): obj is DeepObject {
   if (!isObject(obj)) return false;
-  // If has modified constructor
+  // if it has no constructor
   if (obj.constructor === undefined) return true;
 
-  // If has modified prototype
+  // if it has modified prototype
   const proto = obj.constructor.prototype;
   if (!isObject(proto)) return false;
-  // If constructor does not have an Object-specific method
+  // if its constructor does not have an Object-specific method
   return proto.hasOwnProperty("isPrototypeOf");
 }
 
 /**
- * Deep merge two objects.
+ * Deep merges two objects.
  *
  * Values from the second object override those in the first one,
  * except when both objects hold an array on the same key and the
  * strategy is set to "concat", in which case both arrays are merged.
+ *
+ * @throws if the strategy is concat, but for a given path the value is an array on the target object but not an array on the source object.
+ * @throws if an unexpected strategy is provided.
  */
 export function merge<
   X extends DeepObject,
@@ -312,6 +328,13 @@ export function rename(
   );
 }
 
+/**
+ * Sets a deep property of an object given a path-like string.
+ *
+ * @example
+ * // returns { a: { b: [2,3,5] } }
+ * setDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]', 5)
+ */
 export function setDeepProperty(
   obj: DeepObject,
   str: string,
@@ -331,6 +354,9 @@ export function setDeepProperty(
   return obj;
 }
 
+/**
+ * Renames all keys to snake case.
+ */
 export function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKeys<T> {
   return rename(obj, snakeCase) as CamelToSnakeCaseKeys<T>;
 }

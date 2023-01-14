@@ -78,8 +78,6 @@ export async function filter<T extends unknown[] | readonly unknown[]>(
 /**
  * Returns the filtered array and the complement as well (elements
  * removed by the filter).
- * @param array
- * @param predicate
  */
 export function filterWithComplement<T extends unknown[] | readonly unknown[]>(
   array: T,
@@ -110,14 +108,14 @@ export function findLastIndex<T extends unknown[] | readonly unknown[]>(
   return array.length - 1 - indexReversed;
 }
 
-const A = [1, 2, 3, 4] as const;
-
 /**
  * Groups the elements in an array by the value of the specified key.
  *
- * The key must have a primitive value for every object in the array.
- * If the value is boolean, it becomes an index of the resulting
- * object as a string.
+ * The key must have a primitive value (boolean, number or string)
+ * for every object in the array. If the value is boolean, it becomes
+ * an index of the resulting object as a string.
+ *
+ * @throws if, for any element in the array, the key is not present or has a non-primitive value.
  */
 export function groupBy<
   T extends Dictionary[],
@@ -180,7 +178,7 @@ export function intersect<X extends string | number, Y extends string | number>(
 
 /**
  * Returns all length-2 tuples of the elements, in sorted order,
- * without repeated elements. (equivalent of python's itertool's combinations)
+ * without repeated elements. (equivalent of python's itertools' combinations)
  */
 export function permutations<T extends unknown[]>(
   array: T,
@@ -224,12 +222,12 @@ export function replicate(array: any[], n: number): any[] {
 
 /**
  * Returns a shuffled copy of the array.
- * https://stackoverflow.com/a/12646864/9193449
  */
 export function shuffle<T extends unknown[]>(
   array: T,
 ): T extends (infer R)[] ? R[] : never;
 export function shuffle(array: any[]): any[] {
+  // https://stackoverflow.com/a/12646864/9193449
   const copy = array.slice();
   for (let i = copy.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -270,8 +268,6 @@ export function trim<T extends unknown[] | readonly unknown[]>(
   return array.slice(firstIndex, lastIndex + 1);
 }
 
-trim(A, (x) => x > 2);
-
 /**
  * Returns a copy of an array without duplicates.
  */
@@ -283,7 +279,9 @@ export function uniques(array: any[]): any[] {
 }
 
 /**
- * Zips two arrays of same length.
+ * Zips two arrays. (equivalent of python's zip)
+ *
+ * @throws if the arrays don't have the same length.
  */
 export function zip<X, Y>(a: X[], b: Y[]): [X, Y][] {
   if (a.length !== b.length) throw new Error("Cannot zip arrays of different lengths");

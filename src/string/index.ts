@@ -10,20 +10,17 @@ import type { DateTimeUnit } from "luxon";
 type ChalkColor = typeof ForegroundColor;
 export type Pluralizer = (word: string, quantity?: number) => string;
 
-const ENGLISH_ARTICLES = ["a", "an", "the"];
-// the following approach is a good approximation, but fails for
-//  letters like: Ú, Ù, Ý
-const LOWERCASE_LETTER = "[a-zØ-öø-ÿ\\d']";
-const UPPERCASE_LETTER = "[A-ZÀ-Ö]";
-/*
-This regex splits words where lowercase letters or numbers precede
-an uppercase letter.
-*/
-const WORD_REGEX = new RegExp(
-  `${UPPERCASE_LETTER}+${LOWERCASE_LETTER}*|${UPPERCASE_LETTER}?${LOWERCASE_LETTER}+`,
-  "g",
-);
-
+/**
+ * Adds 's' to the end of the word if quantity is 0 or greater than 1.
+ *
+ * @example
+ * // returns 'developers'
+ * basicPluralizer('developer')
+ * // returns '1 developer'
+ * basicPluralizer('developer', 1)
+ * // returns '2 developers'
+ * basicPluralizer('developer', 2)
+ */
 export function basicPluralizer(word: string, quantity?: number): string {
   if (quantity === undefined) return `${word}s`;
 
@@ -88,11 +85,12 @@ export function formatStr(
  *     { hours: 0, minutes: 10, seconds: 5, milliseconds: 300},
  *     { parts: 2 },
  * )
+ *
  * @param time Duration-like object
  * @param options
- * @param {{ and: string; hour: string; minute: string; second: string; millisecond: string }}[options.dictionary] Words to substitute. Default: english words
- * @param {number}[options.parts] The number of parts to include in the output. Default: 2
- * @param {Pluralizer} [options.pluralizer] A pluralizer function. Default: adds 's' to the end the word
+ * @param [options.dictionary] Words to substitute. Default: english words
+ * @param [options.parts] The number of parts to include in the output. Default: 2
+ * @param [options.pluralizer] A pluralizer function. Default: adds 's' to the end the word
  */
 export function formatTime(
   time: {
@@ -191,6 +189,11 @@ export function parse(str: string): string {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
+/**
+ * Parses a boolean from the string.
+ *
+ * @throws if it fails to parse and there is no default value.
+ */
 export function parseBool(str: string | null | undefined, def?: boolean): boolean {
   switch ((str ?? "").toLowerCase().trim()) {
     case "true":
@@ -207,6 +210,20 @@ export function parseBool(str: string | null | undefined, def?: boolean): boolea
   }
 }
 
+/**
+ * Splits a string starting from the right, stops after n splits.
+ * (equivalent of python's rsplit)
+ *
+ * @example
+ * // returns ["a", "b", "c"]
+ * rsplit("a,b,c")
+ * // returns ["a,b", "c"]
+ * rsplit("a,b,c", 1)
+ *
+ * @param str
+ * @param [n = -1] number of splits
+ * @param [sep = ','] separator
+ */
 export function rsplit(str: string | null | undefined, n = -1, sep = ","): string[] {
   if (!str) return [];
 
@@ -235,6 +252,18 @@ export function uncapitalize<S extends string>(str: S): Uncapitalize<S> {
   return (first.toLowerCase() + rest.join("")) as Uncapitalize<S>;
 }
 
+// the following approach is a good approximation, but fails for
+//  letters like: Ú, Ù, Ý
+const LOWERCASE_LETTER = "[a-zØ-öø-ÿ\\d']";
+const UPPERCASE_LETTER = "[A-ZÀ-Ö]";
+/*
+This regex splits words where lowercase letters or numbers precede
+an uppercase letter.
+*/
+const WORD_REGEX = new RegExp(
+  `${UPPERCASE_LETTER}+${LOWERCASE_LETTER}*|${UPPERCASE_LETTER}?${LOWERCASE_LETTER}+`,
+  "g",
+);
 function toCase(
   firstWordFunction: (str: string) => string,
   otherWordsFunction: (str: string) => string,
@@ -285,6 +314,7 @@ export const sentenceCase: (str: string) => string = Object.defineProperty(
   { value: "sentenceCase" },
 );
 
+const ENGLISH_ARTICLES = ["a", "an", "the"];
 /**
  * Converts a string to Title Case.
  *
@@ -323,10 +353,13 @@ type DateTimeDict = { [_ in DateTimeUnit]?: string } & {
  *
  * @param {string | DateTime} date If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true}).
  * @param options
- * @param {{ and: string; hour: string; minute: string; second: string; millisecond: string }}[options.dictionary] Words to substitute. Default: english words
- * @param {Pluralizer} [options.pluralizer] A pluralizer function. Default: adds 's' to the end the word
- * @param {boolean}[options.short] Shorten the duration identifier
- * @param {[DateTimeUnit, number][]}[options.unitsThresholds] Threshold per unit
+ * @param [options.dictionary] Words to substitute. Default: english words
+ * @param [options.pluralizer] A pluralizer function. Default: adds 's' to the end the word
+ * @param [options.short] Whether to shorten the duration identifier (pick first letter)
+ * @param [options.unitsThresholds] Threshold per unit
+ *
+ * @throws if unitsThresholds has no elements.
+ * @throws if the final unit does not have an entry in the given dictionary.
  */
 export function getCountDown(
   date: string | DateTime,
