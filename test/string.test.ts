@@ -1,16 +1,28 @@
 import {
+  formatStr,
   formatTime,
   join,
   joinUrl,
   parse,
   parseBool,
+  rsplit,
   camelCase,
   pascalCase,
-  snakeCase,
   sentenceCase,
+  snakeCase,
   titleCase,
-  rsplit,
 } from "../src/string";
+
+test("formatStr()", () => {
+  expect(
+    formatStr(
+      formatStr("hello", { color: "white", bgColor: "red", bold: true, length: 8 }),
+      { color: "black", bgColor: "white", length: 12 },
+    ),
+  ).toBe(
+    "\x1B[30m\x1B[47m  \x1B[1m\x1B[37m\x1B[41m  hello \x1B[49m\x1B[47m\x1B[39m\x1B[30m\x1B[22m  \x1B[49m\x1B[39m",
+  );
+});
 
 describe.each([
   // provide fewer parts than requested

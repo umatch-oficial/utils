@@ -1,10 +1,13 @@
+import chalk, { Chalk, ForegroundColor } from "chalk";
 import { DateTime } from "luxon";
+import stringLength from "string-length";
 
 import { zip } from "../array";
 import { divmod } from "../math";
 
 import type { DateTimeUnit } from "luxon";
 
+type ChalkColor = typeof ForegroundColor;
 export type Pluralizer = (word: string, quantity?: number) => string;
 
 const ENGLISH_ARTICLES = ["a", "an", "the"];
@@ -31,10 +34,54 @@ export function basicPluralizer(word: string, quantity?: number): string {
 }
 
 /**
+ * Pads a string on both sides to achieve the desired length.
+ *
+ * If the number of spaces to add is uneven, the left side gets the
+ * extra space.
+ */
+export function center(str: string, length: number): string {
+  const realLength = stringLength(str);
+  if (realLength >= length) return str;
+
+  const [left, right] = [Math.ceil, Math.floor].map((func) =>
+    " ".repeat(func((length - realLength) / 2)),
+  );
+  return left + str + right;
+}
+
+/**
+ * Formats a string according to options.
+ * @param str
+ * @param options
+ * @param [options.bold] whether to make it bold
+ * @param [options.bgColor] background color
+ * @param [options.color] text color
+ * @param [options.length] pad string on both sides up to this length
+ */
+export function formatStr(
+  str: string,
+  options: {
+    bgColor?: ChalkColor;
+    bold?: boolean;
+    color?: ChalkColor;
+    length?: number;
+  },
+): string {
+  const { bold, bgColor, color, length } = options;
+  const wrapped = length ? center(str, length) : str;
+  let fmt: Chalk = chalk;
+  if (bold) fmt = fmt.bold;
+  if (color) fmt = fmt[color as ChalkColor];
+  if (bgColor) fmt = fmt[("bg" + capitalize(bgColor)) as ChalkColor];
+  return fmt(wrapped);
+}
+
+/**
  * Formats the duration-like object, using up to the specified number
  * of parts starting from the largest non-zero unit. Values are
  * converted into larger units, so that 70 seconds becomes 1 minute
  * and 10 seconds, for example.
+ *
  * @example
  * // returns "10 minutes and 5 seconds"
  * formatTime(
