@@ -11,6 +11,7 @@ import {
   sentenceCase,
   snakeCase,
   titleCase,
+  pad,
 } from "../src/string";
 
 test("formatStr()", () => {
@@ -68,6 +69,16 @@ describe.each([
   const output = "https://abc.com/example";
   test(`joinUrl(${JSON.stringify(parts)}) = '${output}'`, () => {
     expect(joinUrl(...parts)).toBe(output);
+  });
+});
+
+describe.each([
+  ["mango ", "2.50", 12, "mango   2.50"],
+  ["banana ", "1.00", 12, "banana  1.00"],
+  ["strawberry ", "3.00", 12, "strawberry 3.00"],
+])("pad()", (left, right, length, res) => {
+  test(`pad('${left}', '${right}', ${length}) = ${res}`, () => {
+    expect(pad(left, right, length)).toBe(res);
   });
 });
 

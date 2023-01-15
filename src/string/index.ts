@@ -183,6 +183,14 @@ export function joinUrl(...parts: string[]): string {
 }
 
 /**
+ * Inserts spaces between left and right to achieve the desired length.
+ */
+export function pad(left: string, right: string, length: number) {
+  const spacer = " ".repeat(Math.max(length - left.length - right.length, 0));
+  return left + spacer + right;
+}
+
+/**
  * Replaces accented letters with their standard versions.
  */
 export function parse(str: string): string {
@@ -252,10 +260,9 @@ export function uncapitalize<S extends string>(str: S): Uncapitalize<S> {
   return (first.toLowerCase() + rest.join("")) as Uncapitalize<S>;
 }
 
-// the following approach is a good approximation, but fails for
-//  letters like: Ú, Ù, Ý
+// the following approach is an approximation, there is no exact solution
 const LOWERCASE_LETTER = "[a-zØ-öø-ÿ\\d']";
-const UPPERCASE_LETTER = "[A-ZÀ-Ö]";
+const UPPERCASE_LETTER = "[A-ZÀ-ÖÚÙÝ]";
 /*
 This regex splits words where lowercase letters or numbers precede
 an uppercase letter.
