@@ -48,21 +48,21 @@ export function center(str: string, length: number): string {
 
 /**
  * Formats a string according to options.
- * @param str
- * @param options
+ * @param [str]
+ * @param [options = {}]
  * @param [options.bold] whether to make it bold
  * @param [options.bgColor] background color
  * @param [options.color] text color
  * @param [options.length] pad string on both sides up to this length
  */
 export function formatStr(
-  str: string,
+  str: string = "",
   options: {
     bgColor?: ChalkColor;
     bold?: boolean;
     color?: ChalkColor;
     length?: number;
-  },
+  } = {},
 ): string {
   const { bold, bgColor, color, length } = options;
   const wrapped = length ? center(str, length) : str;
