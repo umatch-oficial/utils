@@ -1,7 +1,7 @@
 {
     "name": "@umatch/utils",
     "version": "1.21.0",
-    "description": "Math, array, string &amp; object-related functions and types.",
+    "description": "Math, array, string, object &amp; time-related functions and types.",
     "author": "Gabriel Okamoto <gabrielokamoto@hotmail.com>",
     "license": "MIT",
     "keywords": [
@@ -22,7 +22,8 @@
         "./array": "./lib/array/index.js",
         "./math": "./lib/math/index.js",
         "./object": "./lib/object/index.js",
-        "./string": "./lib/string/index.js"
+        "./string": "./lib/string/index.js",
+        "./time": "./lib/time/index.js"
     },
     "typesVersions": {
         "*": {
@@ -37,6 +38,9 @@
             ],
             "string": [
                 "lib/string"
+            ],
+            "time": [
+                "lib/time"
             ]
         }
     },
