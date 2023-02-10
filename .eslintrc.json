@@ -61,7 +61,6 @@
             "LabeledStatement",
             "WithStatement"
         ],
-        "no-shadow": "off",
         "no-unused-vars": [
             "warn",
             {
@@ -70,9 +69,6 @@
                 "varsIgnorePattern": "^_"
             }
         ],
-        "no-use-before-define": "off",
-        "no-useless-constructor": "warn",
-        "no-useless-return": "off",
         "padding-line-between-statements": [
             "warn",
             {
@@ -88,6 +84,5 @@
         ],
         "prefer-const": "error",
         "radix": "off"
-    },
-    "globals": { "use": "readonly" }
+    }
 }
