@@ -6,6 +6,7 @@ import {
   parse,
   parseBool,
   rsplit,
+  split,
   camelCase,
   pascalCase,
   sentenceCase,
@@ -108,6 +109,18 @@ describe.each([
 ])("rsplit()", (str, n, output) => {
   test(`rsplit('${str}'${n ? ", " + n : ""}) = ${JSON.stringify(output)}`, () => {
     expect(rsplit(str, n, ",")).toEqual(output);
+  });
+});
+
+describe.each([
+  ["a,b,c,d", undefined, ["a", "b", "c", "d"]],
+  ["a,b,c,d", 1, ["a", "b,c,d"]],
+  ["a,b,c,d", 2, ["a", "b", "c,d"]],
+  ["a,b,c,d", 3, ["a", "b", "c", "d"]],
+  ["a,b,c,d", 4, ["a", "b", "c", "d"]],
+])("split()", (str, n, output) => {
+  test(`split('${str}'${n ? ", " + n : ""}) = ${JSON.stringify(output)}`, () => {
+    expect(split(str, n, ",")).toEqual(output);
   });
 });
 

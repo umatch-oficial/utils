@@ -239,7 +239,31 @@ export function rsplit(str: string | null | undefined, n = -1, sep = ","): strin
   if (n === -1) return parts;
   n = Math.min(n, parts.length - 1);
 
-  return [parts.slice(0, -n).join(sep), ...parts.slice(parts.length - n)];
+  return [parts.slice(0, -n).join(sep), ...parts.slice(-n)];
+}
+
+/**
+ * Splits a string starting from the left, stops after n splits.
+ * (equivalent of python's split)
+ *
+ * @example
+ * // returns ["a", "b", "c"]
+ * split("a,b,c")
+ * // returns ["a", "b,c"]
+ * split("a,b,c", 1)
+ *
+ * @param str
+ * @param [n = -1] number of splits
+ * @param [sep = ','] separator
+ */
+export function split(str: string | null | undefined, n = -1, sep = ","): string[] {
+  if (!str) return [];
+
+  const parts = str.split(sep);
+  if (n === -1) return parts;
+  n = Math.min(n, parts.length - 1);
+
+  return [...parts.slice(0, n), parts.slice(n).join(sep)];
 }
 
 /**
