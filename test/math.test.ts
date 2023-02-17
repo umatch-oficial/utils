@@ -84,7 +84,7 @@ describe.each([
   ["one value - uses 0 and value", [2, undefined], [0, 2]],
   ["two values", [2, 3], [2, 3]],
 ])("randomInteger()", (name, [a, b], [atLeast, atMost]) => {
-  const n = 100_000;
+  const n = 150_000;
   test(name, () => {
     const results = Array.from({ length: n }).map(() => randomInteger(a, b));
 
@@ -108,7 +108,7 @@ describe.each([
   ["one value - uses 0 and value", [2, undefined], [0, 2]],
   ["two values", [2, 3], [2, 3]],
 ])("randomNumber()", (name, [a, b], [atLeast, atMost]) => {
-  const n = 100_000;
+  const n = 150_000;
   test(name, () => {
     const results = Array.from({ length: n }).map(() => randomNumber(a, b));
 
