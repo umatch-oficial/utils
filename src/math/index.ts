@@ -109,11 +109,7 @@ export function randomInteger(min: number, max: number): number;
  */
 export function randomInteger(min?: number, max?: number): number;
 export function randomInteger(min?: number, max?: number): number {
-  return min
-    ? max
-      ? floor(randomNumber(min, max))
-      : floor(randomNumber(0, min))
-    : floor(randomNumber(0, 1));
+  return round(randomNumber(min, max), 0);
 }
 
 /**
