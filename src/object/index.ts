@@ -168,7 +168,7 @@ export function getDeepProperty(obj: DeepObject, str: string, sep = "."): unknow
 }
 
 /**
- * Returns true if the object is deep empty.
+ * Returns whether the object is deep empty.
  *
  * A deep empty object only has values that are empty strings, empty
  * arrays, empty objects or deep empty objects.
