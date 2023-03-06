@@ -177,6 +177,16 @@ export function intersect<X extends string | number, Y extends string | number>(
 }
 
 /**
+ * Returns whether the small array is a subset of the large array.
+ */
+export function isSubset(
+  small: (number | string)[],
+  large: (number | string)[],
+): boolean {
+  return small.every((value) => large.includes(value));
+}
+
+/**
  * Returns all length-2 tuples of the elements, in sorted order,
  * without repeated elements. (equivalent of python's itertools' combinations)
  */

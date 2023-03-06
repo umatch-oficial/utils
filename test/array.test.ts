@@ -6,6 +6,7 @@ import {
   groupBy,
   intersect,
   permutations,
+  isSubset,
 } from "../src/array";
 
 const FRUITS = [
@@ -120,6 +121,11 @@ describe.each([
   test(`intersect([${a}], [${b}]) = [${output}]`, () => {
     expect(intersect(a, b).sort()).toEqual(output.sort());
   });
+});
+
+test("isSubset()", () => {
+  expect(isSubset([1, 2, 3], [3, 2, 1])).toBe(true);
+  expect(isSubset([1, 2, 3], [2, 1])).toBe(false);
 });
 
 test("permutations()", () => {
