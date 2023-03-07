@@ -57,22 +57,39 @@ export type Union<
   : R extends undefined
   ? L
   : L | R;
+/**
+ * Takes an object and returns a union of all the deep paths
+ * to properties in it, using dot notation.
+ */
 export type NestedPaths<
-  O,
+  O extends Dictionary | unknown,
   Base extends PropertyKey | undefined = undefined,
   Prev extends PropertyKey | undefined = undefined,
-> = ValueOf<{
-  [K in keyof O]: O[K] extends Dictionary
-    ? NestedPaths<O[K], Union<Base, Prev>, Join<Prev, K>>
-    : Union<Base, Union<Prev, Join<Prev, K>>>;
-}>;
-export type TypeFromPath<O extends Dictionary<any>, P extends string> = P extends keyof O
-  ? O[P]
-  : P extends `${infer H}.${infer T}`
-  ? H extends keyof O
-    ? TypeFromPath<O[H], T>
+> = O extends Dictionary
+  ? ValueOf<{
+      [K in keyof O]: O[K] extends Dictionary
+        ? NestedPaths<O[K], Union<Base, Prev>, Join<Prev, K>>
+        : Union<Base, Union<Prev, Join<Prev, K>>>;
+    }>
+  : unknown;
+/**
+ * Takes an object and a path string that uses dot notation
+ * and returns the type of the deep property at the path.
+ */
+export type TypeFromPath<
+  O extends Dictionary | unknown,
+  P extends string | unknown,
+> = P extends string
+  ? O extends Dictionary
+    ? P extends keyof O
+      ? O[P]
+      : P extends `${infer H}.${infer T}`
+      ? H extends keyof O
+        ? TypeFromPath<O[H], T>
+        : never
+      : never
     : never
-  : never;
+  : unknown;
 
 // https://medium.hexlabs.io/building-complex-types-in-typescript-804c973ce66f
 export type TupleToUnion<T> = T extends any[] ? T[number] : T;
