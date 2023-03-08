@@ -61,14 +61,6 @@
             "LabeledStatement",
             "WithStatement"
         ],
-        "no-unused-vars": [
-            "warn",
-            {
-                "argsIgnorePattern": "^_",
-                "destructuredArrayIgnorePattern": "^_",
-                "varsIgnorePattern": "^_"
-            }
-        ],
         "padding-line-between-statements": [
             "warn",
             {
