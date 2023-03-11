@@ -3,7 +3,6 @@
 import {
   Brand,
   Equals,
-  Exact,
   ExtendValues,
   NestedPaths,
   OneOrArray,
@@ -25,15 +24,6 @@ test("Equals", () => {
   const b: Equals<1, 2> = false;
   const c: Equals<{ a: 1 }, { a: 1 }> = true;
   const d: Equals<{ a: 1 }, { a: 2 }> = false;
-});
-
-test("Exact", () => {
-  type T = { a: number };
-  type Test = Exact<T>;
-
-  const a: Test = { a: 1 };
-  // @ts-expect-error
-  const b: Test = { a: 1, b: "1" };
 });
 
 test("ExtendValues", () => {

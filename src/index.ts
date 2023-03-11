@@ -6,9 +6,6 @@ export type DeepNode<T = unknown> = T | DeepArray<T> | DeepObject<T>;
 export type DeepArray<T = unknown> = DeepNode<T>[];
 export type DeepObject<T = unknown> = { [_: string]: DeepNode<T> };
 export type ValueOf<T> = T[keyof T];
-export type Exact<T> = {
-  [K in keyof T]: T[K] extends infer P | undefined ? P : T[K];
-};
 export type Flatten<Y extends unknown[], Acc extends unknown[] = []> = Y extends [
   (infer H)[],
   ...infer T,
