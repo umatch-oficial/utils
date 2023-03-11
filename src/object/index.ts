@@ -330,7 +330,7 @@ export function setDeepProperty(
 ): unknown {
   if (!str) return obj;
   // bracket notation -> dot notation
-  str = str.replace(/\[(\w+)]/, ".$1");
+  str = str.replace(/\[(\w+)]/, sep + "$1");
 
   str.split(sep).reduce<DeepObject>((prev, key, i, array) => {
     if (i === array.length - 1) {
