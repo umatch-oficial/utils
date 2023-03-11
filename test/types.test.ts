@@ -6,6 +6,7 @@ import {
   Exact,
   ExtendValues,
   NestedPaths,
+  OneOrArray,
   Payload,
   TransformValuesByKey,
   TupleToUnion,
@@ -48,6 +49,13 @@ test("NestedPaths", () => {
 
   const a: NestedPaths<T> = "b.c.d";
   const b: NestedPaths<T> = "b.f";
+});
+
+test("OneOrArray", () => {
+  type T = string;
+
+  const a: OneOrArray<T> = "a";
+  const b: OneOrArray<T> = ["a", "b"];
 });
 
 test("TransformValuesByKey", () => {
