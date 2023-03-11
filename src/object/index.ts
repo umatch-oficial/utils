@@ -1,6 +1,7 @@
 import {
   CamelToSnakeCaseKeys,
   DeepArray,
+  DeepNode,
   DeepObject,
   Dictionary,
   SnakeToCamelCaseKeys,
@@ -167,7 +168,12 @@ export function getDeepProperty(obj: DeepObject, str: string, sep = "."): unknow
   // replace bracket with dot notation
   str = str.replace(/\[(\w+)]/, ".$1");
 
-  return str.split(sep).reduce<DeepObject<any>>((prev, key) => prev[key], obj);
+  return str
+    .split(sep)
+    .reduce<DeepNode>(
+      (prev, key) => (prev ? prev[key as keyof typeof prev] : undefined),
+      obj,
+    );
 }
 
 /**
@@ -227,10 +233,7 @@ export function merge(
             setDeepProperty(target, path, val, sep);
             break;
           case "concat":
-            let curr;
-            try {
-              curr = getDeepProperty(target, path, sep);
-            } catch (error) {}
+            const curr = getDeepProperty(target, path, sep);
             if (isArray(curr)) {
               if (!isArray(val)) {
                 throw new Error(`Cannot concat array with ${typeof val} (field ${path})`);
