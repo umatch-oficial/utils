@@ -259,7 +259,6 @@ export function merge(
       const left = getDeepProp(target, path);
       const right = getDeepProp(source, path);
       if (isJSObject(right)) {
-        setDeepProp(target, path, {});
         Object.keys(right).forEach((key) => toVisit.add(path + sep + key));
       } else {
         _handleMergeStrategy(target, path, left, right, strategy, setDeepProp);

@@ -57,10 +57,10 @@ describe.each([
   ],
   [
     "deep",
-    { a: 1, d: 5 },
+    { a: 1, b: { a: 1 }, d: 5 },
     { b: { c: [2, 3, 4] } },
     undefined,
-    { a: 1, b: { c: [2, 3, 4] }, d: 5 },
+    { a: 1, b: { a: 1, c: [2, 3, 4] }, d: 5 },
   ],
   [
     "deep concat",
