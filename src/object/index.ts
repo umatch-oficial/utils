@@ -8,6 +8,7 @@ import {
   ValueOf,
   isArray,
   isJSObject,
+  isNumber,
   isString,
 } from "../index";
 import { camelCase, snakeCase } from "../string";
@@ -335,6 +336,14 @@ export function setDeepProperty(
   str.split(sep).reduce<DeepObject>((prev, key, i, array) => {
     if (i === array.length - 1) {
       prev[key] = value;
+    } else if (!prev[key]) {
+      if (isNumber(key)) {
+        // the code cannot know whether the key was meant to index an object or an array,
+        // therefore it cannot fill the empty spot automatically.
+        throw new Error("Undefined behavior when key is a number and path is not found");
+      }
+
+      prev[key] = {};
     }
     return prev[key] as DeepObject;
   }, obj);
