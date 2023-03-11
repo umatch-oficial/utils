@@ -2,7 +2,6 @@ import {
   CamelToSnakeCaseKeys,
   DeepArray,
   DeepNode,
-  DeepObject,
   Dictionary,
   SnakeToCamelCaseKeys,
   ValueOf,
@@ -164,7 +163,7 @@ export function extract(obj: Dictionary, options: ExtractOptions): Dictionary {
  * // returns 9
  * getDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]')
  */
-export function getDeepProperty(obj: DeepObject, str: string, sep = "."): unknown {
+export function getDeepProperty(obj: Dictionary, str: string, sep = "."): unknown {
   if (!str) return obj;
   // replace bracket with dot notation
   str = str.replace(/\[(\w+)]/, ".$1");
@@ -232,8 +231,8 @@ function _handleMergeStrategy(
  * @throws if an unexpected strategy is provided.
  */
 export function merge<
-  X extends DeepObject,
-  Y extends (Partial<X> & DeepObject) | DeepObject,
+  X extends Dictionary,
+  Y extends (Partial<X> & Dictionary) | Dictionary,
 >(
   target: X,
   source: Y,
@@ -242,10 +241,10 @@ export function merge<
   [K in keyof X | keyof Y]: K extends keyof Y ? Y[K] : K extends keyof X ? X[K] : never;
 };
 export function merge(
-  target: DeepObject,
-  source: DeepObject,
+  target: Dictionary,
+  source: Dictionary,
   strategy: "override" | "concat" = "override",
-): DeepObject {
+): Dictionary {
   const sep = ";;";
   const getDeepProp = (src: Dictionary, path: string) => getDeepProperty(src, path, sep);
   const setDeepProp = (src: Dictionary, path: string, value: any) =>
@@ -339,7 +338,7 @@ export function rename(
  * setDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]', 5)
  */
 export function setDeepProperty(
-  obj: DeepObject,
+  obj: Dictionary,
   str: string,
   value: any,
   sep = ".",
@@ -348,7 +347,7 @@ export function setDeepProperty(
   // bracket notation -> dot notation
   str = str.replace(/\[(\w+)]/, sep + "$1");
 
-  str.split(sep).reduce<DeepObject>((prev, key, i, array) => {
+  str.split(sep).reduce<Dictionary>((prev, key, i, array) => {
     if (i === array.length - 1) {
       prev[key] = value;
     } else if (!prev[key]) {
@@ -360,7 +359,7 @@ export function setDeepProperty(
 
       prev[key] = {};
     }
-    return prev[key] as DeepObject;
+    return prev[key] as Dictionary;
   }, obj);
   return obj;
 }
