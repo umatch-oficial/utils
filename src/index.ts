@@ -45,6 +45,22 @@ export type TransformValues<T, A, B> = {
  * Changes the type of values matching A to A | B
  */
 export type ExtendValues<T, A, B> = TransformValues<T, A, A | B>;
+/**
+ * Deep merges two dictionaries. Values from the right have higher priority.
+ */
+export type Merge<A extends Dictionary, B extends Dictionary> = {
+  [K in keyof A | keyof B]: K extends keyof B
+    ? K extends keyof A
+      ? A[K] extends Dictionary
+        ? B[K] extends Dictionary
+          ? Merge<A[K], B[K]> // A[K] and B[K] are dicts
+          : B[K] // A[K] is a dict, B[K] isn't
+        : B[K] // K is keyof both
+      : B[K] // K is keyof B, but not A
+    : K extends keyof A
+    ? A[K] // K is keyof A, but not B
+    : never; // impossible
+};
 
 /**
  * Brands an object.

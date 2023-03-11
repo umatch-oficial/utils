@@ -9,6 +9,7 @@ import {
   isJSObject,
   isNumber,
   isString,
+  Merge,
 } from "../index";
 import { camelCase, snakeCase } from "../string";
 
@@ -231,15 +232,9 @@ function _handleMergeStrategy(
  * @throws if an unexpected strategy is provided.
  */
 export function merge<
-  X extends Dictionary,
-  Y extends (Partial<X> & Dictionary) | Dictionary,
->(
-  target: X,
-  source: Y,
-  strategy?: "override" | "concat",
-): {
-  [K in keyof X | keyof Y]: K extends keyof Y ? Y[K] : K extends keyof X ? X[K] : never;
-};
+  A extends Dictionary,
+  B extends (Partial<A> & Dictionary) | Dictionary,
+>(target: A, source: B, strategy?: "override" | "concat"): Merge<A, B>;
 export function merge(
   target: Dictionary,
   source: Dictionary,
