@@ -53,7 +53,7 @@ describe.each([
     { a: 1, b: [2, 3] },
     { b: 4 },
     "concat",
-    "Cannot concat array with number (field b)",
+    "Cannot concat array with number (field 'b')",
   ],
   [
     "deep",

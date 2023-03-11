@@ -193,6 +193,34 @@ export function isDeepEmpty(obj: Dictionary<any>): boolean {
   return true;
 }
 
+function _handleMergeStrategy(
+  target: Dictionary,
+  path: string,
+  left: unknown,
+  right: unknown,
+  strategy: string,
+  setDeepProp: (src: Dictionary, path: string, value: any) => unknown,
+) {
+  switch (strategy) {
+    case "override":
+      setDeepProp(target, path, right);
+      break;
+    case "concat":
+      if (isArray(left)) {
+        if (isArray(right)) {
+          setDeepProp(target, path, left.concat(right));
+        } else {
+          throw new Error(`Cannot concat array with ${typeof right} (field '${path}')`);
+        }
+      } else {
+        setDeepProp(target, path, right);
+      }
+      break;
+    default:
+      throw new Error(`Unexpected strategy: ${strategy}`);
+  }
+}
+
 /**
  * Deep merges two objects.
  *
@@ -219,34 +247,22 @@ export function merge(
   strategy: "override" | "concat" = "override",
 ): DeepObject {
   const sep = ";;";
+  const getDeepProp = (src: Dictionary, path: string) => getDeepProperty(src, path, sep);
+  const setDeepProp = (src: Dictionary, path: string, value: any) =>
+    setDeepProperty(src, path, value, sep);
+
   const toVisit = new Set<string>(Object.keys(source));
   while (toVisit.size > 0) {
     for (const path of toVisit) {
       toVisit.delete(path);
 
-      const val = getDeepProperty(source, path, sep);
-      if (isJSObject(val)) {
-        setDeepProperty(target, path, {}, sep);
-        Object.keys(val).forEach((key) => toVisit.add([path, key].join(sep)));
+      const left = getDeepProp(target, path);
+      const right = getDeepProp(source, path);
+      if (isJSObject(right)) {
+        setDeepProp(target, path, {});
+        Object.keys(right).forEach((key) => toVisit.add(path + sep + key));
       } else {
-        switch (strategy) {
-          case "override":
-            setDeepProperty(target, path, val, sep);
-            break;
-          case "concat":
-            const curr = getDeepProperty(target, path, sep);
-            if (isArray(curr)) {
-              if (!isArray(val)) {
-                throw new Error(`Cannot concat array with ${typeof val} (field ${path})`);
-              }
-              setDeepProperty(target, path, curr.concat(val), sep);
-            } else {
-              setDeepProperty(target, path, val, sep);
-            }
-            break;
-          default:
-            throw new Error(`Unexpected strategy: ${strategy}`);
-        }
+        _handleMergeStrategy(target, path, left, right, strategy, setDeepProp);
       }
     }
   }
@@ -360,6 +376,13 @@ export function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKey
 /**
  * Similar to JSON.stringify(), but optionally pads entries between
  * the key and value to make all lines have the same width.
+ *
+ * @param obj
+ * @param [options]
+ * @param {number} [options.indent = 2] The size of the indent. Default: 2
+ * @param {boolean} [options.pad = false] Whether to pad entries. Default: false
+ * @param {boolean} [options.doubleQuotes = true]  Use double quotes. Default: true
+ * @param {string} [inheritedIndent = ""] Used to keep track of the current indent during recursion
  */
 export function stringify(
   obj: Dictionary | unknown[] | unknown,
