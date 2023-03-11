@@ -157,3 +157,23 @@ export type SnakeToCamelCaseKeys<T extends Dictionary> = {
 export type CamelToSnakeCaseKeys<T extends Dictionary> = {
   [K in keyof T as CamelToSnakeCase<K & string>]: T[K];
 };
+
+export function isArray(obj: unknown): obj is unknown[] {
+  return Array.isArray(obj);
+}
+
+export function isBoolean(obj: unknown): obj is boolean {
+  return typeof obj === "boolean";
+}
+
+export function isDate(obj: unknown): obj is Date {
+  return obj?.constructor?.name === "Date";
+}
+
+export function isNumber(obj: unknown): obj is number {
+  return typeof obj === "number";
+}
+
+export function isString(obj: unknown): obj is string {
+  return typeof obj === "string";
+}

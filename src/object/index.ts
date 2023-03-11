@@ -5,6 +5,8 @@ import {
   Dictionary,
   SnakeToCamelCaseKeys,
   ValueOf,
+  isArray,
+  isString,
 } from "../index";
 import { camelCase, snakeCase } from "../string";
 
@@ -60,7 +62,7 @@ export function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKey
  * which are not arrays.
  */
 export function deepMap<T extends DeepArray>(x: T, f: (val: any) => any): T {
-  return x.map((val) => (Array.isArray(val) ? deepMap(val, f) : f(val))) as T;
+  return x.map((val) => (isArray(val) ? deepMap(val, f) : f(val))) as T;
 }
 
 /**
@@ -247,8 +249,8 @@ export function merge(
             try {
               curr = getDeepProperty(target, path, sep);
             } catch (error) {}
-            if (Array.isArray(curr)) {
-              if (!Array.isArray(val)) {
+            if (isArray(curr)) {
+              if (!isArray(val)) {
                 throw new Error(`Cannot concat array with ${typeof val} (field ${path})`);
               }
               setDeepProperty(target, path, curr.concat(val), sep);
@@ -374,28 +376,31 @@ export function stringify(
   const { indent, pad, doubleQuotes } = opts;
   const quote = doubleQuotes ? '"' : "'";
 
-  if (!(isObject(obj) || Array.isArray(obj))) {
-    return typeof obj === "string" ? `${quote}${obj}${quote}` : String(obj);
-  }
+  if (isArray(obj) || isPlainObject(obj)) {
+    const indenter = inheritedIndent + " ".repeat(indent);
+    let start: string, end: string, formattedEntries: string[];
+    if (isPlainObject(obj)) {
+      [start, end] = ["{", "}"];
 
-  const indenter = inheritedIndent + " ".repeat(indent); // at the start of each line
-  let start: string, end: string, formattedEntries: string[];
-  if (isObject(obj)) {
-    [start, end] = ["{", "}"];
+      // padding
+      const maxKeyLength = Math.max(...Object.keys(obj).map((key) => key.length));
+      formattedEntries = Object.entries(obj).map(([key, value], _) => {
+        const spacer = " ".repeat(pad && indent > 0 ? maxKeyLength - key.length : 0);
+        return `${quote}${key}${quote}: ${spacer}${stringify(value, opts, indenter)}`;
+      });
+    } else {
+      [start, end] = ["[", "]"];
+      formattedEntries = obj.map((element) => stringify(element, opts, indenter));
+    }
 
-    // padding
-    const maxKeyLength = Math.max(...Object.keys(obj).map((key) => key.length));
-    formattedEntries = Object.entries(obj).map(([key, value], _) => {
-      const spacer = " ".repeat(pad && indent > 0 ? maxKeyLength - key.length : 0);
-      return `${quote}${key}${quote}: ${spacer}${stringify(value, opts, indenter)}`;
-    });
+    const separator = indent === 0 ? " " : "\n";
+    const entriesStr = formattedEntries.join("," + separator + indenter);
+    return start + separator + indenter + entriesStr + separator + inheritedIndent + end;
   } else {
-    [start, end] = ["[", "]"];
-    formattedEntries = obj.map((element) => stringify(element, opts, indenter));
+    if (isString(obj)) {
+      return `${quote}${obj}${quote}`;
+    } else {
+      return String(obj);
+    }
   }
-
-  // indenting
-  const separator = indent === 0 ? " " : "\n"; // between elements
-  const entriesStr = formattedEntries.join("," + separator + indenter);
-  return start + separator + indenter + entriesStr + separator + inheritedIndent + end;
 }
