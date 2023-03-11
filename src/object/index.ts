@@ -232,9 +232,13 @@ function _handleMergeStrategy(
  * @throws if an unexpected strategy is provided.
  */
 export function merge<
-  A extends Dictionary,
-  B extends (Partial<A> & Dictionary) | Dictionary,
->(target: A, source: B, strategy?: "override" | "concat"): Merge<A, B>;
+  A extends Dictionary | unknown,
+  B extends (Partial<A> & Dictionary) | Dictionary | unknown,
+>(
+  target: A,
+  source: B,
+  strategy?: "override" | "concat",
+): A extends Dictionary ? (B extends Dictionary ? Merge<A, B> : Dictionary) : Dictionary;
 export function merge(
   target: Dictionary,
   source: Dictionary,
