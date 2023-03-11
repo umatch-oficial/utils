@@ -6,6 +6,7 @@ import {
   SnakeToCamelCaseKeys,
   ValueOf,
   isArray,
+  isJSObject,
   isString,
 } from "../index";
 import { camelCase, snakeCase } from "../string";
@@ -185,25 +186,6 @@ export function isDeepEmpty(obj: Dictionary<any>): boolean {
   return true;
 }
 
-function isObject(obj: any): obj is Dictionary {
-  return Object.prototype.toString.call(obj) === "[object Object]";
-}
-
-/**
- * Returns whether an object is plain, like a dictionary.
- */
-export function isPlainObject(obj: any): obj is DeepObject {
-  if (!isObject(obj)) return false;
-  // if it has no constructor
-  if (obj.constructor === undefined) return true;
-
-  // if it has modified prototype
-  const proto = obj.constructor.prototype;
-  if (!isObject(proto)) return false;
-  // if its constructor does not have an Object-specific method
-  return proto.hasOwnProperty("isPrototypeOf");
-}
-
 /**
  * Deep merges two objects.
  *
@@ -236,7 +218,7 @@ export function merge(
       toVisit.delete(path);
 
       const val = getDeepProperty(source, path, sep);
-      if (isPlainObject(val)) {
+      if (isJSObject(val)) {
         setDeepProperty(target, path, {}, sep);
         Object.keys(val).forEach((key) => toVisit.add([path, key].join(sep)));
       } else {
@@ -376,10 +358,10 @@ export function stringify(
   const { indent, pad, doubleQuotes } = opts;
   const quote = doubleQuotes ? '"' : "'";
 
-  if (isArray(obj) || isPlainObject(obj)) {
+  if (isArray(obj) || isJSObject(obj)) {
     const indenter = inheritedIndent + " ".repeat(indent);
     let start: string, end: string, formattedEntries: string[];
-    if (isPlainObject(obj)) {
+    if (isJSObject(obj)) {
       [start, end] = ["{", "}"];
 
       // padding

@@ -170,8 +170,32 @@ export function isDate(obj: unknown): obj is Date {
   return obj?.constructor?.name === "Date";
 }
 
+/**
+ * Returns whether obj is a native JS object.
+ */
+export function isJSObject(obj: any): obj is Dictionary {
+  if (!isObject(obj)) return false;
+  // if it has no constructor
+  if (obj.constructor === undefined) return true;
+
+  // if it has modified prototype
+  const proto = obj.constructor.prototype;
+  if (!isObject(proto)) return false;
+  // if its constructor does not have an Object-specific method
+  return proto.hasOwnProperty("isPrototypeOf");
+}
+
 export function isNumber(obj: unknown): obj is number {
   return typeof obj === "number";
+}
+
+/**
+ * Returns whether obj is NOT one of the primitive data types. It may
+ * still be any kind of object, including the instance of some class.
+ * To narrow this down to only native JS objects, use [isJSObject]{@link isJSObject}.
+ */
+export function isObject(obj: any): obj is Dictionary {
+  return Object.prototype.toString.call(obj) === "[object Object]";
 }
 
 export function isString(obj: unknown): obj is string {
