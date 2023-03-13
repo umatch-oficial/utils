@@ -303,29 +303,51 @@ export function remove<T extends Dictionary, K extends PropertyKey>(
  */
 export function remove<T extends Dictionary, K extends PropertyKey>(
   obj: T,
-  filter: (key: K) => boolean,
+  filter: { keys: (key: K) => boolean },
+): T;
+/**
+ * Removes properties from an object, whose values fail the filter.
+ */
+export function remove<T extends Dictionary, V extends unknown>(
+  obj: T,
+  filter: { values: (value: V) => boolean },
 ): T;
 /**
  * Removes properties from an object by list of keys or filter function.
  */
-export function remove<T extends Dictionary, K extends PropertyKey>(
+export function remove<T extends Dictionary, K extends PropertyKey, V extends unknown>(
   obj: T,
-  mapper: K[] | ((key: K) => boolean),
+  mapper: K[] | { keys: (key: K) => boolean } | { values: (value: V) => boolean },
 ): T;
 /**
  * Removes properties from an object by list of keys or filter function.
  */
 export function remove(
   obj: Dictionary,
-  mapper: PropertyKey[] | ((key: PropertyKey) => boolean),
+  mapper:
+    | PropertyKey[]
+    | { keys?: (key: PropertyKey) => boolean; values?: (value: unknown) => boolean },
 ): Dictionary {
-  let keys: PropertyKey[];
+  let keysToRemove: PropertyKey[];
   if (isArray(mapper)) {
-    keys = mapper;
+    keysToRemove = mapper;
   } else {
-    keys = Object.keys(obj).filter(mapper);
+    const { keys: keysFilter, values: valuesFilter } = mapper;
+    if (keysFilter && valuesFilter) {
+      throw new Error(
+        "Undefined behavior when both 'keys' and 'values' are present in mapper",
+      );
+    } else if (keysFilter) {
+      keysToRemove = Object.keys(obj).filter(keysFilter);
+    } else if (valuesFilter) {
+      keysToRemove = Object.entries(obj)
+        .filter(([_, v]) => !valuesFilter(v))
+        .map(([k]) => k);
+    } else {
+      throw new Error("Missing 'keys' or 'values' filter function in mapper");
+    }
   }
-  keys.forEach((k) => delete obj[k as keyof typeof obj]);
+  keysToRemove.forEach((k) => delete obj[k as keyof typeof obj]);
   return obj;
 }
 

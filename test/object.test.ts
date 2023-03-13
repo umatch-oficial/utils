@@ -84,7 +84,8 @@ describe.each([
 
 describe.each([
   ["list", ["a", "b"], { c: 3, d: 4 }],
-  ["function", (key: string) => ["c", "d"].includes(key), { a: 1, b: 2 }],
+  ["filter keys", { keys: (key: string) => ["c", "d"].includes(key) }, { a: 1, b: 2 }],
+  ["filter values", { values: (val: number) => val > 3 }, { d: 4 }],
 ])("rename()", (path, mapper, output) => {
   const obj = { a: 1, b: 2, c: 3, d: 4 };
   test(path, () => {
