@@ -292,13 +292,40 @@ export function pick<T extends Dictionary, K extends keyof T>(
 }
 
 /**
- * Removes properties from an object.
+ * Removes properties from an object, whose keys are in the array.
  */
-export function remove<T extends Dictionary, K extends keyof T>(
+export function remove<T extends Dictionary, K extends PropertyKey>(
   obj: T,
   keys: K[],
-): Omit<T, K> {
-  keys.forEach((k) => delete obj[k]);
+): Omit<T, K>;
+/**
+ * Removes properties from an object, whose keys pass the filter.
+ */
+export function remove<T extends Dictionary, K extends PropertyKey>(
+  obj: T,
+  filter: (key: K) => boolean,
+): T;
+/**
+ * Removes properties from an object by list of keys or filter function.
+ */
+export function remove<T extends Dictionary, K extends PropertyKey>(
+  obj: T,
+  mapper: K[] | ((key: K) => boolean),
+): T;
+/**
+ * Removes properties from an object by list of keys or filter function.
+ */
+export function remove(
+  obj: Dictionary,
+  mapper: PropertyKey[] | ((key: PropertyKey) => boolean),
+): Dictionary {
+  let keys: PropertyKey[];
+  if (isArray(mapper)) {
+    keys = mapper;
+  } else {
+    keys = Object.keys(obj).filter(mapper);
+  }
+  keys.forEach((k) => delete obj[k as keyof typeof obj]);
   return obj;
 }
 

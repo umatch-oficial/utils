@@ -6,6 +6,7 @@ import {
   setDeepProperty,
   rename,
   stringify,
+  remove,
 } from "../src/object";
 
 describe.each([
@@ -78,6 +79,16 @@ describe.each([
     } else {
       expect(merge(a, b, strategy)).toEqual(output);
     }
+  });
+});
+
+describe.each([
+  ["list", ["a", "b"], { c: 3, d: 4 }],
+  ["function", (key: string) => ["c", "d"].includes(key), { a: 1, b: 2 }],
+])("rename()", (path, mapper, output) => {
+  const obj = { a: 1, b: 2, c: 3, d: 4 };
+  test(path, () => {
+    expect(remove(obj, mapper)).toEqual(output);
   });
 });
 
