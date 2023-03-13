@@ -8,6 +8,7 @@ import {
   Primitive,
   UnionToTuple,
   ValueOf,
+  Equals,
 } from "../index";
 import { range } from "../math";
 
@@ -156,6 +157,31 @@ export function groupBy<
     }
     return partial;
   }, {} as { [_: string]: T[number][] });
+}
+
+/**
+ * Returns whether 2 arrays have the same elements, regardless of order.
+ */
+export function hasSameElements<
+  X extends string | number,
+  A extends readonly X[],
+  B extends readonly X[],
+>(
+  a: A,
+  b: B,
+): Equals<A[number], B[number]> extends true
+  ? A extends { length: infer ALen }
+    ? B extends { length: infer BLen }
+      ? Equals<ALen, BLen> extends true
+        ? true
+        : false
+      : false
+    : false
+  : false;
+export function hasSameElements<X extends string | number>(a: X[], b: X[]): boolean {
+  a.sort();
+  b.sort();
+  return a.every((v, i) => b[i] === v);
 }
 
 /**

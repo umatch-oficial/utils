@@ -7,6 +7,7 @@ import {
   intersect,
   permutations,
   isSubset,
+  hasSameElements,
 } from "../src/array";
 
 const FRUITS = [
@@ -104,6 +105,11 @@ test("groupBy() throws", () => {
     // @ts-ignore
     groupBy(arr, "b");
   }).toThrow("Cannot use value");
+});
+
+test("hasSameElements()", () => {
+  expect(hasSameElements([1, 2, 3, 3] as const, [3, 3, 2, 1] as const)).toBe(true);
+  expect(hasSameElements([1, 2, 3, 3] as const, [3, 2, 1] as const)).toBe(false);
 });
 
 describe.each([
