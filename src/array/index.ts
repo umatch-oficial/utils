@@ -76,6 +76,16 @@ export async function filter<T extends unknown[] | readonly unknown[]>(
   ).flat() as T[];
 }
 
+export function filterByObject<O extends Dictionary>(
+  array: Dictionary[],
+  template: O,
+): O[] {
+  const entries = Object.entries(template);
+  return array.filter((element) =>
+    entries.reduce((prev, [key, value]) => element[key] === value, true),
+  ) as O[];
+}
+
 /**
  * Returns the filtered array and the complement as well (elements
  * removed by the filter).

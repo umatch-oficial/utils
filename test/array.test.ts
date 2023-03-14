@@ -2,6 +2,7 @@ import {
   cartesian,
   diff,
   filter,
+  filterByObject,
   filterWithComplement,
   groupBy,
   intersect,
@@ -38,6 +39,22 @@ describe.each([
 
 test("filter()", async () => {
   expect(await filter([1, 2, 3], async (x) => x < 2)).toEqual([1]);
+});
+
+test("filterByObject()", () => {
+  expect(
+    filterByObject(
+      [
+        { a: 1, b: 2 },
+        { a: 1, b: 3 },
+        { a: 2, b: 3 },
+      ],
+      { a: 1 },
+    ),
+  ).toEqual([
+    { a: 1, b: 2 },
+    { a: 1, b: 3 },
+  ]);
 });
 
 describe.each([
