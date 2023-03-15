@@ -4,6 +4,7 @@ import {
   Brand,
   Equals,
   ExtendValues,
+  Merge,
   NestedPaths,
   OneOrArray,
   Payload,
@@ -32,6 +33,13 @@ test("ExtendValues", () => {
 
   const a: Test = { a: 1 };
   const b: Test = { a: true };
+});
+
+test("Merge", () => {
+  type A = { a: 1; b: { c: 2; d: 3 } };
+  type B = { b: { c: 4; e: 5 } };
+
+  const a: Merge<A, B> = { a: 1, b: { c: 4, d: 3, e: 5 } };
 });
 
 test("NestedPaths", () => {
