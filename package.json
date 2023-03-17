@@ -1,6 +1,6 @@
 {
     "name": "@umatch/utils",
-    "version": "2.4.2",
+    "version": "3.0.0",
     "description": "Math, array, string, object &amp; time-related functions and types.",
     "author": "Gabriel Okamoto <gabrielokamoto@hotmail.com>",
     "license": "MIT",
