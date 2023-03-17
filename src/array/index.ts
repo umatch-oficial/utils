@@ -90,10 +90,17 @@ export function filterByObject<O extends Dictionary>(
  * Returns the filtered array and the complement as well (elements
  * removed by the filter).
  */
-export function filterWithComplement<T extends unknown[] | readonly unknown[]>(
+export function filterWithComplement<
+  T extends unknown[] | readonly unknown[],
+  P extends (x: T[number]) => boolean,
+>(
   array: T,
-  predicate: (x: T[number]) => boolean,
-): T extends (infer R)[] ? [R[], R[]] : never;
+  predicate: P,
+): T extends (infer R)[]
+  ? P extends (obj: unknown) => obj is infer A
+    ? [A[], Exclude<R, A>[]]
+    : [R[], R[]]
+  : never;
 export function filterWithComplement<T extends unknown[] | readonly unknown[]>(
   array: T,
   predicate: (x: T[number]) => boolean,
