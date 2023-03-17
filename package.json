@@ -13,6 +13,7 @@
     "bugs": "https://github.com/umatch-oficial/utils/issues",
     "main": "./lib/index.js",
     "files": [
+        "src/**/*.ts",
         "lib/**/*.ts",
         "lib/**/*.ts.map",
         "lib/**/*.js"
