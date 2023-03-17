@@ -295,6 +295,14 @@ const WORD_REGEX = new RegExp(
   `${UPPERCASE_LETTER}+${LOWERCASE_LETTER}*|${UPPERCASE_LETTER}?${LOWERCASE_LETTER}+`,
   "g",
 );
+
+/**
+ * Returns a function, which changes the case of a string.
+ *
+ * Warning: keeps only letters and numbers, all punctuation is lost,
+ * so it should only be used on strings that are supposed to form a
+ * single word.
+ */
 function toCase(
   firstWordFunction: (str: string) => string,
   otherWordsFunction: (str: string) => string,
@@ -311,6 +319,10 @@ function toCase(
 
 /**
  * Converts a string to camelCase.
+ *
+ * Warning: the whole string is considered as one, so if you want to
+ * apply the function to parts of a string individually, you must
+ * split it and map the function over each unit according to your needs.
  */
 export const camelCase: (str: string) => string = Object.defineProperty(
   toCase(uncapitalize, capitalize, ""),
@@ -320,6 +332,10 @@ export const camelCase: (str: string) => string = Object.defineProperty(
 
 /**
  * Converts a string to camelCase.
+ *
+ * *Warning*: the whole string is considered as one, so if you want to
+ * apply the function to parts of a string individually, you must
+ * split it and map the function over each unit according to your needs.
  */
 export const pascalCase: (str: string) => string = Object.defineProperty(
   toCase(capitalize, capitalize, ""),
@@ -329,6 +345,10 @@ export const pascalCase: (str: string) => string = Object.defineProperty(
 
 /**
  * Converts a string to snake_case.
+ *
+ * *Warning*: the whole string is considered as one, so if you want to
+ * apply the function to parts of a string individually, you must
+ * split it and map the function over each unit according to your needs.
  */
 export const snakeCase: (str: string) => string = Object.defineProperty(
   toCase(uncapitalize, uncapitalize, "_"),
