@@ -359,11 +359,10 @@ export const snakeCase: (str: string) => string = Object.defineProperty(
 /**
  * Converts a string to Sentence case.
  */
-export const sentenceCase: (str: string) => string = Object.defineProperty(
-  toCase(capitalize, uncapitalize, " "),
-  "name",
-  { value: "sentenceCase" },
-);
+export function sentenceCase(str: string) {
+  const [first, ...rest] = str.split(/(\s)/);
+  return [capitalize(first), ...rest.map(uncapitalize)].join("");
+}
 
 const ENGLISH_SKIP_WORDS = [
   // articles
@@ -397,11 +396,11 @@ const ENGLISH_SKIP_WORDS = [
  * @param {string[]} [skipWords] Words to skip. Default: english skip words (articles, prepositions, etc.)
  */
 export function titleCase(str: string, skipWords: string[] = ENGLISH_SKIP_WORDS): string {
-  return toCase(
-    capitalize,
-    (word) => (skipWords.includes(word.toLowerCase()) ? word : capitalize(word)),
-    " ",
-  )(str);
+  const otherWordsFunction = (word: string) =>
+    skipWords.includes(word.toLowerCase()) ? word : capitalize(word);
+
+  const [first, ...rest] = str.split(/(\s)/);
+  return [capitalize(first), ...rest.map(otherWordsFunction)].join("");
 }
 
 type DateTimeDict = { [_ in DateTimeUnit]?: string } & {

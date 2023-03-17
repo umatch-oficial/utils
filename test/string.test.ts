@@ -135,15 +135,10 @@ describe.each([
   [snakeCase, "PascalCase", "pascal_case"],
   [snakeCase, "snake_case", "snake_case"],
   [sentenceCase, "Title Case", "Title case"],
-  [titleCase, "camelCase", "Camel Case"],
-  [titleCase, "PascalCase", "Pascal Case"],
-  [titleCase, "snake_case", "Snake Case"],
-  [titleCase, "Sentence case", "Sentence Case"],
-  [titleCase, "Title Case", "Title Case"],
-  // some words should not be capitalized
-  [titleCase, "the man in the High Castle", "The Man In the High Castle"],
+  [titleCase, "the man, the woman", "The Man, the Woman"],
+  [sentenceCase, "the man, the woman", "The man, the woman"],
   // accented letters — this tests the regex for all case functions
-  [titleCase, "associação atlética", "Associação Atlética"],
+  [pascalCase, "associação atlética", "AssociaçãoAtlética"],
 ])("Case functions", (func, input, output) => {
   test(`${func.name}('${input}') = '${output}'`, () => {
     expect(func(input)).toBe(output);
