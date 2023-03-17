@@ -25,20 +25,23 @@ export function hasOwnProperty<X extends Dictionary, Y extends PropertyKey>(
 }
 
 /**
- * Copies an object and applies func to all keys.
+ * Copies an object and applies func to all entries.
  */
 export function apply<T extends Dictionary, R>(
   obj: T,
   func: (val: ValueOf<T>) => R,
 ): { [K in keyof T]: R };
 /**
- * Copies an object and applies func to some keys.
+ * Copies an object and applies func to entries with given keys.
  */
 export function apply<T extends Dictionary, R, Keys extends keyof T>(
   obj: T,
   func: (val: ValueOf<T>) => R,
   keys?: Keys[],
 ): { [K in keyof T]: K extends Keys ? R : T[K] };
+/**
+ * Copies an object and applies func to all entries.
+ */
 export function apply(
   obj: Dictionary,
   func: (val: unknown) => unknown,
