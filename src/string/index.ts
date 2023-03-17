@@ -365,14 +365,38 @@ export const sentenceCase: (str: string) => string = Object.defineProperty(
   { value: "sentenceCase" },
 );
 
-const ENGLISH_ARTICLES = ["a", "an", "the"];
+const ENGLISH_SKIP_WORDS = [
+  // articles
+  "a",
+  "an",
+  "the",
+  // coordinating conjunctions
+  "and",
+  "but",
+  "for",
+  "nor",
+  "or",
+  "so",
+  "yet",
+  // prepositions
+  "at",
+  "by",
+  "for",
+  "in",
+  "of",
+  "on",
+  "to",
+  "with",
+];
 /**
  * Converts a string to Title Case.
  *
  * Some words should not be capitalized, depending on the language.
- * In english, for example, the articles.
+ *
+ * @param {string} str
+ * @param {string[]} [skipWords] Words to skip. Default: english skip words (articles, prepositions, etc.)
  */
-export function titleCase(str: string, skipWords: string[] = ENGLISH_ARTICLES): string {
+export function titleCase(str: string, skipWords: string[] = ENGLISH_SKIP_WORDS): string {
   return toCase(
     capitalize,
     (word) => (skipWords.includes(word.toLowerCase()) ? word : capitalize(word)),
@@ -394,8 +418,8 @@ type DateTimeDict = { [_ in DateTimeUnit]?: string } & {
  * exceeds the threshold for the unit (default: 1).
  *
  * @example
- * // returns '3 days'
  * const date = DateTime.now().plus({ days: 3 });
+ * // returns '3 days'
  * getCountDown(date);
  * // returns '3d'
  * getCountDown(date, { short: true });
