@@ -10,6 +10,7 @@ specifiers:
   bluebird: ^3.7.2
   chalk: ^4.1.2
   commitizen: ^4.2.6
+  csv-parser: ^3.0.0
   cz-conventional-changelog: ^3.3.0
   eslint: ~8.22.0
   eslint-config-prettier: ^8.5.0
@@ -27,6 +28,7 @@ specifiers:
 dependencies:
   bluebird: 3.7.2
   chalk: 4.1.2
+  csv-parser: 3.0.0
   luxon: 3.1.0
   string-length: 4.0.2
 
@@ -1560,6 +1562,14 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
     dev: true
+
+  /csv-parser/3.0.0:
+    resolution: {integrity: sha512-s6OYSXAK3IdKqYO33y09jhypG/bSDHPuyCme/IdEHfWpLf/jKcpitVFyOC6UemgGk8v7Q5u2XE0vvwmanxhGlQ==}
+    engines: {node: '>= 10'}
+    hasBin: true
+    dependencies:
+      minimist: 1.2.6
+    dev: false
 
   /cz-conventional-changelog/3.3.0:
     resolution: {integrity: sha512-U466fIzU5U22eES5lTNiNbZ+d8dfcHcssH4o7QsdWaCcRs/feIPCxKYSWkYBNs5mny7MvEfwpTLWjvbm94hecw==}
@@ -3387,7 +3397,6 @@ packages:
 
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
-    dev: true
 
   /ms/2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
