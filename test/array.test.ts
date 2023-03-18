@@ -5,10 +5,10 @@ import {
   filterByObject,
   filterWithComplement,
   groupBy,
-  intersect,
-  permutations,
-  isSubset,
   hasSameElements,
+  intersect,
+  isSubset,
+  permutations,
 } from "../src/array";
 
 const FRUITS = [

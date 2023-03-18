@@ -76,6 +76,10 @@ export async function filter<T extends unknown[] | readonly unknown[]>(
   ).flat() as T[];
 }
 
+/**
+ * Filters an array of objects, ensuring they contain all key:value
+ * pairs in the template.
+ */
 export function filterByObject<O extends Dictionary>(
   array: Dictionary[],
   template: O,
@@ -231,7 +235,8 @@ export function isSubset(
 
 /**
  * Returns all length-2 tuples of the elements, in sorted order,
- * without repeated elements. (equivalent of python's itertools' combinations)
+ * without repeated elements.
+ * (equivalent of python's itertools' combinations)
  */
 export function permutations<T extends unknown[]>(
   array: T,

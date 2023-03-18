@@ -11,7 +11,8 @@ type ChalkColor = typeof ForegroundColor;
 export type Pluralizer = (word: string, quantity?: number) => string;
 
 /**
- * Adds 's' to the end of the word if quantity is 0 or greater than 1.
+ * Adds 's' to the end of the word if *quantity* is undefined, 0 or
+ * greater than 1.
  *
  * @example
  * // returns 'developers'
@@ -48,12 +49,13 @@ export function center(str: string, length: number): string {
 
 /**
  * Formats a string according to options.
+ *
  * @param [str]
  * @param [options = {}]
- * @param [options.bold] whether to make it bold
- * @param [options.bgColor] background color
- * @param [options.color] text color
- * @param [options.length] pad string on both sides up to this length
+ * @param [options.bold] Whether to make it bold
+ * @param [options.bgColor] Background color
+ * @param [options.color] Text color
+ * @param [options.length] Pad string on both sides up to this length
  */
 export function formatStr(
   str: string = "",
@@ -299,7 +301,7 @@ const WORD_REGEX = new RegExp(
 /**
  * Returns a function, which changes the case of a string.
  *
- * Warning: keeps only letters and numbers, all punctuation is lost,
+ * *Warning*: keeps only letters and numbers, all punctuation is lost,
  * so it should only be used on strings that are supposed to form a
  * single word.
  */
@@ -320,7 +322,7 @@ function toCase(
 /**
  * Converts a string to camelCase.
  *
- * Warning: the whole string is considered as one, so if you want to
+ * *Warning*: the whole string is considered as one, so if you want to
  * apply the function to parts of a string individually, you must
  * split it and map the function over each unit according to your needs.
  */
@@ -425,7 +427,7 @@ type DateTimeDict = { [_ in DateTimeUnit]?: string } & {
  * // returns '72 hours'
  * getCountDown(date, { unitsThresholds: [['day', 5], ['hour', 1]] });
  *
- * @param {string | DateTime} date If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true}).
+ * @param date If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true }).
  * @param options
  * @param [options.dictionary] Words to substitute. Default: english words
  * @param [options.pluralizer] A pluralizer function. Default: adds 's' to the end the word

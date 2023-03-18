@@ -90,24 +90,11 @@ export function pickWeighted<T extends { option: unknown; weight: number }>(
 }
 
 /**
- * Returns a random integer between 0 and 1.
- */
-export function randomInteger(): number;
-/**
- * Returns a random integer between 0 and max.
- */
-export function randomInteger(max: number): number;
-/**
  * Returns a random integer between min and max.
- */
-export function randomInteger(min: number, max: number): number;
-/**
- * Returns a random number between min and max.
  *
  * If no values are passed, uses 0 and 1.
  * If only 1 valued is passed, uses 0 and value.
  */
-export function randomInteger(min?: number, max?: number): number;
 export function randomInteger(min?: number, max?: number): number {
   return round(randomNumber(min, max), 0);
 }
@@ -121,47 +108,26 @@ export function randomNormal(min: number, max: number, mean?: number): number {
 }
 
 /**
- * Returns a random number between 0 and 1.
- */
-export function randomNumber(): number;
-/**
- * Returns a random number between 0 and max.
- */
-export function randomNumber(max: number): number;
-/**
- * Returns a random number between min and max.
- */
-export function randomNumber(min: number, max: number): number;
-/**
  * Returns a random number between min and max.
  *
- * If no values are passed, uses 0 and 1.
+ * If no values are passed, uses 0 and 1.<br>
  * If only 1 valued is passed, uses 0 and value.
  */
-export function randomNumber(min?: number, max?: number): number;
 export function randomNumber(min?: number, max?: number): number {
   const roll = random();
   return min ? (max ? min + (max - min) * roll : min * roll) : roll;
 }
 
 /**
- * Returns [0, end[.
- */
-export function range(end: number): number[];
-/**
- * Returns [start, end[.
- */
-export function range(start: number, end: number): number[];
-/**
- * Returns a list of integers from a to b (similar to python's range)
+ * Returns a list of integers from *start* to *end*.
+ * (similar to python's range)
  *
- * If only 1 value is passed, uses [0, a[
- * If 2 values are passed, uses [a, b[
+ * If only 1 value is passed, uses [0, start[.<br>
+ * If 2 values are passed, uses [start, end[.
  */
-export function range(a: number, b?: number): number[];
-export function range(a: number, b?: number): number[] {
-  const [start, end] = b ? [a, b] : [0, a];
-  return Array.from({ length: end - start }).map((_, i) => i + start);
+export function range(start: number, end?: number): number[] {
+  const [_start, _end] = end ? [start, end] : [0, start];
+  return Array.from({ length: _end - _start }).map((_, i) => i + _start);
 }
 
 /**

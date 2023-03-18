@@ -3,6 +3,7 @@ import {
   formatTime,
   join,
   joinUrl,
+  pad,
   parse,
   parseBool,
   rsplit,
@@ -12,7 +13,6 @@ import {
   sentenceCase,
   snakeCase,
   titleCase,
-  pad,
 } from "../src/string";
 
 test("formatStr()", () => {

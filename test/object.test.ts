@@ -3,9 +3,9 @@ import {
   deepMap,
   getDeepProperty,
   merge,
-  setDeepProperty,
-  rename,
   remove,
+  rename,
+  setDeepProperty,
   stringify,
 } from "../src/object";
 

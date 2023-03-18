@@ -45,7 +45,7 @@ export function apply<T extends Dictionary, R, Keys extends keyof T>(
 export function apply(
   obj: Dictionary,
   func: (val: unknown) => unknown,
-  keys?: string[],
+  keys?: PropertyKey[],
 ): Dictionary {
   return Object.fromEntries(
     Object.entries(obj).map(([key, val]) => [
@@ -115,8 +115,8 @@ type ExtractOptions = ({ prefix: string } | { suffix: string } | { custom: RegEx
  * Dynamic version of pick.
  *
  * Receives either a prefix, a suffix or a custom regular expression.
- * Picks keys from the original object, which match the matcher, then renames the
- * keys to remove the matcher.
+ * Picks keys from the original object, which match the matcher, then
+ * renames the keys to remove the matcher.
  *
  * For TypeScript to function correctly, use the function as follows:
  * ```
@@ -284,8 +284,8 @@ export function omit<T extends Dictionary, K extends keyof T>(
 /**
  * Copies an object using some keys.
  *
- * Makes a copy of an object using only the given keys. If an entry is not
- * present, it receives the value of undefined.
+ * Makes a copy of an object using only the given keys. If an entry is
+ * not present, it receives the value of undefined.
  */
 export function pick<T extends Dictionary, K extends keyof T>(
   obj: T,
