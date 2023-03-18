@@ -265,20 +265,6 @@ export function remove<X, T extends X[]>(array: T, item: X): X[] {
 }
 
 /**
- * Repeats an array enough times to have n elements.
- */
-export function replicate<T extends unknown[]>(
-  array: T,
-  n: number,
-): T extends (infer R)[] ? R[] : never;
-export function replicate(array: any[], n: number): any[] {
-  const length = Math.ceil(n / array.length);
-  return Array.from({ length }, () => array)
-    .flat()
-    .slice(0, n);
-}
-
-/**
  * Returns a shuffled copy of the array.
  */
 export function shuffle<T extends unknown[]>(
