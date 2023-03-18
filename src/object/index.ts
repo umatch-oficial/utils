@@ -296,34 +296,72 @@ export function pick<T extends Dictionary, K extends keyof T>(
 
 /**
  * Removes properties from an object, whose keys are in the array.
+ * Returns a new object with the removed entries.
+ *
+ * @example
+ * const data = { apple: 1, banana: 2 };
+ * const { apple } = remove(data, ["apple"]);
+ * // 1, { banana: 2 }
+ * console.log(apple, obj);
  */
-export function remove<T extends Dictionary, K extends PropertyKey>(
+export function remove<T extends Dictionary, K extends keyof T>(
   obj: T,
   keys: K[],
-): Omit<T, K>;
+): Pick<T, K>;
 /**
  * Removes properties from an object, whose keys pass the filter.
+ * Returns a new object with the removed entries.
+ *
+ * @example
+ * const data = { apple: 1, banana: 2 };
+ * const { banana } = remove(data, { keys: (key) => key[0] === 'b' });
+ * // 2, { apple: 1 }
+ * console.log(banana, obj);
  */
-export function remove<T extends Dictionary, K extends PropertyKey>(
+export function remove<T extends Dictionary>(
   obj: T,
-  filter: { keys: (key: K) => boolean },
-): T;
+  filter: { keys: (key: PropertyKey) => boolean },
+): { [_: string]: ValueOf<T> };
 /**
  * Removes properties from an object, whose values fail the filter.
+ * Returns a new object with the removed entries.
+ *
+ * @example
+ * const data = { apple: 1, banana: 2 };
+ * const { apple } = remove(data, { values: (v) => v > 1 });
+ * // 1, { banana: 2 }
+ * console.log(apple, data);
  */
-export function remove<T extends Dictionary, V extends unknown>(
+export function remove<T extends Dictionary>(
   obj: T,
-  filter: { values: (value: V) => boolean },
-): T;
+  filter: { values: (value: unknown) => boolean },
+): { [_: string]: ValueOf<T> };
 /**
  * Removes properties from an object by list of keys or filter function.
+ * Returns a new object with the removed entries.
+ *
+ * @example
+ * const data = { apple: 1, banana: 2 };
+ * const { apple } = remove(data, ["apple"]);
+ * // 1, { banana: 2 }
+ * console.log(apple, obj);
  */
-export function remove<T extends Dictionary, K extends PropertyKey, V extends unknown>(
+export function remove<T extends Dictionary, K extends keyof T>(
   obj: T,
-  mapper: K[] | { keys: (key: K) => boolean } | { values: (value: V) => boolean },
-): T;
+  mapper:
+    | K[]
+    | { keys: (key: PropertyKey) => boolean }
+    | { values: (value: unknown) => boolean },
+): { [_: string]: ValueOf<T> };
 /**
  * Removes properties from an object by list of keys or filter function.
+ * Returns a new object with the removed entries.
+ *
+ * @example
+ * const data = { apple: 1, banana: 2 };
+ * const { apple } = remove(data, ["apple"]);
+ * // 1, { banana: 2 }
+ * console.log(apple, obj);
  */
 export function remove(
   obj: Dictionary,
@@ -350,8 +388,15 @@ export function remove(
       throw new Error("Missing 'keys' or 'values' filter function in mapper");
     }
   }
-  keysToRemove.forEach((k) => delete obj[k as keyof typeof obj]);
-  return obj;
+  return Object.fromEntries(
+    Object.entries(obj).filter(([key]) => {
+      if (keysToRemove.includes(key)) {
+        delete obj[key];
+        return true;
+      }
+      return false;
+    }),
+  );
 }
 
 /**

@@ -5,8 +5,8 @@ import {
   merge,
   setDeepProperty,
   rename,
-  stringify,
   remove,
+  stringify,
 } from "../src/object";
 
 describe.each([
@@ -83,13 +83,21 @@ describe.each([
 });
 
 describe.each([
-  ["list", ["a", "b"], { c: 3, d: 4 }],
-  ["filter keys", { keys: (key: string) => ["c", "d"].includes(key) }, { a: 1, b: 2 }],
-  ["filter values", { values: (val: number) => val > 3 }, { d: 4 }],
-])("rename()", (path, mapper, output) => {
+  ["list", ["a", "b"], { c: 3, d: 4 }, { a: 1, b: 2 }],
+  [
+    "filter keys",
+    { keys: (key: string) => ["c", "d"].includes(key) },
+    { a: 1, b: 2 },
+    { c: 3, d: 4 },
+  ],
+  ["filter values", { values: (val: number) => val > 3 }, { d: 4 }, { a: 1, b: 2, c: 3 }],
+])("remove()", (path, mapper, original, picked) => {
   const obj = { a: 1, b: 2, c: 3, d: 4 };
   test(path, () => {
-    expect(remove(obj, mapper)).toEqual(output);
+    // @ts-ignore
+    const output = remove(obj, mapper);
+    expect(obj).toEqual(original);
+    expect(output).toEqual(picked);
   });
 });
 
