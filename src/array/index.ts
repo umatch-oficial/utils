@@ -249,7 +249,7 @@ export function permutations(array: any[]): [any, any][] {
 /**
  * Removes an item from an array.
  */
-export function remove<X, T extends X[]>(
+export function remove<X extends Primitive, T extends X[]>(
   array: T,
   item: X,
 ): T extends (infer R)[] ? R[] : never;
