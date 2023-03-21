@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.0.0](https://github.com/umatch-oficial/utils/compare/v3.0.1...v4.0.0) (2023-03-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **array:** array.replicate() has been removed
+* **object:** remove() no longer returns the original object, rather a new object composed of the removed entries
+
+### Features
+
+* **array:** remove deprecated replicate() ([6929314](https://github.com/umatch-oficial/utils/commit/692931456e14c790066a312985318714369eefca))
+* **array:** restrict type of item in remove() to string, boolean, or number ([64493aa](https://github.com/umatch-oficial/utils/commit/64493aa5caa9470ed4a8f91503f9b3bf5a5e4c01))
+* **object:** remove() returns the removed entries rather than the object ([85b8b5f](https://github.com/umatch-oficial/utils/commit/85b8b5f530bc8cb6eb8a9fd8a92cebf7d4ad1ad3))
+
 ## [3.0.1](https://github.com/umatch-oficial/utils/compare/v3.0.0...v3.0.1) (2023-03-18)
 
 ## [3.0.0](https://github.com/umatch-oficial/utils/compare/v2.4.2...v3.0.0) (2023-03-17)
