@@ -235,12 +235,12 @@ export function isSubset(
 
 /**
  * Returns all length-2 tuples of the elements, in sorted order,
- * without repeated elements.
+ * without repeated elements.<br>
  * (equivalent of python's itertools' combinations)
  */
-export function permutations<T extends unknown[]>(
+export function permutations<T extends unknown[] | readonly unknown[]>(
   array: T,
-): T extends (infer R)[] ? [R, R][] : never;
+): T extends readonly (infer R)[] ? [R, R][] : never;
 export function permutations(array: any[]): [any, any][] {
   const perms: [any, any][] = [];
   for (const i of range(array.length)) {
@@ -267,9 +267,9 @@ export function remove<X, T extends X[]>(array: T, item: X): X[] {
 /**
  * Returns a shuffled copy of the array.
  */
-export function shuffle<T extends unknown[]>(
+export function shuffle<T extends unknown[] | readonly unknown[]>(
   array: T,
-): T extends (infer R)[] ? R[] : never;
+): T extends readonly (infer _)[] ? T : never;
 export function shuffle(array: any[]): any[] {
   // https://stackoverflow.com/a/12646864/9193449
   const copy = array.slice();
@@ -283,11 +283,11 @@ export function shuffle(array: any[]): any[] {
 /**
  * Same as slice, but overflows to guarantee there are (end - start) elements.
  */
-export function sliceWithOverflow<T extends unknown[]>(
+export function sliceWithOverflow<T extends unknown[] | readonly unknown[]>(
   array: T,
   start: number,
   end: number,
-): T extends (infer R)[] ? R[] : never;
+): T extends readonly (infer _)[] ? T : never;
 export function sliceWithOverflow(array: any[], start: number, end: number): any[] {
   const overflow = end - array.length;
   if (overflow <= 0) return array.slice(start, end);
