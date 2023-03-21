@@ -251,13 +251,25 @@ export function permutations(array: any[]): [any, any][] {
   return perms;
 }
 
+type Remove<
+  T extends readonly unknown[],
+  X extends T[number],
+  Acc extends unknown[] = [],
+> = T extends readonly [infer A, ...infer B]
+  ? A extends X
+    ? X extends A
+      ? Remove<B, X, Acc>
+      : Remove<B, X, [...Acc, A]>
+    : Remove<B, X, [...Acc, A]>
+  : Acc;
+
 /**
  * Removes an item from an array.
  */
-export function remove<X extends Primitive, T extends X[]>(
+export function remove<T extends Primitive[] | readonly Primitive[], X extends T[number]>(
   array: T,
   item: X,
-): T extends (infer R)[] ? R[] : never;
+): { readonly [K in keyof T]: any } extends T ? Remove<T, X> : T;
 export function remove<X, T extends X[]>(array: T, item: X): X[] {
   const i = array.indexOf(item);
   if (i > -1) array.splice(i, 1);
@@ -312,12 +324,21 @@ export function trim<T extends unknown[] | readonly unknown[]>(
   return array.slice(firstIndex, lastIndex + 1);
 }
 
+type Uniques<
+  T extends readonly unknown[],
+  Acc extends unknown[] = [],
+> = T extends readonly [infer A, ...infer B]
+  ? A extends Acc[number]
+    ? Uniques<B, Acc>
+    : Uniques<B, [...Acc, A]>
+  : Acc;
+
 /**
  * Returns a copy of an array without duplicates.
  */
-export function uniques<T extends unknown[]>(
+export function uniques<T extends unknown[] | readonly unknown[]>(
   array: T,
-): T extends (infer R)[] ? R[] : never;
+): { readonly [K in keyof T]: any } extends T ? Uniques<T> : T;
 export function uniques(array: any[]): any[] {
   return Array.from(new Set(array));
 }
