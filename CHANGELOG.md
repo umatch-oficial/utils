@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.0.1](https://github.com/umatch-oficial/utils/compare/v4.0.0...v4.0.1) (2023-03-21)
+
+
+### Bug Fixes
+
+* move commit-and-tag-version to devDependencies ([3cd84c3](https://github.com/umatch-oficial/utils/commit/3cd84c35a0c91819d4658c6cb5ff0c3b555f4085))
+
 ## [4.0.0](https://github.com/umatch-oficial/utils/compare/v3.0.1...v4.0.0) (2023-03-21)
 
 
