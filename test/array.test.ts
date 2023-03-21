@@ -9,6 +9,9 @@ import {
   intersect,
   isSubset,
   permutations,
+  remove,
+  trim,
+  uniques,
 } from "../src/array";
 
 const FRUITS = [
@@ -157,4 +160,17 @@ test("permutations()", () => {
       .map((a) => a.join(""))
       .sort(),
   ).toEqual(["ab", "ac", "ad", "bc", "bd", "cd"].sort());
+});
+
+test("remove()", () => {
+  const res = remove(["a", "b", "c"], "a");
+  expect(res).toEqual(["b", "c"]);
+});
+
+test("trim()", () => {
+  expect(trim([null, "a", null, "c", null], Boolean)).toEqual(["a", null, "c"]);
+});
+
+test("uniques()", () => {
+  expect(uniques(["a", "b", "a", "c"])).toEqual(["a", "b", "c"]);
 });
