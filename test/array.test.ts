@@ -112,7 +112,7 @@ describe.each([
   ],
 ])("groupBy()", (key, output) => {
   test(`groupBy(FRUITS, '${key}')`, () => {
-    expect(groupBy(FRUITS, key as keyof typeof FRUITS[number])).toEqual(output);
+    expect(groupBy(FRUITS, key as keyof (typeof FRUITS)[number])).toEqual(output);
   });
 });
 
