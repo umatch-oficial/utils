@@ -29,7 +29,6 @@ specifiers:
 dependencies:
   bluebird: 3.7.2
   chalk: 4.1.2
-  csv-parser: 3.0.0
   luxon: 3.1.0
   string-length: 4.0.2
 
@@ -42,6 +41,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.46.1_sq327paf6wzcma7omk5wjhfcfa
   commit-and-tag-version: 11.2.0
   commitizen: 4.2.6
+  csv-parser: 3.0.0
   cz-conventional-changelog: 3.3.0
   eslint: 8.22.0
   eslint-config-prettier: 8.5.0_eslint@8.22.0
@@ -1095,7 +1095,7 @@ packages:
       eslint: 8.22.0
       eslint-scope: 5.1.1
       eslint-utils: 3.0.0_eslint@8.22.0
-      semver: 7.3.7
+      semver: 7.3.8
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -1838,7 +1838,7 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.6
-    dev: false
+    dev: true
 
   /cz-conventional-changelog/3.3.0:
     resolution: {integrity: sha512-U466fIzU5U22eES5lTNiNbZ+d8dfcHcssH4o7QsdWaCcRs/feIPCxKYSWkYBNs5mny7MvEfwpTLWjvbm94hecw==}
@@ -3907,6 +3907,7 @@ packages:
 
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
+    dev: true
 
   /modify-values/1.0.1:
     resolution: {integrity: sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==}
