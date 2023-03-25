@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.0.2](https://github.com/umatch-oficial/utils/compare/v4.0.1...v4.0.2) (2023-03-25)
+
+
+### Bug Fixes
+
+* **array:** allow readonly arrays in cartesian() ([cc6a711](https://github.com/umatch-oficial/utils/commit/cc6a7112aff7ef481fb20087170f970f10902a9e))
+
 ## [4.0.1](https://github.com/umatch-oficial/utils/compare/v4.0.0...v4.0.1) (2023-03-21)
 
 
