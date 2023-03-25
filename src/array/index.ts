@@ -1,23 +1,29 @@
 import bluebird from "bluebird";
 
-import {
+import { range } from "../math";
+
+import type {
   DeepArray,
   DeepNode,
   Dictionary,
-  Flatten,
-  Primitive,
-  UnionToTuple,
-  ValueOf,
   Equals,
+  Primitive,
+  ValueOf,
 } from "../index";
-import { range } from "../math";
+
+type Cartesian<
+  Arrays extends unknown[] | readonly unknown[],
+  Acc extends unknown[] = [],
+> = Arrays extends readonly [readonly (infer H)[], ...infer T]
+  ? Cartesian<T, [...Acc, H]>
+  : Acc[];
 
 /**
  * Returns the cartesian product of n arrays.
  */
-export function cartesian<Y extends unknown[][]>(
+export function cartesian<Y extends unknown[][] | readonly (readonly unknown[])[]>(
   ...arrays: Y
-): Y extends (infer R)[] ? Flatten<UnionToTuple<R>>[] : never;
+): Cartesian<Y>;
 export function cartesian(...arrays: any[]): any[][] {
   return arrays.reduce((finalArray, currentArray) =>
     finalArray.flatMap((element: any) =>

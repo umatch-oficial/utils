@@ -25,10 +25,10 @@ const FRUITS = [
 
 test("cartesian()", () => {
   expect(
-    cartesian(["a"], ["b", "c"])
+    cartesian(["a"] as const, [1, 2] as const)
       .map((a) => a.join(""))
       .sort(),
-  ).toEqual(["ab", "ac"].sort());
+  ).toEqual(["a1", "a2"].sort());
 });
 
 describe.each([
