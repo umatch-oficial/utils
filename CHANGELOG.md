@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.1.0](https://github.com/umatch-oficial/utils/compare/v4.0.2...v4.1.0) (2023-03-27)
+
+
+### Features
+
+* **array:** allow unknown or readonly array in groupBy() ([9a65380](https://github.com/umatch-oficial/utils/commit/9a6538012f892f124eb1bbae25874d3925c11481))
+
 ## [4.0.2](https://github.com/umatch-oficial/utils/compare/v4.0.1...v4.0.2) (2023-03-25)
 
 
