@@ -12,7 +12,7 @@ import type {
 } from "../index";
 
 type Cartesian<
-  Arrays extends unknown[] | readonly unknown[],
+  Arrays extends readonly unknown[],
   Acc extends unknown[] = [],
 > = Arrays extends readonly [readonly (infer H)[], ...infer T]
   ? Cartesian<T, [...Acc, H]>
@@ -21,7 +21,7 @@ type Cartesian<
 /**
  * Returns the cartesian product of n arrays.
  */
-export function cartesian<Y extends unknown[][] | readonly (readonly unknown[])[]>(
+export function cartesian<Y extends readonly (readonly unknown[])[]>(
   ...arrays: Y
 ): Cartesian<Y>;
 export function cartesian(...arrays: any[]): any[][] {
@@ -68,7 +68,7 @@ export function diff<X extends string | number, Y extends string | number>(
  *
  * Uses bluebird.map to limit concurrency.
  */
-export async function filter<T extends unknown[] | readonly unknown[]>(
+export async function filter<T extends readonly unknown[]>(
   array: T,
   callback: (x: T[number]) => Promise<boolean>,
   concurrency = 50,
@@ -101,7 +101,7 @@ export function filterByObject<O extends Dictionary>(
  * removed by the filter).
  */
 export function filterWithComplement<
-  T extends unknown[] | readonly unknown[],
+  T extends readonly unknown[],
   P extends (x: T[number]) => boolean,
 >(
   array: T,
@@ -111,7 +111,7 @@ export function filterWithComplement<
     ? [A[], Exclude<R, A>[]]
     : [R[], R[]]
   : never;
-export function filterWithComplement<T extends unknown[] | readonly unknown[]>(
+export function filterWithComplement<T extends readonly unknown[]>(
   array: T,
   predicate: (x: T[number]) => boolean,
 ): any[] {
@@ -126,7 +126,7 @@ export function filterWithComplement<T extends unknown[] | readonly unknown[]>(
  * Array.prototype.findLastIndex is already available in some runtimes,
  * but not in Node.
  */
-export function findLastIndex<T extends unknown[] | readonly unknown[]>(
+export function findLastIndex<T extends readonly unknown[]>(
   array: T,
   predicate: (value: T[number], index: number, arr: T[number][]) => boolean,
 ): number {
@@ -244,7 +244,7 @@ export function isSubset(
  * without repeated elements.<br>
  * (equivalent of python's itertools' combinations)
  */
-export function permutations<T extends unknown[] | readonly unknown[]>(
+export function permutations<T extends readonly unknown[]>(
   array: T,
 ): T extends readonly (infer R)[] ? [R, R][] : never;
 export function permutations(array: any[]): [any, any][] {
@@ -272,7 +272,7 @@ type Remove<
 /**
  * Removes an item from an array.
  */
-export function remove<T extends Primitive[] | readonly Primitive[], X extends T[number]>(
+export function remove<T extends readonly Primitive[], X extends T[number]>(
   array: T,
   item: X,
 ): { readonly [K in keyof T]: any } extends T ? Remove<T, X> : T;
@@ -285,7 +285,7 @@ export function remove<X, T extends X[]>(array: T, item: X): X[] {
 /**
  * Returns a shuffled copy of the array.
  */
-export function shuffle<T extends unknown[] | readonly unknown[]>(
+export function shuffle<T extends readonly unknown[]>(
   array: T,
 ): T extends readonly (infer _)[] ? T : never;
 export function shuffle(array: any[]): any[] {
@@ -301,7 +301,7 @@ export function shuffle(array: any[]): any[] {
 /**
  * Same as slice, but overflows to guarantee there are (end - start) elements.
  */
-export function sliceWithOverflow<T extends unknown[] | readonly unknown[]>(
+export function sliceWithOverflow<T extends readonly unknown[]>(
   array: T,
   start: number,
   end: number,
@@ -319,11 +319,11 @@ export function sliceWithOverflow(array: any[], start: number, end: number): any
  * Similar to filtering the array, except that the elements between
  * the first and last valid elements are not removed.
  */
-export function trim<T extends unknown[] | readonly unknown[]>(
+export function trim<T extends readonly unknown[]>(
   array: T,
-  predicate: (value: T[number], index: number, arr: T[number][]) => boolean,
+  predicate: (value: T[number], index: number, arr: readonly unknown[]) => boolean,
 ): T[number][] {
-  const firstIndex = (array as T[number][]).findIndex(predicate);
+  const firstIndex = array.findIndex(predicate);
   if (firstIndex === -1) return [];
 
   const lastIndex = findLastIndex(array, predicate);
@@ -342,7 +342,7 @@ type Uniques<
 /**
  * Returns a copy of an array without duplicates.
  */
-export function uniques<T extends unknown[] | readonly unknown[]>(
+export function uniques<T extends readonly unknown[]>(
   array: T,
 ): { readonly [K in keyof T]: any } extends T ? Uniques<T> : T;
 export function uniques(array: any[]): any[] {

@@ -44,19 +44,14 @@ export function limitToRange(num: number, lower: number, upper: number): number 
  * // returns 1
  * nthElement([0,1,2,3], 5)
  */
-export function nthElement<T extends unknown[] | readonly unknown[]>(
-  array: T,
-  n: number,
-): T[number] {
+export function nthElement<T extends readonly unknown[]>(array: T, n: number): T[number] {
   return array[n % array.length];
 }
 
 /**
  * Picks a random option from an array, with equal weights.
  */
-export function pickRandom<T extends unknown[] | readonly unknown[]>(
-  options: T,
-): T[number] {
+export function pickRandom<T extends readonly unknown[]>(options: T): T[number] {
   const roll = random();
   const chance = 1 / options.length;
   const i = floor(roll / chance);
@@ -147,7 +142,7 @@ export function sampleNormal(): number {
 /**
  * Splits an array into chunks of equal size.
  */
-export function splitInChunks<T extends unknown[] | readonly unknown[]>(
+export function splitInChunks<T extends readonly unknown[]>(
   array: T,
   size: number,
 ): T[number][][] {
