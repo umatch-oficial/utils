@@ -14,15 +14,6 @@ import {
   uniques,
 } from "../src/array";
 
-const FRUITS = [
-  { name: "apple", size: 2, color: "red" },
-  { name: "banana", size: 2, color: "yellow" },
-  { name: "grape", size: 1, color: "green" },
-  { name: "melon", size: 3, color: "yellow" },
-  { name: "strawberry", size: 1, color: "red" },
-  { name: "watermelon", size: 3, color: "green" },
-];
-
 test("cartesian()", () => {
   expect(
     cartesian(["a"] as const, [1, 2] as const)
@@ -110,9 +101,17 @@ describe.each([
       ],
     },
   ],
-])("groupBy()", (key, output) => {
+] as const)("groupBy()", (key, output) => {
+  const FRUITS = [
+    { name: "apple", size: 2, color: "red" },
+    { name: "banana", size: 2, color: "yellow" },
+    { name: "grape", size: 1, color: "green" },
+    { name: "melon", size: 3, color: "yellow" },
+    { name: "strawberry", size: 1, color: "red" },
+    { name: "watermelon", size: 3, color: "green" },
+  ] as const;
   test(`groupBy(FRUITS, '${key}')`, () => {
-    expect(groupBy(FRUITS, key as keyof (typeof FRUITS)[number])).toEqual(output);
+    expect(groupBy(FRUITS, key)).toEqual(output);
   });
 });
 

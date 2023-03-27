@@ -46,6 +46,24 @@ export type TransformValues<T, A, B> = {
  */
 export type ExtendValues<T, A, B> = TransformValues<T, A, A | B>;
 /**
+ * Groups objects in an array by the value of a property.
+ */
+export type GroupBy<
+  T extends readonly Dictionary[],
+  Key extends PropertyKey,
+> = T extends readonly (infer D)[]
+  ? Key extends keyof D
+    ? D[Key] extends Primitive
+      ? {
+          [Value in D[Key] as Value extends boolean ? Value & string : Value]: Extract<
+            D,
+            { [K in Key]: Value }
+          >[];
+        }
+      : never
+    : never
+  : never;
+/**
  * Deep merges two dictionaries. Values from the right have higher priority.
  */
 export type Merge<A extends Dictionary, B extends Dictionary> = {

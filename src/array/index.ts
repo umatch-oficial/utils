@@ -7,8 +7,8 @@ import type {
   DeepNode,
   Dictionary,
   Equals,
+  GroupBy,
   Primitive,
-  ValueOf,
 } from "../index";
 
 type Cartesian<
@@ -146,33 +146,17 @@ export function findLastIndex<T extends readonly unknown[]>(
  * @throws if, for any element in the array, the key is not present or has a non-primitive value.
  */
 export function groupBy<
-  T extends Dictionary[],
-  ValidKey extends ValueOf<{
-    [Key in keyof T[number]]: T[number][Key] extends Primitive ? Key : never;
-  }> &
-    string,
->(
-  array: T,
-  key: ValidKey,
-): T extends (infer R)[]
-  ? ValidKey extends keyof R
-    ? {
-        [_ in R[ValidKey] as R[ValidKey] extends number ? number : string]: R[];
-      }
-    : never
-  : never;
-export function groupBy<
-  T extends { [_: string]: unknown }[],
-  ValidKey extends ValueOf<{
-    [Key in keyof T[number]]: T[number][Key] extends Primitive ? Key : never;
-  }> &
-    string,
->(array: T, key: ValidKey) {
+  T extends readonly Dictionary[] | unknown,
+  Key extends PropertyKey,
+>(array: T, key: Key): T extends readonly Dictionary[] ? GroupBy<T, Key> : Dictionary;
+export function groupBy<T extends readonly Dictionary[]>(array: T, key: keyof T[number]) {
   return array.reduce((partial: { [_: string]: T[number][] }, element: T[number]) => {
     const keyVal = element[key];
     if (!["string", "number", "boolean"].includes(typeof keyVal)) {
       throw new Error(
-        `Cannot use value of '${key}' to index result - must be a string, number or boolean for all array elements`,
+        `Cannot use value of '${String(
+          key,
+        )}' to index result - must be a string, number or boolean for all array elements`,
       );
     }
 
