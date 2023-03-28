@@ -43,12 +43,9 @@ test("filterByObject()", () => {
         { a: 1, b: 3 },
         { a: 2, b: 3 },
       ],
-      { a: 1 },
+      { a: 1, b: 3 },
     ),
-  ).toEqual([
-    { a: 1, b: 2 },
-    { a: 1, b: 3 },
-  ]);
+  ).toEqual([{ a: 1, b: 3 }]);
 });
 
 describe.each([

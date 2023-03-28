@@ -92,7 +92,7 @@ export function filterByObject<O extends Dictionary>(
 ): O[] {
   const entries = Object.entries(template);
   return array.filter((element) =>
-    entries.reduce((prev, [key, value]) => element[key] === value, true),
+    entries.reduce((prev, [key, value]) => prev && element[key] === value, true),
   ) as O[];
 }
 
