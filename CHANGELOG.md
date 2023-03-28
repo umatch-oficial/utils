@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.1.1](https://github.com/umatch-oficial/utils/compare/v4.1.0...v4.1.1) (2023-03-28)
+
+
+### Bug Fixes
+
+* **array:** filterByObject only filtered by the last property in the template ([965427f](https://github.com/umatch-oficial/utils/commit/965427f58c3ea98466af6cb16fc45f33f8cadb1c))
+
 ## [4.1.0](https://github.com/umatch-oficial/utils/compare/v4.0.2...v4.1.0) (2023-03-27)
 
 
