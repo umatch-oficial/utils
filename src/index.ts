@@ -138,7 +138,7 @@ export type NestedPaths<
         ? NestedPaths<O[K], Union<Base, Prev>, Join<Prev, K>>
         : Union<Base, Union<Prev, Join<Prev, K>>>;
     }>
-  : unknown;
+  : string;
 /**
  * Takes an object and a path string that uses dot notation
  * and returns the type of the deep property at the path.
