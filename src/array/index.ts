@@ -86,14 +86,14 @@ export async function filter<T extends readonly unknown[]>(
  * Filters an array of objects, ensuring they contain all key:value
  * pairs in the template.
  */
-export function filterByObject<O extends Dictionary>(
-  array: Dictionary[],
-  template: O,
-): O[] {
+export function filterByObject<O extends Dictionary, T extends Dictionary>(
+  array: O[],
+  template: T,
+): (O & T)[] {
   const entries = Object.entries(template);
   return array.filter((element) =>
     entries.reduce((prev, [key, value]) => prev && element[key] === value, true),
-  ) as O[];
+  ) as (O & T)[];
 }
 
 /**
