@@ -61,7 +61,7 @@ export type GroupBy<
           >[];
         }
       : never
-    : never
+    : { [_: PropertyKey]: D[] }
   : never;
 /**
  * Deep merges two dictionaries. Values from the right have higher priority.
