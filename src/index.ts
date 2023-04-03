@@ -159,7 +159,7 @@ export type TypeFromPath<
   : unknown;
 
 /**
- * Returns an union of the types in the tuple.
+ * Returns a union of the types in the tuple.
  */
 // https://medium.hexlabs.io/building-complex-types-in-typescript-804c973ce66f
 export type TupleToUnion<T> = T extends any[] ? T[number] : T;

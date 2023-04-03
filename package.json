@@ -72,6 +72,7 @@
         "@types/node": "^18.15.5",
         "@typescript-eslint/eslint-plugin": "^5.56.0",
         "@typescript-eslint/parser": "^5.56.0",
+        "@umatch/eslint-config": "^1.1.0",
         "commit-and-tag-version": "^11.2.0",
         "commitizen": "^4.3.0",
         "csv-parser": "^3.0.0",
