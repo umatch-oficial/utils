@@ -21,6 +21,10 @@ export type DeepObject<T = unknown> = { [_: string]: DeepNode<T> };
  */
 export type ValueOf<T> = T[keyof T];
 /**
+ * Returns a union of the values of a deeply nested object.
+ */
+export type DeepValueOf<T> = T extends Dictionary ? DeepValueOf<T[keyof T]> : T;
+/**
  * Flattens a tuple recursively.
  */
 export type Flatten<Y extends unknown[], Acc extends unknown[] = []> = Y extends [
