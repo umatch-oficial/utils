@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0](https://github.com/umatch-oficial/utils/compare/v5.0.0...v5.1.0) (2023-04-05)
+
+
+### Features
+
+* **object:** simplify output type of getDeepProperty() ([0af51bd](https://github.com/umatch-oficial/utils/commit/0af51bd6b5b8bdd02570875aa1bba9113a9d1b05))
+
 ## [5.0.0](https://github.com/umatch-oficial/utils/compare/v4.3.0...v5.0.0) (2023-04-05)
 
 
