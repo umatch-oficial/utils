@@ -10,6 +10,7 @@ import {
   isNumber,
   isString,
   Merge,
+  DeepValueOf,
 } from "../index";
 import { camelCase, snakeCase } from "../string";
 
@@ -167,8 +168,12 @@ export function extract(obj: Dictionary, options: ExtractOptions): Dictionary {
  * // returns 9
  * getDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]')
  */
-export function getDeepProperty(obj: Dictionary, str: string, sep = "."): unknown {
-  if (!str) return obj;
+export function getDeepProperty<O extends Dictionary>(
+  obj: O,
+  str: string,
+  sep = ".",
+): DeepValueOf<O> | undefined {
+  if (!str) return undefined;
   // replace bracket with dot notation
   str = str.replace(/\[(\w+)]/, ".$1");
 
@@ -177,7 +182,7 @@ export function getDeepProperty(obj: Dictionary, str: string, sep = "."): unknow
     .reduce<DeepNode>(
       (prev, key) => (prev ? prev[key as keyof typeof prev] : undefined),
       obj,
-    );
+    ) as DeepValueOf<O> | undefined;
 }
 
 /**
