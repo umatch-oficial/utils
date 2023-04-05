@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.3.0](https://github.com/umatch-oficial/utils/compare/v4.1.1...v4.3.0) (2023-04-05)
+
+
+### Features
+
+* **types:** add DeepValueOf ([684ae81](https://github.com/umatch-oficial/utils/commit/684ae81d2866199d897611a3abc42f6d5487914f))
+* **types:** add fallback behavior for GroupBy ([dab2b59](https://github.com/umatch-oficial/utils/commit/dab2b5972566b125967abec08cdff260c380e0e7))
+* **types:** add fallback behavior for NestedPaths ([5536918](https://github.com/umatch-oficial/utils/commit/5536918b57d7c6da8227003dbc455ed555613f2f))
+
+
+### Bug Fixes
+
+* **array:** filterByObject returns the union of the array objects and the template ([0ed10f1](https://github.com/umatch-oficial/utils/commit/0ed10f1871cd566d85067fbc7b09a9d1b0b97ccb))
+
 ## [4.2.0](https://github.com/umatch-oficial/utils/compare/v4.1.1...v4.2.0) (2023-04-01)
 
 
