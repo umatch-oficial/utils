@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.0.0](https://github.com/umatch-oficial/utils/compare/v4.3.0...v5.0.0) (2023-04-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **object:** getDeepProperty() now returns undefined instead of the original object if the path is falsy.
+
+### Features
+
+* **object:** improve output type of getDeepProperty() ([9d77880](https://github.com/umatch-oficial/utils/commit/9d778806e14893bbacc0d06b6ecdbfb37ce78374))
+
 ## [4.3.0](https://github.com/umatch-oficial/utils/compare/v4.1.1...v4.3.0) (2023-04-05)
 
 
