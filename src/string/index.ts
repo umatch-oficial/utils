@@ -17,18 +17,15 @@ export type Pluralizer = (word: string, quantity?: number) => string;
  * @example
  * // returns 'developers'
  * basicPluralizer('developer')
- * // returns '1 developer'
+ * // returns 'developer'
  * basicPluralizer('developer', 1)
- * // returns '2 developers'
+ * // returns 'developers'
  * basicPluralizer('developer', 2)
  */
 export function basicPluralizer(word: string, quantity?: number): string {
-  if (quantity === undefined) return `${word}s`;
-
-  if (quantity !== 0 && Math.abs(quantity) <= 1) {
-    return `${quantity} ${word}`;
-  }
-  return `${quantity} ${word}s`;
+  return quantity === undefined || quantity === 0 || Math.abs(quantity) > 1
+    ? `${word}s`
+    : word;
 }
 
 /**
@@ -84,7 +81,7 @@ export function formatStr(
  * @example
  * // returns "10 minutes and 5 seconds"
  * formatTime(
- *     { hours: 0, minutes: 10, seconds: 5, milliseconds: 300},
+ *     { hours: 0, minutes: 10, seconds: 5, milliseconds: 300 },
  *     { parts: 2 },
  * )
  *
@@ -92,7 +89,7 @@ export function formatStr(
  * @param options
  * @param [options.dictionary] Words to substitute. Default: english words
  * @param [options.parts] The number of parts to include in the output. Default: 2
- * @param [options.pluralizer] A pluralizer function. Default: adds 's' to the end the word
+ * @param [options.pluralize] A pluralizer function. Default: adds 's' to the end the word
  */
 export function formatTime(
   time: {
@@ -115,9 +112,9 @@ export function formatTime(
   },
 ): string {
   const { hours, minutes, seconds, milliseconds } = time;
-  const { parts, pluralizer, dictionary, short } = {
+  const { parts, pluralize, dictionary, short } = {
     parts: 2,
-    pluralizer: basicPluralizer,
+    pluralize: basicPluralizer,
     ...options,
   };
   const { and, hour, minute, second, millisecond } = {
@@ -156,7 +153,9 @@ export function formatTime(
     const strings = sliced.map(([quantity, word]) => `${quantity} ${word[0]}`);
     return strings.join(" ");
   } else {
-    const strings = sliced.map(([quantity, word]) => pluralizer(word, quantity));
+    const strings = sliced.map(
+      ([quantity, word]) => `${quantity} ${pluralize(word, quantity)}`,
+    );
     return join(strings, and);
   }
 }
@@ -446,13 +445,13 @@ export function getCountDown(
     unitsThresholds?: [DateTimeUnit, number][];
   },
 ): string {
-  const { pluralizer, dictionary } = {
+  const { pluralize, dictionary } = {
     dictionary: {
       day: "day",
       hour: "hour",
       minute: "minute",
     } as DateTimeDict,
-    pluralizer: basicPluralizer,
+    pluralize: basicPluralizer,
     ...options,
   };
   const now = DateTime.now();
@@ -479,5 +478,7 @@ export function getCountDown(
 
   const entry = dictionary[finalUnit];
   if (!entry) throw new Error(`Dictionary missing entry for ${finalUnit}`);
-  return options?.short ? `${finalNumber}${entry[0]}` : pluralizer(entry, finalNumber);
+  return options?.short
+    ? `${finalNumber}${entry[0]}`
+    : `${finalNumber} ${pluralize(entry, finalNumber)}`;
 }
