@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.0.0](https://github.com/umatch-oficial/utils/compare/v5.1.0...v6.0.0) (2023-04-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **string:** basicPluralizer() no longer prepends the quantity in the output.
+
+### Features
+
+* **string:** remove quantity from output of basicPluralizer() ([51acf96](https://github.com/umatch-oficial/utils/commit/51acf96ca12994a8dbf43f68eb67806edc606973))
+
 ## [5.1.0](https://github.com/umatch-oficial/utils/compare/v5.0.0...v5.1.0) (2023-04-05)
 
 
