@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.1.0](https://github.com/umatch-oficial/utils/compare/v6.0.0...v6.1.0) (2023-04-11)
+
+
+### Features
+
+* **types:** add PickByType ([8ae64f0](https://github.com/umatch-oficial/utils/commit/8ae64f01f97941be25ce7241c5b8346bbee17c76))
+
 ## [6.0.0](https://github.com/umatch-oficial/utils/compare/v5.1.0...v6.0.0) (2023-04-06)
 
 
