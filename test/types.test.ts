@@ -1,6 +1,6 @@
 // noinspection JSUnusedLocalSymbols
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
+import type {
   Brand,
   Equals,
   ExtendValues,
@@ -8,6 +8,7 @@ import {
   NestedPaths,
   OneOrArray,
   Payload,
+  PickByType,
   TransformValuesByKey,
   TupleToUnion,
   TypeFromPath,
@@ -69,6 +70,14 @@ test("Payload", () => {
   const a: Payload = { a: 1, b: "1", c: true };
   // @ts-expect-error
   const b: Payload = { a: 1, b: "1", c: true, d: new Date() };
+});
+
+test("PickByType", () => {
+  type A = { a: boolean; b: number; c: string; d: number };
+
+  const a: PickByType<A, number> = { b: 1, d: 2 };
+  // @ts-expect-error
+  const b: PickByType<A, boolean> = { a: 1 };
 });
 
 test("TupleToUnion", () => {

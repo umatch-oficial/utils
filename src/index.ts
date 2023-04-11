@@ -34,7 +34,7 @@ export type Flatten<Y extends unknown[], Acc extends unknown[] = []> = Y extends
   ? Flatten<T, [...Acc, H]>
   : Acc;
 /**
- * changes the type of value to B for keys in A
+ * Changes the type of value to B for keys in A
  */
 export type TransformValuesByKey<T, A extends keyof T, B> = {
   [K in keyof T]: K extends A ? (T[K] extends undefined ? B | undefined : B) : T[K];
@@ -49,6 +49,13 @@ export type TransformValues<T, A, B> = {
  * Changes the type of values matching A to A | B
  */
 export type ExtendValues<T, A, B> = TransformValues<T, A, A | B>;
+/**
+ * From T, pick a set of properties whose values are of some type.
+ */
+// https://stackoverflow.com/questions/46583883/typescript-pick-properties-with-a-defined-type
+export type PickByType<T, Value> = {
+  [K in keyof T as T[K] extends Value | undefined ? K : never]: T[K];
+};
 /**
  * Groups objects in an array by the value of a property.
  */
