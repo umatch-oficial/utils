@@ -277,6 +277,10 @@ export function isJSObject(obj: any): obj is Dictionary {
   return proto.hasOwnProperty("isPrototypeOf");
 }
 
+export function isNullOrUndefined(obj: any): obj is null | undefined {
+  return obj === null || obj === undefined;
+}
+
 export function isNumber(obj: unknown): obj is number {
   return typeof obj === "number";
 }
