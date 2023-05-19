@@ -7,7 +7,6 @@ import {
   ValueOf,
   isArray,
   isJSObject,
-  isNumber,
   isString,
   Merge,
 } from "../index";
@@ -436,6 +435,9 @@ export function rename(
  * @example
  * // returns { a: { b: [2,3,5] } }
  * setDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]', 5)
+ *
+ * @throws if some object in the path is not an array nor a plain JS object.
+ * @throws if some object in the path is an array, but the next key is not a number.
  */
 export function setDeepProperty(
   obj: Dictionary | unknown[],
@@ -447,19 +449,24 @@ export function setDeepProperty(
   // bracket notation -> dot notation
   str = str.replace(/\[(\w+)]/, sep + "$1");
 
-  str.split(sep).reduce<Dictionary>((prev, key, i, array) => {
-    if (i === array.length - 1) {
-      prev[key] = value;
-    } else if (!prev[key]) {
-      if (isNumber(key)) {
-        // the code cannot know whether the key was meant to index an object or an array,
-        // therefore it cannot fill the empty spot automatically.
-        throw new Error("Undefined behavior when key is a number and path is not found");
+  str.split(sep).reduce<unknown>((element, key, i, paths) => {
+    if (isArray(element) || isJSObject(element)) {
+      if (isArray(element) && isNaN(Number(key))) {
+        throw new Error("Cannot index array with string");
       }
-
-      prev[key] = {};
+      if (i === paths.length - 1) {
+        // end of the path - set the value
+        (element as Dictionary)[key] = value;
+      } else {
+        // return the next element or an empty object
+        const next = (element as Dictionary)[key];
+        return next === undefined ? {} : next;
+      }
+    } else {
+      throw new Error(
+        "Cannot index element that is neither an array, nor a plain JS object",
+      );
     }
-    return prev[key] as Dictionary;
   }, obj as Dictionary);
   return obj;
 }
