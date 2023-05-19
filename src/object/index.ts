@@ -438,7 +438,7 @@ export function rename(
  * setDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]', 5)
  */
 export function setDeepProperty(
-  obj: Dictionary,
+  obj: Dictionary | unknown[],
   str: string,
   value: any,
   sep = ".",
@@ -460,7 +460,7 @@ export function setDeepProperty(
       prev[key] = {};
     }
     return prev[key] as Dictionary;
-  }, obj);
+  }, obj as Dictionary);
   return obj;
 }
 
