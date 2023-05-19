@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.2.0](https://github.com/umatch-oficial/utils/compare/v6.1.0...v6.2.0) (2023-05-19)
+
+
+### Features
+
+* **index:** add isNullOrUndefined() ([0667251](https://github.com/umatch-oficial/utils/commit/0667251970f42202e62f0ddd83c801e5f4b14e8c))
+* **object:** change setDeepProperty() behavior and handle errors ([e1995f5](https://github.com/umatch-oficial/utils/commit/e1995f5cb735dfee7263341cace6a71cad410908))
+
+
+### Bug Fixes
+
+* **object:** allow unknown[] in the first parameter of getDeepProperty() ([20e4a9c](https://github.com/umatch-oficial/utils/commit/20e4a9c61507fd0e6958ddc5328fa906746c2a25))
+* **object:** allow unknown[] in the first parameter of setDeepProperty() ([8b3d134](https://github.com/umatch-oficial/utils/commit/8b3d13409fb785719cf5a70a6d7e1e510d6b51c4))
+
 ## [6.1.0](https://github.com/umatch-oficial/utils/compare/v6.0.0...v6.1.0) (2023-04-11)
 
 
