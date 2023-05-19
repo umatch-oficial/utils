@@ -168,7 +168,7 @@ export function extract(obj: Dictionary, options: ExtractOptions): Dictionary {
  * getDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]')
  */
 export function getDeepProperty(
-  obj: Dictionary,
+  obj: Dictionary | unknown[],
   str: string,
   sep = ".",
 ): unknown | undefined {
