@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.2.1](https://github.com/umatch-oficial/utils/compare/v6.2.0...v6.2.1) (2023-05-22)
+
+
+### Bug Fixes
+
+* **object:** stop throwing an error if element is not an array nor a plain JS object ([b8b56e4](https://github.com/umatch-oficial/utils/commit/b8b56e4b3d5366ab1bf7d6af5a622944c1474dfc))
+
 ## [6.2.0](https://github.com/umatch-oficial/utils/compare/v6.1.0...v6.2.0) (2023-05-19)
 
 
