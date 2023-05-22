@@ -457,9 +457,12 @@ export function setDeepProperty(
       // end of the path - set the value
       (element as Dictionary)[key] = value;
     } else {
-      // return the next element or an empty object
+      // return the next element
       const next = (element as Dictionary)[key];
-      return next === undefined ? {} : next;
+      if (next === undefined) {
+        (element as Dictionary)[key] = {};
+      }
+      return (element as Dictionary)[key];
     }
   }, obj as Dictionary);
   return obj;

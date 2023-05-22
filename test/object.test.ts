@@ -70,12 +70,10 @@ describe.each([
     "concat",
     { a: [{ b: 1 }, { c: 2 }] },
   ],
-] as const)("merge()", (name, a, b, strategy, output) => {
-  test(name, () => {
+] as const)("merge()", (desc, a, b, strategy, output) => {
+  test(desc, () => {
     if (typeof output === "string") {
-      expect(() => {
-        merge(a, b, strategy);
-      }).toThrow(output);
+      expect(() => merge(a, b, strategy)).toThrow(output);
     } else {
       expect(merge(a, b, strategy)).toEqual(output);
     }
@@ -91,9 +89,9 @@ describe.each([
     { c: 3, d: 4 },
   ],
   ["filter values", { values: (val: number) => val > 3 }, { d: 4 }, { a: 1, b: 2, c: 3 }],
-])("remove()", (path, mapper, original, picked) => {
+])("remove()", (desc, mapper, original, picked) => {
   const obj = { a: 1, b: 2, c: 3, d: 4 };
-  test(path, () => {
+  test(desc, () => {
     // @ts-ignore
     const output = remove(obj, mapper);
     expect(obj).toEqual(original);
@@ -112,15 +110,14 @@ describe.each([
 });
 
 describe.each([
-  ["a", 5, { a: 5 }],
-  ["b", 5, { a: { b: [1, { c: 2 }] }, b: 5 }],
-  ["a.b", 5, { a: { b: 5 } }],
-  ["a.b[0]", 5, { a: { b: [5, { c: 2 }] } }],
-  ["a.b[1]", 5, { a: { b: [1, 5] } }],
-  ["a.b[1].c", 5, { a: { b: [1, { c: 5 }] } }],
-])("setDeepProperty()", (path, value, output) => {
+  ["overwrite first level key", "a", 5, { a: 5 }],
+  ["write first level key", "b", 5, { a: { b: [1, { c: 2 }] }, b: 5 }],
+  ["write deep key", "b.a", 5, { a: { b: [1, { c: 2 }] }, b: { a: 5 } }],
+  ["overwrite deep key", "a.b", 5, { a: { b: 5 } }],
+  ["overwrite element of array", "a.b[1]", 5, { a: { b: [1, 5] } }],
+])("setDeepProperty()", (desc, path, value, output) => {
   const obj = { a: { b: [1, { c: 2 }] } };
-  test(path, () => {
+  test(desc, () => {
     expect(setDeepProperty(obj, path, value)).toEqual(output);
   });
 });
