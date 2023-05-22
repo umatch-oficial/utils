@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.2.2](https://github.com/umatch-oficial/utils/compare/v6.2.1...v6.2.2) (2023-05-22)
+
+
+### Bug Fixes
+
+* **object:** restore behavior of setDeepProperty() in deep paths with undefined values ([94ed7a1](https://github.com/umatch-oficial/utils/commit/94ed7a12259623eaab35386c9c5d22bd7be5d66b))
+
 ## [6.2.1](https://github.com/umatch-oficial/utils/compare/v6.2.0...v6.2.1) (2023-05-22)
 
 
