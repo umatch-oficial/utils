@@ -450,22 +450,16 @@ export function setDeepProperty(
   str = str.replace(/\[(\w+)]/, sep + "$1");
 
   str.split(sep).reduce<unknown>((element, key, i, paths) => {
-    if (isArray(element) || isJSObject(element)) {
-      if (isArray(element) && isNaN(Number(key))) {
-        throw new Error("Cannot index array with string");
-      }
-      if (i === paths.length - 1) {
-        // end of the path - set the value
-        (element as Dictionary)[key] = value;
-      } else {
-        // return the next element or an empty object
-        const next = (element as Dictionary)[key];
-        return next === undefined ? {} : next;
-      }
+    if (isArray(element) && isNaN(Number(key))) {
+      throw new Error("Cannot index array with string");
+    }
+    if (i === paths.length - 1) {
+      // end of the path - set the value
+      (element as Dictionary)[key] = value;
     } else {
-      throw new Error(
-        "Cannot index element that is neither an array, nor a plain JS object",
-      );
+      // return the next element or an empty object
+      const next = (element as Dictionary)[key];
+      return next === undefined ? {} : next;
     }
   }, obj as Dictionary);
   return obj;
