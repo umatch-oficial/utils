@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.3.0](https://github.com/umatch-oficial/utils/compare/v6.2.2...v6.3.0) (2023-05-30)
+
+
+### Features
+
+* **array:** improve return type of groupBy() when input is generic ([2207c74](https://github.com/umatch-oficial/utils/commit/2207c745b2e4d672025610bef242f06958728922))
+
 ## [6.2.2](https://github.com/umatch-oficial/utils/compare/v6.2.1...v6.2.2) (2023-05-22)
 
 
