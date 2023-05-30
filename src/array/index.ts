@@ -148,7 +148,7 @@ export function findLastIndex<T extends readonly unknown[]>(
 export function groupBy<
   T extends readonly Dictionary[] | unknown,
   Key extends PropertyKey,
->(array: T, key: Key): T extends readonly Dictionary[] ? GroupBy<T, Key> : Dictionary;
+>(array: T, key: Key): T extends readonly Dictionary[] ? GroupBy<T, Key> : Dictionary<T>;
 export function groupBy<T extends readonly Dictionary[]>(array: T, key: keyof T[number]) {
   return array.reduce((partial: { [_: string]: T[number][] }, element: T[number]) => {
     const keyVal = element[key];
