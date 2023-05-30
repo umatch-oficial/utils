@@ -1,4 +1,5 @@
 import {
+  basicPluralizer,
   formatStr,
   formatTime,
   join,
@@ -14,6 +15,20 @@ import {
   snakeCase,
   titleCase,
 } from "../src/string";
+
+describe.each([
+  ["person", undefined, undefined, "persons"],
+  ["person", 0, undefined, "persons"],
+  ["person", 1, undefined, "person"],
+  ["person", 2, undefined, "persons"],
+  ["person", 2, "people", "people"],
+])("basicPluralizer()", (word, quantity, plural, res) => {
+  test(`basicPluralizer('${word}'${quantity ? `, ${quantity}` : ""}${
+    plural ? `, '${plural}'` : ""
+  }) = ${res}`, () => {
+    expect(basicPluralizer(word, quantity, plural)).toBe(res);
+  });
+});
 
 test("formatStr()", () => {
   expect(

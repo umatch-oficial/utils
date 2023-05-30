@@ -11,8 +11,8 @@ type ChalkColor = typeof ForegroundColor;
 export type Pluralizer = (word: string, quantity?: number) => string;
 
 /**
- * Adds 's' to the end of the word if *quantity* is undefined, 0 or
- * greater than 1.
+ * Pluralizes the word if *quantity* is undefined, 0 or
+ * greater than 1. Uses the given plural or adds an 's' to the end.
  *
  * @example
  * // returns 'developers'
@@ -22,10 +22,14 @@ export type Pluralizer = (word: string, quantity?: number) => string;
  * // returns 'developers'
  * basicPluralizer('developer', 2)
  */
-export function basicPluralizer(word: string, quantity?: number): string {
-  return quantity === undefined || quantity === 0 || Math.abs(quantity) > 1
-    ? `${word}s`
-    : word;
+export function basicPluralizer(
+  word: string,
+  quantity?: number,
+  plural?: string,
+): string {
+  const shouldPluralize =
+    quantity === undefined || quantity === 0 || Math.abs(quantity) > 1;
+  return shouldPluralize ? plural ?? `${word}s` : word;
 }
 
 /**
