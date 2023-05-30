@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.4.0](https://github.com/umatch-oficial/utils/compare/v6.3.0...v6.4.0) (2023-05-30)
+
+
+### Features
+
+* **string:** allow a custom plural in basicPluralizer ([b32b565](https://github.com/umatch-oficial/utils/commit/b32b5657206e3fa9e0bf0b45bdd3da05eabcf46c))
+
 ## [6.3.0](https://github.com/umatch-oficial/utils/compare/v6.2.2...v6.3.0) (2023-05-30)
 
 
