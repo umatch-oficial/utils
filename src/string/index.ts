@@ -8,7 +8,7 @@ import { divmod } from "../math";
 import type { DateTimeUnit } from "luxon";
 
 type ChalkColor = typeof ForegroundColor;
-export type Pluralizer = (word: string, quantity?: number) => string;
+export type Pluralizer = (word: string, quantity?: number, plural?: string) => string;
 
 /**
  * Pluralizes the word if *quantity* is undefined, 0 or
