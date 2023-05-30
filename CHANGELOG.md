@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.4.1](https://github.com/umatch-oficial/utils/compare/v6.4.0...v6.4.1) (2023-05-30)
+
+
+### Bug Fixes
+
+* **string:** add new argument to Pluralizer type ([5b6f336](https://github.com/umatch-oficial/utils/commit/5b6f3366e82b6165f1bf017aff55fec021efe74d))
+
 ## [6.4.0](https://github.com/umatch-oficial/utils/compare/v6.3.0...v6.4.0) (2023-05-30)
 
 
