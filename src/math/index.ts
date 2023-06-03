@@ -154,3 +154,10 @@ export function splitInChunks<T extends readonly unknown[]>(
   }
   return chunks;
 }
+
+/**
+ * Returns the sum of the elements in the array.
+ */
+export function sum(array: number[]): number {
+  return array.reduce((total, value) => total + value);
+}

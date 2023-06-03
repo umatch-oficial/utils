@@ -11,6 +11,7 @@ import {
   range,
   round,
   splitInChunks,
+  sum,
 } from "../src/math";
 
 test("average", () => {
@@ -71,7 +72,7 @@ test("pickWeighted()", () => {
     counts.set(option, (counts.get(option) ?? 0) + 1);
   }
 
-  const totalWeight = options.reduce((sum, option) => sum + option.weight, 0);
+  const totalWeight = options.reduce((total, option) => total + option.weight, 0);
   counts.forEach((count, option) => {
     const expectedProportion =
       options.find((o) => o.option === option)!.weight / totalWeight;
@@ -151,4 +152,8 @@ test("splitInChunks", () => {
     [7, 8],
     [9, 10],
   ]);
+});
+
+test("sum", () => {
+  expect(sum([1, 2, 3])).toEqual(6);
 });
