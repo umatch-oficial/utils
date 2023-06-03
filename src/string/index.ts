@@ -93,7 +93,7 @@ export function formatStr(
  * @param options
  * @param [options.dictionary] Words to substitute. Default: english words
  * @param [options.parts] The number of parts to include in the output. Default: 2
- * @param [options.pluralize] A pluralizer function. Default: adds 's' to the end the word
+ * @param [options.pluralizer] A pluralizer function. Default: adds 's' to the end the word
  */
 export function formatTime(
   time: {
