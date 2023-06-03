@@ -15,11 +15,14 @@ import {
 } from "../src/array";
 
 test("cartesian()", () => {
-  expect(
-    cartesian(["a"] as const, [1, 2] as const)
-      .map((a) => a.join(""))
-      .sort(),
-  ).toEqual(["a1", "a2"].sort());
+  expect(cartesian(["a", "b"] as const, [1, 2] as const, [true]).sort()).toEqual(
+    [
+      ["a", 1, true],
+      ["a", 2, true],
+      ["b", 1, true],
+      ["b", 2, true],
+    ].sort(),
+  );
 });
 
 describe.each([

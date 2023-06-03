@@ -25,11 +25,18 @@ export function cartesian<Y extends readonly (readonly unknown[])[]>(
   ...arrays: Y
 ): Cartesian<Y>;
 export function cartesian(...arrays: any[]): any[][] {
-  return arrays.reduce((finalArray, currentArray) =>
-    finalArray.flatMap((element: any) =>
-      currentArray.map((newElement: any) => [element, newElement].flat()),
-    ),
-  );
+  const numberOfElements = arrays.reduce((acc, array) => acc * array.length, 1);
+  const result = [];
+  for (let i = 0; i < numberOfElements; i += 1) {
+    const element = [];
+    let j = i;
+    for (const array of arrays) {
+      element.push(array[j % array.length]);
+      j = Math.floor(j / array.length);
+    }
+    result.push(element);
+  }
+  return result;
 }
 
 /**
