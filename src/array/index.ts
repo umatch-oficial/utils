@@ -3,8 +3,8 @@ import bluebird from "bluebird";
 import { range } from "../math";
 
 import type {
-  DeepArray,
   DeepNode,
+  DeepObject,
   Dictionary,
   Equals,
   GroupBy,
@@ -42,12 +42,10 @@ export function cartesian(...arrays: any[]): any[][] {
 /**
  * Array.flat() for n-dimensional arrays.
  */
-export function deepFlat<T>(array: DeepNode<T>[]): Exclude<DeepNode<T>, DeepArray<T>>[] {
-  const final: Exclude<DeepNode<T>, DeepArray<T>>[] = [];
+export function deepFlat<T>(array: DeepNode<T>[]): (DeepObject<T> | T)[] {
+  const final: (DeepObject<T> | T)[] = [];
   array.forEach((element) =>
-    element instanceof Array
-      ? final.push(...deepFlat(element))
-      : final.push(element as Exclude<DeepNode<T>, DeepArray<T>>),
+    element instanceof Array ? final.push(...deepFlat(element)) : final.push(element),
   );
   return final;
 }
