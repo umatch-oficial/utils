@@ -5,6 +5,7 @@ import stringLength from "string-length";
 import { zip } from "../array";
 import { divmod } from "../math";
 
+import type { Primitive } from "../index";
 import type { DateTimeUnit } from "luxon";
 
 type ChalkColor = typeof ForegroundColor;
@@ -295,6 +296,62 @@ export function parseBool(str: string | null | undefined, def?: boolean): boolea
       if (def === undefined) throw new Error(`Failed to parse bool from string '${str}'`);
       return def;
   }
+}
+
+/**
+ * Returns a function name and its arguments from a string.
+ */
+export function parseFunctionCall(str: string): [string, Primitive[]] {
+  const match = str.match(/([\w_]+)\(/);
+  if (!match) return ["", []];
+
+  const name = match[1];
+  const { index } = match;
+  const args = [];
+  let openQuote = false;
+  let functionClosed = false;
+  for (const char of str.slice(index)) {
+    if (char === "(" || char === ",") {
+      if (openQuote) {
+        args[args.length - 1] += char;
+      } else {
+        args.push("");
+      }
+    } else if (char === ")") {
+      if (openQuote) {
+        args[args.length - 1] += char;
+      } else {
+        functionClosed = true;
+        break;
+      }
+    } else if (char === '"') {
+      openQuote = !openQuote;
+      args[args.length - 1] += char;
+    } else {
+      args[args.length - 1] += char;
+    }
+  }
+  if (!functionClosed) return ["", []];
+
+  const parsedArgs = args.map((arg) => {
+    try {
+      return parseNumber(arg);
+    } catch (e) {}
+    try {
+      return parseBool(arg);
+    } catch (e) {}
+
+    const parsed = arg.replace(/"/g, "'");
+    let needsToBeQuoted = false;
+    for (const char of parsed) {
+      if ([",", " ", "("].includes(char)) {
+        needsToBeQuoted = true;
+        break;
+      }
+    }
+    return needsToBeQuoted ? parsed : parsed.replace(/'/g, "");
+  });
+  return [name, parsedArgs];
 }
 
 /**

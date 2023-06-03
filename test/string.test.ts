@@ -9,6 +9,7 @@ import {
   joinUrl,
   pad,
   parseBool,
+  parseFunctionCall,
   parseNumber,
   removeAccents,
   rsplit,
@@ -150,6 +151,17 @@ describe.each([
 test("parseNumber() ", () => {
   expect(parseNumber(" 3 ")).toBe(3);
   expect(() => parseNumber("3e")).toThrow("Failed to parse");
+});
+
+describe.each([
+  ["func(", ["", []]],
+  ["func(2)", ["func", [2]]],
+  ["func('a', false,\"true\")", ["func", ["a", false, "true"]]],
+])("parseFunctionCall()", (input, output) => {
+  const [name, args] = output;
+  test(`parseFunctionCall('${input}') = [${name}, [${JSON.stringify(args)}]]`, () => {
+    expect(parseFunctionCall(input)).toEqual(output);
+  });
 });
 
 test(`removeAccents()`, () => {
