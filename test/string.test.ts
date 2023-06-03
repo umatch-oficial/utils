@@ -1,7 +1,10 @@
+import { DateTime } from "luxon";
+
 import {
   basicPluralizer,
   formatStr,
   formatTime,
+  getCountDown,
   join,
   joinUrl,
   pad,
@@ -74,6 +77,27 @@ describe.each([
 ])("formatTime()", (desc, time, opts, res) => {
   test(desc, () => {
     expect(formatTime(time, opts)).toBe(res);
+  });
+});
+
+describe.each([
+  [{}, "3 days"],
+  [{ short: true }, "3d"],
+  [
+    {
+      unitsThresholds: [
+        ["day", 5],
+        ["hour", 1],
+      ] as const,
+    },
+    "72 hours",
+  ],
+])("getCountDown()", (opts, res) => {
+  const date = DateTime.now().plus({ days: 3, seconds: 1 });
+  test(`getCountDown(date${
+    Object.keys(opts).length ? ", " + JSON.stringify(opts) : ""
+  }) = '${res}'`, () => {
+    expect(getCountDown(date, opts)).toBe(res);
   });
 });
 
