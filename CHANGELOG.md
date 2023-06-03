@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0](https://github.com/umatch-oficial/utils/compare/v6.4.1...v7.0.0) (2023-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **string:** string.parse() has been renamed to string.removeAccents()
+
+### Features
+
+* **array:** add subtract - alias for diff() ([1d63dda](https://github.com/umatch-oficial/utils/commit/1d63dda984718f73aafd9726ab9933814a6d5cd3))
+* **array:** improve return type of diff with readonly inputs ([7d75b41](https://github.com/umatch-oficial/utils/commit/7d75b41533215b6cff49b25e5a493f66dc962ecb))
+* **index:** add IsReadonly ([3858524](https://github.com/umatch-oficial/utils/commit/3858524168a5a635d5a847e8a0d76e8c6b712227))
+* **index:** add Subtract ([c666439](https://github.com/umatch-oficial/utils/commit/c66643923c48bf601aa8637a03104456d19cfc70))
+* **index:** allow readonly array in Flatten ([ff7ff17](https://github.com/umatch-oficial/utils/commit/ff7ff176fe95a6087980fc61756c4775758d7463))
+* **math:** add sum() ([d72057e](https://github.com/umatch-oficial/utils/commit/d72057e379472b631f667e307c225a76bfd627d0))
+* **string:** add parseFunctionCall() ([9c013f7](https://github.com/umatch-oficial/utils/commit/9c013f74b175b1fe24d790c5fae4d6566691a27b))
+* **string:** add parseNumber() ([a594a2d](https://github.com/umatch-oficial/utils/commit/a594a2d0204534116d10e71d6d91ccc6301e4567))
+* **string:** rename function parse to removeAccents ([5776c2c](https://github.com/umatch-oficial/utils/commit/5776c2cd91f851d92fcfa636c49612acb9d5a25d))
+* **string:** stop validating unitsThresholds in getCountDown() and validate dictionary for all units, not just the final one ([b17b0af](https://github.com/umatch-oficial/utils/commit/b17b0af0d23ed22dad5f7b0488e34408e3f9dea4))
+
 ## [6.4.1](https://github.com/umatch-oficial/utils/compare/v6.4.0...v6.4.1) (2023-05-30)
 
 
