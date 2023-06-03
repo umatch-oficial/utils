@@ -5,8 +5,8 @@ import {
   join,
   joinUrl,
   pad,
-  parse,
   parseBool,
+  removeAccents,
   rsplit,
   split,
   camelCase,
@@ -111,8 +111,8 @@ describe.each([
   });
 });
 
-test(`parse()`, () => {
-  expect(parse("àèìòùâêîôûäëïöüÿáéíóúýçãõ")).toBe("aeiouaeiouaeiouyaeiouycao");
+test(`removeAccents()`, () => {
+  expect(removeAccents("àèìòùâêîôûäëïöüÿáéíóúýçãõ")).toBe("aeiouaeiouaeiouyaeiouycao");
 });
 
 describe.each([

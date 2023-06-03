@@ -196,13 +196,6 @@ export function pad(left: string, right: string, length: number) {
 }
 
 /**
- * Replaces accented letters with their standard versions.
- */
-export function parse(str: string): string {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-
-/**
  * Parses a boolean from the string.
  *
  * @throws if it fails to parse and there is no default value.
@@ -221,6 +214,13 @@ export function parseBool(str: string | null | undefined, def?: boolean): boolea
       if (def === undefined) throw new Error(`Failed to parse bool from string '${str}'`);
       return def;
   }
+}
+
+/**
+ * Replaces accented letters with their standard versions.
+ */
+export function removeAccents(str: string): string {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 /**
