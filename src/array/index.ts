@@ -9,6 +9,8 @@ import type {
   Equals,
   GroupBy,
   Primitive,
+  Subtract,
+  IsReadonly,
 } from "../index";
 
 type Cartesian<
@@ -54,17 +56,24 @@ export function deepFlat<T>(array: DeepNode<T>[]): (DeepObject<T> | T)[] {
  * Returns a copy of the first array, without including elements
  * present in the second array.
  */
-export function diff<X extends string | number, Y extends string | number>(
-  a: X[],
-  b: (X | Y)[],
-): X[] {
+export function diff<
+  X extends readonly (string | number)[],
+  Y extends readonly (string | number)[],
+>(
+  a: X,
+  b: Y,
+): IsReadonly<X> extends true ? (IsReadonly<Y> extends true ? Subtract<X, Y> : Y) : X;
+export function diff(
+  a: (string | number)[],
+  b: (string | number)[],
+): (string | number)[] {
   const result = [];
-  const map = {} as { [_ in X | Y]: boolean };
+  const map = {} as { [_: string | number]: boolean };
   for (let i = 0; i < b.length; i += 1) {
     map[b[i]] = true;
   }
   for (let i = 0; i < a.length; i += 1) {
-    if (!(a[i] in map)) result.push(a[i] as X);
+    if (!(a[i] in map)) result.push(a[i]);
   }
   return result;
 }
