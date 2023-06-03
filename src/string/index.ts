@@ -1,4 +1,4 @@
-import chalk, { Chalk, ForegroundColor } from "chalk";
+import chalk, { type Chalk, type ForegroundColor } from "chalk";
 import { DateTime } from "luxon";
 import stringLength from "string-length";
 
@@ -295,6 +295,22 @@ export function parseBool(str: string | null | undefined, def?: boolean): boolea
       if (def === undefined) throw new Error(`Failed to parse bool from string '${str}'`);
       return def;
   }
+}
+
+/**
+ * Parses a number from the string.
+ *
+ * @throws if it fails to parse and there is no default value.
+ */
+export function parseNumber(str: string | null | undefined, def?: number): number {
+  const parsed = Number(str);
+  if (Number.isNaN(parsed)) {
+    if (def === undefined) {
+      throw new Error(`Failed to parse number from string '${str}'`);
+    }
+    return def;
+  }
+  return parsed;
 }
 
 /**

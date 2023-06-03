@@ -9,6 +9,7 @@ import {
   joinUrl,
   pad,
   parseBool,
+  parseNumber,
   removeAccents,
   rsplit,
   split,
@@ -144,6 +145,11 @@ describe.each([
   test(`parseBool('${input}') = ${output}`, () => {
     expect(parseBool(input)).toBe(output);
   });
+});
+
+test("parseNumber() ", () => {
+  expect(parseNumber(" 3 ")).toBe(3);
+  expect(() => parseNumber("3e")).toThrow("Failed to parse");
 });
 
 test(`removeAccents()`, () => {
