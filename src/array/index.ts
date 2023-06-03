@@ -46,7 +46,8 @@ export function deepFlat<T>(array: DeepNode<T>[]): Exclude<DeepNode<T>, DeepArra
 }
 
 /**
- * Returns the elements of a that are not present in b.
+ * Returns a copy of the first array, without including elements
+ * present in the second array.
  */
 export function diff<X extends string | number, Y extends string | number>(
   a: X[],
