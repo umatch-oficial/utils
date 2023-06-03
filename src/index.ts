@@ -3,6 +3,10 @@ export type Dictionary<T = unknown> = { [_: string]: T };
 export type Payload = Dictionary<Primitive>;
 
 export type OneOrArray<T = unknown> = T | T[];
+/**
+ * Returns whether an array is readonly.
+ */
+export type IsReadonly<T extends readonly unknown[]> = T extends unknown[] ? false : true;
 
 /**
  * A possibly deeply nested value.
