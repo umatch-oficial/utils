@@ -31,12 +31,10 @@ export type DeepValueOf<T> = T extends Dictionary ? DeepValueOf<T[keyof T]> : T;
 /**
  * Flattens a tuple recursively.
  */
-export type Flatten<Y extends unknown[], Acc extends unknown[] = []> = Y extends [
-  (infer H)[],
-  ...infer T,
-]
-  ? Flatten<T, [...Acc, H]>
-  : Acc;
+export type Flatten<
+  Y extends readonly unknown[],
+  Acc extends unknown[] = [],
+> = Y extends readonly [readonly (infer H)[], ...infer T] ? Flatten<T, [...Acc, H]> : Acc;
 /**
  * Changes the type of value to B for keys in A
  */
