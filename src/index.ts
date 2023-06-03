@@ -94,6 +94,18 @@ export type Merge<A extends Dictionary, B extends Dictionary> = {
     ? A[K] // K is keyof A, but not B
     : never; // impossible
 };
+/**
+ * Excludes types present in B from A.
+ */
+export type Subtract<
+  A extends readonly unknown[],
+  B extends readonly unknown[],
+  Acc extends any[] = [],
+> = A extends readonly [infer H, ...infer T]
+  ? H extends B[number]
+    ? Subtract<T, B, Acc>
+    : Subtract<T, B, [...Acc, H]>
+  : Acc;
 
 /**
  * Brands an object.
