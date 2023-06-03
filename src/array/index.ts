@@ -78,6 +78,9 @@ export function diff(
   return result;
 }
 
+const subtract = diff;
+export { subtract };
+
 /**
  * Same as Array.filter, but accepts async callbacks.
  *
