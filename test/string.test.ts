@@ -155,8 +155,12 @@ test("parseNumber() ", () => {
 
 describe.each([
   ["func(", ["", []]],
-  ["func(2)", ["func", [2]]],
-  ["func('a', false,\"true\")", ["func", ["a", false, "true"]]],
+  ["func(a, ( )", ["", []]],
+  [" func( a ) ", ["func", ["a"]]],
+  ["func(a) a", ["", []]],
+  ["a func(a)", ["", []]],
+  ["func(0, false)", ["func", [0, false]]],
+  ["func('\"true\"')", ["func", ['"true"']]],
 ])("parseFunctionCall()", (input, output) => {
   const [name, args] = output;
   test(`parseFunctionCall('${input}') = [${name}, [${JSON.stringify(args)}]]`, () => {

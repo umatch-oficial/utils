@@ -299,36 +299,55 @@ export function parseBool(str: string | null | undefined, def?: boolean): boolea
 }
 
 /**
- * Returns a function name and its arguments from a string.
+ * Returns a function name and its arguments from a string. Boolean
+ * and number arguments are parsed. If the function call is not
+ * valid, returns an empty string and an empty array.
+ *
+ * @example
+ * parseFunctionCall("foo(1, "bar", true)") // returns ["foo", [1, "bar", true]]
+ * parseFunctionCall("foo(1, "bar", true) + 1") // returns ["", []]
  */
 export function parseFunctionCall(str: string): [string, Primitive[]] {
-  const match = str.match(/([\w_]+)\(/);
+  str = str.trim();
+
+  const match = str.match(/^([\w_]+)\(/);
   if (!match) return ["", []];
 
   const name = match[1];
   const { index } = match;
   const args = [];
-  let openQuote = false;
+  let current = "";
+  let openQuote;
   let functionClosed = false;
-  for (const char of str.slice(index)) {
-    if (char === "(" || char === ",") {
-      if (openQuote) {
-        args[args.length - 1] += char;
-      } else {
-        args.push("");
+  str = str.slice(index! + match[0].length);
+  for (const char of str) {
+    if (openQuote) {
+      current += char;
+      if ((char === '"' || char === "'") && char === openQuote) {
+        openQuote = null;
       }
-    } else if (char === ")") {
-      if (openQuote) {
-        args[args.length - 1] += char;
-      } else {
-        functionClosed = true;
-        break;
-      }
-    } else if (char === '"') {
-      openQuote = !openQuote;
-      args[args.length - 1] += char;
     } else {
-      args[args.length - 1] += char;
+      if (char === ",") {
+        args.push(current);
+        current = "";
+      } else if (char === "(") {
+        return ["", []];
+      } else if (char === ")") {
+        if (char === str.charAt(str.length - 1)) {
+          args.push(current);
+          functionClosed = true;
+          break;
+        } else {
+          return ["", []];
+        }
+      } else if (char === '"' || char === "'") {
+        current += char;
+        openQuote = char;
+      } else {
+        if (char !== " ") {
+          current += char;
+        }
+      }
     }
   }
   if (!functionClosed) return ["", []];
@@ -341,15 +360,7 @@ export function parseFunctionCall(str: string): [string, Primitive[]] {
       return parseBool(arg);
     } catch (e) {}
 
-    const parsed = arg.replace(/"/g, "'");
-    let needsToBeQuoted = false;
-    for (const char of parsed) {
-      if ([",", " ", "("].includes(char)) {
-        needsToBeQuoted = true;
-        break;
-      }
-    }
-    return needsToBeQuoted ? parsed : parsed.replace(/'/g, "");
+    return arg.replace(/^['"]/, "").replace(/['"]$/, "");
   });
   return [name, parsedArgs];
 }
