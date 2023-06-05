@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.1](https://github.com/umatch-oficial/utils/compare/v7.0.0...v7.0.1) (2023-06-05)
+
+
+### Bug Fixes
+
+* **string:** improve parseFunctionCall() ([1fdddf9](https://github.com/umatch-oficial/utils/commit/1fdddf95e5221c8bfceb3be17b2c44e73e674980))
+
 ## [7.0.0](https://github.com/umatch-oficial/utils/compare/v6.4.1...v7.0.0) (2023-06-03)
 
 
