@@ -71,92 +71,133 @@ export function deepMap<T extends DeepArray>(x: T, f: (val: any) => any): T {
 }
 
 /**
- * Filters the keys of an object, which contain the prefix/suffix.
- * If OnlyAffix is true, then subtracts the prefix/suffix part
- * of those keys.
- */
-type PickAffixes<
-  Obj extends Dictionary,
-  Prefix extends string | null,
-  Suffix extends string | null,
-  OnlyAffix extends boolean,
-> = Prefix extends string
-  ? {
-      [Key in keyof Obj]: Key extends `${Prefix}${infer T}`
-        ? OnlyAffix extends true
-          ? T
-          : Key
-        : never;
-    }
-  : {
-      [Key in keyof Obj]: Key extends `${infer T}${Suffix}`
-        ? OnlyAffix extends true
-          ? T
-          : Key
-        : never;
-    };
-type RenameKeys<
-  Obj extends Dictionary,
-  Prefix extends string | null,
-  Suffix extends string | null,
-> = Prefix extends string
-  ? {
-      [Key in PickAffixes<Obj, Prefix, null, true>[keyof Obj]]: Obj[`${Prefix}${Key}`];
-    }
-  : {
-      [Key in PickAffixes<Obj, null, Suffix, true>[keyof Obj]]: Obj[`${Key}${Suffix}`];
-    };
-type ExtractOptions = ({ prefix: string } | { suffix: string } | { custom: RegExp }) & {
-  rename?: boolean;
-};
-
-/**
  * Dynamic version of pick.
  *
- * Receives either a prefix, a suffix or a custom regular expression.
- * Picks keys from the original object, which match the matcher, then
- * renames the keys to remove the matcher.
- *
- * For TypeScript to function correctly, use the function as follows:
- * ```
- * const newObj = extract(obj, { prefix: 'user_' } as const);
- * ```
+ * Returns two copies of an object: one containing only the keys that
+ * match the rule, and another one containing the keys that don't
+ * match. The rule can be a pattern (prefix, suffix or custom regular
+ * expression), a list of keys, a function to filter keys, or a
+ * function to filter values. If the rule is a prefix or suffix,
+ * removes the prefix/suffix from the matched keys (can be turned off
+ * with the rename option).
  */
 export function extract<
-  R extends Dictionary,
-  Obj extends Dictionary,
-  Options extends ExtractOptions,
+  const T extends Dictionary | unknown,
+  const Options extends
+    | { custom: RegExp }
+    | { keys: (key: string) => boolean }
+    | { keys: string[] }
+    | { values: (value: any) => boolean }
+    | { prefix: string; rename?: boolean }
+    | { suffix: string; rename?: boolean },
+  K extends keyof T,
 >(
-  obj: Obj,
+  obj: T,
   options: Options,
-): Options extends { prefix: string }
-  ? Options extends { rename: false }
-    ? Pick<Obj, PickAffixes<Obj, Options["prefix"], null, false>[keyof Obj]>
-    : RenameKeys<Obj, Options["prefix"], null>
-  : Options extends { suffix: string }
-  ? Options extends { rename: false }
-    ? Pick<Obj, PickAffixes<Obj, null, Options["suffix"], false>[keyof Obj]>
-    : RenameKeys<Obj, null, Options["suffix"]>
-  : R;
-export function extract(obj: Dictionary, options: ExtractOptions): Dictionary {
-  let pat: RegExp;
-  if (hasOwnProperty(options, "prefix")) {
-    pat = new RegExp(`^${options.prefix}(.+)`);
-  } else if (hasOwnProperty(options, "suffix")) {
-    pat = new RegExp(`(.+)${options.suffix}$`);
-  } else if (hasOwnProperty(options, "custom")) {
-    pat = options.custom as RegExp;
+): T extends Dictionary
+  ? Options extends { prefix: infer Prefix }
+    ? [
+        {
+          [Key in keyof T as Key extends `${Prefix & string}${infer Rest}`
+            ? Options extends { rename: false }
+              ? Key
+              : Rest
+            : never]: T[Key];
+        },
+        {
+          [Key in keyof T as Key extends `${Prefix & string}${infer _}`
+            ? never
+            : Key]: T[Key];
+        },
+      ]
+    : Options extends { suffix: infer Suffix }
+    ? [
+        {
+          [Key in keyof T as Key extends `${infer Rest}${Suffix & string}`
+            ? Options extends { rename: false }
+              ? Key
+              : Rest
+            : never]: T[Key];
+        },
+        {
+          [Key in keyof T as Key extends `${infer _}${Suffix & string}`
+            ? never
+            : Key]: T[Key];
+        },
+      ]
+    : Options extends { keys: K[] }
+    ? [Pick<T, K>, Omit<T, K>]
+    : Options extends { keys: (key: string) => boolean }
+    ? [{ [_: string]: ValueOf<T> }, { [_: string]: ValueOf<T> }]
+    : Options extends { values: (value: unknown) => boolean }
+    ? [{ [_: string]: ValueOf<T> }, { [_: string]: ValueOf<T> }]
+    : never
+  : Dictionary;
+export function extract(
+  obj: Dictionary,
+  options: {
+    prefix?: string;
+    suffix?: string;
+    custom?: RegExp;
+    keys?: ((key: string) => boolean) | string[];
+    values?: (value: unknown) => boolean;
+    rename?: boolean;
+  },
+): [Dictionary, Dictionary] {
+  const opts = { rename: true, ...options };
+  const { prefix, suffix, custom, keys, values } = opts;
+
+  let pat = null;
+  let keysFilter = null;
+  let valuesFilter = null;
+  if (prefix) {
+    pat = new RegExp(`^${prefix}(.+)`);
+  } else if (suffix) {
+    pat = new RegExp(`(.+)${suffix}$`);
+  } else if (custom) {
+    pat = custom;
+  } else if (keys) {
+    if (Array.isArray(keys)) {
+      keysFilter = (key: string) => keys.includes(key);
+    } else {
+      keysFilter = keys;
+    }
+  } else if (values) {
+    valuesFilter = values;
+  } else {
+    throw new Error("Missing rule");
   }
 
-  const keys = Object.keys(obj).filter((k) => k.match(pat));
-  const newObj = pick(obj, keys);
-  if (options.rename ?? true) {
-    return rename(newObj, (key) => {
-      const groups = key.match(pat);
-      return groups ? groups[1] : "";
-    });
+  const clone = structuredClone(obj);
+  const pickedEntries = [];
+  const notPickedEntries = [];
+  for (const [key, value] of Object.entries(clone)) {
+    if (pat) {
+      const match = key.match(pat);
+      if (match) {
+        if (opts.rename) {
+          pickedEntries.push([match[1], value]);
+        } else {
+          pickedEntries.push([key, value]);
+        }
+      } else {
+        notPickedEntries.push([key, value]);
+      }
+    } else if (keysFilter) {
+      if (keysFilter(key)) {
+        pickedEntries.push([key, value]);
+      } else {
+        notPickedEntries.push([key, value]);
+      }
+    } else if (valuesFilter) {
+      if (valuesFilter(value)) {
+        pickedEntries.push([key, value]);
+      } else {
+        notPickedEntries.push([key, value]);
+      }
+    }
   }
-  return newObj;
+  return [Object.fromEntries(pickedEntries), Object.fromEntries(notPickedEntries)];
 }
 
 /**
@@ -295,111 +336,6 @@ export function pick<T extends Dictionary, K extends keyof T>(
 ): Pick<T, K> {
   const clone = structuredClone(obj);
   return Object.fromEntries(keys.map((key) => [key, clone[key]])) as Pick<T, K>;
-}
-
-/**
- * Removes properties from an object, whose keys are in the array.
- * Returns a new object with the removed entries.
- *
- * @example
- * const data = { apple: 1, banana: 2 };
- * const { apple } = remove(data, ["apple"]);
- * // 1, { banana: 2 }
- * console.log(apple, obj);
- */
-export function remove<T extends Dictionary, K extends keyof T>(
-  obj: T,
-  keys: K[],
-): Pick<T, K>;
-/**
- * Removes properties from an object, whose keys pass the filter.
- * Returns a new object with the removed entries.
- *
- * @example
- * const data = { apple: 1, banana: 2 };
- * const { banana } = remove(data, { keys: (key) => key[0] === 'b' });
- * // 2, { apple: 1 }
- * console.log(banana, obj);
- */
-export function remove<T extends Dictionary>(
-  obj: T,
-  filter: { keys: (key: PropertyKey) => boolean },
-): { [_: string]: ValueOf<T> };
-/**
- * Removes properties from an object, whose values fail the filter.
- * Returns a new object with the removed entries.
- *
- * @example
- * const data = { apple: 1, banana: 2 };
- * const { apple } = remove(data, { values: (v) => v > 1 });
- * // 1, { banana: 2 }
- * console.log(apple, data);
- */
-export function remove<T extends Dictionary>(
-  obj: T,
-  filter: { values: (value: unknown) => boolean },
-): { [_: string]: ValueOf<T> };
-/**
- * Removes properties from an object by list of keys or filter function.
- * Returns a new object with the removed entries.
- *
- * @example
- * const data = { apple: 1, banana: 2 };
- * const { apple } = remove(data, ["apple"]);
- * // 1, { banana: 2 }
- * console.log(apple, obj);
- */
-export function remove<T extends Dictionary, K extends keyof T>(
-  obj: T,
-  mapper:
-    | K[]
-    | { keys: (key: PropertyKey) => boolean }
-    | { values: (value: unknown) => boolean },
-): { [_: string]: ValueOf<T> };
-/**
- * Removes properties from an object by list of keys or filter function.
- * Returns a new object with the removed entries.
- *
- * @example
- * const data = { apple: 1, banana: 2 };
- * const { apple } = remove(data, ["apple"]);
- * // 1, { banana: 2 }
- * console.log(apple, obj);
- */
-export function remove(
-  obj: Dictionary,
-  mapper:
-    | PropertyKey[]
-    | { keys?: (key: PropertyKey) => boolean; values?: (value: unknown) => boolean },
-): Dictionary {
-  let keysToRemove: PropertyKey[];
-  if (isArray(mapper)) {
-    keysToRemove = mapper;
-  } else {
-    const { keys: keysFilter, values: valuesFilter } = mapper;
-    if (keysFilter && valuesFilter) {
-      throw new Error(
-        "Undefined behavior when both 'keys' and 'values' are present in mapper",
-      );
-    } else if (keysFilter) {
-      keysToRemove = Object.keys(obj).filter(keysFilter);
-    } else if (valuesFilter) {
-      keysToRemove = Object.entries(obj)
-        .filter(([_, v]) => !valuesFilter(v))
-        .map(([k]) => k);
-    } else {
-      throw new Error("Missing 'keys' or 'values' filter function in mapper");
-    }
-  }
-  return Object.fromEntries(
-    Object.entries(obj).filter(([key]) => {
-      if (keysToRemove.includes(key)) {
-        delete obj[key];
-        return true;
-      }
-      return false;
-    }),
-  );
 }
 
 /**
