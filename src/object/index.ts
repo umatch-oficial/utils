@@ -46,12 +46,12 @@ export function apply(
   func: (val: unknown) => unknown,
   keys?: PropertyKey[],
 ): Dictionary {
-  return Object.fromEntries(
-    Object.entries(obj).map(([key, val]) => [
-      key,
-      keys ? (keys.includes(key) ? func(val) : val) : func(val),
-    ]),
-  );
+  const clone = structuredClone(obj);
+  for (const key in clone) {
+    if (keys && !keys.includes(key)) continue;
+    clone[key] = func(clone[key]);
+  }
+  return clone;
 }
 
 /**
@@ -279,9 +279,8 @@ export function omit<T extends Dictionary, K extends keyof T>(
   obj: T,
   keys: K[],
 ): Omit<T, K> {
-  return Object.fromEntries(
-    Object.entries(obj).filter(([key]) => !keys.includes(key as K)),
-  ) as Omit<T, K>;
+  const toKeep = Object.keys(obj).filter((key) => keys.includes(key as K));
+  return pick(obj, toKeep) as Omit<T, K>;
 }
 
 /**
@@ -294,7 +293,8 @@ export function pick<T extends Dictionary, K extends keyof T>(
   obj: T,
   keys: K[],
 ): Pick<T, K> {
-  return Object.fromEntries(keys.map((key) => [key, obj[key]])) as Pick<T, K>;
+  const clone = structuredClone(obj);
+  return Object.fromEntries(keys.map((key) => [key, clone[key]])) as Pick<T, K>;
 }
 
 /**
@@ -418,7 +418,8 @@ export function rename(
   obj: Dictionary,
   mapper: Dictionary<string> | ((a: string) => string),
 ): Dictionary {
-  const entries = Object.entries(obj);
+  const clone = structuredClone(obj);
+  const entries = Object.entries(clone);
   if (typeof mapper === "function") {
     return Object.fromEntries(entries.map(([key, val]) => [mapper(key), val]));
   }
