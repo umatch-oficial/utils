@@ -1,6 +1,7 @@
 import {
   apply,
   deepMap,
+  extract,
   getDeepProperty,
   merge,
   rename,
@@ -24,6 +25,26 @@ test("deepMap()", () => {
   const obj = [[[1, 2, 3, 4, 5], 3, 4, 5, [1, 2, [3, 4, 5]]]];
   const output = [[[0, 0, 1, 1, 1], 1, 1, 1, [0, 0, [1, 1, 1]]]];
   expect(deepMap(obj, (num) => (num > 2 ? 1 : 0))).toEqual(output);
+});
+
+describe.each([
+  [{ prefix: "foo_" }, [{ a: 1, b: 2 }, { bar_a: 3 }]],
+  [{ prefix: "foo_", rename: false }, [{ foo_a: 1, foo_b: 2 }, { bar_a: 3 }]],
+  [{ suffix: "_a" }, [{ foo: 1, bar: 3 }, { foo_b: 2 }]],
+  [{ keys: ["foo_a", "foo_b"] }, [{ foo_a: 1, foo_b: 2 }, { bar_a: 3 }]],
+  [
+    { keys: (key: string) => !!key.match("foo_") },
+    [{ foo_a: 1, foo_b: 2 }, { bar_a: 3 }],
+  ],
+  [{ values: (value: number) => value > 1 }, [{ foo_b: 2, bar_a: 3 }, { foo_a: 1 }]],
+])("extract", (options, output) => {
+  const obj = { foo_a: 1, foo_b: 2, bar_a: 3 };
+  test(`extract({ foo_a: 1, foo_b: 2, bar_a: 3 }, ${stringify(options).replace(
+    /\s+/g,
+    " ",
+  )}) = ${JSON.stringify(output)}`, () => {
+    expect(extract(obj, options)).toEqual(output);
+  });
 });
 
 describe.each([
