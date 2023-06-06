@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.0.0](https://github.com/umatch-oficial/utils/compare/v7.0.1...v8.0.0) (2023-06-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **object:** object.remove() has been removed. object.extract() now returns a tuple with 2 copies, one containing the matched keys and one containing the non-matched keys.
+
+### Features
+
+* **object:** merge remove() into extract() and return tuple of matching and non-matching copies ([c383b53](https://github.com/umatch-oficial/utils/commit/c383b534fabb84176d9028a4e0142f5b4d8018f8))
+* **object:** use structuredClone in apply(), omit(), pick() and rename() ([54e7f1f](https://github.com/umatch-oficial/utils/commit/54e7f1f07a2dbae1a2e2f917586acb8ea2986240))
+
+
+### Bug Fixes
+
+* **math:** fix randomNumber() when min is 0 ([43cc47a](https://github.com/umatch-oficial/utils/commit/43cc47a30fa1e5f163af028b8ca0b909b0f4ba8e))
+
 ## [7.0.1](https://github.com/umatch-oficial/utils/compare/v7.0.0...v7.0.1) (2023-06-05)
 
 
