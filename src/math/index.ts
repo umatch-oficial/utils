@@ -110,7 +110,9 @@ export function randomNormal(min: number, max: number, mean?: number): number {
  */
 export function randomNumber(min?: number, max?: number): number {
   const roll = random();
-  return min ? (max ? min + (max - min) * roll : min * roll) : roll;
+  if (min === undefined) return roll;
+  if (max === undefined) return min * roll;
+  return min + (max - min) * roll;
 }
 
 /**
