@@ -13,27 +13,20 @@ import {
 import { camelCase, snakeCase } from "../string";
 
 /**
- * Copies an object and applies func to all entries.
+ * Copies an object and applies a function to all values. If keys is
+ * specified, only applies the function to those keys.
  */
-function apply<T extends Dictionary, R>(
+function apply<T extends Dictionary, R, Keys extends readonly (keyof T)[]>(
   obj: T,
   func: (val: ValueOf<T>) => R,
-): { [K in keyof T]: R };
-/**
- * Copies an object and applies func to entries with given keys.
- */
-function apply<T extends Dictionary, R, Keys extends keyof T>(
-  obj: T,
-  func: (val: ValueOf<T>) => R,
-  keys?: Keys[],
-): { [K in keyof T]: K extends Keys ? R : T[K] };
-/**
- * Copies an object and applies func to all entries.
- */
+  keys?: Keys,
+): Keys extends undefined
+  ? { [K in keyof T]: R }
+  : { [K in keyof T]: K extends Keys[number] ? R : T[K] };
 function apply(
   obj: Dictionary,
   func: (val: unknown) => unknown,
-  keys?: PropertyKey[],
+  keys?: readonly PropertyKey[],
 ): Dictionary {
   const clone = deepClone(obj);
   for (const key in clone) {
