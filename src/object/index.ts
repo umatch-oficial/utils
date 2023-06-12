@@ -216,7 +216,7 @@ function getDeepProperty(
 /**
  * Checks if a prop exists in obj and tells TypeScript that obj has this prop.
  */
-function hasOwnProperty<X extends Dictionary, Y extends PropertyKey>(
+function hasOwnProperty<X extends {}, Y extends PropertyKey>(
   obj: X,
   prop: Y,
 ): obj is X & Record<Y, unknown> {
@@ -237,7 +237,7 @@ function isDeepEmpty(obj: Dictionary<any>): boolean {
   if (typeof obj === "object") {
     return Object.values(obj).reduce((empty, value) => empty && isDeepEmpty(value), true);
   }
-  return true;
+  return obj === "";
 }
 
 function _handleMergeStrategy(
@@ -317,7 +317,7 @@ function merge(
  * Copies an object excluding some keys.
  */
 function omit<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
-  const toKeep = Object.keys(obj).filter((key) => keys.includes(key as K));
+  const toKeep = Object.keys(obj).filter((key) => !keys.includes(key as K));
   return pick(obj, toKeep) as Omit<T, K>;
 }
 
