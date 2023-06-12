@@ -274,6 +274,10 @@ function isDate(obj: unknown): obj is Date {
   return obj?.constructor?.name === "Date";
 }
 
+function isFunction(obj: unknown): obj is Function {
+  return typeof obj === "function";
+}
+
 /**
  * Returns whether obj is a native JS object.
  */
@@ -304,6 +308,10 @@ function isNumber(obj: unknown): obj is number {
  */
 function isObject(obj: any): obj is Dictionary {
   return Object.prototype.toString.call(obj) === "[object Object]";
+}
+
+function isPrimitive(obj: unknown): obj is Primitive {
+  return ["boolean", "number", "string"].includes(typeof obj);
 }
 
 function isString(obj: unknown): obj is string {
