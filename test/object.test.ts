@@ -19,12 +19,12 @@ import {
 describe.each([
   ["all keys", undefined, { a: false, b: true }],
   ["some keys", ["a"], { a: false, b: 2 }],
-])("apply()", (desc, keys, output) => {
+] as const)("apply()", (desc, keys, output) => {
   const obj = { a: 1, b: 2 };
   const func = (num: number) => num > 1;
   test(desc, () => {
-    // @ts-ignore
     expect(apply(obj, func, keys)).toEqual(output);
+    expect(obj).toEqual({ a: 1, b: 2 });
   });
 });
 
@@ -69,6 +69,7 @@ describe.each([
     " ",
   )}) = ${JSON.stringify(output)}`, () => {
     expect(extract(obj, options)).toEqual(output);
+    expect(obj).toEqual({ foo_a: 1, foo_b: 2, bar_a: 3 });
   });
 });
 
@@ -142,7 +143,9 @@ test("omit()", () => {
 });
 
 test("pick()", () => {
-  expect(pick({ a: 1, b: 2, c: 3 }, ["a", "b"])).toEqual({ a: 1, b: 2 });
+  const obj = { a: 1, b: 2, c: 3 };
+  expect(pick(obj, ["a", "b"])).toEqual({ a: 1, b: 2 });
+  expect(obj).toEqual({ a: 1, b: 2, c: 3 });
 });
 
 describe.each([
@@ -152,6 +155,7 @@ describe.each([
   const obj = { a: 1, b: 2, c: 3 };
   test(path, () => {
     expect(rename(obj, mapper)).toEqual(output);
+    expect(obj).toEqual({ a: 1, b: 2, c: 3 });
   });
 });
 

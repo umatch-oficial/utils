@@ -35,7 +35,7 @@ function apply(
   func: (val: unknown) => unknown,
   keys?: PropertyKey[],
 ): Dictionary {
-  const clone = structuredClone(obj);
+  const clone = deepClone(obj);
   for (const key in clone) {
     if (keys && !keys.includes(key)) continue;
     clone[key] = func(clone[key]);
@@ -179,7 +179,7 @@ function extract(
     throw new Error("Missing rule");
   }
 
-  const clone = structuredClone(obj);
+  const clone = deepClone(obj);
   const pickedEntries = [];
   const notPickedEntries = [];
   for (const [key, value] of Object.entries(clone)) {
@@ -350,7 +350,7 @@ function omit<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Omit<
  * not present, it receives the value of undefined.
  */
 function pick<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
-  const clone = structuredClone(obj);
+  const clone = deepClone(obj);
   return Object.fromEntries(keys.map((key) => [key, clone[key]])) as Pick<T, K>;
 }
 
