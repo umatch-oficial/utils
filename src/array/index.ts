@@ -91,7 +91,7 @@ async function filter<T extends readonly unknown[]>(
       async (element) => ((await callback(element)) ? element : []),
       { concurrency },
     )
-  ).flat() as T[];
+  ).flat();
 }
 
 /**
@@ -101,11 +101,12 @@ async function filter<T extends readonly unknown[]>(
 function filterByObject<O extends Dictionary, T extends Dictionary>(
   array: O[],
   template: T,
-): (O & T)[] {
+): (O & T)[];
+function filterByObject(array: Dictionary[], template: Dictionary): Dictionary[] {
   const entries = Object.entries(template);
   return array.filter((element) =>
     entries.reduce((prev, [key, value]) => prev && element[key] === value, true),
-  ) as (O & T)[];
+  );
 }
 
 /**

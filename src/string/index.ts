@@ -435,19 +435,21 @@ function split(str: string | null | undefined, n = -1, sep = ","): string[] {
 /**
  * Converts the first character of a string to uppercase.
  */
-function capitalize<S extends string>(str: S): Capitalize<S> {
+function capitalize<S extends string>(str: S): Capitalize<S>;
+function capitalize(str: string): string {
   const [first, ...rest] = str;
-  if (!first) return "" as Capitalize<S>;
-  return (first.toUpperCase() + rest.join("")) as Capitalize<S>;
+  if (!first) return "";
+  return first.toUpperCase() + rest.join("");
 }
 
 /**
  * Converts the first character of a string to lowercase.
  */
-function uncapitalize<S extends string>(str: S): Uncapitalize<S> {
+function uncapitalize<S extends string>(str: S): Uncapitalize<S>;
+function uncapitalize(str: string): string {
   const [first, ...rest] = str;
-  if (!first) return "" as Uncapitalize<S>;
-  return (first.toLowerCase() + rest.join("")) as Uncapitalize<S>;
+  if (!first) return "";
+  return first.toLowerCase() + rest.join("");
 }
 
 // the following approach is an approximation, there is no exact solution

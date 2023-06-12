@@ -39,8 +39,8 @@ function apply(
 /**
  * Renames all keys to camel case.
  */
-function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKeys<T> {
-  // @ts-ignore
+function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKeys<T>;
+function camelCaseKeys(obj: Dictionary): Dictionary {
   return rename(obj, camelCase);
 }
 
@@ -331,9 +331,10 @@ function merge(
 /**
  * Copies an object excluding some keys.
  */
-function omit<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
-  const toKeep = Object.keys(obj).filter((key) => !keys.includes(key as K));
-  return pick(obj, toKeep) as Omit<T, K>;
+function omit<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Omit<T, K>;
+function omit(obj: Dictionary, keys: string[]): Dictionary {
+  const toKeep = Object.keys(obj).filter((key) => !keys.includes(key));
+  return pick(obj, toKeep);
 }
 
 /**
@@ -342,9 +343,10 @@ function omit<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Omit<
  * Makes a copy of an object using only the given keys. If an entry is
  * not present, it receives the value of undefined.
  */
-function pick<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
+function pick<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Pick<T, K>;
+function pick(obj: Dictionary, keys: string[]): Dictionary {
   const clone = deepClone(obj);
-  return Object.fromEntries(keys.map((key) => [key, clone[key]])) as Pick<T, K>;
+  return Object.fromEntries(keys.map((key) => [key, clone[key]]));
 }
 
 /**
@@ -416,8 +418,9 @@ function setDeepProperty(
 /**
  * Renames all keys to snake case.
  */
-function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKeys<T> {
-  return rename(obj, snakeCase) as CamelToSnakeCaseKeys<T>;
+function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKeys<T>;
+function snakeCaseKeys(obj: Dictionary): Dictionary {
+  return rename(obj, snakeCase);
 }
 
 /**
