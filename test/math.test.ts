@@ -12,17 +12,18 @@ import {
   round,
   splitInChunks,
   sum,
+  sumProperty,
 } from "../src/math";
 
-test("average", () => {
+test("average()", () => {
   expect(average([1, 2, 3, 4])).toBeCloseTo(2.5);
 });
 
-test("diff", () => {
+test("diff()", () => {
   expect(diff([1, 3, 7, 10])).toEqual([2, 4, 3]);
 });
 
-test("divmod", () => {
+test("divmod()", () => {
   expect(divmod(69, 42)).toEqual([1, 27]);
 });
 
@@ -36,11 +37,11 @@ describe.each([
   });
 });
 
-test("nthElement", () => {
+test("nthElement()", () => {
   expect(nthElement([0, 1, 2, 3], 5)).toBe(1);
 });
 
-test("pickRandom", () => {
+test("pickRandom()", () => {
   const arr = ["a", "b", "c", "d"];
   const n = 100_000;
 
@@ -50,10 +51,9 @@ test("pickRandom", () => {
     counts.set(element, (counts.get(element) ?? 0) + 1);
   }
 
-  const expectedProportion = 1 / arr.length;
   counts.forEach((count) => {
     const proportion = count / n;
-    expect(proportion).toBeCloseTo(expectedProportion);
+    expect(proportion).toBeCloseTo(1 / 4);
   });
 });
 
@@ -144,7 +144,7 @@ describe.each([
   });
 });
 
-test("splitInChunks", () => {
+test("splitInChunks()", () => {
   expect(splitInChunks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2)).toEqual([
     [1, 2],
     [3, 4],
@@ -154,6 +154,10 @@ test("splitInChunks", () => {
   ]);
 });
 
-test("sum", () => {
+test("sum()", () => {
   expect(sum([1, 2, 3])).toEqual(6);
+});
+
+test("sumProperty()", () => {
+  expect(sumProperty([{ a: 1 }, { a: 2 }, { a: 3 }], "a")).toEqual(6);
 });

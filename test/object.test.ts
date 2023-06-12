@@ -1,11 +1,17 @@
 import {
   apply,
+  camelCaseKeys,
   deepMap,
   extract,
   getDeepProperty,
+  hasOwnProperty,
+  isDeepEmpty,
   merge,
+  omit,
+  pick,
   rename,
   setDeepProperty,
+  snakeCaseKeys,
   stringify,
 } from "../src/object";
 
@@ -19,6 +25,10 @@ describe.each([
     // @ts-ignore
     expect(apply(obj, func, keys)).toEqual(output);
   });
+});
+
+test("camelCaseKeys()", () => {
+  expect(camelCaseKeys({ foo_bar: 1, bar_foo: 2 })).toEqual({ fooBar: 1, barFoo: 2 });
 });
 
 test("deepMap()", () => {
@@ -37,7 +47,7 @@ describe.each([
     [{ foo_a: 1, foo_b: 2 }, { bar_a: 3 }],
   ],
   [{ values: (value: number) => value > 1 }, [{ foo_b: 2, bar_a: 3 }, { foo_a: 1 }]],
-])("extract", (options, output) => {
+])("extract()", (options, output) => {
   const obj = { foo_a: 1, foo_b: 2, bar_a: 3 };
   test(`extract({ foo_a: 1, foo_b: 2, bar_a: 3 }, ${stringify(options).replace(
     /\s+/g,
@@ -60,6 +70,21 @@ describe.each([
   });
 });
 
+test("hasOwnProperty()", () => {
+  const obj1: number | unknown[] = 3;
+  const obj2: number | unknown[] = [1, 2, 3];
+  expect(hasOwnProperty(obj1, "length")).toBeFalsy();
+  if (hasOwnProperty(obj2, "length")) {
+    expect(obj2.length).toBe(3);
+  }
+});
+
+test("isDeepEmpty()", () => {
+  expect(isDeepEmpty({ a: {} })).toBeTruthy();
+  expect(isDeepEmpty({ a: { b: 1 } })).toBeFalsy();
+  expect(isDeepEmpty({ a: { b: [], c: "" } })).toBeTruthy();
+});
+
 describe.each([
   ["flat", { a: 1, b: [2, 3] }, { b: 2, c: 3 }, undefined, { a: 1, b: 2, c: 3 }],
   [
@@ -68,13 +93,6 @@ describe.each([
     { b: [4], c: 3 },
     "concat",
     { a: 1, b: [2, 3, 4], c: 3 },
-  ],
-  [
-    "flat concat error",
-    { a: 1, b: [2, 3] },
-    { b: 4 },
-    "concat",
-    "Cannot concat array with number (field 'b')",
   ],
   [
     "deep",
@@ -92,12 +110,24 @@ describe.each([
   ],
 ] as const)("merge()", (desc, a, b, strategy, output) => {
   test(desc, () => {
-    if (typeof output === "string") {
-      expect(() => merge(a, b, strategy)).toThrow(output);
-    } else {
-      expect(merge(a, b, strategy)).toEqual(output);
-    }
+    expect(merge(a, b, strategy)).toEqual(output);
   });
+});
+
+test("merge() throws", () => {
+  expect(() => merge({ a: [2, 3] }, { a: 4 }, "concat")).toThrow(
+    "Cannot concat array with number (field 'a')",
+  );
+  // @ts-expect-error
+  expect(() => merge({ a: [2, 3] }, { a: 4 }, "foo")).toThrow("Unexpected strategy");
+});
+
+test("omit()", () => {
+  expect(omit({ a: 1, b: 2, c: 3 }, ["a", "b"])).toEqual({ c: 3 });
+});
+
+test("pick()", () => {
+  expect(pick({ a: 1, b: 2, c: 3 }, ["a", "b"])).toEqual({ a: 1, b: 2 });
 });
 
 describe.each([
@@ -121,6 +151,10 @@ describe.each([
   test(desc, () => {
     expect(setDeepProperty(obj, path, value)).toEqual(output);
   });
+});
+
+test("snakeCaseKeys()", () => {
+  expect(snakeCaseKeys({ fooBar: 1, barFoo: 2 })).toEqual({ foo_bar: 1, bar_foo: 2 });
 });
 
 describe.each([

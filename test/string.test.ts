@@ -2,6 +2,8 @@ import { DateTime } from "luxon";
 
 import {
   basicPluralizer,
+  capitalize,
+  center,
   formatStr,
   formatTime,
   getCountDown,
@@ -14,6 +16,7 @@ import {
   removeAccents,
   rsplit,
   split,
+  uncapitalize,
   camelCase,
   pascalCase,
   sentenceCase,
@@ -33,6 +36,15 @@ describe.each([
   }) = ${res}`, () => {
     expect(basicPluralizer(word, quantity, plural)).toBe(res);
   });
+});
+
+test("capitalize()", () => {
+  expect(capitalize("hello")).toBe("Hello");
+});
+
+test("center()", () => {
+  expect(center("hello", 11)).toBe("   hello   ");
+  expect(center("hello", 10, "*")).toBe("***hello**");
 });
 
 test("formatStr()", () => {
@@ -148,8 +160,15 @@ describe.each([
   });
 });
 
+test("parseBool() throws", () => {
+  expect(() => parseBool("")).toThrow("Failed to parse");
+});
+
 test("parseNumber() ", () => {
   expect(parseNumber(" 3 ")).toBe(3);
+});
+
+test("parseNumber() throws", () => {
   expect(() => parseNumber("3e")).toThrow("Failed to parse");
 });
 
@@ -194,6 +213,10 @@ describe.each([
   test(`split('${str}'${n ? ", " + n : ""}) = ${JSON.stringify(output)}`, () => {
     expect(split(str, n, ",")).toEqual(output);
   });
+});
+
+test("uncapitalize()", () => {
+  expect(uncapitalize("HELLO")).toBe("hELLO");
 });
 
 describe.each([

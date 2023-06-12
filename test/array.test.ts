@@ -1,17 +1,22 @@
 import {
   cartesian,
+  deepFlat,
   diff,
   filter,
   filterByObject,
   filterWithComplement,
+  findLastIndex,
   groupBy,
   hasSameElements,
   intersect,
   isSubset,
   permutations,
   remove,
+  shuffle,
+  sliceWithOverflow,
   trim,
   uniques,
+  zip,
 } from "../src/array";
 
 test("cartesian()", () => {
@@ -23,6 +28,10 @@ test("cartesian()", () => {
       ["b", 2, true],
     ].sort(),
   );
+});
+
+test("deepFlat()", () => {
+  expect(deepFlat([1, [2, [3, [4, [5]]]]])).toEqual([1, 2, 3, 4, 5]);
 });
 
 describe.each([
@@ -64,6 +73,10 @@ describe.each([
     // @ts-ignore
     expect(filterWithComplement(array, predicate)).toEqual(output);
   });
+});
+
+test("findLastIndex()", () => {
+  expect(findLastIndex([1, 2, 2, 1], (x) => x === 2)).toEqual(2);
 });
 
 describe.each([
@@ -166,10 +179,45 @@ test("remove()", () => {
   expect(res).toEqual(["b", "c"]);
 });
 
+test("shuffle()", () => {
+  const arr = [1, 2, 3];
+  const n = 100_000;
+
+  const counts = new Map<string, number>();
+  for (let i = 0; i < n; i++) {
+    const shuffled = shuffle(arr);
+    const hash = JSON.stringify(shuffled);
+    counts.set(hash, (counts.get(hash) ?? 0) + 1);
+  }
+
+  counts.forEach((count) => {
+    const proportion = count / n;
+    expect(proportion).toBeCloseTo(1 / 6);
+  });
+});
+
+test("sliceWithOverflow()", () => {
+  expect(sliceWithOverflow([1, 2, 3], 2, 5)).toEqual([3, 1, 2]);
+});
+
 test("trim()", () => {
   expect(trim([null, "a", null, "c", null], Boolean)).toEqual(["a", null, "c"]);
 });
 
 test("uniques()", () => {
   expect(uniques(["a", "b", "a", "c"])).toEqual(["a", "b", "c"]);
+});
+
+test("zip()", () => {
+  expect(zip(["a", "b", "c"], [1, 2, 3])).toEqual([
+    ["a", 1],
+    ["b", 2],
+    ["c", 3],
+  ]);
+});
+
+test("zip() throws", () => {
+  expect(() => {
+    zip(["a", "b"], [1, 2, 3]);
+  }).toThrow("different lengths");
 });
