@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.2.0](https://github.com/umatch-oficial/utils/compare/v8.1.0...v8.2.0) (2023-06-12)
+
+
+### Features
+
+* **array:** add joinNonEmpty() ([9c6651d](https://github.com/umatch-oficial/utils/commit/9c6651d8dea28ed8bb92a5c13e4ef83d0d41a901))
+* **index:** add isFunction() and isPrimitive() ([91881ad](https://github.com/umatch-oficial/utils/commit/91881adb5f37ceb8dfbc118cefd3e51a2a7cc4ca))
+* **object:** add deepClone() ([93d8fb7](https://github.com/umatch-oficial/utils/commit/93d8fb7ef1e739a532b7398e22a0475cf9273c3a))
+* **object:** use deepClone() instead of structuredClone() ([22c6650](https://github.com/umatch-oficial/utils/commit/22c665058a89d6d82ea0f863a9f590206c528e12))
+
 ## [8.1.0](https://github.com/umatch-oficial/utils/compare/v8.0.0...v8.1.0) (2023-06-12)
 
 
