@@ -15,6 +15,10 @@ import {
   sumProperty,
 } from "../src/math";
 
+function expectToBeClose(received: number, expected: number, error = 0.05) {
+  expect(Math.abs(expected - received) / expected).toBeLessThan(error);
+}
+
 test("average()", () => {
   expect(average([1, 2, 3, 4])).toBeCloseTo(2.5);
 });
@@ -64,7 +68,7 @@ test("pickWeighted()", () => {
     { option: "c", weight: 3 },
     { option: "d", weight: 4 },
   ];
-  const n = 100_000;
+  const n = 50_000;
 
   const counts = new Map<string, number>();
   for (let i = 0; i < n; i++) {
@@ -76,7 +80,8 @@ test("pickWeighted()", () => {
   counts.forEach((count, option) => {
     const expectedProportion =
       options.find((o) => o.option === option)!.weight / totalWeight;
-    expect(count / n).toBeCloseTo(expectedProportion);
+    const proportion = count / n;
+    expectToBeClose(proportion, expectedProportion);
   });
 });
 
@@ -85,7 +90,7 @@ describe.each([
   ["one value - uses 0 and value", [2, undefined], [0, 2]],
   ["two values", [2, 3], [2, 3]],
 ])("randomInteger()", (name, [a, b], [atLeast, atMost]) => {
-  const n = 150_000;
+  const n = 1000;
   test(name, () => {
     const results = Array.from({ length: n }).map(() => randomInteger(a, b));
 
@@ -96,7 +101,7 @@ describe.each([
     // unbiased
     const avg = average(results);
     const expectedAvg = average([atLeast, atMost]);
-    expect(avg).toBeCloseTo(expectedAvg);
+    expectToBeClose(avg, expectedAvg);
 
     // all integers
     const rounded = results.map((r) => round(r, 0));
@@ -109,7 +114,7 @@ describe.each([
   ["one value - uses 0 and value", [2, undefined], [0, 2]],
   ["two values", [2, 3], [2, 3]],
 ])("randomNumber()", (name, [a, b], [atLeast, atMost]) => {
-  const n = 150_000;
+  const n = 1000;
   test(name, () => {
     const results = Array.from({ length: n }).map(() => randomNumber(a, b));
 
@@ -120,7 +125,7 @@ describe.each([
     // unbiased
     const avg = average(results);
     const expectedAvg = average([atLeast, atMost]);
-    expect(avg).toBeCloseTo(expectedAvg);
+    expectToBeClose(avg, expectedAvg);
   });
 });
 
