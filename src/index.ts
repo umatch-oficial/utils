@@ -29,12 +29,16 @@ type ValueOf<T> = T[keyof T];
  */
 type DeepValueOf<T> = T extends Dictionary ? DeepValueOf<T[keyof T]> : T;
 /**
- * Flattens a tuple recursively.
+ * Flattens a tuple.
  */
 type Flatten<
   Y extends readonly unknown[],
-  Acc extends unknown[] = [],
-> = Y extends readonly [readonly (infer H)[], ...infer T] ? Flatten<T, [...Acc, H]> : Acc;
+  Acc extends readonly unknown[] = [],
+> = Y extends readonly [infer H, ...infer T]
+  ? H extends readonly unknown[]
+    ? Flatten<T, readonly [...Acc, H[number]]>
+    : Flatten<T, readonly [...Acc, H]>
+  : Acc;
 /**
  * Changes the type of value to B for keys in A
  */
@@ -98,11 +102,11 @@ type Merge<A extends Dictionary, B extends Dictionary> = {
 type Subtract<
   A extends readonly unknown[],
   B extends readonly unknown[],
-  Acc extends any[] = [],
+  Acc extends readonly any[] = [],
 > = A extends readonly [infer H, ...infer T]
   ? H extends B[number]
     ? Subtract<T, B, Acc>
-    : Subtract<T, B, [...Acc, H]>
+    : Subtract<T, B, readonly [...Acc, H]>
   : Acc;
 
 /**
