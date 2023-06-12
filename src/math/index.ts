@@ -164,6 +164,16 @@ function sum(array: number[]): number {
   return array.reduce((total, value) => total + value);
 }
 
+/**
+ * Returns the sum of the given property of the elements in the array.
+ */
+function sumProperty<T extends { [key: string]: number }>(
+  array: T[],
+  property: keyof T,
+): number {
+  return array.reduce((total, element) => total + element[property], 0);
+}
+
 export {
   average,
   diff,
@@ -180,4 +190,5 @@ export {
   sampleNormal,
   splitInChunks,
   sum,
+  sumProperty,
 };
