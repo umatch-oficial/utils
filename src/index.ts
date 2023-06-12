@@ -1,67 +1,67 @@
-export type Primitive = string | number | boolean;
-export type Dictionary<T = unknown> = { [_: string]: T };
-export type Payload = Dictionary<Primitive>;
+type Primitive = string | number | boolean;
+type Dictionary<T = unknown> = { [_: string]: T };
+type Payload = Dictionary<Primitive>;
 
-export type OneOrArray<T = unknown> = T | T[];
+type OneOrArray<T = unknown> = T | T[];
 /**
  * Returns whether an array is readonly.
  */
-export type IsReadonly<T extends readonly unknown[]> = T extends unknown[] ? false : true;
+type IsReadonly<T extends readonly unknown[]> = T extends unknown[] ? false : true;
 
 /**
  * A possibly deeply nested value.
  */
-export type DeepNode<T = unknown> = T | DeepArray<T> | DeepObject<T>;
+type DeepNode<T = unknown> = T | DeepArray<T> | DeepObject<T>;
 /**
  * An array of possibly deeply nested values.
  */
-export type DeepArray<T = unknown> = DeepNode<T>[];
+type DeepArray<T = unknown> = DeepNode<T>[];
 /**
  * An object, whose values may be deeply nested.
  */
-export type DeepObject<T = unknown> = { [_: string]: DeepNode<T> };
+type DeepObject<T = unknown> = { [_: string]: DeepNode<T> };
 /**
  * Returns a union of the values of an object, similar to 'keyof'.
  */
-export type ValueOf<T> = T[keyof T];
+type ValueOf<T> = T[keyof T];
 /**
  * Returns a union of the values of a deeply nested object.
  */
-export type DeepValueOf<T> = T extends Dictionary ? DeepValueOf<T[keyof T]> : T;
+type DeepValueOf<T> = T extends Dictionary ? DeepValueOf<T[keyof T]> : T;
 /**
  * Flattens a tuple recursively.
  */
-export type Flatten<
+type Flatten<
   Y extends readonly unknown[],
   Acc extends unknown[] = [],
 > = Y extends readonly [readonly (infer H)[], ...infer T] ? Flatten<T, [...Acc, H]> : Acc;
 /**
  * Changes the type of value to B for keys in A
  */
-export type TransformValuesByKey<T, A extends keyof T, B> = {
+type TransformValuesByKey<T, A extends keyof T, B> = {
   [K in keyof T]: K extends A ? (T[K] extends undefined ? B | undefined : B) : T[K];
 };
 /**
  * Changes the type of values matching A to B
  */
-export type TransformValues<T, A, B> = {
+type TransformValues<T, A, B> = {
   [K in keyof T]: T[K] extends A ? B : T[K] extends A | undefined ? B | undefined : T[K];
 };
 /**
  * Changes the type of values matching A to A | B
  */
-export type ExtendValues<T, A, B> = TransformValues<T, A, A | B>;
+type ExtendValues<T, A, B> = TransformValues<T, A, A | B>;
 /**
  * From T, pick a set of properties whose values are of some type.
  */
 // https://stackoverflow.com/questions/46583883/typescript-pick-properties-with-a-defined-type
-export type PickByType<T, Value> = {
+type PickByType<T, Value> = {
   [K in keyof T as T[K] extends Value | undefined ? K : never]: T[K];
 };
 /**
  * Groups objects in an array by the value of a property.
  */
-export type GroupBy<
+type GroupBy<
   T extends readonly Dictionary[],
   Key extends PropertyKey,
 > = T extends readonly (infer D)[]
@@ -79,7 +79,7 @@ export type GroupBy<
 /**
  * Deep merges two dictionaries. Values from the right have higher priority.
  */
-export type Merge<A extends Dictionary, B extends Dictionary> = {
+type Merge<A extends Dictionary, B extends Dictionary> = {
   [K in keyof A | keyof B]: K extends keyof B
     ? K extends keyof A
       ? A[K] extends Dictionary
@@ -95,7 +95,7 @@ export type Merge<A extends Dictionary, B extends Dictionary> = {
 /**
  * Excludes types present in B from A.
  */
-export type Subtract<
+type Subtract<
   A extends readonly unknown[],
   B extends readonly unknown[],
   Acc extends any[] = [],
@@ -109,15 +109,13 @@ export type Subtract<
  * Brands an object.
  */
 // https://medium.com/@KevinBGreene/surviving-the-typescript-ecosystem-branding-and-type-tagging-6cf6e516523d
-export type Brand<T, B extends string> = T & { __brand: B };
+type Brand<T, B extends string> = T & { __brand: B };
 
 /**
  * Asserts two types are equal.
  */
 // https://github.com/Microsoft/TypeScript/issues/27024#issuecomment-421529650
-export type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
-  ? 1
-  : 2
+type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2
   ? true
   : false;
 
@@ -125,7 +123,7 @@ export type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T ext
  * Joins two strings or numbers unless either one is undefined.
  */
 // https://javascript.plainenglish.io/advanced-typescript-type-level-nested-object-paths-7f3d8901f29a
-export type Join<
+type Join<
   L extends PropertyKey | undefined = undefined,
   R extends PropertyKey | undefined = undefined,
   Sep extends string = ".",
@@ -139,7 +137,7 @@ export type Join<
 /**
  * Makes a Union between two types removing undefined.
  */
-export type Union<
+type Union<
   L extends unknown | undefined,
   R extends unknown | undefined,
 > = L extends undefined
@@ -153,7 +151,7 @@ export type Union<
  * Takes an object and returns a union of all the deep paths
  * to properties in it, using dot notation.
  */
-export type NestedPaths<
+type NestedPaths<
   O extends Dictionary | unknown,
   Base extends PropertyKey | undefined = undefined,
   Prev extends PropertyKey | undefined = undefined,
@@ -168,7 +166,7 @@ export type NestedPaths<
  * Takes an object and a path string that uses dot notation
  * and returns the type of the deep property at the path.
  */
-export type TypeFromPath<
+type TypeFromPath<
   O extends Dictionary | unknown,
   P extends string | unknown,
 > = P extends string
@@ -187,13 +185,13 @@ export type TypeFromPath<
  * Returns a union of the types in the tuple.
  */
 // https://medium.hexlabs.io/building-complex-types-in-typescript-804c973ce66f
-export type TupleToUnion<T> = T extends any[] ? T[number] : T;
-export type UnionToIntersection<T> = (
-  T extends never ? never : (arg: T) => void
-) extends (arg: infer I) => void
+type TupleToUnion<T> = T extends any[] ? T[number] : T;
+type UnionToIntersection<T> = (T extends never ? never : (arg: T) => void) extends (
+  arg: infer I,
+) => void
   ? I
   : never;
-export type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
+type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
   T extends never ? never : (arg: T) => T
 > extends (_: never) => infer W
   ? UnionToTuple<Exclude<T, W>, [W, ...Acc]>
@@ -202,7 +200,7 @@ export type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
 /**
  * Converts a string from snake to camel case.
  */
-export type SnakeToCamelCase<
+type SnakeToCamelCase<
   S extends string,
   Acc extends string = "",
 > = S extends `${infer H}_${infer T}`
@@ -230,7 +228,7 @@ Is the current letter uppercase?
 /**
  * Converts a string from camel to snake case.
  */
-export type CamelToSnakeCase<
+type CamelToSnakeCase<
   S extends string,
   Acc extends string | undefined = undefined,
   Buffer extends string | undefined = undefined,
@@ -254,32 +252,32 @@ export type CamelToSnakeCase<
 /**
  * Applies SnakeToCamelCase on the keys of an object.
  */
-export type SnakeToCamelCaseKeys<T extends Dictionary> = {
+type SnakeToCamelCaseKeys<T extends Dictionary> = {
   [K in keyof T as SnakeToCamelCase<K & string>]: T[K];
 };
 /**
  * Applies CamelToSnakeCase on the keys of an object.
  */
-export type CamelToSnakeCaseKeys<T extends Dictionary> = {
+type CamelToSnakeCaseKeys<T extends Dictionary> = {
   [K in keyof T as CamelToSnakeCase<K & string>]: T[K];
 };
 
-export function isArray(obj: unknown): obj is unknown[] {
+function isArray(obj: unknown): obj is unknown[] {
   return Array.isArray(obj);
 }
 
-export function isBoolean(obj: unknown): obj is boolean {
+function isBoolean(obj: unknown): obj is boolean {
   return typeof obj === "boolean";
 }
 
-export function isDate(obj: unknown): obj is Date {
+function isDate(obj: unknown): obj is Date {
   return obj?.constructor?.name === "Date";
 }
 
 /**
  * Returns whether obj is a native JS object.
  */
-export function isJSObject(obj: any): obj is Dictionary {
+function isJSObject(obj: any): obj is Dictionary {
   if (!isObject(obj)) return false;
   // if it has no constructor
   if (obj.constructor === undefined) return true;
@@ -291,11 +289,11 @@ export function isJSObject(obj: any): obj is Dictionary {
   return proto.hasOwnProperty("isPrototypeOf");
 }
 
-export function isNullOrUndefined(obj: any): obj is null | undefined {
+function isNullOrUndefined(obj: any): obj is null | undefined {
   return obj === null || obj === undefined;
 }
 
-export function isNumber(obj: unknown): obj is number {
+function isNumber(obj: unknown): obj is number {
   return typeof obj === "number";
 }
 
@@ -304,10 +302,52 @@ export function isNumber(obj: unknown): obj is number {
  * still be any kind of object, including the instance of some class.
  * To narrow this down to only native JS objects, use [isJSObject]{@link isJSObject}.
  */
-export function isObject(obj: any): obj is Dictionary {
+function isObject(obj: any): obj is Dictionary {
   return Object.prototype.toString.call(obj) === "[object Object]";
 }
 
-export function isString(obj: unknown): obj is string {
+function isString(obj: unknown): obj is string {
   return typeof obj === "string";
 }
+
+export {
+  isArray,
+  isBoolean,
+  isDate,
+  isJSObject,
+  isNullOrUndefined,
+  isNumber,
+  isObject,
+  isString,
+  type Brand,
+  type CamelToSnakeCase,
+  type CamelToSnakeCaseKeys,
+  type DeepArray,
+  type DeepNode,
+  type DeepObject,
+  type DeepValueOf,
+  type Dictionary,
+  type Equals,
+  type ExtendValues,
+  type Flatten,
+  type GroupBy,
+  type IsReadonly,
+  type Join,
+  type Merge,
+  type NestedPaths,
+  type OneOrArray,
+  type Payload,
+  type PickByType,
+  type Primitive,
+  type SnakeToCamelCase,
+  type SnakeToCamelCaseKeys,
+  type Subtract,
+  type TransformValues,
+  type TransformValuesByKey,
+  type TupleToUnion,
+  type TypeFromPath,
+  type Union,
+  type UnionToIntersection,
+  type UnionToTuple,
+  type ValueOf,
+};

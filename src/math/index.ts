@@ -3,7 +3,7 @@ const { cos, floor, log, PI, random, sqrt, trunc } = Math;
 /**
  * Returns the average of an array of numbers.
  */
-export function average(array: number[]): number {
+function average(array: number[]): number {
   return array.reduce((a, b) => a + b) / array.length;
 }
 
@@ -14,7 +14,7 @@ export function average(array: number[]): number {
  * // returns [2,4,3]
  * diff([1,3,7,10])
  */
-export function diff(array: number[]): number[] {
+function diff(array: number[]): number[] {
   return array
     .map((current, i) => {
       if (i === 0) return 0;
@@ -26,14 +26,14 @@ export function diff(array: number[]): number[] {
 /**
  * Returns the quotient and remainder of x/y.
  */
-export function divmod(x: number, y: number): [number, number] {
+function divmod(x: number, y: number): [number, number] {
   return [trunc(x / y), x % y];
 }
 
 /**
  * Returns the number or min/max if it is below/above the thresholds, respectively.
  */
-export function limitToRange(num: number, lower: number, upper: number): number {
+function limitToRange(num: number, lower: number, upper: number): number {
   return Math.min(Math.max(num, lower), upper);
 }
 
@@ -44,14 +44,14 @@ export function limitToRange(num: number, lower: number, upper: number): number 
  * // returns 1
  * nthElement([0,1,2,3], 5)
  */
-export function nthElement<T extends readonly unknown[]>(array: T, n: number): T[number] {
+function nthElement<T extends readonly unknown[]>(array: T, n: number): T[number] {
   return array[n % array.length];
 }
 
 /**
  * Picks a random option from an array, with equal weights.
  */
-export function pickRandom<T extends readonly unknown[]>(options: T): T[number] {
+function pickRandom<T extends readonly unknown[]>(options: T): T[number] {
   const roll = random();
   const chance = 1 / options.length;
   const i = floor(roll / chance);
@@ -61,7 +61,7 @@ export function pickRandom<T extends readonly unknown[]>(options: T): T[number] 
 /**
  * Picks a random option from an array of { option, weight }.
  */
-export function pickWeighted<T extends { option: unknown; weight: number }>(
+function pickWeighted<T extends { option: unknown; weight: number }>(
   options: T[],
 ): T["option"] {
   const totalWeight = options.reduce((partial, { weight }) => {
@@ -90,14 +90,14 @@ export function pickWeighted<T extends { option: unknown; weight: number }>(
  * If no values are passed, uses 0 and 1.
  * If only 1 valued is passed, uses 0 and value.
  */
-export function randomInteger(min?: number, max?: number): number {
+function randomInteger(min?: number, max?: number): number {
   return round(randomNumber(min, max), 0);
 }
 
 /**
  * Returns a random number from the normal distribution between min and max.
  */
-export function randomNormal(min: number, max: number, mean?: number): number {
+function randomNormal(min: number, max: number, mean?: number): number {
   mean = mean ?? average([min, max]);
   return limitToRange(floor(mean * (1 + sampleNormal() / 2)), min, max);
 }
@@ -108,7 +108,7 @@ export function randomNormal(min: number, max: number, mean?: number): number {
  * If no values are passed, uses 0 and 1.<br>
  * If only 1 valued is passed, uses 0 and value.
  */
-export function randomNumber(min?: number, max?: number): number {
+function randomNumber(min?: number, max?: number): number {
   const roll = random();
   if (min === undefined) return roll;
   if (max === undefined) return min * roll;
@@ -122,7 +122,7 @@ export function randomNumber(min?: number, max?: number): number {
  * If only 1 value is passed, uses [0, start[.<br>
  * If 2 values are passed, uses [start, end[.
  */
-export function range(start: number, end?: number): number[] {
+function range(start: number, end?: number): number[] {
   const [_start, _end] = end ? [start, end] : [0, start];
   return Array.from({ length: _end - _start }).map((_, i) => i + _start);
 }
@@ -130,21 +130,21 @@ export function range(start: number, end?: number): number[] {
 /**
  * Returns the number rounded to the specified amount of digits.
  */
-export function round(number: number, digits: number = 1): number {
+function round(number: number, digits: number = 1): number {
   return Math.round((number + Number.EPSILON) * 10 ** digits) / 10 ** digits;
 }
 
 /**
  * Returns a random number from the normal distribution.
  */
-export function sampleNormal(): number {
+function sampleNormal(): number {
   return sqrt(-2 * log(1 - random())) * cos(2 * PI * random());
 }
 
 /**
  * Splits an array into chunks of equal size.
  */
-export function splitInChunks<T extends readonly unknown[]>(
+function splitInChunks<T extends readonly unknown[]>(
   array: T,
   size: number,
 ): T[number][][] {
@@ -160,6 +160,24 @@ export function splitInChunks<T extends readonly unknown[]>(
 /**
  * Returns the sum of the elements in the array.
  */
-export function sum(array: number[]): number {
+function sum(array: number[]): number {
   return array.reduce((total, value) => total + value);
 }
+
+export {
+  average,
+  diff,
+  divmod,
+  limitToRange,
+  nthElement,
+  pickRandom,
+  pickWeighted,
+  randomInteger,
+  randomNormal,
+  randomNumber,
+  range,
+  round,
+  sampleNormal,
+  splitInChunks,
+  sum,
+};

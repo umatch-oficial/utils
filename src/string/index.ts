@@ -9,7 +9,7 @@ import type { Primitive } from "../index";
 import type { DateTimeUnit } from "luxon";
 
 type ChalkColor = typeof ForegroundColor;
-export type Pluralizer = (word: string, quantity?: number, plural?: string) => string;
+type Pluralizer = (word: string, quantity?: number, plural?: string) => string;
 
 /**
  * Pluralizes the word if *quantity* is undefined, 0 or
@@ -23,11 +23,7 @@ export type Pluralizer = (word: string, quantity?: number, plural?: string) => s
  * // returns 'developers'
  * basicPluralizer('developer', 2)
  */
-export function basicPluralizer(
-  word: string,
-  quantity?: number,
-  plural?: string,
-): string {
+function basicPluralizer(word: string, quantity?: number, plural?: string): string {
   const shouldPluralize =
     quantity === undefined || quantity === 0 || Math.abs(quantity) > 1;
   return shouldPluralize ? plural ?? `${word}s` : word;
@@ -39,7 +35,7 @@ export function basicPluralizer(
  * If the number of spaces to add is uneven, the left side gets the
  * extra space.
  */
-export function center(str: string, length: number): string {
+function center(str: string, length: number): string {
   const realLength = stringLength(str);
   if (realLength >= length) return str;
 
@@ -59,7 +55,7 @@ export function center(str: string, length: number): string {
  * @param [options.color] Text color
  * @param [options.length] Pad string on both sides up to this length
  */
-export function formatStr(
+function formatStr(
   str: string = "",
   options: {
     bgColor?: ChalkColor;
@@ -96,7 +92,7 @@ export function formatStr(
  * @param [options.parts] The number of parts to include in the output. Default: 2
  * @param [options.pluralizer] A pluralizer function. Default: adds 's' to the end the word
  */
-export function formatTime(
+function formatTime(
   time: {
     hours?: number;
     minutes?: number;
@@ -196,7 +192,7 @@ type DateTimeDict = { [_ in DateTimeUnit]?: string } & {
  *
  * @throws if the given dictionary doesn't have entries for all possible units.
  */
-export function getCountDown(
+function getCountDown(
   date: string | DateTime,
   options?: {
     dictionary?: DateTimeDict;
@@ -249,7 +245,7 @@ export function getCountDown(
 /**
  * Joins words as in a sentence.
  */
-export function join(parts: string[], and = "&"): string {
+function join(parts: string[], and = "&"): string {
   const firstParts = parts.slice(0, -1);
   const lastPart = parts.slice(-1)[0];
   if (firstParts.length === 0) return lastPart;
@@ -265,14 +261,14 @@ export function join(parts: string[], and = "&"): string {
  * // returns 'https://abc.com/example'
  * joinUrl('https://abc.com/', 'example/')
  */
-export function joinUrl(...parts: string[]): string {
+function joinUrl(...parts: string[]): string {
   return parts.map((s) => s.replace(/^\/|\/$/g, "")).join("/");
 }
 
 /**
  * Inserts spaces between left and right to achieve the desired length.
  */
-export function pad(left: string, right: string, length: number) {
+function pad(left: string, right: string, length: number) {
   const spacer = " ".repeat(Math.max(length - left.length - right.length, 0));
   return left + spacer + right;
 }
@@ -282,7 +278,7 @@ export function pad(left: string, right: string, length: number) {
  *
  * @throws if it fails to parse and there is no default value.
  */
-export function parseBool(str: string | null | undefined, def?: boolean): boolean {
+function parseBool(str: string | null | undefined, def?: boolean): boolean {
   switch ((str ?? "").toLowerCase().trim()) {
     case "true":
     case "yes":
@@ -307,7 +303,7 @@ export function parseBool(str: string | null | undefined, def?: boolean): boolea
  * parseFunctionCall("foo(1, "bar", true)") // returns ["foo", [1, "bar", true]]
  * parseFunctionCall("foo(1, "bar", true) + 1") // returns ["", []]
  */
-export function parseFunctionCall(str: string): [string, Primitive[]] {
+function parseFunctionCall(str: string): [string, Primitive[]] {
   str = str.trim();
 
   const match = str.match(/^([\w_]+)\(/);
@@ -370,7 +366,7 @@ export function parseFunctionCall(str: string): [string, Primitive[]] {
  *
  * @throws if it fails to parse and there is no default value.
  */
-export function parseNumber(str: string | null | undefined, def?: number): number {
+function parseNumber(str: string | null | undefined, def?: number): number {
   const parsed = Number(str);
   if (Number.isNaN(parsed)) {
     if (def === undefined) {
@@ -384,7 +380,7 @@ export function parseNumber(str: string | null | undefined, def?: number): numbe
 /**
  * Replaces accented letters with their standard versions.
  */
-export function removeAccents(str: string): string {
+function removeAccents(str: string): string {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
@@ -402,7 +398,7 @@ export function removeAccents(str: string): string {
  * @param [n = -1] number of splits
  * @param [sep = ','] separator
  */
-export function rsplit(str: string | null | undefined, n = -1, sep = ","): string[] {
+function rsplit(str: string | null | undefined, n = -1, sep = ","): string[] {
   if (!str) return [];
 
   const parts = str.split(sep);
@@ -426,7 +422,7 @@ export function rsplit(str: string | null | undefined, n = -1, sep = ","): strin
  * @param [n = -1] number of splits
  * @param [sep = ','] separator
  */
-export function split(str: string | null | undefined, n = -1, sep = ","): string[] {
+function split(str: string | null | undefined, n = -1, sep = ","): string[] {
   if (!str) return [];
 
   const parts = str.split(sep);
@@ -439,7 +435,7 @@ export function split(str: string | null | undefined, n = -1, sep = ","): string
 /**
  * Converts the first character of a string to uppercase.
  */
-export function capitalize<S extends string>(str: S): Capitalize<S> {
+function capitalize<S extends string>(str: S): Capitalize<S> {
   const [first, ...rest] = str;
   if (!first) return "" as Capitalize<S>;
   return (first.toUpperCase() + rest.join("")) as Capitalize<S>;
@@ -448,7 +444,7 @@ export function capitalize<S extends string>(str: S): Capitalize<S> {
 /**
  * Converts the first character of a string to lowercase.
  */
-export function uncapitalize<S extends string>(str: S): Uncapitalize<S> {
+function uncapitalize<S extends string>(str: S): Uncapitalize<S> {
   const [first, ...rest] = str;
   if (!first) return "" as Uncapitalize<S>;
   return (first.toLowerCase() + rest.join("")) as Uncapitalize<S>;
@@ -494,7 +490,7 @@ function toCase(
  * apply the function to parts of a string individually, you must
  * split it and map the function over each unit according to your needs.
  */
-export const camelCase: (str: string) => string = Object.defineProperty(
+const camelCase: (str: string) => string = Object.defineProperty(
   toCase(uncapitalize, capitalize, ""),
   "name",
   { value: "camelCase" },
@@ -507,11 +503,19 @@ export const camelCase: (str: string) => string = Object.defineProperty(
  * apply the function to parts of a string individually, you must
  * split it and map the function over each unit according to your needs.
  */
-export const pascalCase: (str: string) => string = Object.defineProperty(
+const pascalCase: (str: string) => string = Object.defineProperty(
   toCase(capitalize, capitalize, ""),
   "name",
   { value: "pascalCase" },
 );
+
+/**
+ * Converts a string to Sentence case.
+ */
+function sentenceCase(str: string) {
+  const [first, ...rest] = str.split(/(\s)/);
+  return [capitalize(first), ...rest.map(uncapitalize)].join("");
+}
 
 /**
  * Converts a string to snake_case.
@@ -520,19 +524,11 @@ export const pascalCase: (str: string) => string = Object.defineProperty(
  * apply the function to parts of a string individually, you must
  * split it and map the function over each unit according to your needs.
  */
-export const snakeCase: (str: string) => string = Object.defineProperty(
+const snakeCase: (str: string) => string = Object.defineProperty(
   toCase(uncapitalize, uncapitalize, "_"),
   "name",
   { value: "snakeCase" },
 );
-
-/**
- * Converts a string to Sentence case.
- */
-export function sentenceCase(str: string) {
-  const [first, ...rest] = str.split(/(\s)/);
-  return [capitalize(first), ...rest.map(uncapitalize)].join("");
-}
 
 const ENGLISH_SKIP_WORDS = [
   // articles
@@ -565,10 +561,35 @@ const ENGLISH_SKIP_WORDS = [
  * @param {string} str
  * @param {string[]} [skipWords] Words to skip. Default: english skip words (articles, prepositions, etc.)
  */
-export function titleCase(str: string, skipWords: string[] = ENGLISH_SKIP_WORDS): string {
+function titleCase(str: string, skipWords: string[] = ENGLISH_SKIP_WORDS): string {
   const otherWordsFunction = (word: string) =>
     skipWords.includes(word.toLowerCase()) ? word : capitalize(word);
 
   const [first, ...rest] = str.split(/(\s)/);
   return [capitalize(first), ...rest.map(otherWordsFunction)].join("");
 }
+
+export {
+  type Pluralizer,
+  basicPluralizer,
+  capitalize,
+  center,
+  formatStr,
+  formatTime,
+  getCountDown,
+  join,
+  joinUrl,
+  pad,
+  parseBool,
+  parseFunctionCall,
+  parseNumber,
+  removeAccents,
+  rsplit,
+  split,
+  uncapitalize,
+  camelCase,
+  pascalCase,
+  sentenceCase,
+  snakeCase,
+  titleCase,
+};

@@ -13,27 +13,16 @@ import {
 import { camelCase, snakeCase } from "../string";
 
 /**
- * Checks if a prop exists in obj and tells TypeScript that obj has this prop.
- */
-export function hasOwnProperty<X extends Dictionary, Y extends PropertyKey>(
-  obj: X,
-  prop: Y,
-): obj is X & Record<Y, unknown> {
-  // eslint-disable-next-line no-prototype-builtins
-  return obj.hasOwnProperty(prop);
-}
-
-/**
  * Copies an object and applies func to all entries.
  */
-export function apply<T extends Dictionary, R>(
+function apply<T extends Dictionary, R>(
   obj: T,
   func: (val: ValueOf<T>) => R,
 ): { [K in keyof T]: R };
 /**
  * Copies an object and applies func to entries with given keys.
  */
-export function apply<T extends Dictionary, R, Keys extends keyof T>(
+function apply<T extends Dictionary, R, Keys extends keyof T>(
   obj: T,
   func: (val: ValueOf<T>) => R,
   keys?: Keys[],
@@ -41,7 +30,7 @@ export function apply<T extends Dictionary, R, Keys extends keyof T>(
 /**
  * Copies an object and applies func to all entries.
  */
-export function apply(
+function apply(
   obj: Dictionary,
   func: (val: unknown) => unknown,
   keys?: PropertyKey[],
@@ -57,7 +46,7 @@ export function apply(
 /**
  * Renames all keys to camel case.
  */
-export function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKeys<T> {
+function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKeys<T> {
   // @ts-ignore
   return rename(obj, camelCase);
 }
@@ -66,7 +55,7 @@ export function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKey
  * Maps the function over deeply nested elements of the object,
  * which are not arrays.
  */
-export function deepMap<T extends DeepArray>(x: T, f: (val: any) => any): T {
+function deepMap<T extends DeepArray>(x: T, f: (val: any) => any): T {
   return x.map((val) => (isArray(val) ? deepMap(val, f) : f(val))) as T;
 }
 
@@ -81,7 +70,7 @@ export function deepMap<T extends DeepArray>(x: T, f: (val: any) => any): T {
  * removes the prefix/suffix from the matched keys (can be turned off
  * with the rename option).
  */
-export function extract<
+function extract<
   const T extends Dictionary | unknown,
   const Options extends
     | { custom: RegExp }
@@ -133,7 +122,7 @@ export function extract<
     ? [{ [_: string]: ValueOf<T> }, { [_: string]: ValueOf<T> }]
     : never
   : Dictionary;
-export function extract(
+function extract(
   obj: Dictionary,
   options: {
     prefix?: string;
@@ -207,7 +196,7 @@ export function extract(
  * // returns 9
  * getDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]')
  */
-export function getDeepProperty(
+function getDeepProperty(
   obj: Dictionary | unknown[],
   str: string,
   sep = ".",
@@ -225,12 +214,23 @@ export function getDeepProperty(
 }
 
 /**
+ * Checks if a prop exists in obj and tells TypeScript that obj has this prop.
+ */
+function hasOwnProperty<X extends Dictionary, Y extends PropertyKey>(
+  obj: X,
+  prop: Y,
+): obj is X & Record<Y, unknown> {
+  // eslint-disable-next-line no-prototype-builtins
+  return obj.hasOwnProperty(prop);
+}
+
+/**
  * Returns whether the object is deep empty.
  *
  * A deep empty object only has values that are empty strings, empty
  * arrays, empty objects or deep empty objects.
  */
-export function isDeepEmpty(obj: Dictionary<any>): boolean {
+function isDeepEmpty(obj: Dictionary<any>): boolean {
   if (hasOwnProperty(obj, "length")) {
     return obj.length === 0;
   }
@@ -278,7 +278,7 @@ function _handleMergeStrategy(
  * @throws if the strategy is concat, but for a given path the value is an array on the target object but not an array on the source object.
  * @throws if an unexpected strategy is provided.
  */
-export function merge<
+function merge<
   A extends Dictionary | unknown,
   B extends (Partial<A> & Dictionary) | Dictionary | unknown,
 >(
@@ -286,7 +286,7 @@ export function merge<
   source: B,
   strategy?: "override" | "concat",
 ): A extends Dictionary ? (B extends Dictionary ? Merge<A, B> : Dictionary) : Dictionary;
-export function merge(
+function merge(
   target: Dictionary,
   source: Dictionary,
   strategy: "override" | "concat" = "override",
@@ -316,10 +316,7 @@ export function merge(
 /**
  * Copies an object excluding some keys.
  */
-export function omit<T extends Dictionary, K extends keyof T>(
-  obj: T,
-  keys: K[],
-): Omit<T, K> {
+function omit<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
   const toKeep = Object.keys(obj).filter((key) => keys.includes(key as K));
   return pick(obj, toKeep) as Omit<T, K>;
 }
@@ -330,10 +327,7 @@ export function omit<T extends Dictionary, K extends keyof T>(
  * Makes a copy of an object using only the given keys. If an entry is
  * not present, it receives the value of undefined.
  */
-export function pick<T extends Dictionary, K extends keyof T>(
-  obj: T,
-  keys: K[],
-): Pick<T, K> {
+function pick<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
   const clone = structuredClone(obj);
   return Object.fromEntries(keys.map((key) => [key, clone[key]])) as Pick<T, K>;
 }
@@ -341,7 +335,7 @@ export function pick<T extends Dictionary, K extends keyof T>(
 /**
  * Returns a copy of an object, with renamed first-level keys.
  */
-export function rename<
+function rename<
   T extends Dictionary,
   Mapper extends { [_ in keyof T]?: string } | ((a: string) => string),
 >(
@@ -350,7 +344,7 @@ export function rename<
 ): Mapper extends Dictionary<string>
   ? { [K in keyof T as K extends keyof Mapper ? Mapper[K] : K]: T[K] }
   : { [_: string]: ValueOf<T> };
-export function rename(
+function rename(
   obj: Dictionary,
   mapper: Dictionary<string> | ((a: string) => string),
 ): Dictionary {
@@ -375,7 +369,7 @@ export function rename(
  *
  * @throws if some object in the path is an array, but the next key is not a number.
  */
-export function setDeepProperty(
+function setDeepProperty(
   obj: Dictionary | unknown[],
   str: string,
   value: any,
@@ -407,7 +401,7 @@ export function setDeepProperty(
 /**
  * Renames all keys to snake case.
  */
-export function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKeys<T> {
+function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKeys<T> {
   return rename(obj, snakeCase) as CamelToSnakeCaseKeys<T>;
 }
 
@@ -422,7 +416,7 @@ export function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKey
  * @param {boolean} [options.doubleQuotes = true]  Use double quotes. Default: true
  * @param {string} [inheritedIndent = ""] Used to keep track of the current indent during recursion
  */
-export function stringify(
+function stringify(
   obj: Dictionary | unknown[] | unknown,
   options?: { indent?: number; pad?: boolean; doubleQuotes?: boolean },
   inheritedIndent = "",
@@ -459,3 +453,20 @@ export function stringify(
     }
   }
 }
+
+export {
+  apply,
+  camelCaseKeys,
+  deepMap,
+  extract,
+  getDeepProperty,
+  hasOwnProperty,
+  isDeepEmpty,
+  merge,
+  omit,
+  pick,
+  rename,
+  setDeepProperty,
+  snakeCaseKeys,
+  stringify,
+};

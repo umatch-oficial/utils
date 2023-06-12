@@ -23,10 +23,8 @@ type Cartesian<
 /**
  * Returns the cartesian product of n arrays.
  */
-export function cartesian<Y extends readonly (readonly unknown[])[]>(
-  ...arrays: Y
-): Cartesian<Y>;
-export function cartesian(...arrays: any[]): any[][] {
+function cartesian<Y extends readonly (readonly unknown[])[]>(...arrays: Y): Cartesian<Y>;
+function cartesian(...arrays: any[]): any[][] {
   const numberOfElements = arrays.reduce((acc, array) => acc * array.length, 1);
   const result = [];
   for (let i = 0; i < numberOfElements; i += 1) {
@@ -44,7 +42,7 @@ export function cartesian(...arrays: any[]): any[][] {
 /**
  * Array.flat() for n-dimensional arrays.
  */
-export function deepFlat<T>(array: DeepNode<T>[]): (DeepObject<T> | T)[] {
+function deepFlat<T>(array: DeepNode<T>[]): (DeepObject<T> | T)[] {
   const final: (DeepObject<T> | T)[] = [];
   array.forEach((element) =>
     element instanceof Array ? final.push(...deepFlat(element)) : final.push(element),
@@ -56,17 +54,14 @@ export function deepFlat<T>(array: DeepNode<T>[]): (DeepObject<T> | T)[] {
  * Returns a copy of the first array, without including elements
  * present in the second array.
  */
-export function diff<
+function diff<
   X extends readonly (string | number)[],
   Y extends readonly (string | number)[],
 >(
   a: X,
   b: Y,
 ): IsReadonly<X> extends true ? (IsReadonly<Y> extends true ? Subtract<X, Y> : Y) : X;
-export function diff(
-  a: (string | number)[],
-  b: (string | number)[],
-): (string | number)[] {
+function diff(a: (string | number)[], b: (string | number)[]): (string | number)[] {
   const result = [];
   const map = {} as { [_: string | number]: boolean };
   for (let i = 0; i < b.length; i += 1) {
@@ -79,14 +74,13 @@ export function diff(
 }
 
 const subtract = diff;
-export { subtract };
 
 /**
  * Same as Array.filter, but accepts async callbacks.
  *
  * Uses bluebird.map to limit concurrency.
  */
-export async function filter<T extends readonly unknown[]>(
+async function filter<T extends readonly unknown[]>(
   array: T,
   callback: (x: T[number]) => Promise<boolean>,
   concurrency = 50,
@@ -104,7 +98,7 @@ export async function filter<T extends readonly unknown[]>(
  * Filters an array of objects, ensuring they contain all key:value
  * pairs in the template.
  */
-export function filterByObject<O extends Dictionary, T extends Dictionary>(
+function filterByObject<O extends Dictionary, T extends Dictionary>(
   array: O[],
   template: T,
 ): (O & T)[] {
@@ -118,7 +112,7 @@ export function filterByObject<O extends Dictionary, T extends Dictionary>(
  * Returns the filtered array and the complement as well (elements
  * removed by the filter).
  */
-export function filterWithComplement<
+function filterWithComplement<
   T extends readonly unknown[],
   P extends (x: T[number]) => boolean,
 >(
@@ -129,7 +123,7 @@ export function filterWithComplement<
     ? [A[], Exclude<R, A>[]]
     : [R[], R[]]
   : never;
-export function filterWithComplement<T extends readonly unknown[]>(
+function filterWithComplement<T extends readonly unknown[]>(
   array: T,
   predicate: (x: T[number]) => boolean,
 ): any[] {
@@ -144,7 +138,7 @@ export function filterWithComplement<T extends readonly unknown[]>(
  * Array.prototype.findLastIndex is already available in some runtimes,
  * but not in Node.
  */
-export function findLastIndex<T extends readonly unknown[]>(
+function findLastIndex<T extends readonly unknown[]>(
   array: T,
   predicate: (value: T[number], index: number, arr: T[number][]) => boolean,
 ): number {
@@ -163,11 +157,11 @@ export function findLastIndex<T extends readonly unknown[]>(
  *
  * @throws if, for any element in the array, the key is not present or has a non-primitive value.
  */
-export function groupBy<
-  T extends readonly Dictionary[] | unknown,
-  Key extends PropertyKey,
->(array: T, key: Key): T extends readonly Dictionary[] ? GroupBy<T, Key> : Dictionary<T>;
-export function groupBy<T extends readonly Dictionary[]>(array: T, key: keyof T[number]) {
+function groupBy<T extends readonly Dictionary[] | unknown, Key extends PropertyKey>(
+  array: T,
+  key: Key,
+): T extends readonly Dictionary[] ? GroupBy<T, Key> : Dictionary<T>;
+function groupBy<T extends readonly Dictionary[]>(array: T, key: keyof T[number]) {
   return array.reduce((partial: { [_: string]: T[number][] }, element: T[number]) => {
     const keyVal = element[key];
     if (!["string", "number", "boolean"].includes(typeof keyVal)) {
@@ -191,7 +185,7 @@ export function groupBy<T extends readonly Dictionary[]>(array: T, key: keyof T[
 /**
  * Returns whether 2 arrays have the same elements, regardless of order.
  */
-export function hasSameElements<
+function hasSameElements<
   X extends string | number,
   A extends readonly X[],
   B extends readonly X[],
@@ -207,7 +201,7 @@ export function hasSameElements<
       : false
     : false
   : false;
-export function hasSameElements<X extends string | number>(a: X[], b: X[]): boolean {
+function hasSameElements<X extends string | number>(a: X[], b: X[]): boolean {
   a.sort();
   b.sort();
   return a.every((v, i) => b[i] === v);
@@ -216,7 +210,7 @@ export function hasSameElements<X extends string | number>(a: X[], b: X[]): bool
 /**
  * Returns the intersection of two arrays.
  */
-export function intersect<X extends string | number, Y extends string | number>(
+function intersect<X extends string | number, Y extends string | number>(
   a: X[],
   b: (X | Y)[],
 ): X[] {
@@ -234,10 +228,7 @@ export function intersect<X extends string | number, Y extends string | number>(
 /**
  * Returns whether the small array is a subset of the large array.
  */
-export function isSubset(
-  small: (number | string)[],
-  large: (number | string)[],
-): boolean {
+function isSubset(small: (number | string)[], large: (number | string)[]): boolean {
   return small.every((value) => large.includes(value));
 }
 
@@ -246,10 +237,10 @@ export function isSubset(
  * without repeated elements.<br>
  * (equivalent of python's itertools' combinations)
  */
-export function permutations<T extends readonly unknown[]>(
+function permutations<T extends readonly unknown[]>(
   array: T,
 ): T extends readonly (infer R)[] ? [R, R][] : never;
-export function permutations(array: any[]): [any, any][] {
+function permutations(array: any[]): [any, any][] {
   const perms: [any, any][] = [];
   for (const i of range(array.length)) {
     for (const j of range(i + 1, array.length)) {
@@ -274,11 +265,11 @@ type Remove<
 /**
  * Removes an item from an array.
  */
-export function remove<T extends readonly Primitive[], X extends T[number]>(
+function remove<T extends readonly Primitive[], X extends T[number]>(
   array: T,
   item: X,
 ): { readonly [K in keyof T]: any } extends T ? Remove<T, X> : T;
-export function remove<X, T extends X[]>(array: T, item: X): X[] {
+function remove<X, T extends X[]>(array: T, item: X): X[] {
   const i = array.indexOf(item);
   if (i > -1) array.splice(i, 1);
   return array;
@@ -287,10 +278,10 @@ export function remove<X, T extends X[]>(array: T, item: X): X[] {
 /**
  * Returns a shuffled copy of the array.
  */
-export function shuffle<T extends readonly unknown[]>(
+function shuffle<T extends readonly unknown[]>(
   array: T,
 ): T extends readonly (infer _)[] ? T : never;
-export function shuffle(array: any[]): any[] {
+function shuffle(array: any[]): any[] {
   // https://stackoverflow.com/a/12646864/9193449
   const copy = array.slice();
   for (let i = copy.length - 1; i > 0; i -= 1) {
@@ -303,12 +294,12 @@ export function shuffle(array: any[]): any[] {
 /**
  * Same as slice, but overflows to guarantee there are (end - start) elements.
  */
-export function sliceWithOverflow<T extends readonly unknown[]>(
+function sliceWithOverflow<T extends readonly unknown[]>(
   array: T,
   start: number,
   end: number,
 ): T extends readonly (infer _)[] ? T : never;
-export function sliceWithOverflow(array: any[], start: number, end: number): any[] {
+function sliceWithOverflow(array: any[], start: number, end: number): any[] {
   const overflow = end - array.length;
   if (overflow <= 0) return array.slice(start, end);
   return [...array.slice(start), ...sliceWithOverflow(array, 0, overflow)];
@@ -321,7 +312,7 @@ export function sliceWithOverflow(array: any[], start: number, end: number): any
  * Similar to filtering the array, except that the elements between
  * the first and last valid elements are not removed.
  */
-export function trim<T extends readonly unknown[]>(
+function trim<T extends readonly unknown[]>(
   array: T,
   predicate: (value: T[number], index: number, arr: readonly unknown[]) => boolean,
 ): T[number][] {
@@ -344,10 +335,10 @@ type Uniques<
 /**
  * Returns a copy of an array without duplicates.
  */
-export function uniques<T extends readonly unknown[]>(
+function uniques<T extends readonly unknown[]>(
   array: T,
 ): { readonly [K in keyof T]: any } extends T ? Uniques<T> : T;
-export function uniques(array: any[]): any[] {
+function uniques(array: any[]): any[] {
   return Array.from(new Set(array));
 }
 
@@ -356,7 +347,29 @@ export function uniques(array: any[]): any[] {
  *
  * @throws if the arrays don't have the same length.
  */
-export function zip<X, Y>(a: X[], b: Y[]): [X, Y][] {
+function zip<X, Y>(a: X[], b: Y[]): [X, Y][] {
   if (a.length !== b.length) throw new Error("Cannot zip arrays of different lengths");
   return a.map((e, i) => [e, b[i]]);
 }
+
+export {
+  cartesian,
+  deepFlat,
+  diff,
+  filter,
+  filterByObject,
+  filterWithComplement,
+  findLastIndex,
+  groupBy,
+  hasSameElements,
+  intersect,
+  isSubset,
+  permutations,
+  remove,
+  shuffle,
+  sliceWithOverflow,
+  subtract,
+  trim,
+  uniques,
+  zip,
+};
