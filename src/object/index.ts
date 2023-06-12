@@ -373,7 +373,6 @@ export function rename(
  * // returns { a: { b: [2,3,5] } }
  * setDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]', 5)
  *
- * @throws if some object in the path is not an array nor a plain JS object.
  * @throws if some object in the path is an array, but the next key is not a number.
  */
 export function setDeepProperty(
