@@ -1,6 +1,7 @@
 import {
   apply,
   camelCaseKeys,
+  deepClone,
   deepMap,
   extract,
   getDeepProperty,
@@ -29,6 +30,20 @@ describe.each([
 
 test("camelCaseKeys()", () => {
   expect(camelCaseKeys({ foo_bar: 1, bar_foo: 2 })).toEqual({ fooBar: 1, barFoo: 2 });
+});
+
+test("deepClone()", () => {
+  const obj = { a: [{ b: { c: 1 } }], self: {} };
+  obj.self = obj;
+
+  const clone = deepClone(obj);
+  expect(clone).toEqual(obj);
+  expect(clone).not.toBe(obj);
+  expect(clone.self).toEqual(clone);
+
+  clone.a.push({ b: { c: 2 } });
+  expect(obj.a).toEqual([{ b: { c: 1 } }]);
+  expect(clone.a).toEqual([{ b: { c: 1 } }, { b: { c: 2 } }]);
 });
 
 test("deepMap()", () => {

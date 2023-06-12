@@ -52,6 +52,28 @@ function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKeys<T> {
 }
 
 /**
+ * Returns a deep clone of the object.
+ *
+ * Similar to structuredClone, except that it only treats plain
+ * objects and arrays as values, and copies all other types by
+ * reference.
+ */
+function deepClone<T>(obj: T): T;
+function deepClone(obj: unknown): unknown {
+  if (isArray(obj)) return obj.map(deepClone);
+
+  if (isJSObject(obj)) {
+    const newObj = Object.create(Object.getPrototypeOf(obj));
+    Object.entries(obj).forEach(([key, value]) => {
+      newObj[key] = value === obj ? newObj : deepClone(value);
+    });
+    return newObj;
+  }
+
+  return obj;
+}
+
+/**
  * Maps the function over deeply nested elements of the object,
  * which are not arrays.
  */
@@ -457,6 +479,7 @@ function stringify(
 export {
   apply,
   camelCaseKeys,
+  deepClone,
   deepMap,
   extract,
   getDeepProperty,
