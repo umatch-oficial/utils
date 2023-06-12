@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.2.1](https://github.com/umatch-oficial/utils/compare/v8.2.0...v8.2.1) (2023-06-12)
+
+
+### Bug Fixes
+
+* **index:** export functions ([90496d1](https://github.com/umatch-oficial/utils/commit/90496d17c0911558767b5f8efd1a213ccc6247f5))
+* **index:** fix Flatten and Subtract ([67e64db](https://github.com/umatch-oficial/utils/commit/67e64db413ab1688bcb9c4973b843694090f6e51))
+
 ## [8.2.0](https://github.com/umatch-oficial/utils/compare/v8.1.0...v8.2.0) (2023-06-12)
 
 
