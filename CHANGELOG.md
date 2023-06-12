@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.1.0](https://github.com/umatch-oficial/utils/compare/v8.0.0...v8.1.0) (2023-06-12)
+
+
+### Features
+
+* **math:** add sumProperty() ([9d55490](https://github.com/umatch-oficial/utils/commit/9d5549004fd9ce320d8166a416f96681a3ccd8ab))
+* **string:** allow custom character for padding in center() ([5365c33](https://github.com/umatch-oficial/utils/commit/5365c33841ed7a6e124ebaa4f410282a1f63e354))
+
+
+### Bug Fixes
+
+* **object:** fix omit ([d403ad2](https://github.com/umatch-oficial/utils/commit/d403ad2b6440c60b7d70b99dabdab2e1ce2d2ca5))
+
 ## [8.0.0](https://github.com/umatch-oficial/utils/compare/v7.0.1...v8.0.0) (2023-06-06)
 
 
