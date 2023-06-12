@@ -35,12 +35,12 @@ function basicPluralizer(word: string, quantity?: number, plural?: string): stri
  * If the number of spaces to add is uneven, the left side gets the
  * extra space.
  */
-function center(str: string, length: number): string {
+function center(str: string, length: number, character = " "): string {
   const realLength = stringLength(str);
   if (realLength >= length) return str;
 
   const [left, right] = [Math.ceil, Math.floor].map((func) =>
-    " ".repeat(func((length - realLength) / 2)),
+    character.repeat(func((length - realLength) / 2)),
   );
   return left + str + right;
 }
