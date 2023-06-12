@@ -10,6 +10,7 @@ import {
   hasSameElements,
   intersect,
   isSubset,
+  joinNonEmpty,
   permutations,
   remove,
   shuffle,
@@ -70,7 +71,7 @@ describe.each([
   ],
 ])("filterWithComplement()", (array, predicate, output, description) => {
   test(`filterWithComplement(${description[0]}, ${description[1]})`, () => {
-    // @ts-ignore
+    // @ts-expect-error
     expect(filterWithComplement(array, predicate)).toEqual(output);
   });
 });
@@ -134,7 +135,6 @@ test("groupBy() throws", () => {
       { a: 1, b: 2 },
       { a: 1, b: new Date() },
     ];
-    // @ts-ignore
     groupBy(arr, "b");
   }).toThrow("Cannot use value");
 });
@@ -164,6 +164,10 @@ describe.each([
 test("isSubset()", () => {
   expect(isSubset([1, 2, 3], [3, 2, 1])).toBe(true);
   expect(isSubset([1, 2, 3], [2, 1])).toBe(false);
+});
+
+test("joinNonEmpty()", () => {
+  expect(joinNonEmpty(["a", "0", "b", "", "c"])).toEqual("a0bc");
 });
 
 test("permutations()", () => {

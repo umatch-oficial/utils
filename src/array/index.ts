@@ -233,6 +233,20 @@ function isSubset(small: (number | string)[], large: (number | string)[]): boole
 }
 
 /**
+ * Joins an array of strings or numbers, filtering out empty ones.
+ */
+function joinNonEmpty(
+  array: (string | number | undefined)[] | undefined,
+  separator = "",
+): string {
+  if (!array?.length) return "";
+  return array
+    .filter((e) => e !== undefined && e !== null && e !== "")
+    .map((s) => String(s).trim())
+    .join(separator);
+}
+
+/**
  * Returns all length-2 tuples of the elements, in sorted order,
  * without repeated elements.<br>
  * (equivalent of python's itertools' combinations)
@@ -364,6 +378,7 @@ export {
   hasSameElements,
   intersect,
   isSubset,
+  joinNonEmpty,
   permutations,
   remove,
   shuffle,
