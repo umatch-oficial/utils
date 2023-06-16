@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [9.0.0](https://github.com/umatch-oficial/utils/compare/v8.2.1...v9.0.0) (2023-06-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **object:** object.merge() no longer throws an error if the strategy is set to 'concat' and the value at a given path is an array on the target object but not an array on the source object.
+
+### Features
+
+* **object:** deep clone inputs in merge() and remove thrown error ([95ebd9d](https://github.com/umatch-oficial/utils/commit/95ebd9d5e2e8d0c17c0f804c283c064dc9658450))
+
 ## [8.2.1](https://github.com/umatch-oficial/utils/compare/v8.2.0...v8.2.1) (2023-06-12)
 
 
