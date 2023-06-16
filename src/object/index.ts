@@ -255,32 +255,22 @@ function isDeepEmpty(obj: Dictionary<any>): boolean {
   return obj === "";
 }
 
-function _handleMergeStrategy(
+function _merge(
   target: Dictionary,
-  path: string,
-  left: unknown,
-  right: unknown,
-  strategy: string,
-  setDeepProp: (src: Dictionary, path: string, value: any) => unknown,
-) {
-  switch (strategy) {
-    case "override":
-      setDeepProp(target, path, right);
-      break;
-    case "concat":
-      if (isArray(left)) {
-        if (isArray(right)) {
-          setDeepProp(target, path, left.concat(right));
-        } else {
-          throw new Error(`Cannot concat array with ${typeof right} (field '${path}')`);
-        }
-      } else {
-        setDeepProp(target, path, right);
-      }
-      break;
-    default:
-      throw new Error(`Unexpected strategy: ${strategy}`);
+  source: Dictionary,
+  strategy: "override" | "concat",
+): Dictionary {
+  for (const [key, rightValue] of Object.entries(source)) {
+    const leftValue = target[key];
+    if (isJSObject(leftValue) && isJSObject(rightValue)) {
+      target[key] = _merge(leftValue, rightValue, strategy);
+    } else if (strategy === "concat" && isArray(leftValue) && isArray(rightValue)) {
+      target[key] = leftValue.concat(rightValue);
+    } else {
+      target[key] = rightValue;
+    }
   }
+  return target;
 }
 
 /**
@@ -290,7 +280,6 @@ function _handleMergeStrategy(
  * except when both objects hold an array on the same key and the
  * strategy is set to "concat", in which case both arrays are merged.
  *
- * @throws if the strategy is concat, but for a given path the value is an array on the target object but not an array on the source object.
  * @throws if an unexpected strategy is provided.
  */
 function merge<
@@ -306,26 +295,14 @@ function merge(
   source: Dictionary,
   strategy: "override" | "concat" = "override",
 ): Dictionary {
-  const sep = ";;";
-  const getDeepProp = (src: Dictionary, path: string) => getDeepProperty(src, path, sep);
-  const setDeepProp = (src: Dictionary, path: string, value: any) =>
-    setDeepProperty(src, path, value, sep);
-
-  const toVisit = new Set<string>(Object.keys(source));
-  while (toVisit.size > 0) {
-    for (const path of toVisit) {
-      toVisit.delete(path);
-
-      const left = getDeepProp(target, path);
-      const right = getDeepProp(source, path);
-      if (isJSObject(right)) {
-        Object.keys(right).forEach((key) => toVisit.add(path + sep + key));
-      } else {
-        _handleMergeStrategy(target, path, left, right, strategy, setDeepProp);
-      }
-    }
+  if (!["concat", "override"].includes(strategy)) {
+    throw new Error(`Unexpected strategy: ${strategy}`);
   }
-  return target;
+
+  const clonedTarget = deepClone(target);
+  const clonedSource = deepClone(source);
+  _merge(clonedTarget, clonedSource, strategy);
+  return clonedTarget;
 }
 
 /**

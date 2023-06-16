@@ -117,23 +117,24 @@ describe.each([
     undefined,
     { a: 1, b: { a: 1, c: [2, 3, 4] }, d: 5 },
   ],
-  [
-    "deep concat",
-    { a: [{ b: 1 }] },
-    { a: [{ c: 2 }] },
-    "concat",
-    { a: [{ b: 1 }, { c: 2 }] },
-  ],
+  ["deep concat", { a: { b: [1] } }, { a: { b: [2] } }, "concat", { a: { b: [1, 2] } }],
 ] as const)("merge()", (desc, a, b, strategy, output) => {
   test(desc, () => {
     expect(merge(a, b, strategy)).toEqual(output);
   });
 });
 
+test("merge() deep clones inputs", () => {
+  const a = { a: { b: 1 } };
+  const b = { a: { c: 2 } };
+  const merged = merge(a, b);
+  merged.a.b = 3;
+  merged.a.c = 3;
+  expect(a).toEqual({ a: { b: 1 } });
+  expect(b).toEqual({ a: { c: 2 } });
+});
+
 test("merge() throws", () => {
-  expect(() => merge({ a: [2, 3] }, { a: 4 }, "concat")).toThrow(
-    "Cannot concat array with number (field 'a')",
-  );
   // @ts-expect-error
   expect(() => merge({ a: [2, 3] }, { a: 4 }, "foo")).toThrow("Unexpected strategy");
 });
