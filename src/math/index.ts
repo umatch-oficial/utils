@@ -129,9 +129,13 @@ function range(start: number, end?: number): number[] {
 
 /**
  * Returns the number rounded to the specified amount of digits.
+ *
+ * See https://stackoverflow.com/a/48764436 solution #2 for an
+ * in-depth explanation.
  */
 function round(number: number, digits: number = 1): number {
-  return Math.round((number + Number.EPSILON) * 10 ** digits) / 10 ** digits;
+  const pow = 10 ** digits;
+  return Math.round(number * (1 + Number.EPSILON) * pow) / pow;
 }
 
 /**

@@ -143,6 +143,7 @@ describe.each([
   [[1.51, 2], 1.51],
   [[1.499999999999999, 0], 1],
   [[1.5, 0], 2],
+  [[5.702815140552579e-17, 20], 5.703e-17],
 ])("round()", ([n, digits], output) => {
   test(`round(${n}, ${digits}) = ${output}`, () => {
     expect(round(n!, digits)).toEqual(output);
