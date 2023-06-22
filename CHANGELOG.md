@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [9.0.1](https://github.com/umatch-oficial/utils/compare/v9.0.0...v9.0.1) (2023-06-22)
+
+
+### Bug Fixes
+
+* **math:** fix round() for numbers close to 2^-52 ([abca730](https://github.com/umatch-oficial/utils/commit/abca730427dc50dcb499ef0c49994eea5ad584b5))
+
 ## [9.0.0](https://github.com/umatch-oficial/utils/compare/v8.2.1...v9.0.0) (2023-06-16)
 
 
