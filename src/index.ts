@@ -1,4 +1,4 @@
-type Primitive = string | number | boolean;
+type Primitive = string | number | boolean | bigint | undefined | null;
 type Dictionary<T = unknown> = { [_: string]: T };
 type Payload = Dictionary<Primitive>;
 
@@ -70,7 +70,7 @@ type GroupBy<
   Key extends PropertyKey,
 > = T extends readonly (infer D)[]
   ? Key extends keyof D
-    ? D[Key] extends Primitive
+    ? D[Key] extends string | number | boolean
       ? {
           [Value in D[Key] as Value extends boolean ? Value & string : Value]: Extract<
             D,
@@ -315,7 +315,10 @@ function isObject(obj: any): obj is Dictionary {
 }
 
 function isPrimitive(obj: unknown): obj is Primitive {
-  return ["boolean", "number", "string"].includes(typeof obj);
+  return (
+    isNullOrUndefined(obj) ||
+    ["boolean", "number", "string", "bigint"].includes(typeof obj)
+  );
 }
 
 function isString(obj: unknown): obj is string {

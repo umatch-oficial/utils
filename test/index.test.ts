@@ -149,8 +149,8 @@ test("isPrimitive()", () => {
   expect(isPrimitive(true)).toBe(true);
   expect(isPrimitive(new Date())).toBe(false);
   expect(isPrimitive(() => {})).toBe(false);
-  expect(isPrimitive(null)).toBe(false);
-  expect(isPrimitive(undefined)).toBe(false);
+  expect(isPrimitive(null)).toBe(true);
+  expect(isPrimitive(undefined)).toBe(true);
 });
 
 test("isString()", () => {
