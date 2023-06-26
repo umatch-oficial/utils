@@ -6,7 +6,7 @@ import {
   SnakeToCamelCaseKeys,
   ValueOf,
   isArray,
-  isJSObject,
+  isPlainObject,
   isString,
   Merge,
 } from "../index";
@@ -55,7 +55,7 @@ function deepClone<T>(obj: T): T;
 function deepClone(obj: unknown): unknown {
   if (isArray(obj)) return obj.map(deepClone);
 
-  if (isJSObject(obj)) {
+  if (isPlainObject(obj)) {
     const newObj = Object.create(Object.getPrototypeOf(obj));
     Object.entries(obj).forEach(([key, value]) => {
       newObj[key] = value === obj ? newObj : deepClone(value);
@@ -262,7 +262,7 @@ function _merge(
 ): Dictionary {
   for (const [key, rightValue] of Object.entries(source)) {
     const leftValue = target[key];
-    if (isJSObject(leftValue) && isJSObject(rightValue)) {
+    if (isPlainObject(leftValue) && isPlainObject(rightValue)) {
       target[key] = _merge(leftValue, rightValue, strategy);
     } else if (strategy === "concat" && isArray(leftValue) && isArray(rightValue)) {
       target[key] = leftValue.concat(rightValue);
@@ -420,10 +420,10 @@ function stringify(
   const { indent, pad, doubleQuotes } = opts;
   const quote = doubleQuotes ? '"' : "'";
 
-  if (isArray(obj) || isJSObject(obj)) {
+  if (isArray(obj) || isPlainObject(obj)) {
     const indenter = inheritedIndent + " ".repeat(indent);
     let start: string, end: string, formattedEntries: string[];
-    if (isJSObject(obj)) {
+    if (isPlainObject(obj)) {
       [start, end] = ["{", "}"];
 
       // padding

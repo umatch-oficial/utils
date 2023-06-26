@@ -5,10 +5,10 @@ import {
   isBoolean,
   isDate,
   isFunction,
-  isJSObject,
   isNullOrUndefined,
   isNumber,
   isObject,
+  isPlainObject,
   isPrimitive,
   isString,
   type Brand,
@@ -88,17 +88,17 @@ test("isFunction()", () => {
   expect(isFunction(undefined)).toBe(false);
 });
 
-test("isJSObject()", () => {
-  expect(isJSObject([])).toBe(false);
-  expect(isJSObject([1, 2, 3])).toBe(false);
-  expect(isJSObject({})).toBe(true);
-  expect(isJSObject("")).toBe(false);
-  expect(isJSObject(1)).toBe(false);
-  expect(isJSObject(true)).toBe(false);
-  expect(isJSObject(new Date())).toBe(false);
-  expect(isJSObject(() => {})).toBe(false);
-  expect(isJSObject(null)).toBe(false);
-  expect(isJSObject(undefined)).toBe(false);
+test("isPlainObject()", () => {
+  expect(isPlainObject([])).toBe(false);
+  expect(isPlainObject([1, 2, 3])).toBe(false);
+  expect(isPlainObject({})).toBe(true);
+  expect(isPlainObject("")).toBe(false);
+  expect(isPlainObject(1)).toBe(false);
+  expect(isPlainObject(true)).toBe(false);
+  expect(isPlainObject(new Date())).toBe(false);
+  expect(isPlainObject(() => {})).toBe(false);
+  expect(isPlainObject(null)).toBe(false);
+  expect(isPlainObject(undefined)).toBe(false);
 });
 
 test("isNullOrUndefined()", () => {
