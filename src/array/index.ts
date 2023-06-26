@@ -234,12 +234,9 @@ function isSubset(small: (number | string)[], large: (number | string)[]): boole
 }
 
 /**
- * Joins an array of strings or numbers, filtering out empty ones.
+ * Joins an array of primitives, filtering out nulls, undefineds and empty strings.
  */
-function joinNonEmpty(
-  array: (boolean | null | number | string | undefined)[] | undefined,
-  separator = "",
-): string {
+function joinNonEmpty(array: Primitive[] | undefined, separator = ""): string {
   if (!array?.length) return "";
   return array
     .filter((e) => e !== undefined && e !== null && e !== "")
