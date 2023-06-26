@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [10.0.0](https://github.com/umatch-oficial/utils/compare/v9.0.3...v10.0.0) (2023-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **index:** the Primitive type and the associated isPrimitive() function now include bigint, null and undefined.
+* **index:** isJSObject() has been renamed to isPlainObject().
+
+### Bug Fixes
+
+* **index:** add bigint, null & undefined to Primitive ([82324cc](https://github.com/umatch-oficial/utils/commit/82324ccf4a925522f13c0cb0a15539cd4016bce8))
+
+
+* **index:** rename isJSObject() to isPlainObject() ([645dec6](https://github.com/umatch-oficial/utils/commit/645dec6c1cbc8e45f8f031bc94d24440eb3f0390))
+
 ## [9.0.3](https://github.com/umatch-oficial/utils/compare/v9.0.2...v9.0.3) (2023-06-26)
 
 
