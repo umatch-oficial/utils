@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [9.0.2](https://github.com/umatch-oficial/utils/compare/v9.0.1...v9.0.2) (2023-06-26)
+
+
+### Bug Fixes
+
+* **array:** include null in typing of input of joinNonEmpty() ([92c076d](https://github.com/umatch-oficial/utils/commit/92c076dcacf6443b668cd1e31aa73f64851d9df0))
+
 ## [9.0.1](https://github.com/umatch-oficial/utils/compare/v9.0.0...v9.0.1) (2023-06-22)
 
 
