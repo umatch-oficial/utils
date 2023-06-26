@@ -237,7 +237,7 @@ function isSubset(small: (number | string)[], large: (number | string)[]): boole
  * Joins an array of strings or numbers, filtering out empty ones.
  */
 function joinNonEmpty(
-  array: (string | number | null | undefined)[] | undefined,
+  array: (boolean | null | number | string | undefined)[] | undefined,
   separator = "",
 ): string {
   if (!array?.length) return "";
