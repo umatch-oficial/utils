@@ -297,6 +297,10 @@ function isPlainObject(obj: any): obj is Dictionary {
   return proto.hasOwnProperty("isPrototypeOf");
 }
 
+function isKeyOf<T extends Dictionary>(obj: T, key: PropertyKey): key is keyof T {
+  return key in obj;
+}
+
 function isNullOrUndefined(obj: any): obj is null | undefined {
   return obj === null || obj === undefined;
 }
@@ -330,6 +334,7 @@ export {
   isBoolean,
   isDate,
   isFunction,
+  isKeyOf,
   isNullOrUndefined,
   isNumber,
   isObject,

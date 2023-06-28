@@ -5,6 +5,7 @@ import {
   isBoolean,
   isDate,
   isFunction,
+  isKeyOf,
   isNullOrUndefined,
   isNumber,
   isObject,
@@ -164,6 +165,17 @@ test("isString()", () => {
   expect(isString(() => {})).toBe(false);
   expect(isString(null)).toBe(false);
   expect(isString(undefined)).toBe(false);
+});
+
+test("isKeyOf()", () => {
+  const obj = { a: 1 };
+  const key: string = "a";
+  // @ts-expect-error
+  const _ = obj[key];
+  if (isKeyOf(obj, key)) {
+    const a = obj[key];
+    expect(a).toBe(1);
+  }
 });
 
 test("Brand", () => {
