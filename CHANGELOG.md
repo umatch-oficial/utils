@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [10.1.0](https://github.com/umatch-oficial/utils/compare/v10.0.1...v10.1.0) (2023-06-28)
+
+
+### Features
+
+* allow readonly arrays in many functions ([9152c47](https://github.com/umatch-oficial/utils/commit/9152c477806a01894da2563088ab1b113952159c))
+* **array:** add formatMatrixToString() ([7d29b35](https://github.com/umatch-oficial/utils/commit/7d29b3532472b21daf893aafd13018f5ab10aa24))
+* **array:** add transpose() ([e2b5ba4](https://github.com/umatch-oficial/utils/commit/e2b5ba40c771ce2e1a2ef7551f6fa1db5336c201))
+* **math:** add maxProperty() ([c721b92](https://github.com/umatch-oficial/utils/commit/c721b92a42f18160f7221925111bcf0778c0a399))
+
 ## [10.0.1](https://github.com/umatch-oficial/utils/compare/v10.0.0...v10.0.1) (2023-06-26)
 
 
