@@ -6,6 +6,7 @@ import {
   filterByObject,
   filterWithComplement,
   findLastIndex,
+  formatMatrixToString,
   groupBy,
   hasSameElements,
   intersect,
@@ -79,6 +80,15 @@ describe.each([
 
 test("findLastIndex()", () => {
   expect(findLastIndex([1, 2, 2, 1], (x) => x === 2)).toEqual(2);
+});
+
+test("formatMatrixToString()", () => {
+  expect(
+    formatMatrixToString([
+      [1, 2, 3],
+      [4, 5, 6],
+    ]),
+  ).toBe(`1 | 2 | 3\n4 | 5 | 6`);
 });
 
 describe.each([

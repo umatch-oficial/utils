@@ -1,6 +1,7 @@
 import bluebird from "bluebird";
 
-import { range } from "../math";
+import { maxProperty, range } from "../math";
+import * as stringUtils from "../string";
 
 import type {
   DeepNode,
@@ -150,6 +151,30 @@ function findLastIndex<T extends readonly unknown[]>(
   const indexReversed = reversed.findIndex(predicate);
   if (indexReversed === -1) return -1;
   return array.length - 1 - indexReversed;
+}
+
+/**
+ * Formats a 2D array as a table.
+ */
+function formatMatrixToString(
+  array: readonly (readonly (string | number)[])[],
+  center = true,
+  elementSeparator = " | ",
+  lineSeparator = "\n",
+): string {
+  const stringified = array.map((row) => row.map((col) => String(col)));
+  const transposed = transpose(stringified);
+  const maxSizePerColumn = transposed.map((column) => maxProperty(column, "length"));
+  return stringified
+    .map((row) =>
+      row
+        .map((col, i) => {
+          const size = maxSizePerColumn[i];
+          return center ? stringUtils.center(col, size) : col.padEnd(size);
+        })
+        .join(elementSeparator),
+    )
+    .join(lineSeparator);
 }
 
 /**
@@ -386,6 +411,7 @@ export {
   filterByObject,
   filterWithComplement,
   findLastIndex,
+  formatMatrixToString,
   groupBy,
   hasSameElements,
   intersect,
