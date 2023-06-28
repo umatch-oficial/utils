@@ -245,7 +245,7 @@ function getCountDown(
 /**
  * Joins words as in a sentence.
  */
-function join(parts: string[], and = "&"): string {
+function join(parts: readonly string[], and = "&"): string {
   const firstParts = parts.slice(0, -1);
   const lastPart = parts.slice(-1)[0];
   if (firstParts.length === 0) return lastPart;
@@ -261,7 +261,7 @@ function join(parts: string[], and = "&"): string {
  * // returns 'https://abc.com/example'
  * joinUrl('https://abc.com/', 'example/')
  */
-function joinUrl(...parts: string[]): string {
+function joinUrl(...parts: readonly string[]): string {
   return parts.map((s) => s.replace(/^\/|\/$/g, "")).join("/");
 }
 
@@ -563,7 +563,10 @@ const ENGLISH_SKIP_WORDS = [
  * @param {string} str
  * @param {string[]} [skipWords] Words to skip. Default: english skip words (articles, prepositions, etc.)
  */
-function titleCase(str: string, skipWords: string[] = ENGLISH_SKIP_WORDS): string {
+function titleCase(
+  str: string,
+  skipWords: readonly string[] = ENGLISH_SKIP_WORDS,
+): string {
   const otherWordsFunction = (word: string) =>
     skipWords.includes(word.toLowerCase()) ? word : capitalize(word);
 

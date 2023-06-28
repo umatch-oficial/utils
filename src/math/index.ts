@@ -3,7 +3,7 @@ const { cos, floor, log, PI, random, sqrt, trunc } = Math;
 /**
  * Returns the average of an array of numbers.
  */
-function average(array: number[]): number {
+function average(array: readonly number[]): number {
   return array.reduce((a, b) => a + b) / array.length;
 }
 
@@ -14,7 +14,7 @@ function average(array: number[]): number {
  * // returns [2,4,3]
  * diff([1,3,7,10])
  */
-function diff(array: number[]): number[] {
+function diff(array: readonly number[]): number[] {
   return array
     .map((current, i) => {
       if (i === 0) return 0;
@@ -62,7 +62,7 @@ function pickRandom<T extends readonly unknown[]>(options: T): T[number] {
  * Picks a random option from an array of { option, weight }.
  */
 function pickWeighted<T extends { option: unknown; weight: number }>(
-  options: T[],
+  options: readonly T[],
 ): T["option"] {
   const totalWeight = options.reduce((partial, { weight }) => {
     return partial + weight;
@@ -164,7 +164,7 @@ function splitInChunks<T extends readonly unknown[]>(
 /**
  * Returns the sum of the elements in the array.
  */
-function sum(array: number[]): number {
+function sum(array: readonly number[]): number {
   return array.reduce((total, value) => total + value);
 }
 
@@ -172,7 +172,7 @@ function sum(array: number[]): number {
  * Returns the sum of the given property of the elements in the array.
  */
 function sumProperty<T extends { [key: string]: number }>(
-  array: T[],
+  array: readonly T[],
   property: keyof T,
 ): number {
   return array.reduce((total, element) => total + element[property], 0);

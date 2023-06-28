@@ -71,7 +71,7 @@ function deepClone(obj: unknown): unknown {
  * which are not arrays.
  */
 function deepMap<T extends DeepArray>(x: T, f: (val: any) => any): T {
-  return x.map((val) => (isArray(val) ? deepMap(val, f) : f(val))) as T;
+  return x.map((val) => (isArray(val) ? deepMap(val, f) : f(val))) as DeepArray as T;
 }
 
 /**
@@ -90,7 +90,7 @@ function extract<
   const Options extends
     | { custom: RegExp }
     | { keys: (key: string) => boolean }
-    | { keys: string[] }
+    | { keys: readonly string[] }
     | { values: (value: any) => boolean }
     | { prefix: string; rename?: boolean }
     | { suffix: string; rename?: boolean },
@@ -129,7 +129,7 @@ function extract<
             : Key]: T[Key];
         },
       ]
-    : Options extends { keys: K[] }
+    : Options extends { keys: readonly K[] }
     ? [Pick<T, K>, Omit<T, K>]
     : Options extends { keys: (key: string) => boolean }
     ? [{ [_: string]: ValueOf<T> }, { [_: string]: ValueOf<T> }]
@@ -212,7 +212,7 @@ function extract(
  * getDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]')
  */
 function getDeepProperty(
-  obj: Dictionary | unknown[],
+  obj: Dictionary | readonly unknown[],
   str: string,
   sep = ".",
 ): unknown | undefined {
@@ -308,8 +308,11 @@ function merge(
 /**
  * Copies an object excluding some keys.
  */
-function omit<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Omit<T, K>;
-function omit(obj: Dictionary, keys: string[]): Dictionary {
+function omit<T extends Dictionary, K extends keyof T>(
+  obj: T,
+  keys: readonly K[],
+): Omit<T, K>;
+function omit(obj: Dictionary, keys: readonly string[]): Dictionary {
   const toKeep = Object.keys(obj).filter((key) => !keys.includes(key));
   return pick(obj, toKeep);
 }
@@ -320,8 +323,11 @@ function omit(obj: Dictionary, keys: string[]): Dictionary {
  * Makes a copy of an object using only the given keys. If an entry is
  * not present, it receives the value of undefined.
  */
-function pick<T extends Dictionary, K extends keyof T>(obj: T, keys: K[]): Pick<T, K>;
-function pick(obj: Dictionary, keys: string[]): Dictionary {
+function pick<T extends Dictionary, K extends keyof T>(
+  obj: T,
+  keys: readonly K[],
+): Pick<T, K>;
+function pick(obj: Dictionary, keys: readonly string[]): Dictionary {
   const clone = deepClone(obj);
   return Object.fromEntries(keys.map((key) => [key, clone[key]]));
 }
@@ -364,7 +370,7 @@ function rename(
  * @throws if some object in the path is an array, but the next key is not a number.
  */
 function setDeepProperty(
-  obj: Dictionary | unknown[],
+  obj: Dictionary | readonly unknown[],
   str: string,
   value: any,
   sep = ".",
@@ -412,7 +418,7 @@ function snakeCaseKeys(obj: Dictionary): Dictionary {
  * @param {string} [inheritedIndent = ""] Used to keep track of the current indent during recursion
  */
 function stringify(
-  obj: Dictionary | unknown[] | unknown,
+  obj: Dictionary | readonly unknown[] | unknown,
   options?: { indent?: number; pad?: boolean; doubleQuotes?: boolean },
   inheritedIndent = "",
 ): string {

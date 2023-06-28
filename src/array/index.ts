@@ -42,7 +42,7 @@ function cartesian(...arrays: any[]): any[][] {
 /**
  * Array.flat() for n-dimensional arrays.
  */
-function deepFlat<T>(array: DeepNode<T>[]): (DeepObject<T> | T)[] {
+function deepFlat<T>(array: readonly DeepNode<T>[]): (DeepObject<T> | T)[] {
   const final: (DeepObject<T> | T)[] = [];
   array.forEach((element) =>
     element instanceof Array ? final.push(...deepFlat(element)) : final.push(element),
@@ -99,10 +99,13 @@ async function filter<T extends readonly unknown[]>(
  * pairs in the template.
  */
 function filterByObject<O extends Dictionary, T extends Dictionary>(
-  array: O[],
+  array: readonly O[],
   template: T,
 ): (O & T)[];
-function filterByObject(array: Dictionary[], template: Dictionary): Dictionary[] {
+function filterByObject(
+  array: readonly Dictionary[],
+  template: Dictionary,
+): Dictionary[] {
   const entries = Object.entries(template);
   return array.filter((element) =>
     entries.reduce((prev, [key, value]) => prev && element[key] === value, true),
@@ -119,7 +122,7 @@ function filterWithComplement<
 >(
   array: T,
   predicate: P,
-): T extends (infer R)[]
+): T extends readonly (infer R)[]
   ? P extends (obj: unknown) => obj is infer A
     ? [A[], Exclude<R, A>[]]
     : [R[], R[]]
@@ -212,8 +215,8 @@ function hasSameElements<X extends string | number>(a: X[], b: X[]): boolean {
  * Returns the intersection of two arrays.
  */
 function intersect<X extends string | number, Y extends string | number>(
-  a: X[],
-  b: (X | Y)[],
+  a: readonly X[],
+  b: readonly (X | Y)[],
 ): X[] {
   const result = [];
   const map = {} as { [_ in X | Y]: boolean };
@@ -229,14 +232,17 @@ function intersect<X extends string | number, Y extends string | number>(
 /**
  * Returns whether the small array is a subset of the large array.
  */
-function isSubset(small: (number | string)[], large: (number | string)[]): boolean {
+function isSubset(
+  small: readonly (number | string)[],
+  large: readonly (number | string)[],
+): boolean {
   return small.every((value) => large.includes(value));
 }
 
 /**
  * Joins an array of primitives, filtering out nulls, undefineds and empty strings.
  */
-function joinNonEmpty(array: Primitive[] | undefined, separator = ""): string {
+function joinNonEmpty(array: readonly Primitive[] | undefined, separator = ""): string {
   if (!array?.length) return "";
   return array
     .filter((e) => e !== undefined && e !== null && e !== "")
@@ -359,7 +365,7 @@ function uniques(array: any[]): any[] {
  *
  * @throws if the arrays don't have the same length.
  */
-function zip<X, Y>(a: X[], b: Y[]): [X, Y][] {
+function zip<X, Y>(a: readonly X[], b: readonly Y[]): [X, Y][] {
   if (a.length !== b.length) throw new Error("Cannot zip arrays of different lengths");
   return a.map((e, i) => [e, b[i]]);
 }

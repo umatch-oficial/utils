@@ -2,7 +2,7 @@ type Primitive = string | number | boolean | bigint | undefined | null;
 type Dictionary<T = unknown> = { [_: string]: T };
 type Payload = Dictionary<Primitive>;
 
-type OneOrArray<T = unknown> = T | T[];
+type OneOrArray<T = unknown> = T | readonly T[];
 /**
  * Returns whether an array is readonly.
  */
@@ -15,7 +15,7 @@ type DeepNode<T = unknown> = T | DeepArray<T> | DeepObject<T>;
 /**
  * An array of possibly deeply nested values.
  */
-type DeepArray<T = unknown> = DeepNode<T>[];
+type DeepArray<T = unknown> = readonly DeepNode<T>[];
 /**
  * An object, whose values may be deeply nested.
  */
