@@ -324,6 +324,14 @@ function sliceWithOverflow(array: any[], start: number, end: number): any[] {
 }
 
 /**
+ * Returns the transposed array.
+ */
+function transpose<T>(array: readonly (readonly T[])[]): T[][] {
+  const { length } = array[0];
+  return Array.from({ length }).map((_, i) => array.map((row) => row[i]));
+}
+
+/**
  * Returns a copy of the array, where values for which the predicate
  * is false are removed from both ends.
  *
@@ -388,6 +396,7 @@ export {
   shuffle,
   sliceWithOverflow,
   subtract,
+  transpose,
   trim,
   uniques,
   zip,

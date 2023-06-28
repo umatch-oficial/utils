@@ -15,6 +15,7 @@ import {
   remove,
   shuffle,
   sliceWithOverflow,
+  transpose,
   trim,
   uniques,
   zip,
@@ -202,6 +203,20 @@ test("shuffle()", () => {
 
 test("sliceWithOverflow()", () => {
   expect(sliceWithOverflow([1, 2, 3], 2, 5)).toEqual([3, 1, 2]);
+});
+
+test("transpose()", () => {
+  expect(
+    transpose([
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]),
+  ).toEqual([
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+  ]);
 });
 
 test("trim()", () => {
