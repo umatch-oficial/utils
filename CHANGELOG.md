@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [10.2.1](https://github.com/umatch-oficial/utils/compare/v10.2.0...v10.2.1) (2023-06-28)
+
+
+### Bug Fixes
+
+* **string:** fix return of parseFunctionCall() ([96ab3b9](https://github.com/umatch-oficial/utils/commit/96ab3b95d8e51d803484d4cdeaa6d6b6bf9df906))
+
 ## [10.2.0](https://github.com/umatch-oficial/utils/compare/v10.1.0...v10.2.0) (2023-06-28)
 
 
