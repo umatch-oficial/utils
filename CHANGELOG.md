@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [10.2.0](https://github.com/umatch-oficial/utils/compare/v10.1.0...v10.2.0) (2023-06-28)
+
+
+### Features
+
+* **index:** add isKeyOf() ([8e6091f](https://github.com/umatch-oficial/utils/commit/8e6091f5686097bcd8db8e663f2c604ac83cede1))
+
 ## [10.1.0](https://github.com/umatch-oficial/utils/compare/v10.0.1...v10.1.0) (2023-06-28)
 
 
