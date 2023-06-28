@@ -300,8 +300,8 @@ function parseBool(str: string | null | undefined, def?: boolean): boolean {
  * valid, returns an empty string and an empty array.
  *
  * @example
- * parseFunctionCall("foo(1, "bar", true)") // returns ["foo", [1, "bar", true]]
- * parseFunctionCall("foo(1, "bar", true) + 1") // returns ["", []]
+ * parseFunctionCall("foo(1, 'bar', true)") // returns ["foo", [1, "bar", true]]
+ * parseFunctionCall("foo(1, 'bar', true) + 1") // returns ["", []]
  */
 function parseFunctionCall(str: string): [string, Primitive[]] {
   str = str.trim();
