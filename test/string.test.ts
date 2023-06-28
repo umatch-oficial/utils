@@ -174,6 +174,8 @@ test("parseNumber() throws", () => {
 
 describe.each([
   ["func(", ["", []]],
+  ["func()", ["func", []]],
+  ["func(,)", ["", []]],
   ["func(a, ( )", ["", []]],
   [" func( a ) ", ["func", ["a"]]],
   ["func(a) a", ["", []]],

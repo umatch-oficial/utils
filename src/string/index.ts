@@ -312,36 +312,41 @@ function parseFunctionCall(str: string): [string, Primitive[]] {
   const name = match[1];
   const { index } = match;
   const args = [];
-  let current = "";
+  let current = null;
   let openQuote;
   let functionClosed = false;
   str = str.slice(index! + match[0].length);
+
+  const lastChar = str.charAt(str.length - 1);
   for (const char of str) {
     if (openQuote) {
-      current += char;
-      if ((char === '"' || char === "'") && char === openQuote) {
+      current = (current || "") + char;
+      if (char === openQuote) {
         openQuote = null;
       }
     } else {
       if (char === ",") {
-        args.push(current);
-        current = "";
+        if (current !== null) {
+          args.push(current);
+          current = null;
+        } else {
+          return ["", []];
+        }
       } else if (char === "(") {
         return ["", []];
       } else if (char === ")") {
-        if (char === str.charAt(str.length - 1)) {
-          args.push(current);
+        if (char === lastChar) {
+          if (current !== null) args.push(current);
           functionClosed = true;
-          break;
         } else {
           return ["", []];
         }
       } else if (char === '"' || char === "'") {
-        current += char;
+        current = (current || "") + char;
         openQuote = char;
       } else {
         if (char !== " ") {
-          current += char;
+          current = (current || "") + char;
         }
       }
     }
