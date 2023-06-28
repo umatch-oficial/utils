@@ -3,6 +3,7 @@ import {
   diff,
   divmod,
   limitToRange,
+  maxProperty,
   nthElement,
   pickRandom,
   pickWeighted,
@@ -39,6 +40,10 @@ describe.each([
   test(name, () => {
     expect(limitToRange(num, lower, upper)).toEqual(output);
   });
+});
+
+test("maxProperty()", () => {
+  expect(maxProperty([{ a: 1 }, { a: 2 }, { a: 3 }], "a")).toEqual(3);
 });
 
 test("nthElement()", () => {

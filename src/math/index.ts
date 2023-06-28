@@ -38,6 +38,19 @@ function limitToRange(num: number, lower: number, upper: number): number {
 }
 
 /**
+ * Returns the maximum value of the given property of the elements in the array.
+ */
+function maxProperty<Prop extends PropertyKey>(
+  array: readonly { [K in Prop]: number }[],
+  property: Prop,
+): number {
+  return array.reduce(
+    (max, element) => (element[property] > max ? element[property] : max),
+    0,
+  );
+}
+
+/**
  * Returns the nth element with overflow.
  *
  * @example
@@ -183,6 +196,7 @@ export {
   diff,
   divmod,
   limitToRange,
+  maxProperty,
   nthElement,
   pickRandom,
   pickWeighted,
