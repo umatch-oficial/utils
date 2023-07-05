@@ -393,14 +393,36 @@ function uniques(array: any[]): any[] {
   return Array.from(new Set(array));
 }
 
+type Append<T extends readonly unknown[], Element> = IsReadonly<T> extends true
+  ? readonly [...T, Element]
+  : [...T, Element];
+
+type Zip<
+  T extends readonly (readonly unknown[])[],
+  Acc extends readonly unknown[] = [],
+> = T extends readonly [readonly (infer A)[], ...infer B]
+  ? B extends readonly (readonly unknown[])[]
+    ? Zip<B, Append<Acc, A>>
+    : never
+  : Acc[];
+
 /**
- * Zips two arrays. (equivalent of python's zip)
+ * Zips arrays. (equivalent of python's zip)
  *
  * @throws if the arrays don't have the same length.
  */
-function zip<X, Y>(a: readonly X[], b: readonly Y[]): [X, Y][] {
-  if (a.length !== b.length) throw new Error("Cannot zip arrays of different lengths");
-  return a.map((e, i) => [e, b[i]]);
+function zip<T extends readonly (readonly unknown[])[]>(...arrays: T): Zip<T>;
+function zip(...arrays: readonly (readonly unknown[])[]): any[] {
+  const { length } = arrays[0];
+  if (arrays.some((a) => a.length !== length)) {
+    throw new Error("Cannot zip arrays of different lengths");
+  }
+
+  const result = [];
+  for (let i = 0; i < length; i += 1) {
+    result.push(arrays.map((a) => a[i]));
+  }
+  return result;
 }
 
 export {
