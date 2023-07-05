@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [10.3.0](https://github.com/umatch-oficial/utils/compare/v10.2.1...v10.3.0) (2023-07-05)
+
+
+### Features
+
+* **array:** allow zip function to zip N arrays ([077813a](https://github.com/umatch-oficial/utils/commit/077813a88be84ec3b70522ef4561042bfd0588e9))
+
 ## [10.2.1](https://github.com/umatch-oficial/utils/compare/v10.2.0...v10.2.1) (2023-06-28)
 
 
