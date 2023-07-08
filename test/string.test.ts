@@ -1,3 +1,5 @@
+// noinspection JSUnusedLocalSymbols
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { DateTime } from "luxon";
 
 import {
@@ -22,6 +24,9 @@ import {
   sentenceCase,
   snakeCase,
   titleCase,
+  type Replace,
+  type Trim,
+  type Unquote,
 } from "../src/string";
 
 describe.each([
@@ -240,4 +245,26 @@ describe.each([
   test(`${func.name}('${input}') = '${output}'`, () => {
     expect(func(input)).toBe(output);
   });
+});
+
+test("Replace", () => {
+  type T = "banana";
+
+  const a: Replace<T, "b", ""> = "anana";
+});
+
+test("Trim", () => {
+  type T = " banana  ";
+
+  const a: Trim<T> = "banana";
+});
+
+test("Unquote", () => {
+  type A = "'test'";
+  type B = '"test"';
+
+  const a1: Unquote<A> | Unquote<B> = "test";
+  const a2: Unquote<A, '"'> = "'test'";
+  const b1: Unquote<B> = "test";
+  const b2: Unquote<B, "'"> = '"test"';
 });

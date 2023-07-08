@@ -11,6 +11,30 @@ import type { DateTimeUnit } from "luxon";
 type ChalkColor = typeof ForegroundColor;
 type Pluralizer = (word: string, quantity?: number, plural?: string) => string;
 
+type Replace<
+  S extends string,
+  Char extends string,
+  NewChar extends string,
+> = S extends `${infer Before}${Char}${infer After}`
+  ? `${Before}${NewChar}${Replace<After, Char, NewChar>}`
+  : S;
+type Trim<S extends string> = S extends ` ${infer After}`
+  ? Trim<After>
+  : S extends `${infer Before} `
+  ? Trim<Before>
+  : S;
+type Unquote<S extends string, Quote extends "'" | '"' = "'" | '"'> = "'" extends Quote
+  ? S extends `'${infer Middle}'`
+    ? Middle
+    : '"' extends Quote
+    ? S extends `"${infer Middle}"`
+      ? Middle
+      : S
+    : S
+  : S extends `"${infer Middle}"`
+  ? Middle
+  : S;
+
 /**
  * Pluralizes the word if *quantity* is undefined, 0 or
  * greater than 1. Uses the given plural or adds an 's' to the end.
@@ -580,7 +604,6 @@ function titleCase(
 }
 
 export {
-  type Pluralizer,
   basicPluralizer,
   capitalize,
   center,
@@ -602,4 +625,8 @@ export {
   sentenceCase,
   snakeCase,
   titleCase,
+  type Pluralizer,
+  type Replace,
+  type Trim,
+  type Unquote,
 };
