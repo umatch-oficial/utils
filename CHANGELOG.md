@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [10.4.0](https://github.com/umatch-oficial/utils/compare/v10.3.0...v10.4.0) (2023-07-08)
+
+
+### Features
+
+* **string:** add Replace, Trim and Unquote types ([fbf0ab5](https://github.com/umatch-oficial/utils/commit/fbf0ab5dea2f39c11c9dcd5edda30c33b7820f62))
+
 ## [10.3.0](https://github.com/umatch-oficial/utils/compare/v10.2.1...v10.3.0) (2023-07-05)
 
 ### Features
