@@ -1,7 +1,7 @@
-import bluebird from "bluebird";
+import bluebird from 'bluebird';
 
-import { maxProperty, range } from "../math";
-import * as stringUtils from "../string";
+import { maxProperty, range } from '../math';
+import * as stringUtils from '../string';
 
 import type {
   DeepNode,
@@ -12,7 +12,7 @@ import type {
   Primitive,
   Subtract,
   IsReadonly,
-} from "../index";
+} from '../index';
 
 type Cartesian<
   Arrays extends readonly unknown[],
@@ -159,12 +159,12 @@ function findLastIndex<T extends readonly unknown[]>(
 function formatMatrixToString(
   array: readonly (readonly (string | number)[])[],
   center = true,
-  elementSeparator = " | ",
-  lineSeparator = "\n",
+  elementSeparator = ' | ',
+  lineSeparator = '\n',
 ): string {
   const stringified = array.map((row) => row.map((col) => String(col)));
   const transposed = transpose(stringified);
-  const maxSizePerColumn = transposed.map((column) => maxProperty(column, "length"));
+  const maxSizePerColumn = transposed.map((column) => maxProperty(column, 'length'));
   return stringified
     .map((row) =>
       row
@@ -193,7 +193,7 @@ function groupBy<T extends readonly Dictionary[] | unknown, Key extends Property
 function groupBy<T extends readonly Dictionary[]>(array: T, key: keyof T[number]) {
   return array.reduce((partial: { [_: string]: T[number][] }, element: T[number]) => {
     const keyVal = element[key];
-    if (!["string", "number", "boolean"].includes(typeof keyVal)) {
+    if (!['string', 'number', 'boolean'].includes(typeof keyVal)) {
       throw new Error(
         `Cannot use value of '${String(
           key,
@@ -267,10 +267,10 @@ function isSubset(
 /**
  * Joins an array of primitives, filtering out nulls, undefineds and empty strings.
  */
-function joinNonEmpty(array: readonly Primitive[] | undefined, separator = ""): string {
-  if (!array?.length) return "";
+function joinNonEmpty(array: readonly Primitive[] | undefined, separator = ''): string {
+  if (!array?.length) return '';
   return array
-    .filter((e) => e !== undefined && e !== null && e !== "")
+    .filter((e) => e !== undefined && e !== null && e !== '')
     .map((s) => String(s).trim())
     .join(separator);
 }
@@ -415,7 +415,7 @@ function zip<T extends readonly (readonly unknown[])[]>(...arrays: T): Zip<T>;
 function zip(...arrays: readonly (readonly unknown[])[]): any[] {
   const { length } = arrays[0];
   if (arrays.some((a) => a.length !== length)) {
-    throw new Error("Cannot zip arrays of different lengths");
+    throw new Error('Cannot zip arrays of different lengths');
   }
 
   const result = [];

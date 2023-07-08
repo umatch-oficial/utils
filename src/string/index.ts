@@ -1,12 +1,12 @@
-import chalk, { type Chalk, type ForegroundColor } from "chalk";
-import { DateTime } from "luxon";
-import stringLength from "string-length";
+import chalk, { type Chalk, type ForegroundColor } from 'chalk';
+import { DateTime } from 'luxon';
+import stringLength from 'string-length';
 
-import { zip } from "../array";
-import { divmod } from "../math";
+import { zip } from '../array';
+import { divmod } from '../math';
 
-import type { Primitive } from "../index";
-import type { DateTimeUnit } from "luxon";
+import type { Primitive } from '../index';
+import type { DateTimeUnit } from 'luxon';
 
 type ChalkColor = typeof ForegroundColor;
 type Pluralizer = (word: string, quantity?: number, plural?: string) => string;
@@ -59,7 +59,7 @@ function basicPluralizer(word: string, quantity?: number, plural?: string): stri
  * If the number of spaces to add is uneven, the left side gets the
  * extra space.
  */
-function center(str: string, length: number, character = " "): string {
+function center(str: string, length: number, character = ' '): string {
   const realLength = stringLength(str);
   if (realLength >= length) return str;
 
@@ -80,7 +80,7 @@ function center(str: string, length: number, character = " "): string {
  * @param [options.length] Pad string on both sides up to this length
  */
 function formatStr(
-  str: string = "",
+  str: string = '',
   options: {
     bgColor?: ChalkColor;
     bold?: boolean;
@@ -93,7 +93,7 @@ function formatStr(
   let fmt: Chalk = chalk;
   if (bold) fmt = fmt.bold;
   if (color) fmt = fmt[color as ChalkColor];
-  if (bgColor) fmt = fmt[("bg" + capitalize(bgColor)) as ChalkColor];
+  if (bgColor) fmt = fmt[('bg' + capitalize(bgColor)) as ChalkColor];
   return fmt(wrapped);
 }
 
@@ -143,11 +143,11 @@ function formatTime(
     ...options,
   };
   const { and, hour, minute, second, millisecond } = {
-    and: "and",
-    hour: "hour",
-    minute: "minute",
-    second: "second",
-    millisecond: "millisecond",
+    and: 'and',
+    hour: 'hour',
+    minute: 'minute',
+    second: 'second',
+    millisecond: 'millisecond',
     ...dictionary,
   };
 
@@ -176,7 +176,7 @@ function formatTime(
   const sliced = filtered.slice(0, parts);
   if (short) {
     const strings = sliced.map(([quantity, word]) => `${quantity} ${word[0]}`);
-    return strings.join(" ");
+    return strings.join(' ');
   } else {
     const strings = sliced.map(
       ([quantity, word]) => `${quantity} ${pluralize(word, quantity)}`,
@@ -227,9 +227,9 @@ function getCountDown(
 ): string {
   const { pluralize, dictionary } = {
     dictionary: {
-      day: "day",
-      hour: "hour",
-      minute: "minute",
+      day: 'day',
+      hour: 'hour',
+      minute: 'minute',
     },
     pluralize: basicPluralizer,
     ...options,
@@ -240,9 +240,9 @@ function getCountDown(
   const unitsThresholds =
     options?.unitsThresholds ??
     ([
-      ["day", 1],
-      ["hour", 1],
-      ["minute", 1],
+      ['day', 1],
+      ['hour', 1],
+      ['minute', 1],
     ] as const);
   for (const [unit] of unitsThresholds) {
     if (!dictionary[unit]) {
@@ -269,11 +269,11 @@ function getCountDown(
 /**
  * Joins words as in a sentence.
  */
-function join(parts: readonly string[], and = "&"): string {
+function join(parts: readonly string[], and = '&'): string {
   const firstParts = parts.slice(0, -1);
   const lastPart = parts.slice(-1)[0];
   if (firstParts.length === 0) return lastPart;
-  return [firstParts.join(", "), lastPart].join(` ${and} `);
+  return [firstParts.join(', '), lastPart].join(` ${and} `);
 }
 
 /**
@@ -286,14 +286,14 @@ function join(parts: readonly string[], and = "&"): string {
  * joinUrl('https://abc.com/', 'example/')
  */
 function joinUrl(...parts: readonly string[]): string {
-  return parts.map((s) => s.replace(/^\/|\/$/g, "")).join("/");
+  return parts.map((s) => s.replace(/^\/|\/$/g, '')).join('/');
 }
 
 /**
  * Inserts spaces between left and right to achieve the desired length.
  */
 function pad(left: string, right: string, length: number) {
-  const spacer = " ".repeat(Math.max(length - left.length - right.length, 0));
+  const spacer = ' '.repeat(Math.max(length - left.length - right.length, 0));
   return left + spacer + right;
 }
 
@@ -303,14 +303,14 @@ function pad(left: string, right: string, length: number) {
  * @throws if it fails to parse and there is no default value.
  */
 function parseBool(str: string | null | undefined, def?: boolean): boolean {
-  switch ((str ?? "").toLowerCase().trim()) {
-    case "true":
-    case "yes":
-    case "1":
+  switch ((str ?? '').toLowerCase().trim()) {
+    case 'true':
+    case 'yes':
+    case '1':
       return true;
-    case "false":
-    case "no":
-    case "0":
+    case 'false':
+    case 'no':
+    case '0':
       return false;
     default:
       if (def === undefined) throw new Error(`Failed to parse bool from string '${str}'`);
@@ -331,7 +331,7 @@ function parseFunctionCall(str: string): [string, Primitive[]] {
   str = str.trim();
 
   const match = str.match(/^([\w_]+)\(/);
-  if (!match) return ["", []];
+  if (!match) return ['', []];
 
   const name = match[1];
   const { index } = match;
@@ -344,38 +344,38 @@ function parseFunctionCall(str: string): [string, Primitive[]] {
   const lastChar = str.charAt(str.length - 1);
   for (const char of str) {
     if (openQuote) {
-      current = (current || "") + char;
+      current = (current || '') + char;
       if (char === openQuote) {
         openQuote = null;
       }
     } else {
-      if (char === ",") {
+      if (char === ',') {
         if (current !== null) {
           args.push(current);
           current = null;
         } else {
-          return ["", []];
+          return ['', []];
         }
-      } else if (char === "(") {
-        return ["", []];
-      } else if (char === ")") {
+      } else if (char === '(') {
+        return ['', []];
+      } else if (char === ')') {
         if (char === lastChar) {
           if (current !== null) args.push(current);
           functionClosed = true;
         } else {
-          return ["", []];
+          return ['', []];
         }
       } else if (char === '"' || char === "'") {
-        current = (current || "") + char;
+        current = (current || '') + char;
         openQuote = char;
       } else {
-        if (char !== " ") {
-          current = (current || "") + char;
+        if (char !== ' ') {
+          current = (current || '') + char;
         }
       }
     }
   }
-  if (!functionClosed) return ["", []];
+  if (!functionClosed) return ['', []];
 
   const parsedArgs = args.map((arg) => {
     try {
@@ -385,7 +385,7 @@ function parseFunctionCall(str: string): [string, Primitive[]] {
       return parseBool(arg);
     } catch (e) {}
 
-    return arg.replace(/^['"]/, "").replace(/['"]$/, "");
+    return arg.replace(/^['"]/, '').replace(/['"]$/, '');
   });
   return [name, parsedArgs];
 }
@@ -410,7 +410,7 @@ function parseNumber(str: string | null | undefined, def?: number): number {
  * Replaces accented letters with their standard versions.
  */
 function removeAccents(str: string): string {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
 /**
@@ -427,7 +427,7 @@ function removeAccents(str: string): string {
  * @param [n = -1] number of splits
  * @param [sep = ','] separator
  */
-function rsplit(str: string | null | undefined, n = -1, sep = ","): string[] {
+function rsplit(str: string | null | undefined, n = -1, sep = ','): string[] {
   if (!str) return [];
 
   const parts = str.split(sep);
@@ -451,7 +451,7 @@ function rsplit(str: string | null | undefined, n = -1, sep = ","): string[] {
  * @param [n = -1] number of splits
  * @param [sep = ','] separator
  */
-function split(str: string | null | undefined, n = -1, sep = ","): string[] {
+function split(str: string | null | undefined, n = -1, sep = ','): string[] {
   if (!str) return [];
 
   const parts = str.split(sep);
@@ -467,8 +467,8 @@ function split(str: string | null | undefined, n = -1, sep = ","): string[] {
 function capitalize<S extends string>(str: S): Capitalize<S>;
 function capitalize(str: string): string {
   const [first, ...rest] = str;
-  if (!first) return "";
-  return first.toUpperCase() + rest.join("");
+  if (!first) return '';
+  return first.toUpperCase() + rest.join('');
 }
 
 /**
@@ -477,20 +477,20 @@ function capitalize(str: string): string {
 function uncapitalize<S extends string>(str: S): Uncapitalize<S>;
 function uncapitalize(str: string): string {
   const [first, ...rest] = str;
-  if (!first) return "";
-  return first.toLowerCase() + rest.join("");
+  if (!first) return '';
+  return first.toLowerCase() + rest.join('');
 }
 
 // the following approach is an approximation, there is no exact solution
 const LOWERCASE_LETTER = "[a-zØ-öø-ÿ\\d']";
-const UPPERCASE_LETTER = "[A-ZÀ-ÖÚÙÝ]";
+const UPPERCASE_LETTER = '[A-ZÀ-ÖÚÙÝ]';
 /*
 This regex splits words where lowercase letters or numbers precede
 an uppercase letter.
 */
 const WORD_REGEX = new RegExp(
   `${UPPERCASE_LETTER}+${LOWERCASE_LETTER}*|${UPPERCASE_LETTER}?${LOWERCASE_LETTER}+`,
-  "g",
+  'g',
 );
 
 /**
@@ -522,9 +522,9 @@ function toCase(
  * split it and map the function over each unit according to your needs.
  */
 const camelCase: (str: string) => string = Object.defineProperty(
-  toCase(uncapitalize, capitalize, ""),
-  "name",
-  { value: "camelCase" },
+  toCase(uncapitalize, capitalize, ''),
+  'name',
+  { value: 'camelCase' },
 );
 
 /**
@@ -535,9 +535,9 @@ const camelCase: (str: string) => string = Object.defineProperty(
  * split it and map the function over each unit according to your needs.
  */
 const pascalCase: (str: string) => string = Object.defineProperty(
-  toCase(capitalize, capitalize, ""),
-  "name",
-  { value: "pascalCase" },
+  toCase(capitalize, capitalize, ''),
+  'name',
+  { value: 'pascalCase' },
 );
 
 /**
@@ -545,7 +545,7 @@ const pascalCase: (str: string) => string = Object.defineProperty(
  */
 function sentenceCase(str: string) {
   const [first, ...rest] = str.split(/(\s)/);
-  return [capitalize(first), ...rest.map(uncapitalize)].join("");
+  return [capitalize(first), ...rest.map(uncapitalize)].join('');
 }
 
 /**
@@ -556,33 +556,33 @@ function sentenceCase(str: string) {
  * split it and map the function over each unit according to your needs.
  */
 const snakeCase: (str: string) => string = Object.defineProperty(
-  toCase(uncapitalize, uncapitalize, "_"),
-  "name",
-  { value: "snakeCase" },
+  toCase(uncapitalize, uncapitalize, '_'),
+  'name',
+  { value: 'snakeCase' },
 );
 
 const ENGLISH_SKIP_WORDS = [
   // articles
-  "a",
-  "an",
-  "the",
+  'a',
+  'an',
+  'the',
   // coordinating conjunctions
-  "and",
-  "but",
-  "for",
-  "nor",
-  "or",
-  "so",
-  "yet",
+  'and',
+  'but',
+  'for',
+  'nor',
+  'or',
+  'so',
+  'yet',
   // prepositions
-  "at",
-  "by",
-  "for",
-  "in",
-  "of",
-  "on",
-  "to",
-  "with",
+  'at',
+  'by',
+  'for',
+  'in',
+  'of',
+  'on',
+  'to',
+  'with',
 ];
 /**
  * Converts a string to Title Case.
@@ -600,7 +600,7 @@ function titleCase(
     skipWords.includes(word.toLowerCase()) ? word : capitalize(word);
 
   const [first, ...rest] = str.split(/(\s)/);
-  return [capitalize(first), ...rest.map(otherWordsFunction)].join("");
+  return [capitalize(first), ...rest.map(otherWordsFunction)].join('');
 }
 
 export {

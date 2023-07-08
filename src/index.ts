@@ -130,7 +130,7 @@ type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y 
 type Join<
   L extends PropertyKey | undefined = undefined,
   R extends PropertyKey | undefined = undefined,
-  Sep extends string = ".",
+  Sep extends string = '.',
 > = L extends string | number
   ? R extends string | number
     ? `${L}${Sep}${R}`
@@ -206,11 +206,11 @@ type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
  */
 type SnakeToCamelCase<
   S extends string,
-  Acc extends string = "",
+  Acc extends string = '',
 > = S extends `${infer H}_${infer T}`
-  ? SnakeToCamelCase<Capitalize<T>, Join<Acc, H, "">>
+  ? SnakeToCamelCase<Capitalize<T>, Join<Acc, H, ''>>
   : S extends `${infer H}${infer T}`
-  ? SnakeToCamelCase<T, Join<Acc, H, "">>
+  ? SnakeToCamelCase<T, Join<Acc, H, ''>>
   : Acc;
 /*
 Iterates one letter at a time, keeping the result in an accumulator and consecutive
@@ -243,14 +243,14 @@ type CamelToSnakeCase<
         ? T extends `${infer H2}${infer _}`
           ? H2 extends Lowercase<H2>
             ? Buffer extends string
-              ? Join<Acc, Join<Lowercase<Buffer>, Lowercase<H>, "_">, "">
-              : Join<Acc, Lowercase<H>, "_">
+              ? Join<Acc, Join<Lowercase<Buffer>, Lowercase<H>, '_'>, ''>
+              : Join<Acc, Lowercase<H>, '_'>
             : undefined
           : Buffer extends string
-          ? Join<Acc, Join<Lowercase<Buffer>, Lowercase<H>, "_">, "">
-          : Join<Acc, Lowercase<H>, "_">
-        : Join<Acc, H, "">,
-      H extends Uppercase<H> ? Join<Buffer, H, ""> : undefined
+          ? Join<Acc, Join<Lowercase<Buffer>, Lowercase<H>, '_'>, ''>
+          : Join<Acc, Lowercase<H>, '_'>
+        : Join<Acc, H, ''>,
+      H extends Uppercase<H> ? Join<Buffer, H, ''> : undefined
     >
   : Acc & string;
 /**
@@ -271,15 +271,15 @@ function isArray(obj: unknown): obj is unknown[] {
 }
 
 function isBoolean(obj: unknown): obj is boolean {
-  return typeof obj === "boolean";
+  return typeof obj === 'boolean';
 }
 
 function isDate(obj: unknown): obj is Date {
-  return obj?.constructor?.name === "Date";
+  return obj?.constructor?.name === 'Date';
 }
 
 function isFunction(obj: unknown): obj is Function {
-  return typeof obj === "function";
+  return typeof obj === 'function';
 }
 
 /**
@@ -294,7 +294,7 @@ function isPlainObject(obj: any): obj is Dictionary {
   const proto = obj.constructor.prototype;
   if (!isObject(proto)) return false;
   // if its constructor does not have an Object-specific method
-  return proto.hasOwnProperty("isPrototypeOf");
+  return proto.hasOwnProperty('isPrototypeOf');
 }
 
 function isKeyOf<T extends Dictionary>(obj: T, key: PropertyKey): key is keyof T {
@@ -306,7 +306,7 @@ function isNullOrUndefined(obj: any): obj is null | undefined {
 }
 
 function isNumber(obj: unknown): obj is number {
-  return typeof obj === "number";
+  return typeof obj === 'number';
 }
 
 /**
@@ -315,18 +315,18 @@ function isNumber(obj: unknown): obj is number {
  * To narrow this down to only plain objects, use [isPlainObject]{@link isPlainObject}.
  */
 function isObject(obj: any): obj is Dictionary {
-  return Object.prototype.toString.call(obj) === "[object Object]";
+  return Object.prototype.toString.call(obj) === '[object Object]';
 }
 
 function isPrimitive(obj: unknown): obj is Primitive {
   return (
     isNullOrUndefined(obj) ||
-    ["boolean", "number", "string", "bigint"].includes(typeof obj)
+    ['boolean', 'number', 'string', 'bigint'].includes(typeof obj)
   );
 }
 
 function isString(obj: unknown): obj is string {
-  return typeof obj === "string";
+  return typeof obj === 'string';
 }
 
 export {

@@ -9,8 +9,8 @@ import {
   isPlainObject,
   isString,
   Merge,
-} from "../index";
-import { camelCase, snakeCase } from "../string";
+} from '../index';
+import { camelCase, snakeCase } from '../string';
 
 /**
  * Copies an object and applies a function to all values. If keys is
@@ -169,7 +169,7 @@ function extract(
   } else if (values) {
     valuesFilter = values;
   } else {
-    throw new Error("Missing rule");
+    throw new Error('Missing rule');
   }
 
   const clone = deepClone(obj);
@@ -214,11 +214,11 @@ function extract(
 function getDeepProperty(
   obj: Dictionary | readonly unknown[],
   str: string,
-  sep = ".",
+  sep = '.',
 ): unknown | undefined {
   if (!str) return undefined;
   // replace bracket with dot notation
-  str = str.replace(/\[(\w+)]/, ".$1");
+  str = str.replace(/\[(\w+)]/, '.$1');
 
   return str
     .split(sep)
@@ -246,25 +246,25 @@ function hasOwnProperty<X extends {}, Y extends PropertyKey>(
  * arrays, empty objects or deep empty objects.
  */
 function isDeepEmpty(obj: Dictionary<any>): boolean {
-  if (hasOwnProperty(obj, "length")) {
+  if (hasOwnProperty(obj, 'length')) {
     return obj.length === 0;
   }
-  if (typeof obj === "object") {
+  if (typeof obj === 'object') {
     return Object.values(obj).reduce((empty, value) => empty && isDeepEmpty(value), true);
   }
-  return obj === "";
+  return obj === '';
 }
 
 function _merge(
   target: Dictionary,
   source: Dictionary,
-  strategy: "override" | "concat",
+  strategy: 'override' | 'concat',
 ): Dictionary {
   for (const [key, rightValue] of Object.entries(source)) {
     const leftValue = target[key];
     if (isPlainObject(leftValue) && isPlainObject(rightValue)) {
       target[key] = _merge(leftValue, rightValue, strategy);
-    } else if (strategy === "concat" && isArray(leftValue) && isArray(rightValue)) {
+    } else if (strategy === 'concat' && isArray(leftValue) && isArray(rightValue)) {
       target[key] = leftValue.concat(rightValue);
     } else {
       target[key] = rightValue;
@@ -288,14 +288,14 @@ function merge<
 >(
   target: A,
   source: B,
-  strategy?: "override" | "concat",
+  strategy?: 'override' | 'concat',
 ): A extends Dictionary ? (B extends Dictionary ? Merge<A, B> : Dictionary) : Dictionary;
 function merge(
   target: Dictionary,
   source: Dictionary,
-  strategy: "override" | "concat" = "override",
+  strategy: 'override' | 'concat' = 'override',
 ): Dictionary {
-  if (!["concat", "override"].includes(strategy)) {
+  if (!['concat', 'override'].includes(strategy)) {
     throw new Error(`Unexpected strategy: ${strategy}`);
   }
 
@@ -350,7 +350,7 @@ function rename(
 ): Dictionary {
   const clone = structuredClone(obj);
   const entries = Object.entries(clone);
-  if (typeof mapper === "function") {
+  if (typeof mapper === 'function') {
     return Object.fromEntries(entries.map(([key, val]) => [mapper(key), val]));
   }
 
@@ -373,15 +373,15 @@ function setDeepProperty(
   obj: Dictionary | readonly unknown[],
   str: string,
   value: any,
-  sep = ".",
+  sep = '.',
 ): unknown {
   if (!str) return obj;
   // bracket notation -> dot notation
-  str = str.replace(/\[(\w+)]/, sep + "$1");
+  str = str.replace(/\[(\w+)]/, sep + '$1');
 
   str.split(sep).reduce<unknown>((element, key, i, paths) => {
     if (isArray(element) && isNaN(Number(key))) {
-      throw new Error("Cannot index array with string");
+      throw new Error('Cannot index array with string');
     }
     if (i === paths.length - 1) {
       // end of the path - set the value
@@ -420,31 +420,31 @@ function snakeCaseKeys(obj: Dictionary): Dictionary {
 function stringify(
   obj: Dictionary | readonly unknown[] | unknown,
   options?: { indent?: number; pad?: boolean; doubleQuotes?: boolean },
-  inheritedIndent = "",
+  inheritedIndent = '',
 ): string {
   const opts = { indent: 2, pad: false, doubleQuotes: true, ...options };
   const { indent, pad, doubleQuotes } = opts;
   const quote = doubleQuotes ? '"' : "'";
 
   if (isArray(obj) || isPlainObject(obj)) {
-    const indenter = inheritedIndent + " ".repeat(indent);
+    const indenter = inheritedIndent + ' '.repeat(indent);
     let start: string, end: string, formattedEntries: string[];
     if (isPlainObject(obj)) {
-      [start, end] = ["{", "}"];
+      [start, end] = ['{', '}'];
 
       // padding
       const maxKeyLength = Math.max(...Object.keys(obj).map((key) => key.length));
       formattedEntries = Object.entries(obj).map(([key, value], _) => {
-        const spacer = " ".repeat(pad && indent > 0 ? maxKeyLength - key.length : 0);
+        const spacer = ' '.repeat(pad && indent > 0 ? maxKeyLength - key.length : 0);
         return `${quote}${key}${quote}: ${spacer}${stringify(value, opts, indenter)}`;
       });
     } else {
-      [start, end] = ["[", "]"];
+      [start, end] = ['[', ']'];
       formattedEntries = obj.map((element) => stringify(element, opts, indenter));
     }
 
-    const separator = indent === 0 ? " " : "\n";
-    const entriesStr = formattedEntries.join("," + separator + indenter);
+    const separator = indent === 0 ? ' ' : '\n';
+    const entriesStr = formattedEntries.join(',' + separator + indenter);
     return start + separator + indenter + entriesStr + separator + inheritedIndent + end;
   } else {
     if (isString(obj)) {

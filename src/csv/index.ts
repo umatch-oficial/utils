@@ -1,10 +1,10 @@
-import csv from "csv-parser";
-import fs from "fs";
+import csv from 'csv-parser';
+import fs from 'fs';
 
-import { filterWithComplement } from "../array";
-import { isNumber, type Dictionary } from "../index";
-import { apply } from "../object";
-import { titleCase } from "../string";
+import { filterWithComplement } from '../array';
+import { isNumber, type Dictionary } from '../index';
+import { apply } from '../object';
+import { titleCase } from '../string';
 
 /**
  * @property {BufferEncoding} [encoding] The encoding used to read the input and write the output files
@@ -78,14 +78,14 @@ export function titleCaseRows(
     input,
     output,
     ({ header, value, index }) => {
-      if (typeof value !== "string") return String(value);
+      if (typeof value !== 'string') return String(value);
 
       const { columns, skipWords } = options ?? {};
       return shouldProcessRow({ index, header }, columns)
         ? titleCase(value, skipWords)
         : value;
     },
-    { endMessage: "Finished title casing rows", ...csvOptions },
+    { endMessage: 'Finished title casing rows', ...csvOptions },
   );
 }
 
@@ -101,24 +101,24 @@ export function titleCaseRows(
 export function transformRows(
   input: string,
   output: string,
-  mapValues: Exclude<csv.Options["mapValues"], undefined>,
+  mapValues: Exclude<csv.Options['mapValues'], undefined>,
   csvOptions?: CsvOptions,
 ) {
   const { encoding, endMessage, headers, separator } = {
-    endMessage: "Finished transforming rows",
-    separator: ",",
+    endMessage: 'Finished transforming rows',
+    separator: ',',
     ...csvOptions,
   };
   const skipLines = headers ? 1 : 0;
   fs.createReadStream(input, { encoding })
     .pipe(csv({ headers, mapValues, separator, skipLines }))
-    .on("headers", (headerNames: string[]) =>
+    .on('headers', (headerNames: string[]) =>
       appendToFile(output, headerNames, separator, encoding),
     )
-    .on("data", (row: Dictionary) =>
+    .on('data', (row: Dictionary) =>
       appendToFile(output, Object.values(row) as string[], separator, encoding),
     )
-    .on("end", () => console.log(endMessage));
+    .on('end', () => console.log(endMessage));
 }
 
 /**
@@ -134,14 +134,14 @@ export function splitFile(
   options?: CsvOptions,
 ) {
   const { encoding, endMessage, headers, separator } = {
-    endMessage: "Finished splitting file",
-    separator: ",",
+    endMessage: 'Finished splitting file',
+    separator: ',',
     ...options,
   };
   const skipLines = headers ? 1 : 0;
   fs.createReadStream(input, { encoding })
     .pipe(csv({ headers, separator, skipLines }))
-    .on("headers", (headerNames: string[]) => {
+    .on('headers', (headerNames: string[]) => {
       const headersPerFile: { [_: string]: string[] } = apply(outputs, (columns) =>
         headerNames.filter((header, index) =>
           shouldProcessRow({ index, header }, columns),
@@ -151,7 +151,7 @@ export function splitFile(
         appendToFile(file, fileValues, separator, encoding),
       );
     })
-    .on("data", (row) => {
+    .on('data', (row) => {
       const valuesPerFile: { [_: string]: string[] } = apply(outputs, (columns) =>
         Object.entries(row).flatMap(([header, value], index) =>
           shouldProcessRow({ index, header }, columns) ? String(value) : [],
@@ -161,5 +161,5 @@ export function splitFile(
         appendToFile(file, fileValues, separator, encoding),
       );
     })
-    .on("end", () => console.log(endMessage));
+    .on('end', () => console.log(endMessage));
 }

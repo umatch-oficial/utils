@@ -76,7 +76,7 @@ function pickRandom<T extends readonly unknown[]>(options: T): T[number] {
  */
 function pickWeighted<T extends { option: unknown; weight: number }>(
   options: readonly T[],
-): T["option"] {
+): T['option'] {
   const totalWeight = options.reduce((partial, { weight }) => {
     return partial + weight;
   }, 0);
