@@ -50,10 +50,16 @@
     "test": "jest",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --check --loglevel warn --cache --cache-strategy metadata --config ./.prettierrc.js .",
+    "make-docs": "find src -mindepth 1 -type d | grep -o '[^/]*$' | xargs -I module npx documentation build src/module --output docs/module.md --format md --shallow && npx documentation readme docs --section API --config documentation.yml -q true",
     "prepublishOnly": "pnpm lint && pnpm format && pnpm build && pnpm test",
     "prepare": "pnpm build",
     "push-publish": "git push --follow-tags && pnpm publish --ignore-scripts",
-    "release": "pnpm prepublishOnly && npx commit-and-tag-version"
+    "release": "pnpm prepublishOnly && pnpm make-docs && npx commit-and-tag-version -a"
+  },
+  "commit-and-tag-version": {
+    "scripts": {
+      "precommit": "git add README.md"
+    }
   },
   "config": {
     "commitizen": {
@@ -78,6 +84,7 @@
     "commitizen": "^4.3.0",
     "csv-parser": "^3.0.0",
     "cz-conventional-changelog": "^3.3.0",
+    "documentation": "^14.0.2",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^3.5.5",

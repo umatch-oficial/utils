@@ -1,0 +1,4 @@
+# The 'docs' script generates 1 file per module here before combining
+# them all together in the README.
+*
+!.gitignore
