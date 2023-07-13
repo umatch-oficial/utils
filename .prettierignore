@@ -1,1 +1,5 @@
 *lock*
+lib
+docs
+*.md
+*.yml
