@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [10.4.1](https://github.com/umatch-oficial/utils/compare/v10.4.0...v10.4.1) (2023-07-13)
+
 ## [10.4.0](https://github.com/umatch-oficial/utils/compare/v10.3.0...v10.4.0) (2023-07-08)
 
 

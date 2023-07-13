@@ -1201,54 +1201,61 @@ Returns **[string][34]**&#x20;
 
 ### Table of Contents
 
-*   [basicPluralizer][1]
-    *   [Parameters][2]
-    *   [Examples][3]
-*   [center][4]
-    *   [Parameters][5]
-*   [formatStr][6]
-    *   [Parameters][7]
-*   [formatTime][8]
-    *   [Parameters][9]
-    *   [Examples][10]
-*   [getCountDown][11]
-    *   [Parameters][12]
-    *   [Examples][13]
-*   [join][14]
-    *   [Parameters][15]
-*   [joinUrl][16]
-    *   [Parameters][17]
-    *   [Examples][18]
-*   [pad][19]
-    *   [Parameters][20]
-*   [parseBool][21]
-    *   [Parameters][22]
-*   [parseFunctionCall][23]
-    *   [Parameters][24]
-    *   [Examples][25]
-*   [parseNumber][26]
-    *   [Parameters][27]
-*   [removeAccents][28]
-    *   [Parameters][29]
-*   [rsplit][30]
-    *   [Parameters][31]
-    *   [Examples][32]
-*   [split][33]
-    *   [Parameters][34]
-    *   [Examples][35]
-*   [capitalize][36]
-    *   [Parameters][37]
-*   [uncapitalize][38]
-    *   [Parameters][39]
-*   [toCase][40]
-    *   [Parameters][41]
-*   [camelCase][42]
-*   [pascalCase][43]
-*   [sentenceCase][44]
-    *   [Parameters][45]
-*   [snakeCase][46]
-*   [titleCase][47]
-    *   [Parameters][48]
+*   [Replace][1]
+*   [basicPluralizer][2]
+    *   [Parameters][3]
+    *   [Examples][4]
+*   [center][5]
+    *   [Parameters][6]
+*   [formatStr][7]
+    *   [Parameters][8]
+*   [formatTime][9]
+    *   [Parameters][10]
+    *   [Examples][11]
+*   [getCountDown][12]
+    *   [Parameters][13]
+    *   [Examples][14]
+*   [join][15]
+    *   [Parameters][16]
+*   [joinUrl][17]
+    *   [Parameters][18]
+    *   [Examples][19]
+*   [pad][20]
+    *   [Parameters][21]
+*   [parseBool][22]
+    *   [Parameters][23]
+*   [parseFunctionCall][24]
+    *   [Parameters][25]
+    *   [Examples][26]
+*   [parseNumber][27]
+    *   [Parameters][28]
+*   [removeAccents][29]
+    *   [Parameters][30]
+*   [rsplit][31]
+    *   [Parameters][32]
+    *   [Examples][33]
+*   [split][34]
+    *   [Parameters][35]
+    *   [Examples][36]
+*   [capitalize][37]
+    *   [Parameters][38]
+*   [uncapitalize][39]
+    *   [Parameters][40]
+*   [toCase][41]
+    *   [Parameters][42]
+*   [camelCase][43]
+*   [pascalCase][44]
+*   [sentenceCase][45]
+    *   [Parameters][46]
+*   [snakeCase][47]
+*   [titleCase][48]
+    *   [Parameters][49]
+
+## Replace
+
+Replaces NewChar with Char in S.
+
+Type: any
 
 ## basicPluralizer
 
@@ -1257,9 +1264,9 @@ greater than 1. Uses the given plural or adds an 's' to the end.
 
 ### Parameters
 
-*   `word` **[string][49]**&#x20;
-*   `quantity` **[number][50]?**&#x20;
-*   `plural` **[string][49]?**&#x20;
+*   `word` **[string][50]**&#x20;
+*   `quantity` **[number][51]?**&#x20;
+*   `plural` **[string][50]?**&#x20;
 
 ### Examples
 
@@ -1272,7 +1279,7 @@ basicPluralizer('developer', 1)
 basicPluralizer('developer', 2)
 ```
 
-Returns **[string][49]**&#x20;
+Returns **[string][50]**&#x20;
 
 ## center
 
@@ -1283,11 +1290,11 @@ extra space.
 
 ### Parameters
 
-*   `str` **[string][49]**&#x20;
-*   `length` **[number][50]**&#x20;
+*   `str` **[string][50]**&#x20;
+*   `length` **[number][51]**&#x20;
 *   `character`   (optional, default `' '`)
 
-Returns **[string][49]**&#x20;
+Returns **[string][50]**&#x20;
 
 ## formatStr
 
@@ -1295,15 +1302,15 @@ Formats a string according to options.
 
 ### Parameters
 
-*   `str` **[string][49]**  (optional, default `''`)
-*   `options` **{bgColor: ChalkColor?, bold: [boolean][51]?, color: ChalkColor?, length: [number][50]?}**  (optional, default `{}`)
+*   `str` **[string][50]**  (optional, default `''`)
+*   `options` **{bgColor: ChalkColor?, bold: [boolean][52]?, color: ChalkColor?, length: [number][51]?}**  (optional, default `{}`)
 
     *   `options.bold`  Whether to make it bold
     *   `options.bgColor`  Background color
     *   `options.color`  Text color
     *   `options.length`  Pad string on both sides up to this length
 
-Returns **[string][49]**&#x20;
+Returns **[string][50]**&#x20;
 
 ## formatTime
 
@@ -1314,8 +1321,8 @@ and 10 seconds, for example.
 
 ### Parameters
 
-*   `time` **{hours: [number][50]?, minutes: [number][50]?, seconds: [number][50]?, milliseconds: [number][50]?}** Duration-like object
-*   `options` **{dictionary: {and: [string][49], hour: [string][49], minute: [string][49], second: [string][49], millisecond: [string][49]}?, parts: [number][50]?, pluralizer: Pluralizer?, short: [boolean][51]?}?**&#x20;
+*   `time` **{hours: [number][51]?, minutes: [number][51]?, seconds: [number][51]?, milliseconds: [number][51]?}** Duration-like object
+*   `options` **{dictionary: {and: [string][50], hour: [string][50], minute: [string][50], second: [string][50], millisecond: [string][50]}?, parts: [number][51]?, pluralizer: Pluralizer?, short: [boolean][52]?}?**&#x20;
 
     *   `options.dictionary`  Words to substitute. Default: english words
     *   `options.parts`  The number of parts to include in the output. Default: 2
@@ -1331,7 +1338,7 @@ formatTime(
 )
 ```
 
-Returns **[string][49]**&#x20;
+Returns **[string][50]**&#x20;
 
 ## getCountDown
 
@@ -1344,8 +1351,8 @@ exceeds the threshold for the unit (default: 1).
 
 ### Parameters
 
-*   `date` **([string][49] | DateTime)** If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true }).
-*   `options` **{dictionary: DateTimeDict?, pluralizer: Pluralizer?, short: [boolean][51]?, unitsThresholds: any?}?**&#x20;
+*   `date` **([string][50] | DateTime)** If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true }).
+*   `options` **{dictionary: DateTimeDict?, pluralizer: Pluralizer?, short: [boolean][52]?, unitsThresholds: any?}?**&#x20;
 
     *   `options.dictionary`  Words to substitute. Default: english words
     *   `options.pluralizer`  A pluralizer function. Default: adds 's' to the end the word
@@ -1366,7 +1373,7 @@ getCountDown(date, { unitsThresholds: [['day', 5], ['hour', 1]] });
 
 *   Throws **any** if the given dictionary doesn't have entries for all possible units.
 
-Returns **[string][49]**&#x20;
+Returns **[string][50]**&#x20;
 
 ## join
 
@@ -1377,7 +1384,7 @@ Joins words as in a sentence.
 *   `parts` **any**&#x20;
 *   `and`   (optional, default `'&'`)
 
-Returns **[string][49]**&#x20;
+Returns **[string][50]**&#x20;
 
 ## joinUrl
 
@@ -1396,7 +1403,7 @@ Removes / from the beginning and end of each part before joining.
 joinUrl('https://abc.com/', 'example/')
 ```
 
-Returns **[string][49]**&#x20;
+Returns **[string][50]**&#x20;
 
 ## pad
 
@@ -1404,9 +1411,9 @@ Inserts spaces between left and right to achieve the desired length.
 
 ### Parameters
 
-*   `left` **[string][49]**&#x20;
-*   `right` **[string][49]**&#x20;
-*   `length` **[number][50]**&#x20;
+*   `left` **[string][50]**&#x20;
+*   `right` **[string][50]**&#x20;
+*   `length` **[number][51]**&#x20;
 
 ## parseBool
 
@@ -1414,14 +1421,14 @@ Parses a boolean from the string.
 
 ### Parameters
 
-*   `str` **([string][49] | null | [undefined][52])**&#x20;
-*   `def` **[boolean][51]?**&#x20;
+*   `str` **([string][50] | null | [undefined][53])**&#x20;
+*   `def` **[boolean][52]?**&#x20;
 
 <!---->
 
 *   Throws **any** if it fails to parse and there is no default value.
 
-Returns **[boolean][51]**&#x20;
+Returns **[boolean][52]**&#x20;
 
 ## parseFunctionCall
 
@@ -1431,7 +1438,7 @@ valid, returns an empty string and an empty array.
 
 ### Parameters
 
-*   `str` **[string][49]**&#x20;
+*   `str` **[string][50]**&#x20;
 
 ### Examples
 
@@ -1440,7 +1447,7 @@ parseFunctionCall("foo(1, 'bar', true)") // returns ["foo", [1, "bar", true]]
 parseFunctionCall("foo(1, 'bar', true) + 1") // returns ["", []]
 ```
 
-Returns **\[[string][49], [Array][53]\<Primitive>]**&#x20;
+Returns **\[[string][50], [Array][54]\<Primitive>]**&#x20;
 
 ## parseNumber
 
@@ -1448,14 +1455,14 @@ Parses a number from the string.
 
 ### Parameters
 
-*   `str` **([string][49] | null | [undefined][52])**&#x20;
-*   `def` **[number][50]?**&#x20;
+*   `str` **([string][50] | null | [undefined][53])**&#x20;
+*   `def` **[number][51]?**&#x20;
 
 <!---->
 
 *   Throws **any** if it fails to parse and there is no default value.
 
-Returns **[number][50]**&#x20;
+Returns **[number][51]**&#x20;
 
 ## removeAccents
 
@@ -1463,9 +1470,9 @@ Replaces accented letters with their standard versions.
 
 ### Parameters
 
-*   `str` **[string][49]**&#x20;
+*   `str` **[string][50]**&#x20;
 
-Returns **[string][49]**&#x20;
+Returns **[string][50]**&#x20;
 
 ## rsplit
 
@@ -1474,7 +1481,7 @@ Splits a string starting from the right, stops after n splits.
 
 ### Parameters
 
-*   `str` **([string][49] | null | [undefined][52])**&#x20;
+*   `str` **([string][50] | null | [undefined][53])**&#x20;
 *   `n`  number of splits (optional, default `-1`)
 *   `sep`  separator (optional, default `','`)
 
@@ -1487,7 +1494,7 @@ rsplit("a,b,c")
 rsplit("a,b,c", 1)
 ```
 
-Returns **[Array][53]<[string][49]>**&#x20;
+Returns **[Array][54]<[string][50]>**&#x20;
 
 ## split
 
@@ -1496,7 +1503,7 @@ Splits a string starting from the left, stops after n splits.
 
 ### Parameters
 
-*   `str` **([string][49] | null | [undefined][52])**&#x20;
+*   `str` **([string][50] | null | [undefined][53])**&#x20;
 *   `n`  number of splits (optional, default `-1`)
 *   `sep`  separator (optional, default `','`)
 
@@ -1509,7 +1516,7 @@ split("a,b,c")
 split("a,b,c", 1)
 ```
 
-Returns **[Array][53]<[string][49]>**&#x20;
+Returns **[Array][54]<[string][50]>**&#x20;
 
 ## capitalize
 
@@ -1541,11 +1548,11 @@ single word.
 
 ### Parameters
 
-*   `firstWordFunction` **function (str: [string][49]): [string][49]**&#x20;
-*   `otherWordsFunction` **function (str: [string][49]): [string][49]**&#x20;
-*   `separator` **[string][49]**&#x20;
+*   `firstWordFunction` **function (str: [string][50]): [string][50]**&#x20;
+*   `otherWordsFunction` **function (str: [string][50]): [string][50]**&#x20;
+*   `separator` **[string][50]**&#x20;
 
-Returns **function (str: [string][49]): [string][49]**&#x20;
+Returns **function (str: [string][50]): [string][50]**&#x20;
 
 ## camelCase
 
@@ -1555,7 +1562,7 @@ Converts a string to camelCase.
 apply the function to parts of a string individually, you must
 split it and map the function over each unit according to your needs.
 
-Type: function (str: [string][49]): [string][49]
+Type: function (str: [string][50]): [string][50]
 
 ## pascalCase
 
@@ -1565,7 +1572,7 @@ Converts a string to camelCase.
 apply the function to parts of a string individually, you must
 split it and map the function over each unit according to your needs.
 
-Type: function (str: [string][49]): [string][49]
+Type: function (str: [string][50]): [string][50]
 
 ## sentenceCase
 
@@ -1573,7 +1580,7 @@ Converts a string to Sentence case.
 
 ### Parameters
 
-*   `str` **[string][49]**&#x20;
+*   `str` **[string][50]**&#x20;
 
 ## snakeCase
 
@@ -1583,7 +1590,7 @@ Converts a string to snake\_case.
 apply the function to parts of a string individually, you must
 split it and map the function over each unit according to your needs.
 
-Type: function (str: [string][49]): [string][49]
+Type: function (str: [string][50]): [string][50]
 
 ## titleCase
 
@@ -1593,116 +1600,118 @@ Some words should not be capitalized, depending on the language.
 
 ### Parameters
 
-*   `str` **[string][49]**&#x20;
-*   `skipWords` **[Array][53]<[string][49]>?** Words to skip. Default: english skip words (articles, prepositions, etc.) (optional, default `ENGLISH_SKIP_WORDS`)
+*   `str` **[string][50]**&#x20;
+*   `skipWords` **[Array][54]<[string][50]>?** Words to skip. Default: english skip words (articles, prepositions, etc.) (optional, default `ENGLISH_SKIP_WORDS`)
 
-Returns **[string][49]**&#x20;
+Returns **[string][50]**&#x20;
 
-[1]: #basicpluralizer
+[1]: #replace
 
-[2]: #parameters
+[2]: #basicpluralizer
 
-[3]: #examples
+[3]: #parameters
 
-[4]: #center
+[4]: #examples
 
-[5]: #parameters-1
+[5]: #center
 
-[6]: #formatstr
+[6]: #parameters-1
 
-[7]: #parameters-2
+[7]: #formatstr
 
-[8]: #formattime
+[8]: #parameters-2
 
-[9]: #parameters-3
+[9]: #formattime
 
-[10]: #examples-1
+[10]: #parameters-3
 
-[11]: #getcountdown
+[11]: #examples-1
 
-[12]: #parameters-4
+[12]: #getcountdown
 
-[13]: #examples-2
+[13]: #parameters-4
 
-[14]: #join
+[14]: #examples-2
 
-[15]: #parameters-5
+[15]: #join
 
-[16]: #joinurl
+[16]: #parameters-5
 
-[17]: #parameters-6
+[17]: #joinurl
 
-[18]: #examples-3
+[18]: #parameters-6
 
-[19]: #pad
+[19]: #examples-3
 
-[20]: #parameters-7
+[20]: #pad
 
-[21]: #parsebool
+[21]: #parameters-7
 
-[22]: #parameters-8
+[22]: #parsebool
 
-[23]: #parsefunctioncall
+[23]: #parameters-8
 
-[24]: #parameters-9
+[24]: #parsefunctioncall
 
-[25]: #examples-4
+[25]: #parameters-9
 
-[26]: #parsenumber
+[26]: #examples-4
 
-[27]: #parameters-10
+[27]: #parsenumber
 
-[28]: #removeaccents
+[28]: #parameters-10
 
-[29]: #parameters-11
+[29]: #removeaccents
 
-[30]: #rsplit
+[30]: #parameters-11
 
-[31]: #parameters-12
+[31]: #rsplit
 
-[32]: #examples-5
+[32]: #parameters-12
 
-[33]: #split
+[33]: #examples-5
 
-[34]: #parameters-13
+[34]: #split
 
-[35]: #examples-6
+[35]: #parameters-13
 
-[36]: #capitalize
+[36]: #examples-6
 
-[37]: #parameters-14
+[37]: #capitalize
 
-[38]: #uncapitalize
+[38]: #parameters-14
 
-[39]: #parameters-15
+[39]: #uncapitalize
 
-[40]: #tocase
+[40]: #parameters-15
 
-[41]: #parameters-16
+[41]: #tocase
 
-[42]: #camelcase
+[42]: #parameters-16
 
-[43]: #pascalcase
+[43]: #camelcase
 
-[44]: #sentencecase
+[44]: #pascalcase
 
-[45]: #parameters-17
+[45]: #sentencecase
 
-[46]: #snakecase
+[46]: #parameters-17
 
-[47]: #titlecase
+[47]: #snakecase
 
-[48]: #parameters-18
+[48]: #titlecase
 
-[49]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[49]: #parameters-18
 
-[50]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[50]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[51]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[51]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[52]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+[52]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[53]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[53]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+
+[54]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
 ## time
 
