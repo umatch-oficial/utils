@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [10.4.2](https://github.com/umatch-oficial/utils/compare/v10.4.1...v10.4.2) (2023-07-13)
+
+
+### Bug Fixes
+
+* **object:** remove 'extends Dictionary' from merge(), omit(), pick() and rename() ([1f62a87](https://github.com/umatch-oficial/utils/commit/1f62a87f4e3b184d9232fa1172f8a432380d9a2b))
+
 ## [10.4.1](https://github.com/umatch-oficial/utils/compare/v10.4.0...v10.4.1) (2023-07-13)
 
 ## [10.4.0](https://github.com/umatch-oficial/utils/compare/v10.3.0...v10.4.0) (2023-07-08)
