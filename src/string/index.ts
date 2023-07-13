@@ -11,13 +11,19 @@ import type { DateTimeUnit } from 'luxon';
 type ChalkColor = typeof ForegroundColor;
 type Pluralizer = (word: string, quantity?: number, plural?: string) => string;
 
+/**
+ * Replaces NewChar with Char in S.
+ */
 type Replace<
   S extends string,
   Char extends string,
   NewChar extends string,
+  Acc extends string = '',
 > = S extends `${infer Before}${Char}${infer After}`
-  ? `${Before}${NewChar}${Replace<After, Char, NewChar>}`
-  : S;
+  ? Replace<After, Char, NewChar, `${Acc}${Before}${NewChar}`>
+  : Acc extends ''
+  ? S
+  : `${Acc}${S}`;
 type Trim<S extends string> = S extends ` ${infer After}`
   ? Trim<After>
   : S extends `${infer Before} `
