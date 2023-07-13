@@ -282,10 +282,7 @@ function _merge(
  *
  * @throws if an unexpected strategy is provided.
  */
-function merge<
-  A extends Dictionary | unknown,
-  B extends (Partial<A> & Dictionary) | Dictionary | unknown,
->(
+function merge<A, B extends Partial<A> | Dictionary>(
   target: A,
   source: B,
   strategy?: 'override' | 'concat',
@@ -308,10 +305,7 @@ function merge(
 /**
  * Copies an object excluding some keys.
  */
-function omit<T extends Dictionary, K extends keyof T>(
-  obj: T,
-  keys: readonly K[],
-): Omit<T, K>;
+function omit<T, K extends keyof T>(obj: T, keys: readonly K[]): Omit<T, K>;
 function omit(obj: Dictionary, keys: readonly string[]): Dictionary {
   const toKeep = Object.keys(obj).filter((key) => !keys.includes(key));
   return pick(obj, toKeep);
@@ -323,10 +317,7 @@ function omit(obj: Dictionary, keys: readonly string[]): Dictionary {
  * Makes a copy of an object using only the given keys. If an entry is
  * not present, it receives the value of undefined.
  */
-function pick<T extends Dictionary, K extends keyof T>(
-  obj: T,
-  keys: readonly K[],
-): Pick<T, K>;
+function pick<T, K extends keyof T>(obj: T, keys: readonly K[]): Pick<T, K>;
 function pick(obj: Dictionary, keys: readonly string[]): Dictionary {
   const clone = deepClone(obj);
   return Object.fromEntries(keys.map((key) => [key, clone[key]]));
@@ -335,10 +326,7 @@ function pick(obj: Dictionary, keys: readonly string[]): Dictionary {
 /**
  * Returns a copy of an object, with renamed first-level keys.
  */
-function rename<
-  T extends Dictionary,
-  Mapper extends { [_ in keyof T]?: string } | ((a: string) => string),
->(
+function rename<T, Mapper extends { [_ in keyof T]?: string } | ((a: string) => string)>(
   obj: T,
   mapper: Mapper,
 ): Mapper extends Dictionary<string>
