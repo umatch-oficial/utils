@@ -2,6 +2,9 @@ type Primitive = string | number | boolean | bigint | undefined | null;
 type Dictionary<T = unknown> = { [_: string]: T };
 type Payload = Dictionary<Primitive>;
 
+/**
+ * Returns an union of the input type and an array of the input type.
+ */
 type OneOrArray<T = unknown> = T | readonly T[];
 /**
  * Returns whether an array is readonly.
@@ -183,18 +186,32 @@ type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
   ? UnionToTuple<Exclude<T, W>, [W, ...Acc]>
   : Acc;
 
+/**
+ * Returns whether obj is an array.
+ *
+ * Uses Array.isArray().
+ */
 function isArray(obj: unknown): obj is unknown[] {
   return Array.isArray(obj);
 }
 
+/**
+ * Returns whether obj is a boolean.
+ */
 function isBoolean(obj: unknown): obj is boolean {
   return typeof obj === 'boolean';
 }
 
+/**
+ * Returns whether obj is a Date.
+ */
 function isDate(obj: unknown): obj is Date {
   return obj?.constructor?.name === 'Date';
 }
 
+/**
+ * Returns whether obj is a function.
+ */
 function isFunction(obj: unknown): obj is Function {
   return typeof obj === 'function';
 }
@@ -214,15 +231,24 @@ function isPlainObject(obj: any): obj is Dictionary {
   return proto.hasOwnProperty('isPrototypeOf');
 }
 
+/**
+ * Returns whether key is a key of obj.
+ */
 function isKeyOf<T>(obj: T, key: PropertyKey): key is keyof T {
   // @ts-expect-error
   return key in obj;
 }
 
+/**
+ * Returns whether obj is null or undefined.
+ */
 function isNullOrUndefined(obj: any): obj is null | undefined {
   return obj === null || obj === undefined;
 }
 
+/**
+ * Returns whether obj is a number.
+ */
 function isNumber(obj: unknown): obj is number {
   return typeof obj === 'number';
 }
@@ -236,6 +262,9 @@ function isObject(obj: any): obj is Dictionary {
   return Object.prototype.toString.call(obj) === '[object Object]';
 }
 
+/**
+ * Returns whether obj is a primitive data type.
+ */
 function isPrimitive(obj: unknown): obj is Primitive {
   return (
     isNullOrUndefined(obj) ||
@@ -243,6 +272,9 @@ function isPrimitive(obj: unknown): obj is Primitive {
   );
 }
 
+/**
+ * Returns whether obj is a string.
+ */
 function isString(obj: unknown): obj is string {
   return typeof obj === 'string';
 }

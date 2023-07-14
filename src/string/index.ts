@@ -24,11 +24,17 @@ type Replace<
   : Acc extends ''
   ? S
   : `${Acc}${S}`;
+/**
+ * Trims both ends of a string.
+ */
 type Trim<S extends string> = S extends ` ${infer After}`
   ? Trim<After>
   : S extends `${infer Before} `
   ? Trim<Before>
   : S;
+/**
+ * Removes quotes from the start and end of a string.
+ */
 type Unquote<S extends string, Quote extends "'" | '"' = "'" | '"'> = "'" extends Quote
   ? S extends `'${infer Middle}'`
     ? Middle
