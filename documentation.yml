@@ -1,6 +1,8 @@
 toc:
     - name: Intro
       description: This section is automatically generated from the source code using [documentation.js](https://github.com/documentationjs/documentation). This ensures the documentation is always up-to-date, however, types are simplified or incorrect in many cases and each section has its own table of contents. The last part is a consequence of a hack needed to separate modules into their own sections, otherwise all functions would be listed in one giant section without context.
+    - name: index
+      file: docs/index.md
     - name: array
       file: docs/array.md
     - name: csv
