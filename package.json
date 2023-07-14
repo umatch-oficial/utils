@@ -50,14 +50,12 @@
     "test": "jest",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --check --loglevel warn --cache --cache-strategy metadata --config ./.prettierrc.js .",
-    "make-index-docs": "npx documentation build src/index.ts --output docs/index.md --format md --shallow",
-    "make-module-docs": "find src -mindepth 1 -type d | grep -o '[^/]*$' | xargs -I module npx documentation build src/module --output docs/module.md --format md --shallow",
-    "docs-to-readme": "npx documentation readme docs --section API --config documentation.yml -q true",
-    "make-docs": "pnpm make-index-docs && pnpm make-module-docs && pnpm docs-to-readme",
+    "docs-fix-links": "sed -i 's/(API\\.md)/(docs\\/API.md)/' README.md && sed -i 's/(README\\.md)/(..\\/README.md)/g' docs/API.md",
+    "docs-make": "npx typedoc --entryPoints src --entryPoints src/array --entryPoints src/time --entryPoints src/csv --entryPoints src/object --entryPoints src/string --entryPoints src/math --tsconfig tsconfig.base.json --plugin typedoc-plugin-markdown --githubPages false --readme README-base.md --out docs && mv docs/README.md README.md && pnpm docs-fix-links",
     "prepublishOnly": "pnpm lint && pnpm format && pnpm build && pnpm test",
     "prepare": "pnpm build",
     "push-publish": "git push --follow-tags && pnpm publish --ignore-scripts",
-    "release": "pnpm prepublishOnly && pnpm make-docs && npx commit-and-tag-version -a"
+    "release": "pnpm prepublishOnly && pnpm docs-make && npx commit-and-tag-version -a"
   },
   "commit-and-tag-version": {
     "scripts": {
@@ -87,7 +85,6 @@
     "commitizen": "^4.3.0",
     "csv-parser": "^3.0.0",
     "cz-conventional-changelog": "^3.3.0",
-    "documentation": "^14.0.2",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^3.5.5",
@@ -96,6 +93,8 @@
     "prettier": "^2.8.8",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
+    "typedoc": "^0.24.8",
+    "typedoc-plugin-markdown": "4.0.0-next.17",
     "typescript": "^5.1.3"
   }
 }
