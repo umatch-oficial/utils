@@ -296,7 +296,7 @@ function merge<A, B extends Partial<A> | Dictionary>(
   target: A,
   source: B,
   strategy?: 'override' | 'concat',
-): A extends Dictionary ? (B extends Dictionary ? Merge<A, B> : Dictionary) : Dictionary;
+): Merge<A, B>;
 function merge(
   target: Dictionary,
   source: Dictionary,

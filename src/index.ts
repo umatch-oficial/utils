@@ -65,7 +65,7 @@ type PickByType<T, Value> = {
 /**
  * Deep merges two dictionaries. Values from the right have higher priority.
  */
-type Merge<A extends Dictionary, B extends Dictionary> = {
+type Merge<A, B> = {
   [K in keyof A | keyof B]: K extends keyof B
     ? K extends keyof A
       ? A[K] extends Dictionary
