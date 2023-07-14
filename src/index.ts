@@ -63,24 +63,6 @@ type PickByType<T, Value> = {
   [K in keyof T as T[K] extends Value | undefined ? K : never]: T[K];
 };
 /**
- * Groups objects in an array by the value of a property.
- */
-type GroupBy<
-  T extends readonly Dictionary[],
-  Key extends PropertyKey,
-> = T extends readonly (infer D)[]
-  ? Key extends keyof D
-    ? D[Key] extends string | number | boolean
-      ? {
-          [Value in D[Key] as Value extends boolean ? Value & string : Value]: Extract<
-            D,
-            { [K in Key]: Value }
-          >[];
-        }
-      : never
-    : { [_: PropertyKey]: D[] }
-  : never;
-/**
  * Deep merges two dictionaries. Values from the right have higher priority.
  */
 type Merge<A extends Dictionary, B extends Dictionary> = {
@@ -352,7 +334,6 @@ export {
   type Equals,
   type ExtendValues,
   type Flatten,
-  type GroupBy,
   type IsReadonly,
   type Join,
   type Merge,

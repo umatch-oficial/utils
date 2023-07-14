@@ -8,10 +8,9 @@ import type {
   DeepObject,
   Dictionary,
   Equals,
-  GroupBy,
+  IsReadonly,
   Primitive,
   Subtract,
-  IsReadonly,
 } from '../index';
 
 type Cartesian<
@@ -189,7 +188,18 @@ function formatMatrixToString(
 function groupBy<T extends readonly Dictionary[] | unknown, Key extends PropertyKey>(
   array: T,
   key: Key,
-): T extends readonly Dictionary[] ? GroupBy<T, Key> : Dictionary<T>;
+): T extends readonly (infer D)[]
+  ? Key extends keyof D
+    ? D[Key] extends string | number | boolean
+      ? {
+          [Value in D[Key] as Value extends boolean ? Value & string : Value]: Extract<
+            D,
+            { [K in Key]: Value }
+          >[];
+        }
+      : never
+    : { [_: PropertyKey]: D[] }
+  : Dictionary<T>;
 function groupBy<T extends readonly Dictionary[]>(array: T, key: keyof T[number]) {
   return array.reduce((partial: { [_: string]: T[number][] }, element: T[number]) => {
     const keyVal = element[key];

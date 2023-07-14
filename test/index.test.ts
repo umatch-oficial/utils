@@ -19,7 +19,6 @@ import {
   type Equals,
   type ExtendValues,
   type Flatten,
-  type GroupBy,
   type IsReadonly,
   type Join,
   type Merge,
@@ -223,21 +222,6 @@ test('Flatten', () => {
   type T = readonly [1, readonly [2], 3];
 
   const a: Flatten<T> = [1, 2, 3] as const;
-});
-
-test('GroupBy', () => {
-  type T = readonly [{ a: 1; b: 1 }, { a: 1; b: 2 }, { a: 2; b: 1 }, { a: 2; b: 2 }];
-
-  const a: GroupBy<T, 'a'> = {
-    1: [
-      { a: 1, b: 1 },
-      { a: 1, b: 2 },
-    ],
-    2: [
-      { a: 2, b: 1 },
-      { a: 2, b: 2 },
-    ],
-  };
 });
 
 test('IsReadonly', () => {
