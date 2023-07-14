@@ -27,19 +27,19 @@ This section is automatically generated from the source code using [documentatio
 
 ### Table of Contents
 
-*   [IsReadonly][1]
-*   [DeepNode][2]
-*   [DeepArray][3]
-*   [DeepObject][4]
-    *   [Properties][5]
-*   [ValueOf][6]
-*   [DeepValueOf][7]
-*   [Flatten][8]
-*   [TransformValuesByKey][9]
-*   [TransformValues][10]
-*   [ExtendValues][11]
-*   [PickByType][12]
-*   [GroupBy][13]
+*   [OneOrArray][1]
+*   [IsReadonly][2]
+*   [DeepNode][3]
+*   [DeepArray][4]
+*   [DeepObject][5]
+    *   [Properties][6]
+*   [ValueOf][7]
+*   [DeepValueOf][8]
+*   [Flatten][9]
+*   [TransformValuesByKey][10]
+*   [TransformValues][11]
+*   [ExtendValues][12]
+*   [PickByType][13]
 *   [Merge][14]
 *   [Subtract][15]
 *   [Brand][16]
@@ -49,14 +49,34 @@ This section is automatically generated from the source code using [documentatio
 *   [NestedPaths][20]
 *   [TypeFromPath][21]
 *   [TupleToUnion][22]
-*   [SnakeToCamelCase][23]
-*   [CamelToSnakeCase][24]
-*   [SnakeToCamelCaseKeys][25]
-*   [CamelToSnakeCaseKeys][26]
-*   [isPlainObject][27]
+*   [isArray][23]
+    *   [Parameters][24]
+*   [isBoolean][25]
+    *   [Parameters][26]
+*   [isDate][27]
     *   [Parameters][28]
-*   [isObject][29]
+*   [isFunction][29]
     *   [Parameters][30]
+*   [isPlainObject][31]
+    *   [Parameters][32]
+*   [isKeyOf][33]
+    *   [Parameters][34]
+*   [isNullOrUndefined][35]
+    *   [Parameters][36]
+*   [isNumber][37]
+    *   [Parameters][38]
+*   [isObject][39]
+    *   [Parameters][40]
+*   [isPrimitive][41]
+    *   [Parameters][42]
+*   [isString][43]
+    *   [Parameters][44]
+
+## OneOrArray
+
+Returns an union of the input type and an array of the input type.
+
+Type: (T | any)
 
 ## IsReadonly
 
@@ -68,7 +88,7 @@ Type: any
 
 A possibly deeply nested value.
 
-Type: (T | [DeepArray][3]\<T> | [DeepObject][4]\<T>)
+Type: (T | [DeepArray][4]\<T> | [DeepObject][5]\<T>)
 
 ## DeepArray
 
@@ -80,7 +100,7 @@ Type: any
 
 An object, whose values may be deeply nested.
 
-Type: {: [DeepNode][2]\<T>}
+Type: {: [DeepNode][3]\<T>}
 
 ### Properties
 
@@ -120,17 +140,11 @@ Type: any
 
 Changes the type of values matching A to A | B
 
-Type: [TransformValues][10]\<T, A, (A | B)>
+Type: [TransformValues][11]\<T, A, (A | B)>
 
 ## PickByType
 
 From T, pick a set of properties whose values are of some type.
-
-Type: any
-
-## GroupBy
-
-Groups objects in an array by the value of a property.
 
 Type: any
 
@@ -190,29 +204,47 @@ Returns a union of the types in the tuple.
 
 Type: any
 
-## SnakeToCamelCase
+## isArray
 
-Converts a string from snake to camel case.
+Returns whether obj is an array.
 
-Type: any
+Uses Array.isArray().
 
-## CamelToSnakeCase
+### Parameters
 
-Converts a string from camel to snake case.
+*   `obj` **any**&#x20;
 
-Type: any
+Returns **any**&#x20;
 
-## SnakeToCamelCaseKeys
+## isBoolean
 
-Applies SnakeToCamelCase on the keys of an object.
+Returns whether obj is a boolean.
 
-Type: any
+### Parameters
 
-## CamelToSnakeCaseKeys
+*   `obj` **any**&#x20;
 
-Applies CamelToSnakeCase on the keys of an object.
+Returns **any**&#x20;
 
-Type: any
+## isDate
+
+Returns whether obj is a Date.
+
+### Parameters
+
+*   `obj` **any**&#x20;
+
+Returns **any**&#x20;
+
+## isFunction
+
+Returns whether obj is a function.
+
+### Parameters
+
+*   `obj` **any**&#x20;
+
+Returns **any**&#x20;
 
 ## isPlainObject
 
@@ -224,11 +256,20 @@ Returns whether obj is a plain object.
 
 Returns **any**&#x20;
 
-## isObject
+## isKeyOf
 
-Returns whether obj is NOT one of the primitive data types. It may
-still be any kind of object, including the instance of some class.
-To narrow this down to only plain objects, use \[isPlainObject][isPlainObject][27].
+Returns whether key is a key of obj.
+
+### Parameters
+
+*   `obj` **T**&#x20;
+*   `key` **PropertyKey**&#x20;
+
+Returns **any**&#x20;
+
+## isNullOrUndefined
+
+Returns whether obj is null or undefined.
 
 ### Parameters
 
@@ -236,31 +277,73 @@ To narrow this down to only plain objects, use \[isPlainObject][isPlainObject][2
 
 Returns **any**&#x20;
 
-[1]: #isreadonly
+## isNumber
 
-[2]: #deepnode
+Returns whether obj is a number.
 
-[3]: #deeparray
+### Parameters
 
-[4]: #deepobject
+*   `obj` **any**&#x20;
 
-[5]: #properties
+Returns **any**&#x20;
 
-[6]: #valueof
+## isObject
 
-[7]: #deepvalueof
+Returns whether obj is NOT one of the primitive data types. It may
+still be any kind of object, including the instance of some class.
+To narrow this down to only plain objects, use \[isPlainObject][isPlainObject][31].
 
-[8]: #flatten
+### Parameters
 
-[9]: #transformvaluesbykey
+*   `obj` **any**&#x20;
 
-[10]: #transformvalues
+Returns **any**&#x20;
 
-[11]: #extendvalues
+## isPrimitive
 
-[12]: #pickbytype
+Returns whether obj is a primitive data type.
 
-[13]: #groupby
+### Parameters
+
+*   `obj` **any**&#x20;
+
+Returns **any**&#x20;
+
+## isString
+
+Returns whether obj is a string.
+
+### Parameters
+
+*   `obj` **any**&#x20;
+
+Returns **any**&#x20;
+
+[1]: #oneorarray
+
+[2]: #isreadonly
+
+[3]: #deepnode
+
+[4]: #deeparray
+
+[5]: #deepobject
+
+[6]: #properties
+
+[7]: #valueof
+
+[8]: #deepvalueof
+
+[9]: #flatten
+
+[10]: #transformvaluesbykey
+
+[11]: #transformvalues
+
+[12]: #extendvalues
+
+[13]: #pickbytype
 
 [14]: #merge
 
@@ -280,21 +363,49 @@ Returns **any**&#x20;
 
 [22]: #tupletounion
 
-[23]: #snaketocamelcase
+[23]: #isarray
 
-[24]: #cameltosnakecase
+[24]: #parameters
 
-[25]: #snaketocamelcasekeys
+[25]: #isboolean
 
-[26]: #cameltosnakecasekeys
+[26]: #parameters-1
 
-[27]: #isplainobject
+[27]: #isdate
 
-[28]: #parameters
+[28]: #parameters-2
 
-[29]: #isobject
+[29]: #isfunction
 
-[30]: #parameters-1
+[30]: #parameters-3
+
+[31]: #isplainobject
+
+[32]: #parameters-4
+
+[33]: #iskeyof
+
+[34]: #parameters-5
+
+[35]: #isnullorundefined
+
+[36]: #parameters-6
+
+[37]: #isnumber
+
+[38]: #parameters-7
+
+[39]: #isobject
+
+[40]: #parameters-8
+
+[41]: #isprimitive
+
+[42]: #parameters-9
+
+[43]: #isstring
+
+[44]: #parameters-10
 
 ## array
 
@@ -326,24 +437,22 @@ Returns **any**&#x20;
     *   [Parameters][22]
 *   [isSubset][23]
     *   [Parameters][24]
-*   [joinNonEmpty][25]
+*   [permutations][25]
     *   [Parameters][26]
-*   [permutations][27]
+*   [remove][27]
     *   [Parameters][28]
-*   [remove][29]
+*   [shuffle][29]
     *   [Parameters][30]
-*   [shuffle][31]
+*   [sliceWithOverflow][31]
     *   [Parameters][32]
-*   [sliceWithOverflow][33]
+*   [transpose][33]
     *   [Parameters][34]
-*   [transpose][35]
+*   [trim][35]
     *   [Parameters][36]
-*   [trim][37]
+*   [uniques][37]
     *   [Parameters][38]
-*   [uniques][39]
+*   [zip][39]
     *   [Parameters][40]
-*   [zip][41]
-    *   [Parameters][42]
 
 ## cartesian
 
@@ -363,7 +472,7 @@ Array.flat() for n-dimensional arrays.
 
 *   `array` **any**&#x20;
 
-Returns **[Array][43]<(DeepObject\<T> | T)>**&#x20;
+Returns **[Array][41]<(DeepObject\<T> | T)>**&#x20;
 
 ## diff
 
@@ -386,10 +495,10 @@ Uses bluebird.map to limit concurrency.
 ### Parameters
 
 *   `array` **T**&#x20;
-*   `callback` **function (x: any): [Promise][44]<[boolean][45]>**&#x20;
+*   `callback` **function (x: any): [Promise][42]<[boolean][43]>**&#x20;
 *   `concurrency`   (optional, default `50`)
 
-Returns **[Promise][44]<[Array][43]\<any>>**&#x20;
+Returns **[Promise][42]<[Array][41]\<any>>**&#x20;
 
 ## filterByObject
 
@@ -401,7 +510,7 @@ pairs in the template.
 *   `array` **any**&#x20;
 *   `template` **T**&#x20;
 
-Returns **[Array][43]\<any>**&#x20;
+Returns **[Array][41]\<any>**&#x20;
 
 ## filterWithComplement
 
@@ -425,9 +534,9 @@ but not in Node.
 ### Parameters
 
 *   `array` **T**&#x20;
-*   `predicate` **function (value: any, index: [number][46], arr: [Array][43]\<any>): [boolean][45]**&#x20;
+*   `predicate` **function (value: any, index: [number][44], arr: [Array][41]\<any>): [boolean][43]**&#x20;
 
-Returns **[number][46]**&#x20;
+Returns **[number][44]**&#x20;
 
 ## formatMatrixToString
 
@@ -440,7 +549,7 @@ Formats a 2D array as a table.
 *   `elementSeparator`   (optional, default `' | '`)
 *   `lineSeparator`   (optional, default `'\n'`)
 
-Returns **[string][47]**&#x20;
+Returns **[string][45]**&#x20;
 
 ## groupBy
 
@@ -481,7 +590,7 @@ Returns the intersection of two arrays.
 *   `a` **any**&#x20;
 *   `b` **any**&#x20;
 
-Returns **[Array][43]\<X>**&#x20;
+Returns **[Array][41]\<X>**&#x20;
 
 ## isSubset
 
@@ -492,18 +601,7 @@ Returns whether the small array is a subset of the large array.
 *   `small` **any**&#x20;
 *   `large` **any**&#x20;
 
-Returns **[boolean][45]**&#x20;
-
-## joinNonEmpty
-
-Joins an array of primitives, filtering out nulls, undefineds and empty strings.
-
-### Parameters
-
-*   `array` **(any | [undefined][48])**&#x20;
-*   `separator`   (optional, default `''`)
-
-Returns **[string][47]**&#x20;
+Returns **[boolean][43]**&#x20;
 
 ## permutations
 
@@ -545,8 +643,8 @@ Same as slice, but overflows to guarantee there are (end - start) elements.
 ### Parameters
 
 *   `array` **T**&#x20;
-*   `start` **[number][46]**&#x20;
-*   `end` **[number][46]**&#x20;
+*   `start` **[number][44]**&#x20;
+*   `end` **[number][44]**&#x20;
 
 Returns **any**&#x20;
 
@@ -558,7 +656,7 @@ Returns the transposed array.
 
 *   `array` **any**&#x20;
 
-Returns **[Array][43]<[Array][43]\<T>>**&#x20;
+Returns **[Array][41]<[Array][41]\<T>>**&#x20;
 
 ## trim
 
@@ -571,9 +669,9 @@ the first and last valid elements are not removed.
 ### Parameters
 
 *   `array` **T**&#x20;
-*   `predicate` **function (value: any, index: [number][46], arr: any): [boolean][45]**&#x20;
+*   `predicate` **function (value: any, index: [number][44], arr: any): [boolean][43]**&#x20;
 
-Returns **[Array][43]\<any>**&#x20;
+Returns **[Array][41]\<any>**&#x20;
 
 ## uniques
 
@@ -647,53 +745,47 @@ Returns **Zip\<T>**&#x20;
 
 [24]: #parameters-11
 
-[25]: #joinnonempty
+[25]: #permutations
 
 [26]: #parameters-12
 
-[27]: #permutations
+[27]: #remove
 
 [28]: #parameters-13
 
-[29]: #remove
+[29]: #shuffle
 
 [30]: #parameters-14
 
-[31]: #shuffle
+[31]: #slicewithoverflow
 
 [32]: #parameters-15
 
-[33]: #slicewithoverflow
+[33]: #transpose
 
 [34]: #parameters-16
 
-[35]: #transpose
+[35]: #trim
 
 [36]: #parameters-17
 
-[37]: #trim
+[37]: #uniques
 
 [38]: #parameters-18
 
-[39]: #uniques
+[39]: #zip
 
 [40]: #parameters-19
 
-[41]: #zip
+[41]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[42]: #parameters-20
+[42]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-[43]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[43]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[44]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[44]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[45]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
-
-[46]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
-
-[47]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
-
-[48]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+[45]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
 ## csv
 
@@ -1150,36 +1242,38 @@ Returns **[number][36]**&#x20;
 
 *   [apply][1]
     *   [Parameters][2]
-*   [camelCaseKeys][3]
-    *   [Parameters][4]
-*   [deepClone][5]
-    *   [Parameters][6]
-*   [deepMap][7]
-    *   [Parameters][8]
-*   [extract][9]
-    *   [Parameters][10]
-*   [getDeepProperty][11]
-    *   [Parameters][12]
-    *   [Examples][13]
-*   [hasOwnProperty][14]
-    *   [Parameters][15]
-*   [isDeepEmpty][16]
-    *   [Parameters][17]
-*   [merge][18]
-    *   [Parameters][19]
-*   [omit][20]
-    *   [Parameters][21]
-*   [pick][22]
-    *   [Parameters][23]
-*   [rename][24]
-    *   [Parameters][25]
-*   [setDeepProperty][26]
-    *   [Parameters][27]
-    *   [Examples][28]
-*   [snakeCaseKeys][29]
-    *   [Parameters][30]
-*   [stringify][31]
+*   [SnakeToCamelCaseKeys][3]
+*   [camelCaseKeys][4]
+    *   [Parameters][5]
+*   [deepClone][6]
+    *   [Parameters][7]
+*   [deepMap][8]
+    *   [Parameters][9]
+*   [extract][10]
+    *   [Parameters][11]
+*   [getDeepProperty][12]
+    *   [Parameters][13]
+    *   [Examples][14]
+*   [hasOwnProperty][15]
+    *   [Parameters][16]
+*   [isDeepEmpty][17]
+    *   [Parameters][18]
+*   [merge][19]
+    *   [Parameters][20]
+*   [omit][21]
+    *   [Parameters][22]
+*   [pick][23]
+    *   [Parameters][24]
+*   [rename][25]
+    *   [Parameters][26]
+*   [setDeepProperty][27]
+    *   [Parameters][28]
+    *   [Examples][29]
+*   [CamelToSnakeCaseKeys][30]
+*   [snakeCaseKeys][31]
     *   [Parameters][32]
+*   [stringify][33]
+    *   [Parameters][34]
 
 ## apply
 
@@ -1189,10 +1283,16 @@ specified, only applies the function to those keys.
 ### Parameters
 
 *   `obj` **T**&#x20;
-*   `func` **function (val: [ValueOf][33]\<T>): R**&#x20;
+*   `func` **function (val: [ValueOf][35]\<T>): R**&#x20;
 *   `keys` **Keys?**&#x20;
 
 Returns **any**&#x20;
+
+## SnakeToCamelCaseKeys
+
+Applies SnakeToCamelCase on the keys of an object.
+
+Type: any
 
 ## camelCaseKeys
 
@@ -1202,7 +1302,7 @@ Renames all keys to camel case.
 
 *   `obj` **T**&#x20;
 
-Returns **SnakeToCamelCaseKeys\<T>**&#x20;
+Returns **[SnakeToCamelCaseKeys][3]\<T>**&#x20;
 
 ## deepClone
 
@@ -1256,7 +1356,7 @@ Returns a deep property of an object given a path-like string.
 ### Parameters
 
 *   `obj` **(Dictionary | any)**&#x20;
-*   `str` **[string][34]**&#x20;
+*   `str` **[string][36]**&#x20;
 *   `sep`   (optional, default `'.'`)
 
 ### Examples
@@ -1266,7 +1366,7 @@ Returns a deep property of an object given a path-like string.
 getDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]')
 ```
 
-Returns **(any | [undefined][35])**&#x20;
+Returns **(any | [undefined][37])**&#x20;
 
 ## hasOwnProperty
 
@@ -1290,7 +1390,7 @@ arrays, empty objects or deep empty objects.
 
 *   `obj` **Dictionary\<any>**&#x20;
 
-Returns **[boolean][36]**&#x20;
+Returns **[boolean][38]**&#x20;
 
 ## merge
 
@@ -1310,7 +1410,7 @@ strategy is set to "concat", in which case both arrays are merged.
 
 *   Throws **any** if an unexpected strategy is provided.
 
-Returns **any**&#x20;
+Returns **Merge\<A, B>**&#x20;
 
 ## omit
 
@@ -1355,7 +1455,7 @@ Sets a deep property of an object given a path-like string.
 ### Parameters
 
 *   `obj` **(Dictionary | any)**&#x20;
-*   `str` **[string][34]**&#x20;
+*   `str` **[string][36]**&#x20;
 *   `value` **any**&#x20;
 *   `sep`   (optional, default `'.'`)
 
@@ -1370,6 +1470,12 @@ setDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]', 5)
 
 Returns **any**&#x20;
 
+## CamelToSnakeCaseKeys
+
+Applies CamelToSnakeCase on the keys of an object.
+
+Type: any
+
 ## snakeCaseKeys
 
 Renames all keys to snake case.
@@ -1378,7 +1484,7 @@ Renames all keys to snake case.
 
 *   `obj` **T**&#x20;
 
-Returns **CamelToSnakeCaseKeys\<T>**&#x20;
+Returns **[CamelToSnakeCaseKeys][30]\<T>**&#x20;
 
 ## stringify
 
@@ -1388,88 +1494,92 @@ the key and value to make all lines have the same width.
 ### Parameters
 
 *   `obj` **(Dictionary | any | any)**&#x20;
-*   `options` **{indent: [number][37]?, pad: [boolean][36]?, doubleQuotes: [boolean][36]?}?**&#x20;
+*   `options` **{indent: [number][39]?, pad: [boolean][38]?, doubleQuotes: [boolean][38]?}?**&#x20;
 
-    *   `options.indent` **[number][37]** The size of the indent. Default: 2 (optional, default `2`)
-    *   `options.pad` **[boolean][36]** Whether to pad entries. Default: false (optional, default `false`)
-    *   `options.doubleQuotes` **[boolean][36]** Use double quotes. Default: true (optional, default `true`)
-*   `inheritedIndent` **[string][34]** Used to keep track of the current indent during recursion (optional, default `""`)
+    *   `options.indent` **[number][39]** The size of the indent. Default: 2 (optional, default `2`)
+    *   `options.pad` **[boolean][38]** Whether to pad entries. Default: false (optional, default `false`)
+    *   `options.doubleQuotes` **[boolean][38]** Use double quotes. Default: true (optional, default `true`)
+*   `inheritedIndent` **[string][36]** Used to keep track of the current indent during recursion (optional, default `""`)
 
-Returns **[string][34]**&#x20;
+Returns **[string][36]**&#x20;
 
 [1]: #apply
 
 [2]: #parameters
 
-[3]: #camelcasekeys
+[3]: #snaketocamelcasekeys
 
-[4]: #parameters-1
+[4]: #camelcasekeys
 
-[5]: #deepclone
+[5]: #parameters-1
 
-[6]: #parameters-2
+[6]: #deepclone
 
-[7]: #deepmap
+[7]: #parameters-2
 
-[8]: #parameters-3
+[8]: #deepmap
 
-[9]: #extract
+[9]: #parameters-3
 
-[10]: #parameters-4
+[10]: #extract
 
-[11]: #getdeepproperty
+[11]: #parameters-4
 
-[12]: #parameters-5
+[12]: #getdeepproperty
 
-[13]: #examples
+[13]: #parameters-5
 
-[14]: #hasownproperty
+[14]: #examples
 
-[15]: #parameters-6
+[15]: #hasownproperty
 
-[16]: #isdeepempty
+[16]: #parameters-6
 
-[17]: #parameters-7
+[17]: #isdeepempty
 
-[18]: #merge
+[18]: #parameters-7
 
-[19]: #parameters-8
+[19]: #merge
 
-[20]: #omit
+[20]: #parameters-8
 
-[21]: #parameters-9
+[21]: #omit
 
-[22]: #pick
+[22]: #parameters-9
 
-[23]: #parameters-10
+[23]: #pick
 
-[24]: #rename
+[24]: #parameters-10
 
-[25]: #parameters-11
+[25]: #rename
 
-[26]: #setdeepproperty
+[26]: #parameters-11
 
-[27]: #parameters-12
+[27]: #setdeepproperty
 
-[28]: #examples-1
+[28]: #parameters-12
 
-[29]: #snakecasekeys
+[29]: #examples-1
 
-[30]: #parameters-13
+[30]: #cameltosnakecasekeys
 
-[31]: #stringify
+[31]: #snakecasekeys
 
-[32]: #parameters-14
+[32]: #parameters-13
 
-[33]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf
+[33]: #stringify
 
-[34]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[34]: #parameters-14
 
-[35]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+[35]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf
 
-[36]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[36]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[37]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[37]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+
+[38]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[39]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
 ## string
 
@@ -1478,58 +1588,79 @@ Returns **[string][34]**&#x20;
 ### Table of Contents
 
 *   [Replace][1]
-*   [basicPluralizer][2]
-    *   [Parameters][3]
-    *   [Examples][4]
-*   [center][5]
-    *   [Parameters][6]
-*   [formatStr][7]
+*   [Trim][2]
+*   [Unquote][3]
+*   [basicPluralizer][4]
+    *   [Parameters][5]
+    *   [Examples][6]
+*   [center][7]
     *   [Parameters][8]
-*   [formatTime][9]
+*   [formatStr][9]
     *   [Parameters][10]
-    *   [Examples][11]
-*   [getCountDown][12]
-    *   [Parameters][13]
-    *   [Examples][14]
-*   [join][15]
-    *   [Parameters][16]
-*   [joinUrl][17]
+*   [formatTime][11]
+    *   [Parameters][12]
+    *   [Examples][13]
+*   [getCountDown][14]
+    *   [Parameters][15]
+    *   [Examples][16]
+*   [join][17]
     *   [Parameters][18]
-    *   [Examples][19]
-*   [pad][20]
-    *   [Parameters][21]
-*   [parseBool][22]
-    *   [Parameters][23]
-*   [parseFunctionCall][24]
+*   [joinNonEmpty][19]
+    *   [Parameters][20]
+*   [joinUrl][21]
+    *   [Parameters][22]
+    *   [Examples][23]
+*   [pad][24]
     *   [Parameters][25]
-    *   [Examples][26]
-*   [parseNumber][27]
-    *   [Parameters][28]
-*   [removeAccents][29]
-    *   [Parameters][30]
-*   [rsplit][31]
+*   [parseBool][26]
+    *   [Parameters][27]
+*   [parseFunctionCall][28]
+    *   [Parameters][29]
+    *   [Examples][30]
+*   [parseNumber][31]
     *   [Parameters][32]
-    *   [Examples][33]
-*   [split][34]
-    *   [Parameters][35]
-    *   [Examples][36]
-*   [capitalize][37]
-    *   [Parameters][38]
-*   [uncapitalize][39]
-    *   [Parameters][40]
-*   [toCase][41]
+*   [removeAccents][33]
+    *   [Parameters][34]
+*   [rsplit][35]
+    *   [Parameters][36]
+    *   [Examples][37]
+*   [split][38]
+    *   [Parameters][39]
+    *   [Examples][40]
+*   [capitalize][41]
     *   [Parameters][42]
-*   [camelCase][43]
-*   [pascalCase][44]
-*   [sentenceCase][45]
+*   [uncapitalize][43]
+    *   [Parameters][44]
+*   [toCase][45]
     *   [Parameters][46]
-*   [snakeCase][47]
-*   [titleCase][48]
+*   [SnakeToCamelCase][47]
+*   [camelCase][48]
     *   [Parameters][49]
+*   [pascalCase][50]
+    *   [Parameters][51]
+*   [sentenceCase][52]
+    *   [Parameters][53]
+*   [CamelToSnakeCase][54]
+*   [snakeCase][55]
+    *   [Parameters][56]
+*   [titleCase][57]
+    *   [Parameters][58]
 
 ## Replace
 
 Replaces NewChar with Char in S.
+
+Type: any
+
+## Trim
+
+Trims both ends of a string.
+
+Type: any
+
+## Unquote
+
+Removes quotes from the start and end of a string.
 
 Type: any
 
@@ -1540,9 +1671,9 @@ greater than 1. Uses the given plural or adds an 's' to the end.
 
 ### Parameters
 
-*   `word` **[string][50]**&#x20;
-*   `quantity` **[number][51]?**&#x20;
-*   `plural` **[string][50]?**&#x20;
+*   `word` **[string][59]**&#x20;
+*   `quantity` **[number][60]?**&#x20;
+*   `plural` **[string][59]?**&#x20;
 
 ### Examples
 
@@ -1555,7 +1686,7 @@ basicPluralizer('developer', 1)
 basicPluralizer('developer', 2)
 ```
 
-Returns **[string][50]**&#x20;
+Returns **[string][59]**&#x20;
 
 ## center
 
@@ -1566,11 +1697,11 @@ extra space.
 
 ### Parameters
 
-*   `str` **[string][50]**&#x20;
-*   `length` **[number][51]**&#x20;
+*   `str` **[string][59]**&#x20;
+*   `length` **[number][60]**&#x20;
 *   `character`   (optional, default `' '`)
 
-Returns **[string][50]**&#x20;
+Returns **[string][59]**&#x20;
 
 ## formatStr
 
@@ -1578,15 +1709,15 @@ Formats a string according to options.
 
 ### Parameters
 
-*   `str` **[string][50]**  (optional, default `''`)
-*   `options` **{bgColor: ChalkColor?, bold: [boolean][52]?, color: ChalkColor?, length: [number][51]?}**  (optional, default `{}`)
+*   `str` **[string][59]**  (optional, default `''`)
+*   `options` **{bgColor: ChalkColor?, bold: [boolean][61]?, color: ChalkColor?, length: [number][60]?}**  (optional, default `{}`)
 
     *   `options.bold`  Whether to make it bold
     *   `options.bgColor`  Background color
     *   `options.color`  Text color
     *   `options.length`  Pad string on both sides up to this length
 
-Returns **[string][50]**&#x20;
+Returns **[string][59]**&#x20;
 
 ## formatTime
 
@@ -1597,8 +1728,8 @@ and 10 seconds, for example.
 
 ### Parameters
 
-*   `time` **{hours: [number][51]?, minutes: [number][51]?, seconds: [number][51]?, milliseconds: [number][51]?}** Duration-like object
-*   `options` **{dictionary: {and: [string][50], hour: [string][50], minute: [string][50], second: [string][50], millisecond: [string][50]}?, parts: [number][51]?, pluralizer: Pluralizer?, short: [boolean][52]?}?**&#x20;
+*   `time` **{hours: [number][60]?, minutes: [number][60]?, seconds: [number][60]?, milliseconds: [number][60]?}** Duration-like object
+*   `options` **{dictionary: {and: [string][59], hour: [string][59], minute: [string][59], second: [string][59], millisecond: [string][59]}?, parts: [number][60]?, pluralizer: Pluralizer?, short: [boolean][61]?}?**&#x20;
 
     *   `options.dictionary`  Words to substitute. Default: english words
     *   `options.parts`  The number of parts to include in the output. Default: 2
@@ -1614,7 +1745,7 @@ formatTime(
 )
 ```
 
-Returns **[string][50]**&#x20;
+Returns **[string][59]**&#x20;
 
 ## getCountDown
 
@@ -1627,8 +1758,8 @@ exceeds the threshold for the unit (default: 1).
 
 ### Parameters
 
-*   `date` **([string][50] | DateTime)** If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true }).
-*   `options` **{dictionary: DateTimeDict?, pluralizer: Pluralizer?, short: [boolean][52]?, unitsThresholds: any?}?**&#x20;
+*   `date` **([string][59] | DateTime)** If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true }).
+*   `options` **{dictionary: DateTimeDict?, pluralizer: Pluralizer?, short: [boolean][61]?, unitsThresholds: any?}?**&#x20;
 
     *   `options.dictionary`  Words to substitute. Default: english words
     *   `options.pluralizer`  A pluralizer function. Default: adds 's' to the end the word
@@ -1649,7 +1780,7 @@ getCountDown(date, { unitsThresholds: [['day', 5], ['hour', 1]] });
 
 *   Throws **any** if the given dictionary doesn't have entries for all possible units.
 
-Returns **[string][50]**&#x20;
+Returns **[string][59]**&#x20;
 
 ## join
 
@@ -1660,7 +1791,18 @@ Joins words as in a sentence.
 *   `parts` **any**&#x20;
 *   `and`   (optional, default `'&'`)
 
-Returns **[string][50]**&#x20;
+Returns **[string][59]**&#x20;
+
+## joinNonEmpty
+
+Joins an array of primitives, filtering out nulls, undefineds and empty strings.
+
+### Parameters
+
+*   `array` **(T | [undefined][62])**&#x20;
+*   `separator` **Sep?**&#x20;
+
+Returns **JoinNonEmpty\<T, Sep>**&#x20;
 
 ## joinUrl
 
@@ -1679,7 +1821,7 @@ Removes / from the beginning and end of each part before joining.
 joinUrl('https://abc.com/', 'example/')
 ```
 
-Returns **[string][50]**&#x20;
+Returns **[string][59]**&#x20;
 
 ## pad
 
@@ -1687,9 +1829,11 @@ Inserts spaces between left and right to achieve the desired length.
 
 ### Parameters
 
-*   `left` **[string][50]**&#x20;
-*   `right` **[string][50]**&#x20;
-*   `length` **[number][51]**&#x20;
+*   `left` **[string][59]**&#x20;
+*   `right` **[string][59]**&#x20;
+*   `length` **[number][60]**&#x20;
+
+Returns **[string][59]**&#x20;
 
 ## parseBool
 
@@ -1697,14 +1841,14 @@ Parses a boolean from the string.
 
 ### Parameters
 
-*   `str` **([string][50] | null | [undefined][53])**&#x20;
-*   `def` **[boolean][52]?**&#x20;
+*   `str` **([string][59] | null | [undefined][62])**&#x20;
+*   `def` **[boolean][61]?**&#x20;
 
 <!---->
 
 *   Throws **any** if it fails to parse and there is no default value.
 
-Returns **[boolean][52]**&#x20;
+Returns **[boolean][61]**&#x20;
 
 ## parseFunctionCall
 
@@ -1714,7 +1858,7 @@ valid, returns an empty string and an empty array.
 
 ### Parameters
 
-*   `str` **[string][50]**&#x20;
+*   `str` **[string][59]**&#x20;
 
 ### Examples
 
@@ -1723,7 +1867,7 @@ parseFunctionCall("foo(1, 'bar', true)") // returns ["foo", [1, "bar", true]]
 parseFunctionCall("foo(1, 'bar', true) + 1") // returns ["", []]
 ```
 
-Returns **\[[string][50], [Array][54]\<Primitive>]**&#x20;
+Returns **\[[string][59], [Array][63]\<Primitive>]**&#x20;
 
 ## parseNumber
 
@@ -1731,14 +1875,14 @@ Parses a number from the string.
 
 ### Parameters
 
-*   `str` **([string][50] | null | [undefined][53])**&#x20;
-*   `def` **[number][51]?**&#x20;
+*   `str` **([string][59] | null | [undefined][62])**&#x20;
+*   `def` **[number][60]?**&#x20;
 
 <!---->
 
 *   Throws **any** if it fails to parse and there is no default value.
 
-Returns **[number][51]**&#x20;
+Returns **[number][60]**&#x20;
 
 ## removeAccents
 
@@ -1746,9 +1890,9 @@ Replaces accented letters with their standard versions.
 
 ### Parameters
 
-*   `str` **[string][50]**&#x20;
+*   `str` **[string][59]**&#x20;
 
-Returns **[string][50]**&#x20;
+Returns **[string][59]**&#x20;
 
 ## rsplit
 
@@ -1757,7 +1901,7 @@ Splits a string starting from the right, stops after n splits.
 
 ### Parameters
 
-*   `str` **([string][50] | null | [undefined][53])**&#x20;
+*   `str` **([string][59] | null | [undefined][62])**&#x20;
 *   `n`  number of splits (optional, default `-1`)
 *   `sep`  separator (optional, default `','`)
 
@@ -1770,7 +1914,7 @@ rsplit("a,b,c")
 rsplit("a,b,c", 1)
 ```
 
-Returns **[Array][54]<[string][50]>**&#x20;
+Returns **[Array][63]<[string][59]>**&#x20;
 
 ## split
 
@@ -1779,7 +1923,7 @@ Splits a string starting from the left, stops after n splits.
 
 ### Parameters
 
-*   `str` **([string][50] | null | [undefined][53])**&#x20;
+*   `str` **([string][59] | null | [undefined][62])**&#x20;
 *   `n`  number of splits (optional, default `-1`)
 *   `sep`  separator (optional, default `','`)
 
@@ -1792,7 +1936,7 @@ split("a,b,c")
 split("a,b,c", 1)
 ```
 
-Returns **[Array][54]<[string][50]>**&#x20;
+Returns **[Array][63]<[string][59]>**&#x20;
 
 ## capitalize
 
@@ -1824,11 +1968,17 @@ single word.
 
 ### Parameters
 
-*   `firstWordFunction` **function (str: [string][50]): [string][50]**&#x20;
-*   `otherWordsFunction` **function (str: [string][50]): [string][50]**&#x20;
-*   `separator` **[string][50]**&#x20;
+*   `firstWordFunction` **function (str: [string][59]): [string][59]**&#x20;
+*   `otherWordsFunction` **function (str: [string][59]): [string][59]**&#x20;
+*   `separator` **[string][59]**&#x20;
 
-Returns **function (str: [string][50]): [string][50]**&#x20;
+Returns **function (str: [string][59]): [string][59]**&#x20;
+
+## SnakeToCamelCase
+
+Converts a string from snake to camel case.
+
+Type: any
 
 ## camelCase
 
@@ -1838,7 +1988,11 @@ Converts a string to camelCase.
 apply the function to parts of a string individually, you must
 split it and map the function over each unit according to your needs.
 
-Type: function (str: [string][50]): [string][50]
+### Parameters
+
+*   `str` **S**&#x20;
+
+Returns **[SnakeToCamelCase][47]\<S>**&#x20;
 
 ## pascalCase
 
@@ -1848,7 +2002,11 @@ Converts a string to camelCase.
 apply the function to parts of a string individually, you must
 split it and map the function over each unit according to your needs.
 
-Type: function (str: [string][50]): [string][50]
+### Parameters
+
+*   `str` **[string][59]**&#x20;
+
+Returns **[string][59]**&#x20;
 
 ## sentenceCase
 
@@ -1856,7 +2014,18 @@ Converts a string to Sentence case.
 
 ### Parameters
 
-*   `str` **[string][50]**&#x20;
+*   `str` **[string][59]**&#x20;
+
+Returns **[string][59]**&#x20;
+
+## CamelToSnakeCase
+
+Converts a string from camel to snake case.
+
+Iterates one letter at a time, keeping the result in an
+accumulator and consecutive uppercase letters in a buffer.
+
+Type: any
 
 ## snakeCase
 
@@ -1866,7 +2035,11 @@ Converts a string to snake\_case.
 apply the function to parts of a string individually, you must
 split it and map the function over each unit according to your needs.
 
-Type: function (str: [string][50]): [string][50]
+### Parameters
+
+*   `str` **S**&#x20;
+
+Returns **[CamelToSnakeCase][54]\<S>**&#x20;
 
 ## titleCase
 
@@ -1876,118 +2049,136 @@ Some words should not be capitalized, depending on the language.
 
 ### Parameters
 
-*   `str` **[string][50]**&#x20;
-*   `skipWords` **[Array][54]<[string][50]>?** Words to skip. Default: english skip words (articles, prepositions, etc.) (optional, default `ENGLISH_SKIP_WORDS`)
+*   `str` **[string][59]**&#x20;
+*   `skipWords` **[Array][63]<[string][59]>?** Words to skip. Default: english skip words (articles, prepositions, etc.) (optional, default `ENGLISH_SKIP_WORDS`)
 
-Returns **[string][50]**&#x20;
+Returns **[string][59]**&#x20;
 
 [1]: #replace
 
-[2]: #basicpluralizer
+[2]: #trim
 
-[3]: #parameters
+[3]: #unquote
 
-[4]: #examples
+[4]: #basicpluralizer
 
-[5]: #center
+[5]: #parameters
 
-[6]: #parameters-1
+[6]: #examples
 
-[7]: #formatstr
+[7]: #center
 
-[8]: #parameters-2
+[8]: #parameters-1
 
-[9]: #formattime
+[9]: #formatstr
 
-[10]: #parameters-3
+[10]: #parameters-2
 
-[11]: #examples-1
+[11]: #formattime
 
-[12]: #getcountdown
+[12]: #parameters-3
 
-[13]: #parameters-4
+[13]: #examples-1
 
-[14]: #examples-2
+[14]: #getcountdown
 
-[15]: #join
+[15]: #parameters-4
 
-[16]: #parameters-5
+[16]: #examples-2
 
-[17]: #joinurl
+[17]: #join
 
-[18]: #parameters-6
+[18]: #parameters-5
 
-[19]: #examples-3
+[19]: #joinnonempty
 
-[20]: #pad
+[20]: #parameters-6
 
-[21]: #parameters-7
+[21]: #joinurl
 
-[22]: #parsebool
+[22]: #parameters-7
 
-[23]: #parameters-8
+[23]: #examples-3
 
-[24]: #parsefunctioncall
+[24]: #pad
 
-[25]: #parameters-9
+[25]: #parameters-8
 
-[26]: #examples-4
+[26]: #parsebool
 
-[27]: #parsenumber
+[27]: #parameters-9
 
-[28]: #parameters-10
+[28]: #parsefunctioncall
 
-[29]: #removeaccents
+[29]: #parameters-10
 
-[30]: #parameters-11
+[30]: #examples-4
 
-[31]: #rsplit
+[31]: #parsenumber
 
-[32]: #parameters-12
+[32]: #parameters-11
 
-[33]: #examples-5
+[33]: #removeaccents
 
-[34]: #split
+[34]: #parameters-12
 
-[35]: #parameters-13
+[35]: #rsplit
 
-[36]: #examples-6
+[36]: #parameters-13
 
-[37]: #capitalize
+[37]: #examples-5
 
-[38]: #parameters-14
+[38]: #split
 
-[39]: #uncapitalize
+[39]: #parameters-14
 
-[40]: #parameters-15
+[40]: #examples-6
 
-[41]: #tocase
+[41]: #capitalize
 
-[42]: #parameters-16
+[42]: #parameters-15
 
-[43]: #camelcase
+[43]: #uncapitalize
 
-[44]: #pascalcase
+[44]: #parameters-16
 
-[45]: #sentencecase
+[45]: #tocase
 
 [46]: #parameters-17
 
-[47]: #snakecase
+[47]: #snaketocamelcase
 
-[48]: #titlecase
+[48]: #camelcase
 
 [49]: #parameters-18
 
-[50]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[50]: #pascalcase
 
-[51]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[51]: #parameters-19
 
-[52]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[52]: #sentencecase
 
-[53]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+[53]: #parameters-20
 
-[54]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[54]: #cameltosnakecase
+
+[55]: #snakecase
+
+[56]: #parameters-21
+
+[57]: #titlecase
+
+[58]: #parameters-22
+
+[59]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[60]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[61]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[62]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+
+[63]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
 ## time
 

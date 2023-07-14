@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [11.0.0](https://github.com/umatch-oficial/utils/compare/v10.4.1...v11.0.0) (2023-07-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **index:** moved CamelToSnakeCase and SnakeToCamelCase to the string module; moved CamelToSnakeCaseKeys and SnakeToCamelCaseKeys to the object module.
+* **array:** moved joinNonEmpty() to the string module.
+* **index:** removed GroupBy
+
+### Features
+
+* **string:** accurately type joinNonEmpty() ([f86e1cc](https://github.com/umatch-oficial/utils/commit/f86e1cc4854fbebdcdf51fb6cf64d104e6a5b178))
+
+
+### Bug Fixes
+
+* **index:** remove 'extends Dictionary' isKeyOf() ([6c42ced](https://github.com/umatch-oficial/utils/commit/6c42cede60aab3fdb23ccc49cab28e5381c70623))
+* **object:** remove 'extends Dictionary' from merge() ([0ff87cf](https://github.com/umatch-oficial/utils/commit/0ff87cf0d0c75ce9fdde8238a5a609b01dfaf1a2))
+* **object:** remove 'extends Dictionary' from merge(), omit(), pick() and rename() ([1f62a87](https://github.com/umatch-oficial/utils/commit/1f62a87f4e3b184d9232fa1172f8a432380d9a2b))
+
+
+* **array:** move joinNonEmpty() to string module ([4a3dfe2](https://github.com/umatch-oficial/utils/commit/4a3dfe204840b9ec35edba33ad863a07d240a360))
+* **index:** move case types to other modules and refactor case functions ([9113aea](https://github.com/umatch-oficial/utils/commit/9113aea64601abb9c0204bdc4e845f255eab5461))
+* **index:** remove GroupBy type ([13a85bb](https://github.com/umatch-oficial/utils/commit/13a85bb58b91448c1476ae0aaa20509a4caae365))
+
 ## [10.4.2](https://github.com/umatch-oficial/utils/compare/v10.4.1...v10.4.2) (2023-07-13)
 
 
