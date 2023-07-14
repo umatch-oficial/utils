@@ -183,71 +183,6 @@ type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
   ? UnionToTuple<Exclude<T, W>, [W, ...Acc]>
   : Acc;
 
-/**
- * Converts a string from snake to camel case.
- */
-type SnakeToCamelCase<
-  S extends string,
-  Acc extends string = '',
-> = S extends `${infer H}_${infer T}`
-  ? SnakeToCamelCase<Capitalize<T>, Join<Acc, H, ''>>
-  : S extends `${infer H}${infer T}`
-  ? SnakeToCamelCase<T, Join<Acc, H, ''>>
-  : Acc;
-/*
-Iterates one letter at a time, keeping the result in an accumulator and consecutive
-uppercase letters in a buffer.
-
-The loop goes as follows:
-Is the current letter uppercase?
-  - No: add letter to the accumulator.
-  - Yes: add the letter to the buffer. Is there another letter afterwards?
-    - No: is there anything in the buffer?
-      - Yes: add buffer and letter to the accumulator. Reset buffer.
-      - No: add letter to the accumulator.
-    - Yes: is it uppercase too?
-      - Yes: continue.
-      - No: is there anything in the buffer?
-        - Yes: add buffer and letter to the accumulator. Reset buffer.
-        - No: add letter to the accumulator.
- */
-/**
- * Converts a string from camel to snake case.
- */
-type CamelToSnakeCase<
-  S extends string,
-  Acc extends string | undefined = undefined,
-  Buffer extends string | undefined = undefined,
-> = S extends `${infer H}${infer T}`
-  ? CamelToSnakeCase<
-      T,
-      H extends Uppercase<H>
-        ? T extends `${infer H2}${infer _}`
-          ? H2 extends Lowercase<H2>
-            ? Buffer extends string
-              ? Join<Acc, Join<Lowercase<Buffer>, Lowercase<H>, '_'>, ''>
-              : Join<Acc, Lowercase<H>, '_'>
-            : undefined
-          : Buffer extends string
-          ? Join<Acc, Join<Lowercase<Buffer>, Lowercase<H>, '_'>, ''>
-          : Join<Acc, Lowercase<H>, '_'>
-        : Join<Acc, H, ''>,
-      H extends Uppercase<H> ? Join<Buffer, H, ''> : undefined
-    >
-  : Acc & string;
-/**
- * Applies SnakeToCamelCase on the keys of an object.
- */
-type SnakeToCamelCaseKeys<T extends Dictionary> = {
-  [K in keyof T as SnakeToCamelCase<K & string>]: T[K];
-};
-/**
- * Applies CamelToSnakeCase on the keys of an object.
- */
-type CamelToSnakeCaseKeys<T extends Dictionary> = {
-  [K in keyof T as CamelToSnakeCase<K & string>]: T[K];
-};
-
 function isArray(obj: unknown): obj is unknown[] {
   return Array.isArray(obj);
 }
@@ -324,8 +259,6 @@ export {
   isPrimitive,
   isString,
   type Brand,
-  type CamelToSnakeCase,
-  type CamelToSnakeCaseKeys,
   type DeepArray,
   type DeepNode,
   type DeepObject,
@@ -342,8 +275,6 @@ export {
   type Payload,
   type PickByType,
   type Primitive,
-  type SnakeToCamelCase,
-  type SnakeToCamelCaseKeys,
   type Subtract,
   type TransformValues,
   type TransformValuesByKey,

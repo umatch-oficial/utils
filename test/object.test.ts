@@ -1,3 +1,5 @@
+// noinspection JSUnusedLocalSymbols
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   apply,
   camelCaseKeys,
@@ -14,6 +16,8 @@ import {
   setDeepProperty,
   snakeCaseKeys,
   stringify,
+  type CamelToSnakeCaseKeys,
+  type SnakeToCamelCaseKeys,
 } from '../src/object';
 
 describe.each([
@@ -215,4 +219,16 @@ describe.each([
   test(JSON.stringify(options), () => {
     expect(stringify(obj, options)).toBe(output);
   });
+});
+
+test('CamelToSnakeCaseKeys', () => {
+  type T = { fooBar: number };
+
+  const a: CamelToSnakeCaseKeys<T> = { foo_bar: 1 };
+});
+
+test('SnakeToCamelCaseKeys', () => {
+  type T = { foo_bar: number };
+
+  const a: SnakeToCamelCaseKeys<T> = { fooBar: 1 };
 });

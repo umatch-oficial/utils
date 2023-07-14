@@ -1,16 +1,19 @@
 import {
-  CamelToSnakeCaseKeys,
-  DeepArray,
-  DeepNode,
-  Dictionary,
-  SnakeToCamelCaseKeys,
-  ValueOf,
   isArray,
   isPlainObject,
   isString,
-  Merge,
+  type DeepArray,
+  type DeepNode,
+  type Dictionary,
+  type Merge,
+  type ValueOf,
 } from '../index';
-import { camelCase, snakeCase } from '../string';
+import {
+  camelCase,
+  snakeCase,
+  type CamelToSnakeCase,
+  type SnakeToCamelCase,
+} from '../string';
 
 /**
  * Copies an object and applies a function to all values. If keys is
@@ -35,6 +38,13 @@ function apply(
   }
   return clone;
 }
+
+/**
+ * Applies SnakeToCamelCase on the keys of an object.
+ */
+type SnakeToCamelCaseKeys<T extends Dictionary> = {
+  [K in keyof T as SnakeToCamelCase<K & string>]: T[K];
+};
 
 /**
  * Renames all keys to camel case.
@@ -387,6 +397,13 @@ function setDeepProperty(
 }
 
 /**
+ * Applies CamelToSnakeCase on the keys of an object.
+ */
+type CamelToSnakeCaseKeys<T extends Dictionary> = {
+  [K in keyof T as CamelToSnakeCase<K & string>]: T[K];
+};
+
+/**
  * Renames all keys to snake case.
  */
 function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKeys<T>;
@@ -459,4 +476,6 @@ export {
   setDeepProperty,
   snakeCaseKeys,
   stringify,
+  type CamelToSnakeCaseKeys,
+  type SnakeToCamelCaseKeys,
 };

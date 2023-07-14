@@ -331,7 +331,7 @@ function joinUrl(...parts: readonly string[]): string {
 /**
  * Inserts spaces between left and right to achieve the desired length.
  */
-function pad(left: string, right: string, length: number) {
+function pad(left: string, right: string, length: number): string {
   const spacer = ' '.repeat(Math.max(length - left.length - right.length, 0));
   return left + spacer + right;
 }
@@ -553,18 +553,21 @@ function toCase(
   };
 }
 
+const _camelCase = toCase(uncapitalize, capitalize, '');
+const _pascalCase = toCase(capitalize, capitalize, '');
+const _snakeCase = toCase(uncapitalize, uncapitalize, '_');
+
 /**
- * Converts a string to camelCase.
- *
- * *Warning*: the whole string is considered as one, so if you want to
- * apply the function to parts of a string individually, you must
- * split it and map the function over each unit according to your needs.
+ * Converts a string from snake to camel case.
  */
-const camelCase: (str: string) => string = Object.defineProperty(
-  toCase(uncapitalize, capitalize, ''),
-  'name',
-  { value: 'camelCase' },
-);
+type SnakeToCamelCase<
+  S extends string,
+  Acc extends string = '',
+> = S extends `${infer H}_${infer T}`
+  ? SnakeToCamelCase<Capitalize<T>, `${Acc}${H}`>
+  : S extends `${infer H}${infer T}`
+  ? SnakeToCamelCase<T, `${Acc}${H}`>
+  : Acc;
 
 /**
  * Converts a string to camelCase.
@@ -573,19 +576,54 @@ const camelCase: (str: string) => string = Object.defineProperty(
  * apply the function to parts of a string individually, you must
  * split it and map the function over each unit according to your needs.
  */
-const pascalCase: (str: string) => string = Object.defineProperty(
-  toCase(capitalize, capitalize, ''),
-  'name',
-  { value: 'pascalCase' },
-);
+function camelCase<S extends string>(str: S): SnakeToCamelCase<S> {
+  return _camelCase(str) as SnakeToCamelCase<S>;
+}
+
+/**
+ * Converts a string to camelCase.
+ *
+ * *Warning*: the whole string is considered as one, so if you want to
+ * apply the function to parts of a string individually, you must
+ * split it and map the function over each unit according to your needs.
+ */
+function pascalCase(str: string): string {
+  return _pascalCase(str);
+}
 
 /**
  * Converts a string to Sentence case.
  */
-function sentenceCase(str: string) {
+function sentenceCase(str: string): string {
   const [first, ...rest] = str.split(/(\s)/);
   return [capitalize(first), ...rest.map(uncapitalize)].join('');
 }
+
+/**
+ * Converts a string from camel to snake case.
+ *
+ * Iterates one letter at a time, keeping the result in an
+ * accumulator and consecutive uppercase letters in a buffer.
+ */
+type CamelToSnakeCase<
+  S extends string,
+  Acc extends string = '',
+  Buffer extends string = '',
+> = S extends `${infer First}${infer Rest}`
+  ? CamelToSnakeCase<
+      Rest,
+      First extends Uppercase<First>
+        ? Rest extends `${infer Second}${infer _}`
+          ? Second extends Lowercase<Second>
+            ? JoinNonEmpty<[Acc, Buffer, Lowercase<First>], '_'>
+            : Acc
+          : JoinNonEmpty<[Acc, Buffer, Lowercase<First>], '_'>
+        : `${Acc}${First}`,
+      // if the first letter is uppercase, add it to the buffer,
+      // otherwise reset the buffer
+      First extends Uppercase<First> ? `${Buffer}${Lowercase<First>}` : ''
+    >
+  : Acc & string;
 
 /**
  * Converts a string to snake_case.
@@ -594,11 +632,9 @@ function sentenceCase(str: string) {
  * apply the function to parts of a string individually, you must
  * split it and map the function over each unit according to your needs.
  */
-const snakeCase: (str: string) => string = Object.defineProperty(
-  toCase(uncapitalize, uncapitalize, '_'),
-  'name',
-  { value: 'snakeCase' },
-);
+function snakeCase<S extends string>(str: S): CamelToSnakeCase<S> {
+  return _snakeCase(str) as CamelToSnakeCase<S>;
+}
 
 const ENGLISH_SKIP_WORDS = [
   // articles
@@ -660,13 +696,16 @@ export {
   rsplit,
   split,
   uncapitalize,
+  // case functions
   camelCase,
   pascalCase,
   sentenceCase,
   snakeCase,
   titleCase,
+  type CamelToSnakeCase,
   type Pluralizer,
   type Replace,
+  type SnakeToCamelCase,
   type Trim,
   type Unquote,
 };

@@ -25,7 +25,9 @@ import {
   sentenceCase,
   snakeCase,
   titleCase,
+  type CamelToSnakeCase,
   type Replace,
+  type SnakeToCamelCase,
   type Trim,
   type Unquote,
 } from '../src/string';
@@ -252,10 +254,24 @@ describe.each([
   });
 });
 
+test('CamelToSnakeCase', () => {
+  type A = 'fooBar';
+  type B = 'fooBARBaz';
+
+  const a: CamelToSnakeCase<A> = 'foo_bar';
+  const b: CamelToSnakeCase<B> = 'foo_bar_baz';
+});
+
 test('Replace', () => {
   type T = 'banana';
 
   const a: Replace<T, 'b', ''> = 'anana';
+});
+
+test('SnakeToCamelCase', () => {
+  type T = 'foo_bar';
+
+  const a: SnakeToCamelCase<T> = 'fooBar';
 });
 
 test('Trim', () => {

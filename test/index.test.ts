@@ -13,8 +13,6 @@ import {
   isPrimitive,
   isString,
   type Brand,
-  type CamelToSnakeCase,
-  type CamelToSnakeCaseKeys,
   type DeepValueOf,
   type Equals,
   type ExtendValues,
@@ -26,8 +24,6 @@ import {
   type OneOrArray,
   type Payload,
   type PickByType,
-  type SnakeToCamelCase,
-  type SnakeToCamelCaseKeys,
   type Subtract,
   type TransformValues,
   type TransformValuesByKey,
@@ -184,18 +180,6 @@ test('Brand', () => {
   const a: Test = { a: 1, __brand: 'a' };
 });
 
-test('CamelToSnakeCase', () => {
-  type T = 'fooBar';
-
-  const a: CamelToSnakeCase<T> = 'foo_bar';
-});
-
-test('CamelToSnakeCaseKeys', () => {
-  type T = { fooBar: number };
-
-  const a: CamelToSnakeCaseKeys<T> = { foo_bar: 1 };
-});
-
 test('DeepValueOf', () => {
   type T = { foo: { bar: number }; baz: string };
 
@@ -272,18 +256,6 @@ test('PickByType', () => {
   const a: PickByType<A, number> = { b: 1, d: 2 };
   // @ts-expect-error
   const b: PickByType<A, boolean> = { a: 1 };
-});
-
-test('SnakeToCamelCase', () => {
-  type T = 'foo_bar';
-
-  const a: SnakeToCamelCase<T> = 'fooBar';
-});
-
-test('SnakeToCamelCaseKeys', () => {
-  type T = { foo_bar: number };
-
-  const a: SnakeToCamelCaseKeys<T> = { fooBar: 1 };
 });
 
 test('Subtract', () => {
