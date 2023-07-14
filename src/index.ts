@@ -214,7 +214,8 @@ function isPlainObject(obj: any): obj is Dictionary {
   return proto.hasOwnProperty('isPrototypeOf');
 }
 
-function isKeyOf<T extends Dictionary>(obj: T, key: PropertyKey): key is keyof T {
+function isKeyOf<T>(obj: T, key: PropertyKey): key is keyof T {
+  // @ts-expect-error
   return key in obj;
 }
 
