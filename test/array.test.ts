@@ -11,7 +11,6 @@ import {
   hasSameElements,
   intersect,
   isSubset,
-  joinNonEmpty,
   permutations,
   remove,
   shuffle,
@@ -175,10 +174,6 @@ describe.each([
 test('isSubset()', () => {
   expect(isSubset([1, 2, 3], [3, 2, 1])).toBe(true);
   expect(isSubset([1, 2, 3], [2, 1])).toBe(false);
-});
-
-test('joinNonEmpty()', () => {
-  expect(joinNonEmpty(['a', '0', 'b', '', 'c'])).toEqual('a0bc');
 });
 
 test('permutations()', () => {

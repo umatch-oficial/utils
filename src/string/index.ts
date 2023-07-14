@@ -283,6 +283,17 @@ function join(parts: readonly string[], and = '&'): string {
 }
 
 /**
+ * Joins an array of primitives, filtering out nulls, undefineds and empty strings.
+ */
+function joinNonEmpty(array: readonly Primitive[] | undefined, separator = ''): string {
+  if (!array?.length) return '';
+  return array
+    .filter((e) => e !== undefined && e !== null && e !== '')
+    .map((s) => String(s).trim())
+    .join(separator);
+}
+
+/**
  * Joins parts of a URL with '/'.
  *
  * Removes / from the beginning and end of each part before joining.
@@ -617,6 +628,7 @@ export {
   formatTime,
   getCountDown,
   join,
+  joinNonEmpty,
   joinUrl,
   pad,
   parseBool,

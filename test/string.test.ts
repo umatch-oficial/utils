@@ -10,6 +10,7 @@ import {
   formatTime,
   getCountDown,
   join,
+  joinNonEmpty,
   joinUrl,
   pad,
   parseBool,
@@ -129,6 +130,10 @@ describe.each([
   test(`join(${JSON.stringify(parts)}) = ${res}`, () => {
     expect(join(parts, 'and')).toBe(res);
   });
+});
+
+test('joinNonEmpty()', () => {
+  expect(joinNonEmpty(['a', '0', 'b', '', 'c'])).toEqual('a0bc');
 });
 
 describe.each([
