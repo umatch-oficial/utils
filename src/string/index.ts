@@ -282,9 +282,31 @@ function join(parts: readonly string[], and = '&'): string {
   return [firstParts.join(', '), lastPart].join(` ${and} `);
 }
 
+type JoinNonEmpty<
+  T extends readonly Primitive[],
+  Sep extends string = '',
+  Acc extends string = '',
+> = T extends readonly [infer Element, ...infer Rest extends readonly Primitive[]]
+  ? null | undefined extends Element
+    ? JoinNonEmpty<Rest, Sep, Acc>
+    : Element extends string
+    ? Trim<Element> extends ''
+      ? JoinNonEmpty<Rest, Sep, Acc>
+      : Acc extends ''
+      ? JoinNonEmpty<Rest, Sep, Element>
+      : JoinNonEmpty<Rest, Sep, `${Acc}${Sep}${Element}`>
+    : Acc extends ''
+    ? JoinNonEmpty<Rest, Sep, Element & string>
+    : JoinNonEmpty<Rest, Sep, `${Acc}${Sep}${Element & string}`>
+  : Acc;
+
 /**
  * Joins an array of primitives, filtering out nulls, undefineds and empty strings.
  */
+function joinNonEmpty<T extends readonly Primitive[], Sep extends string = ''>(
+  array: T | undefined,
+  separator?: Sep,
+): JoinNonEmpty<T, Sep>;
 function joinNonEmpty(array: readonly Primitive[] | undefined, separator = ''): string {
   if (!array?.length) return '';
   return array
