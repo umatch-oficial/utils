@@ -1,5 +1,7 @@
 import {
   isArray,
+  isNullOrUndefined,
+  isObject,
   isPlainObject,
   isString,
   type DeepArray,
@@ -250,19 +252,29 @@ function hasOwnProperty<X extends {}, Y extends PropertyKey>(
 }
 
 /**
- * Returns whether the object is deep empty.
- *
  * A deep empty object only has values that are empty strings, empty
  * arrays, empty objects or deep empty objects.
  */
-function isDeepEmpty(obj: Dictionary<any>): boolean {
-  if (hasOwnProperty(obj, 'length')) {
-    return obj.length === 0;
-  }
-  if (typeof obj === 'object') {
-    return Object.values(obj).reduce((empty, value) => empty && isDeepEmpty(value), true);
-  }
-  return obj === '';
+type DeepEmpty = {
+  [key: PropertyKey]: '' | readonly [] | Record<PropertyKey, never> | DeepEmpty;
+};
+
+/**
+ * Returns whether the object is [deep empty]{@link DeepEmpty}.
+ */
+function isDeepEmpty(obj: unknown): obj is DeepEmpty {
+  return isNullOrUndefined(obj)
+    ? false
+    : isArray(obj)
+    ? obj.length === 0
+    : isString(obj)
+    ? obj === ''
+    : isObject(obj)
+    ? Object.values(obj).reduce<boolean>(
+        (isEmpty, value) => isEmpty && isDeepEmpty(value),
+        true,
+      )
+    : false;
 }
 
 function _merge(
