@@ -709,6 +709,7 @@ export {
   snakeCase,
   titleCase,
   type CamelToSnakeCase,
+  type DateTimeDict,
   type Pluralizer,
   type Replace,
   type SnakeToCamelCase,
