@@ -30,7 +30,9 @@ type ValueOf<T> = T[keyof T];
 /**
  * Returns a union of the values of a deeply nested object.
  */
-type DeepValueOf<T> = T extends Dictionary ? DeepValueOf<T[keyof T]> : T;
+type DeepValueOf<T> = T extends { [key: PropertyKey]: unknown }
+  ? DeepValueOf<T[keyof T]>
+  : T;
 /**
  * Flattens a tuple.
  */
