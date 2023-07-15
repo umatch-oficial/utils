@@ -49,7 +49,7 @@
     "build": "tsc --build src",
     "test": "jest",
     "lint": "eslint . --ext=.ts",
-    "format": "prettier --check --loglevel warn --cache --cache-strategy metadata --config ./.prettierrc.js .",
+    "format": "prettier --check --log-level warn --cache --cache-strategy metadata --config ./.prettierrc.js .",
     "docs-fix-links": "sed -i 's/(API\\.md)/(docs\\/API.md)/' README.md && sed -i 's/(README\\.md)/(..\\/README.md)/g' docs/API.md",
     "docs-make": "npx typedoc --entryPoints src --entryPoints src/array --entryPoints src/time --entryPoints src/csv --entryPoints src/object --entryPoints src/string --entryPoints src/math --tsconfig tsconfig.base.json --plugin typedoc-plugin-markdown --githubPages false --readme README-base.md --out docs && mv docs/README.md README.md && pnpm docs-fix-links",
     "prepublishOnly": "pnpm lint && pnpm format && pnpm build && pnpm test",
