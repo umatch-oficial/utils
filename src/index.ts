@@ -208,6 +208,7 @@ function isDate(obj: unknown): obj is Date {
 /**
  * Returns whether obj is a function.
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 function isFunction(obj: unknown): obj is Function {
   return typeof obj === 'function';
 }
@@ -221,6 +222,7 @@ function isPlainObject(obj: unknown): obj is Dictionary {
   if (obj.constructor === undefined) return true;
 
   // if it has modified prototype
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const proto = obj.constructor.prototype;
   if (!isObject(proto)) return false;
   // if its constructor does not have an Object-specific method

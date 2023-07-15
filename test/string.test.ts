@@ -1,5 +1,5 @@
 // noinspection JSUnusedLocalSymbols
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars,@typescript-eslint/no-duplicate-type-constituents */
 import { DateTime } from 'luxon';
 
 import {
@@ -194,7 +194,7 @@ describe.each([
   ['a func(a)', ['', []]],
   ['func(0, false)', ['func', [0, false]]],
   ['func(\'"true"\')', ['func', ['"true"']]],
-])('parseFunctionCall()', (input, output) => {
+] as const)('parseFunctionCall()', (input, output) => {
   const [name, args] = output;
   test(`parseFunctionCall('${input}') = [${name}, [${JSON.stringify(args)}]]`, () => {
     expect(parseFunctionCall(input)).toEqual(output);

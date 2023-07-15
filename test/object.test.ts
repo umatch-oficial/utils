@@ -1,5 +1,5 @@
 // noinspection JSUnusedLocalSymbols
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars,@typescript-eslint/ban-ts-comment */
 import {
   apply,
   camelCaseKeys,

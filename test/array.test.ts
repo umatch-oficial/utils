@@ -20,6 +20,7 @@ import {
   uniques,
   zip,
 } from '../src/array';
+import { stringify } from '../src/object';
 
 test('cartesian()', () => {
   expect(cartesian(['a', 'b'] as const, [1, 2] as const, [true]).sort()).toEqual(
@@ -40,13 +41,13 @@ describe.each([
   [[1, 2, 3], [2, 3], [1]],
   [[1, 2, 3], [3, 2], [1]],
 ])('diff()', (a, b, output) => {
-  test(`diff([${a}], [${b}]) = [${output}]`, () => {
+  test(`diff([${stringify(a)}], [${stringify(b)}]) = [${stringify(output)}]`, () => {
     expect(diff(a, b).sort()).toEqual(output.sort());
   });
 });
 
 test('filter()', async () => {
-  expect(await filter([1, 2, 3], async (x) => x < 2)).toEqual([1]);
+  expect(await filter([1, 2, 3], (x) => Promise.resolve(x < 2))).toEqual([1]);
 });
 
 test('filterByObject()', () => {
@@ -62,18 +63,20 @@ test('filterByObject()', () => {
   ).toEqual([{ a: 1, b: 3 }]);
 });
 
-describe.each([
-  [[1, 2, 3], (x: number) => x < 2, [[1], [2, 3]], ['integers', 'x < 2']],
-  [
-    [new Date('2022-01-10'), new Date('2022-01-20'), new Date('2022-01-30')],
-    (x: Date) => x.getDate() < 10,
-    [[new Date('2022-01-10')], [new Date('2022-01-20'), new Date('2022-01-30')]],
-    ['dates', 'day < 10'],
-  ],
-])('filterWithComplement()', (array, predicate, output, description) => {
-  test(`filterWithComplement(${description[0]}, ${description[1]})`, () => {
-    // @ts-expect-error
-    expect(filterWithComplement(array, predicate)).toEqual(output);
+describe('filterWithComplement()', () => {
+  test('filterWithComplement(integers, x < 2)', () => {
+    expect(filterWithComplement([1, 2, 3], (x: number) => x < 2)).toEqual([[1], [2, 3]]);
+  });
+  test('filterWithComplement(dates, day < 10)', () => {
+    expect(
+      filterWithComplement(
+        [new Date('2022-01-10'), new Date('2022-01-20'), new Date('2022-01-30')],
+        (x: Date) => x.getDate() < 10,
+      ),
+    ).toEqual([
+      [new Date('2022-01-10')],
+      [new Date('2022-01-20'), new Date('2022-01-30')],
+    ]);
   });
 });
 
@@ -166,7 +169,7 @@ describe.each([
     [3, 2],
   ],
 ])('intersect()', (a, b, output) => {
-  test(`intersect([${a}], [${b}]) = [${output}]`, () => {
+  test(`intersect([${stringify(a)}], [${stringify(b)}]) = [${stringify(output)}]`, () => {
     expect(intersect(a, b).sort()).toEqual(output.sort());
   });
 });

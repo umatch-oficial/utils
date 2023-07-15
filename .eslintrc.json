@@ -2,5 +2,8 @@
   "parserOptions": {
     "project": ["tsconfig.base.json"]
   },
-  "extends": ["@umatch/eslint-config"]
+  "extends": [
+    "@umatch/eslint-config",
+    "plugin:@typescript-eslint/recommended-type-checked"
+  ]
 }

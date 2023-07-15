@@ -68,7 +68,9 @@ function deepClone(obj: unknown): unknown {
   if (isArray(obj)) return obj.map(deepClone);
 
   if (isPlainObject(obj)) {
-    const newObj = Object.create(Object.getPrototypeOf(obj));
+    const newObj = Object.create(Object.getPrototypeOf(obj) as object) as {
+      [key: string]: unknown;
+    };
     Object.entries(obj).forEach(([key, value]) => {
       newObj[key] = value === obj ? newObj : deepClone(value);
     });
