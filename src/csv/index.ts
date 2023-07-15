@@ -12,7 +12,7 @@ import { titleCase } from '../string';
  * @property {boolean} [headers] Whether to consider the first row as headers
  * @property {string} [separator] The separator used to read and write files
  */
-export type CsvOptions = {
+type CsvOptions = {
   encoding?: BufferEncoding;
   endMessage?: string;
   headers?: boolean;
@@ -48,7 +48,7 @@ function appendToFile(
   values: string[],
   separator: string,
   encoding?: BufferEncoding,
-) {
+): void {
   // trim empty lines
   if (!values.length) return;
 
@@ -68,12 +68,12 @@ function appendToFile(
  * @param {string[]} [options.skipWords] Words that should not be capitalized. Default: english skip words
  * @param {CsvOptions} [csvOptions] Parsing options
  */
-export function titleCaseRows(
+function titleCaseRows(
   input: string,
   output: string,
   options?: { skipWords?: string[]; columns?: (string | number)[] },
   csvOptions?: CsvOptions,
-) {
+): void {
   return transformRows(
     input,
     output,
@@ -98,12 +98,12 @@ export function titleCaseRows(
  * @param {Exclude<csv.Options["mapValues"], undefined>} mapValues A function that takes the index, header and value of a row and returns a string
  * @param {CsvOptions} [csvOptions] Parsing options
  */
-export function transformRows(
+function transformRows(
   input: string,
   output: string,
   mapValues: Exclude<csv.Options['mapValues'], undefined>,
   csvOptions?: CsvOptions,
-) {
+): void {
   const { encoding, endMessage, headers, separator } = {
     endMessage: 'Finished transforming rows',
     separator: ',',
@@ -128,11 +128,11 @@ export function transformRows(
  * @param {{ [_:string]: number[] }} outputs A mapping of output file names to the columns that should be included in that file
  * @param {CsvOptions} [options] Parsing options
  */
-export function splitFile(
+function splitFile(
   input: string,
   outputs: { [_: string]: (string | number)[] },
   options?: CsvOptions,
-) {
+): void {
   const { encoding, endMessage, headers, separator } = {
     endMessage: 'Finished splitting file',
     separator: ',',
@@ -151,7 +151,7 @@ export function splitFile(
         appendToFile(file, fileValues, separator, encoding),
       );
     })
-    .on('data', (row) => {
+    .on('data', (row: Dictionary) => {
       const valuesPerFile: { [_: string]: string[] } = apply(outputs, (columns) =>
         Object.entries(row).flatMap(([header, value], index) =>
           shouldProcessRow({ index, header }, columns) ? String(value) : [],
@@ -163,3 +163,5 @@ export function splitFile(
     })
     .on('end', () => console.log(endMessage));
 }
+
+export { splitFile, titleCaseRows, transformRows, type CsvOptions };
