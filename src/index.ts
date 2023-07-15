@@ -187,7 +187,7 @@ type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
  *
  * Uses Array.isArray().
  */
-function isArray(obj: unknown): obj is unknown[] {
+function isArray(obj: unknown): obj is readonly unknown[] {
   return Array.isArray(obj);
 }
 
