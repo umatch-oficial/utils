@@ -230,8 +230,7 @@ function isPlainObject(obj: unknown): obj is Dictionary {
 /**
  * Returns whether key is a key of obj.
  */
-function isKeyOf<T>(obj: T, key: PropertyKey): key is keyof T {
-  // @ts-expect-error
+function isKeyOf<T extends object>(obj: T, key: PropertyKey): key is keyof T {
   return key in obj;
 }
 
