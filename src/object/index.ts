@@ -424,6 +424,23 @@ function snakeCaseKeys(obj: Dictionary): Dictionary {
 }
 
 /**
+ * Used by stringify().
+ * @private
+ */
+function _unknownToString(
+  value: unknown,
+  options: { indent?: number; pad?: boolean; doubleQuotes?: boolean },
+  indenter: string,
+  quote: string,
+): string {
+  return isArray(value) || isPlainObject(value)
+    ? stringify(value, options, indenter)
+    : isString(value)
+    ? `${quote}${value}${quote}`
+    : String(value);
+}
+
+/**
  * Similar to JSON.stringify(), but optionally pads entries between
  * the key and value to make all lines have the same width.
  *
@@ -435,7 +452,7 @@ function snakeCaseKeys(obj: Dictionary): Dictionary {
  * @param {string} [inheritedIndent = ""] Used to keep track of the current indent during recursion
  */
 function stringify(
-  obj: Dictionary | readonly unknown[] | unknown,
+  obj: Dictionary | readonly unknown[],
   options?: { indent?: number; pad?: boolean; doubleQuotes?: boolean },
   inheritedIndent = '',
 ): string {
@@ -443,33 +460,26 @@ function stringify(
   const { indent, pad, doubleQuotes } = opts;
   const quote = doubleQuotes ? '"' : "'";
 
-  if (isArray(obj) || isPlainObject(obj)) {
-    const indenter = inheritedIndent + ' '.repeat(indent);
-    let start: string, end: string, formattedEntries: string[];
-    if (isPlainObject(obj)) {
-      [start, end] = ['{', '}'];
+  const indenter = inheritedIndent + ' '.repeat(indent);
+  let start: string, end: string, formattedEntries: string[];
+  if (isPlainObject(obj)) {
+    [start, end] = ['{', '}'];
 
-      // padding
-      const maxKeyLength = Math.max(...Object.keys(obj).map((key) => key.length));
-      formattedEntries = Object.entries(obj).map(([key, value], _) => {
-        const spacer = ' '.repeat(pad && indent > 0 ? maxKeyLength - key.length : 0);
-        return `${quote}${key}${quote}: ${spacer}${stringify(value, opts, indenter)}`;
-      });
-    } else {
-      [start, end] = ['[', ']'];
-      formattedEntries = obj.map((element) => stringify(element, opts, indenter));
-    }
-
-    const separator = indent === 0 ? ' ' : '\n';
-    const entriesStr = formattedEntries.join(',' + separator + indenter);
-    return start + separator + indenter + entriesStr + separator + inheritedIndent + end;
+    // padding
+    const maxKeyLength = Math.max(...Object.keys(obj).map((key) => key.length));
+    formattedEntries = Object.entries(obj).map(([key, value], _) => {
+      const spacer = ' '.repeat(pad && indent > 0 ? maxKeyLength - key.length : 0);
+      const stringifiedValue = _unknownToString(value, opts, indenter, quote);
+      return `${quote}${key}${quote}: ${spacer}${stringifiedValue}`;
+    });
   } else {
-    if (isString(obj)) {
-      return `${quote}${obj}${quote}`;
-    } else {
-      return String(obj);
-    }
+    [start, end] = ['[', ']'];
+    formattedEntries = obj.map((value) => _unknownToString(value, opts, indenter, quote));
   }
+
+  const separator = indent === 0 ? ' ' : '\n';
+  const entriesStr = formattedEntries.join(',' + separator + indenter);
+  return start + separator + indenter + entriesStr + separator + inheritedIndent + end;
 }
 
 export {
