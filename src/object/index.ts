@@ -370,7 +370,7 @@ function rename(
 function setDeepProperty(
   obj: Dictionary | readonly unknown[],
   str: string,
-  value: any,
+  value: unknown,
   sep = '.',
 ): unknown {
   if (!str) return obj;

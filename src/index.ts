@@ -87,7 +87,7 @@ type Merge<A, B> = {
 type Subtract<
   A extends readonly unknown[],
   B extends readonly unknown[],
-  Acc extends readonly any[] = [],
+  Acc extends readonly unknown[] = [],
 > = A extends readonly [infer H, ...infer T]
   ? H extends B[number]
     ? Subtract<T, B, Acc>
@@ -174,7 +174,7 @@ type TypeFromPath<
  * Returns a union of the types in the tuple.
  */
 // https://medium.hexlabs.io/building-complex-types-in-typescript-804c973ce66f
-type TupleToUnion<T> = T extends any[] ? T[number] : T;
+type TupleToUnion<T> = T extends unknown[] ? T[number] : T;
 type UnionToIntersection<T> = (T extends never ? never : (arg: T) => void) extends (
   arg: infer I,
 ) => void
@@ -219,7 +219,7 @@ function isFunction(obj: unknown): obj is Function {
 /**
  * Returns whether obj is a plain object.
  */
-function isPlainObject(obj: any): obj is Dictionary {
+function isPlainObject(obj: unknown): obj is Dictionary {
   if (!isObject(obj)) return false;
   // if it has no constructor
   if (obj.constructor === undefined) return true;
@@ -242,7 +242,7 @@ function isKeyOf<T>(obj: T, key: PropertyKey): key is keyof T {
 /**
  * Returns whether obj is null or undefined.
  */
-function isNullOrUndefined(obj: any): obj is null | undefined {
+function isNullOrUndefined(obj: unknown): obj is null | undefined {
   return obj === null || obj === undefined;
 }
 
@@ -258,7 +258,7 @@ function isNumber(obj: unknown): obj is number {
  * still be any kind of object, including the instance of some class.
  * To narrow this down to only plain objects, use [isPlainObject]{@link isPlainObject}.
  */
-function isObject(obj: any): obj is Dictionary {
+function isObject(obj: unknown): obj is Dictionary {
   return Object.prototype.toString.call(obj) === '[object Object]';
 }
 

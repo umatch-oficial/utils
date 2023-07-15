@@ -165,7 +165,7 @@ function splitInChunks<T extends readonly unknown[]>(
   array: T,
   size: number,
 ): T[number][][] {
-  const chunks: any[] = [];
+  const chunks: T[number][][] = [];
   for (let i = 0; i < array.length; i += size) {
     const n = Math.min(array.length - i, size);
     const chunk = array.slice(i, i + n);

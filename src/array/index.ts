@@ -24,8 +24,8 @@ type Cartesian<
  * Returns the cartesian product of n arrays.
  */
 function cartesian<Y extends readonly (readonly unknown[])[]>(...arrays: Y): Cartesian<Y>;
-function cartesian(...arrays: any[]): any[][] {
-  const numberOfElements = arrays.reduce((acc, array) => acc * array.length, 1);
+function cartesian(...arrays: unknown[][]): unknown[][] {
+  const numberOfElements = arrays.reduce<number>((acc, array) => acc * array.length, 1);
   const result = [];
   for (let i = 0; i < numberOfElements; i += 1) {
     const element = [];
@@ -130,7 +130,7 @@ function filterWithComplement<
 function filterWithComplement<T extends readonly unknown[]>(
   array: T,
   predicate: (x: T[number]) => boolean,
-): any[] {
+): unknown[] {
   const filtered = array.filter(predicate);
   const complement = array.filter((element) => !filtered.includes(element));
   return [filtered, complement];
@@ -282,8 +282,8 @@ function isSubset(
 function permutations<T extends readonly unknown[]>(
   array: T,
 ): T extends readonly (infer R)[] ? [R, R][] : never;
-function permutations(array: any[]): [any, any][] {
-  const perms: [any, any][] = [];
+function permutations(array: unknown[]): [unknown, unknown][] {
+  const perms: [unknown, unknown][] = [];
   for (const i of range(array.length)) {
     for (const j of range(i + 1, array.length)) {
       perms.push([array[i], array[j]]);
@@ -310,7 +310,7 @@ type Remove<
 function remove<T extends readonly Primitive[], X extends T[number]>(
   array: T,
   item: X,
-): { readonly [K in keyof T]: any } extends T ? Remove<T, X> : T;
+): { readonly [K in keyof T]: unknown } extends T ? Remove<T, X> : T;
 function remove<X, T extends X[]>(array: T, item: X): X[] {
   const i = array.indexOf(item);
   if (i > -1) array.splice(i, 1);
@@ -323,7 +323,7 @@ function remove<X, T extends X[]>(array: T, item: X): X[] {
 function shuffle<T extends readonly unknown[]>(
   array: T,
 ): T extends readonly (infer _)[] ? T : never;
-function shuffle(array: any[]): any[] {
+function shuffle(array: unknown[]): unknown[] {
   // https://stackoverflow.com/a/12646864/9193449
   const copy = array.slice();
   for (let i = copy.length - 1; i > 0; i -= 1) {
@@ -341,7 +341,7 @@ function sliceWithOverflow<T extends readonly unknown[]>(
   start: number,
   end: number,
 ): T extends readonly (infer _)[] ? T : never;
-function sliceWithOverflow(array: any[], start: number, end: number): any[] {
+function sliceWithOverflow(array: unknown[], start: number, end: number): unknown[] {
   const overflow = end - array.length;
   if (overflow <= 0) return array.slice(start, end);
   return [...array.slice(start), ...sliceWithOverflow(array, 0, overflow)];
@@ -387,8 +387,8 @@ type Uniques<
  */
 function uniques<T extends readonly unknown[]>(
   array: T,
-): { readonly [K in keyof T]: any } extends T ? Uniques<T> : T;
-function uniques(array: any[]): any[] {
+): { readonly [K in keyof T]: unknown } extends T ? Uniques<T> : T;
+function uniques(array: unknown[]): unknown[] {
   return Array.from(new Set(array));
 }
 
@@ -411,7 +411,7 @@ type Zip<
  * @throws if the arrays don't have the same length.
  */
 function zip<T extends readonly (readonly unknown[])[]>(...arrays: T): Zip<T>;
-function zip(...arrays: readonly (readonly unknown[])[]): any[] {
+function zip(...arrays: readonly (readonly unknown[])[]): unknown[] {
   const { length } = arrays[0];
   if (arrays.some((a) => a.length !== length)) {
     throw new Error('Cannot zip arrays of different lengths');
