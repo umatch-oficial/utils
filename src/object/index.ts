@@ -504,5 +504,6 @@ export {
   snakeCaseKeys,
   stringify,
   type CamelToSnakeCaseKeys,
+  type DeepEmpty,
   type SnakeToCamelCaseKeys,
 };
