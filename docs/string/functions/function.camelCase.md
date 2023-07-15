@@ -32,7 +32,7 @@ split it and map the function over each unit according to your needs.
 
 ## Source
 
-[src/string/index.ts:585](https://github.com/umatch-oficial/utils/blob/106c322/src/string/index.ts#L585)
+[src/string/index.ts:585](https://github.com/umatch-oficial/utils/blob/00cf87f/src/string/index.ts#L585)
 
 ---
 

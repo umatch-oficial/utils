@@ -13,14 +13,14 @@ and returns the type of the deep property at the path.
 
 ## Type parameters
 
-| Parameter                                                           |
-| :------------------------------------------------------------------ |
-| `O` _extends_ [`Dictionary`](type-alias.Dictionary.md) \| `unknown` |
-| `P` _extends_ `string` \| `unknown`                                 |
+| Parameter              |
+| :--------------------- |
+| `O`                    |
+| `P` _extends_ `string` |
 
 ## Source
 
-[src/index.ts:158](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L158)
+[src/index.ts:157](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L157)
 
 ---
 

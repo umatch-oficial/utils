@@ -20,7 +20,7 @@ Changes the type of values matching A to B
 
 ## Source
 
-[src/index.ts:54](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L54)
+[src/index.ts:56](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L56)
 
 ---
 

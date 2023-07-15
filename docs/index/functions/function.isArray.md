@@ -6,7 +6,7 @@
 
 # Function: isArray()
 
-> **isArray**(`obj`): `obj is unknown[]`
+> **isArray**(`obj`): `obj is readonly unknown[]`
 
 Returns whether obj is an array.
 
@@ -20,11 +20,11 @@ Uses Array.isArray().
 
 ## Returns
 
-`obj is unknown[]`
+`obj is readonly unknown[]`
 
 ## Source
 
-[src/index.ts:194](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L194)
+[src/index.ts:190](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L190)
 
 ---
 

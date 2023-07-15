@@ -12,9 +12,9 @@ Returns whether obj is null or undefined.
 
 ## Parameters
 
-| Parameter | Type  |
-| :-------- | :---- |
-| `obj`     | `any` |
+| Parameter | Type      |
+| :-------- | :-------- |
+| `obj`     | `unknown` |
 
 ## Returns
 
@@ -22,7 +22,7 @@ obj is undefined \| null
 
 ## Source
 
-[src/index.ts:245](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L245)
+[src/index.ts:241](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L241)
 
 ---
 

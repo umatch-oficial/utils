@@ -6,26 +6,23 @@
 
 # Function: isDeepEmpty()
 
-> **isDeepEmpty**(`obj`): `boolean`
+> **isDeepEmpty**(`obj`): `obj is DeepEmpty`
 
-Returns whether the object is deep empty.
-
-A deep empty object only has values that are empty strings, empty
-arrays, empty objects or deep empty objects.
+Returns whether the object is [deep empty]DeepEmpty.
 
 ## Parameters
 
-| Parameter | Type                                                                         |
-| :-------- | :--------------------------------------------------------------------------- |
-| `obj`     | [`Dictionary`](../../index/type-aliases/type-alias.Dictionary.md)\< `any` \> |
+| Parameter | Type      |
+| :-------- | :-------- |
+| `obj`     | `unknown` |
 
 ## Returns
 
-`boolean`
+`obj is DeepEmpty`
 
 ## Source
 
-[src/object/index.ts:258](https://github.com/umatch-oficial/utils/blob/106c322/src/object/index.ts#L258)
+[src/object/index.ts:265](https://github.com/umatch-oficial/utils/blob/00cf87f/src/object/index.ts#L265)
 
 ---
 

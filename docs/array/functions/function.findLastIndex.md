@@ -32,7 +32,7 @@ but not in Node.
 
 ## Source
 
-[src/array/index.ts:145](https://github.com/umatch-oficial/utils/blob/106c322/src/array/index.ts#L145)
+[src/array/index.ts:145](https://github.com/umatch-oficial/utils/blob/00cf87f/src/array/index.ts#L145)
 
 ---
 

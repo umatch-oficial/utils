@@ -19,7 +19,7 @@ From T, pick a set of properties whose values are of some type.
 
 ## Source
 
-[src/index.ts:65](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L65)
+[src/index.ts:67](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L67)
 
 ---
 

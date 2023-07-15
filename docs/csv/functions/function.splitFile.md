@@ -27,7 +27,7 @@ Splits a file into multiple others.
 
 ## Source
 
-[src/csv/index.ts:131](https://github.com/umatch-oficial/utils/blob/106c322/src/csv/index.ts#L131)
+[src/csv/index.ts:131](https://github.com/umatch-oficial/utils/blob/00cf87f/src/csv/index.ts#L131)
 
 ---
 

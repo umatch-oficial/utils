@@ -31,7 +31,7 @@ if some object in the path is an array, but the next key is not a number.
 | :-------- | :------------------------------------------------------------------------------------------ | :------------ |
 | `obj`     | _readonly_ `unknown`[] \| [`Dictionary`](../../index/type-aliases/type-alias.Dictionary.md) | `undefined`   |
 | `str`     | `string`                                                                                    | `undefined`   |
-| `value`   | `any`                                                                                       | `undefined`   |
+| `value`   | `unknown`                                                                                   | `undefined`   |
 | `sep`     | `string`                                                                                    | `'.'`         |
 
 ## Returns
@@ -40,7 +40,7 @@ if some object in the path is an array, but the next key is not a number.
 
 ## Source
 
-[src/object/index.ts:370](https://github.com/umatch-oficial/utils/blob/106c322/src/object/index.ts#L370)
+[src/object/index.ts:382](https://github.com/umatch-oficial/utils/blob/00cf87f/src/object/index.ts#L382)
 
 ---
 

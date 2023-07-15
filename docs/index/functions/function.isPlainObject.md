@@ -12,9 +12,9 @@ Returns whether obj is a plain object.
 
 ## Parameters
 
-| Parameter | Type  |
-| :-------- | :---- |
-| `obj`     | `any` |
+| Parameter | Type      |
+| :-------- | :-------- |
+| `obj`     | `unknown` |
 
 ## Returns
 
@@ -22,7 +22,7 @@ Returns whether obj is a plain object.
 
 ## Source
 
-[src/index.ts:222](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L222)
+[src/index.ts:218](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L218)
 
 ---
 

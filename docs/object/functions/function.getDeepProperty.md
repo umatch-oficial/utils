@@ -9,7 +9,7 @@
 > **getDeepProperty**(
 > `obj`,
 > `str`,
-> `sep` = `'.'`): `unknown` \| `undefined`
+> `sep` = `'.'`): `unknown`
 
 Returns a deep property of an object given a path-like string.
 
@@ -30,11 +30,11 @@ getDeepProperty({ a: { b: [2, 3, 9] } }, 'a.b[2]');
 
 ## Returns
 
-`unknown` \| `undefined`
+`unknown`
 
 ## Source
 
-[src/object/index.ts:224](https://github.com/umatch-oficial/utils/blob/106c322/src/object/index.ts#L224)
+[src/object/index.ts:226](https://github.com/umatch-oficial/utils/blob/00cf87f/src/object/index.ts#L226)
 
 ---
 

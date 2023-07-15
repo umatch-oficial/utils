@@ -6,7 +6,7 @@
 
 # Function: uniques()
 
-> **uniques**\<`T`\>(`array`): `{ readonly [K in keyof T]: any }` _extends_ `T` ? `Uniques`\< `T` \> : `T`
+> **uniques**\<`T`\>(`array`): `{ readonly [K in keyof T]: unknown }` _extends_ `T` ? `Uniques`\< `T` \> : `T`
 
 Returns a copy of an array without duplicates.
 
@@ -24,11 +24,11 @@ Returns a copy of an array without duplicates.
 
 ## Returns
 
-`{ readonly [K in keyof T]: any }` _extends_ `T` ? `Uniques`\< `T` \> : `T`
+`{ readonly [K in keyof T]: unknown }` _extends_ `T` ? `Uniques`\< `T` \> : `T`
 
 ## Source
 
-[src/array/index.ts:388](https://github.com/umatch-oficial/utils/blob/106c322/src/array/index.ts#L388)
+[src/array/index.ts:388](https://github.com/umatch-oficial/utils/blob/00cf87f/src/array/index.ts#L388)
 
 ---
 

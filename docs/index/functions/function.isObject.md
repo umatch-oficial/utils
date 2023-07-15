@@ -14,9 +14,9 @@ To narrow this down to only plain objects, use [isPlainObject][isPlainObject](fu
 
 ## Parameters
 
-| Parameter | Type  |
-| :-------- | :---- |
-| `obj`     | `any` |
+| Parameter | Type      |
+| :-------- | :-------- |
+| `obj`     | `unknown` |
 
 ## Returns
 
@@ -24,7 +24,7 @@ To narrow this down to only plain objects, use [isPlainObject][isPlainObject](fu
 
 ## Source
 
-[src/index.ts:261](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L261)
+[src/index.ts:257](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L257)
 
 ---
 

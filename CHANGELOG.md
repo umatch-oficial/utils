@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [11.1.0](https://github.com/umatch-oficial/utils/compare/v11.0.0...v11.1.0) (2023-07-15)
+
+
+### Features
+
+* **object:** convert isDeepEmpty() to a type guard ([00cf87f](https://github.com/umatch-oficial/utils/commit/00cf87f15df9e46c736b3daaa69f8176b7129016))
+
+
+### Bug Fixes
+
+* **index:** fix DeepValueOf to allow objects with non-string indices ([b561554](https://github.com/umatch-oficial/utils/commit/b5615548a9c2396beb8358f76cf20ccb27025a07))
+* **index:** fix isArray() to preserve readonly ([7051fc2](https://github.com/umatch-oficial/utils/commit/7051fc2edcf684d50d9461bfa7796c75f0403490))
+
 ## [11.0.0](https://github.com/umatch-oficial/utils/compare/v10.4.1...v11.0.0) (2023-07-14)
 
 

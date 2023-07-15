@@ -22,7 +22,7 @@ Sleep for a given duration.
 
 ## Source
 
-[src/time/index.ts:8](https://github.com/umatch-oficial/utils/blob/106c322/src/time/index.ts#L8)
+[src/time/index.ts:8](https://github.com/umatch-oficial/utils/blob/00cf87f/src/time/index.ts#L8)
 
 ---
 

@@ -6,7 +6,7 @@
 
 # Type alias: DeepValueOf`<T>`
 
-> **DeepValueOf**: \<`T`\> `T` _extends_ [`Dictionary`](type-alias.Dictionary.md) ? [`DeepValueOf`](type-alias.DeepValueOf.md)\< `T`[*keyof* `T`] \> : `T`
+> **DeepValueOf**: \<`T`\> `T` _extends_ \{} ? [`DeepValueOf`](type-alias.DeepValueOf.md)\< `T`[*keyof* `T`] \> : `T`
 
 Returns a union of the values of a deeply nested object.
 
@@ -18,7 +18,7 @@ Returns a union of the values of a deeply nested object.
 
 ## Source
 
-[src/index.ts:33](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L33)
+[src/index.ts:33](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L33)
 
 ---
 

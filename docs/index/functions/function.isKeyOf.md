@@ -29,7 +29,7 @@ Returns whether key is a key of obj.
 
 ## Source
 
-[src/index.ts:237](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L237)
+[src/index.ts:233](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L233)
 
 ---
 

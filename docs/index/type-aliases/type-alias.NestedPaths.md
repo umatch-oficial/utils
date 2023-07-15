@@ -4,24 +4,24 @@
 
 [@umatch/utils](../../API.md) > [index](../README.md) > NestedPaths
 
-# Type alias: NestedPaths`<O, Base, Prev>`
+# Type alias: NestedPaths`<T, Base, Prev>`
 
-> **NestedPaths**: \<`O`, `Base`, `Prev`\> `O` _extends_ [`Dictionary`](type-alias.Dictionary.md) ? [`ValueOf`](type-alias.ValueOf.md)\< `{ [K in keyof O]: O[K] extends Dictionary ? NestedPaths<O[K], Union<Base, Prev>, Join<Prev, K>> : Union<Base, Union<Prev, Join<Prev, K>>> }` \> : `string`
+> **NestedPaths**: \<`T`, `Base`, `Prev`\> `T` _extends_ [`Dictionary`](type-alias.Dictionary.md) ? [`ValueOf`](type-alias.ValueOf.md)\< `{ [K in keyof T]: T[K] extends Dictionary ? NestedPaths<T[K], Union<Base, Prev>, Join<Prev, K>> : Union<Base, Union<Prev, Join<Prev, K>>> }` \> : `string`
 
 Takes an object and returns a union of all the deep paths
 to properties in it, using dot notation.
 
 ## Type parameters
 
-| Parameter                                                           | Default     |
-| :------------------------------------------------------------------ | :---------- |
-| `O` _extends_ [`Dictionary`](type-alias.Dictionary.md) \| `unknown` | -           |
-| `Base` _extends_ `PropertyKey` \| `undefined`                       | `undefined` |
-| `Prev` _extends_ `PropertyKey` \| `undefined`                       | `undefined` |
+| Parameter                                     | Default     |
+| :-------------------------------------------- | :---------- |
+| `T`                                           | -           |
+| `Base` _extends_ `PropertyKey` \| `undefined` | `undefined` |
+| `Prev` _extends_ `PropertyKey` \| `undefined` | `undefined` |
 
 ## Source
 
-[src/index.ts:143](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L143)
+[src/index.ts:142](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L142)
 
 ---
 

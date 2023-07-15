@@ -6,7 +6,7 @@
 
 # Type alias: TupleToUnion`<T>`
 
-> **TupleToUnion**: \<`T`\> `T` _extends_ `any`[] ? `T`[`number`] : `T`
+> **TupleToUnion**: \<`T`\> `T` _extends_ `unknown`[] ? `T`[`number`] : `T`
 
 Returns a union of the types in the tuple.
 
@@ -18,7 +18,7 @@ Returns a union of the types in the tuple.
 
 ## Source
 
-[src/index.ts:177](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L177)
+[src/index.ts:173](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L173)
 
 ---
 

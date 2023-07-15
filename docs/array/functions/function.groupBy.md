@@ -20,10 +20,10 @@ if, for any element in the array, the key is not present or has a non-primitive 
 
 ## Type parameters
 
-| Parameter                     |
-| :---------------------------- |
-| `T` _extends_ `unknown`       |
-| `Key` _extends_ `PropertyKey` |
+| Parameter                                                                                    |
+| :------------------------------------------------------------------------------------------- |
+| `T` _extends_ _readonly_ [`Dictionary`](../../index/type-aliases/type-alias.Dictionary.md)[] |
+| `Key` _extends_ `PropertyKey`                                                                |
 
 ## Parameters
 
@@ -38,7 +38,7 @@ if, for any element in the array, the key is not present or has a non-primitive 
 
 ## Source
 
-[src/array/index.ts:188](https://github.com/umatch-oficial/utils/blob/106c322/src/array/index.ts#L188)
+[src/array/index.ts:188](https://github.com/umatch-oficial/utils/blob/00cf87f/src/array/index.ts#L188)
 
 ---
 

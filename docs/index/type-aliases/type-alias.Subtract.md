@@ -12,15 +12,15 @@ Excludes types present in B from A.
 
 ## Type parameters
 
-| Parameter                            | Default |
-| :----------------------------------- | :------ |
-| `A` _extends_ _readonly_ `unknown`[] | -       |
-| `B` _extends_ _readonly_ `unknown`[] | -       |
-| `Acc` _extends_ _readonly_ `any`[]   | []      |
+| Parameter                              | Default |
+| :------------------------------------- | :------ |
+| `A` _extends_ _readonly_ `unknown`[]   | -       |
+| `B` _extends_ _readonly_ `unknown`[]   | -       |
+| `Acc` _extends_ _readonly_ `unknown`[] | []      |
 
 ## Source
 
-[src/index.ts:87](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L87)
+[src/index.ts:89](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L89)
 
 ---
 

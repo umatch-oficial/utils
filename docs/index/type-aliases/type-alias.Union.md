@@ -12,14 +12,14 @@ Makes a Union between two types removing undefined.
 
 ## Type parameters
 
-| Parameter                              |
-| :------------------------------------- |
-| `L` _extends_ `unknown` \| `undefined` |
-| `R` _extends_ `unknown` \| `undefined` |
+| Parameter |
+| :-------- |
+| `L`       |
+| `R`       |
 
 ## Source
 
-[src/index.ts:129](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L129)
+[src/index.ts:131](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L131)
 
 ---
 

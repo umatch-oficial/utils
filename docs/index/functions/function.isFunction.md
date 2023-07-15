@@ -22,7 +22,7 @@ Returns whether obj is a function.
 
 ## Source
 
-[src/index.ts:215](https://github.com/umatch-oficial/utils/blob/106c322/src/index.ts#L215)
+[src/index.ts:211](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L211)
 
 ---
 

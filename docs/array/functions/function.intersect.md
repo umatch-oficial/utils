@@ -6,31 +6,31 @@
 
 # Function: intersect()
 
-> **intersect**\<`X`, `Y`\>(`a`, `b`): `X`[]
+> **intersect**\<`A`, `B`\>(`a`, `b`): `A`[`number`] & `B`[`number`][]
 
 Returns the intersection of two arrays.
 
 ## Type parameters
 
-| Parameter                          |
-| :--------------------------------- |
-| `X` _extends_ `string` \| `number` |
-| `Y` _extends_ `string` \| `number` |
+| Parameter                                         |
+| :------------------------------------------------ |
+| `A` _extends_ _readonly_ (`string` \| `number`)[] |
+| `B` _extends_ _readonly_ (`string` \| `number`)[] |
 
 ## Parameters
 
-| Parameter | Type                      |
-| :-------- | :------------------------ |
-| `a`       | _readonly_ `X`[]          |
-| `b`       | _readonly_ (`X` \| `Y`)[] |
+| Parameter | Type |
+| :-------- | :--- |
+| `a`       | `A`  |
+| `b`       | `B`  |
 
 ## Returns
 
-`X`[]
+`A`[`number`] & `B`[`number`][]
 
 ## Source
 
-[src/array/index.ts:252](https://github.com/umatch-oficial/utils/blob/106c322/src/array/index.ts#L252)
+[src/array/index.ts:252](https://github.com/umatch-oficial/utils/blob/00cf87f/src/array/index.ts#L252)
 
 ---
 
