@@ -201,24 +201,27 @@ function groupBy<T extends readonly Dictionary[], Key extends PropertyKey>(
     : { [_: PropertyKey]: D[] }
   : Dictionary<T>;
 function groupBy<T extends readonly Dictionary[]>(array: T, key: keyof T[number]) {
-  return array.reduce((partial: { [_: string]: T[number][] }, element: T[number]) => {
-    const keyVal = element[key];
-    if (!['string', 'number', 'boolean'].includes(typeof keyVal)) {
-      throw new Error(
-        `Cannot use value of '${String(
-          key,
-        )}' to index result - must be a string, number or boolean for all array elements`,
-      );
-    }
+  return array.reduce(
+    (partial: { [_: string]: T[number][] }, element: T[number]) => {
+      const keyVal = element[key];
+      if (!['string', 'number', 'boolean'].includes(typeof keyVal)) {
+        throw new Error(
+          `Cannot use value of '${String(
+            key,
+          )}' to index result - must be a string, number or boolean for all array elements`,
+        );
+      }
 
-    const index = String(keyVal);
-    if (partial[index] === undefined) {
-      partial[index] = [element];
-    } else {
-      partial[index].push(element);
-    }
-    return partial;
-  }, {} as { [_: string]: T[number][] });
+      const index = String(keyVal);
+      if (partial[index] === undefined) {
+        partial[index] = [element];
+      } else {
+        partial[index].push(element);
+      }
+      return partial;
+    },
+    {} as { [_: string]: T[number][] },
+  );
 }
 
 /**
