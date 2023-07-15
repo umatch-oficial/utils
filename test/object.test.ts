@@ -53,7 +53,7 @@ test('deepClone()', () => {
 test('deepMap()', () => {
   const obj = [[[1, 2, 3, 4, 5], 3, 4, 5, [1, 2, [3, 4, 5]]]];
   const output = [[[0, 0, 1, 1, 1], 1, 1, 1, [0, 0, [1, 1, 1]]]];
-  expect(deepMap(obj, (num) => (num > 2 ? 1 : 0))).toEqual(output);
+  expect(deepMap(obj, (num: number) => (num > 2 ? 1 : 0))).toEqual(output);
 });
 
 describe.each([

@@ -82,7 +82,10 @@ function deepClone(obj: unknown): unknown {
  * Maps the function over deeply nested elements of the object,
  * which are not arrays.
  */
-function deepMap<T extends DeepArray>(x: T, f: (val: any) => any): T {
+function deepMap<Value, T extends DeepArray<Value>>(
+  x: T,
+  f: (value: Value) => unknown,
+): T {
   return x.map((val) => (isArray(val) ? deepMap(val, f) : f(val))) as DeepArray as T;
 }
 
