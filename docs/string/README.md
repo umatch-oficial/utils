@@ -11,6 +11,7 @@
 ### Type Aliases
 
 - [CamelToSnakeCase](type-aliases/type-alias.CamelToSnakeCase.md)
+- [DateTimeDict](type-aliases/type-alias.DateTimeDict.md)
 - [Pluralizer](type-aliases/type-alias.Pluralizer.md)
 - [Replace](type-aliases/type-alias.Replace.md)
 - [SnakeToCamelCase](type-aliases/type-alias.SnakeToCamelCase.md)

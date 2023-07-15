@@ -6,7 +6,7 @@
 
 # Function: extract()
 
-> **extract**\<`T`, `Options`, `K`\>(`obj`, `options`): `T` _extends_ [`Dictionary`](../../index/type-aliases/type-alias.Dictionary.md) ? `Options` _extends_ \{`prefix`: infer Prefix;} ? [\{ [Key in keyof T as Key extends \`$\{Prefix & string}$\{infer Rest}\` ? Options extends Object ? Key : Rest : never]: T[Key] }, \{ [Key in keyof T as Key extends \`$\{Prefix & string}$\{infer \_}\` ? never : Key]: T[Key] }] : `Options` _extends_ \{`suffix`: infer Suffix;} ? [\{ [Key in keyof T as Key extends \`$\{infer Rest}$\{Suffix & string}\` ? Options extends Object ? Key : Rest : never]: T[Key] }, \{ [Key in keyof T as Key extends \`$\{infer \_}$\{Suffix & string}\` ? never : Key]: T[Key] }] : `Options` _extends_ \{`keys`: _readonly_ `K`[];} ? [`Pick`\< `T`, `K` \>, `Omit`\< `T`, `K` \>] : `Options` _extends_ \{`keys`: (`key`) => `boolean`;} ? [\{}, \{}] : `Options` _extends_ \{`values`: (`value`) => `boolean`;} ? [\{}, \{}] : `never` : [`Dictionary`](../../index/type-aliases/type-alias.Dictionary.md)
+> **extract**\<`T`, `K`, `V`, `Options`\>(`obj`, `options`): `T` _extends_ [`Dictionary`](../../index/type-aliases/type-alias.Dictionary.md) ? `Options` _extends_ \{`prefix`: infer Prefix;} ? [\{ [Key in keyof T as Key extends \`$\{Prefix & string}$\{infer Rest}\` ? Options extends Object ? Key : Rest : never]: T[Key] }, \{ [Key in keyof T as Key extends \`$\{Prefix & string}$\{infer \_}\` ? never : Key]: T[Key] }] : `Options` _extends_ \{`suffix`: infer Suffix;} ? [\{ [Key in keyof T as Key extends \`$\{infer Rest}$\{Suffix & string}\` ? Options extends Object ? Key : Rest : never]: T[Key] }, \{ [Key in keyof T as Key extends \`$\{infer \_}$\{Suffix & string}\` ? never : Key]: T[Key] }] : `Options` _extends_ \{`keys`: _readonly_ `K`[];} ? [`Pick`\< `T`, `K` \>, `Omit`\< `T`, `K` \>] : `Options` _extends_ \{`keys`: (`key`) => `boolean`;} ? [\{}, \{}] : `Options` _extends_ \{`values`: (`value`) => `boolean`;} ? [\{}, \{}] : `never` : [`Dictionary`](../../index/type-aliases/type-alias.Dictionary.md)
 
 Dynamic version of pick.
 
@@ -22,9 +22,10 @@ with the rename option).
 
 | Parameter                                                                                                                                                                                                                                                 |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `T` _extends_ `unknown`                                                                                                                                                                                                                                   |
-| `Options` _extends_ \{`custom`: `RegExp`;} \| \{`keys`: (`key`) => `boolean`;} \| \{`keys`: _readonly_ `string`[];} \| \{`values`: (`value`) => `boolean`;} \| \{`prefix`: `string`; `rename`: `boolean`;} \| \{`rename`: `boolean`; `suffix`: `string`;} |
+| `T` _extends_ [`Dictionary`](../../index/type-aliases/type-alias.Dictionary.md)                                                                                                                                                                           |
 | `K` _extends_ `string` \| `number` \| `symbol`                                                                                                                                                                                                            |
+| `V` _extends_ `unknown`                                                                                                                                                                                                                                   |
+| `Options` _extends_ \{`custom`: `RegExp`;} \| \{`keys`: (`key`) => `boolean`;} \| \{`keys`: _readonly_ `string`[];} \| \{`values`: (`value`) => `boolean`;} \| \{`prefix`: `string`; `rename`: `boolean`;} \| \{`rename`: `boolean`; `suffix`: `string`;} |
 
 ## Parameters
 
@@ -39,7 +40,7 @@ with the rename option).
 
 ## Source
 
-[src/object/index.ts:100](https://github.com/umatch-oficial/utils/blob/00cf87f/src/object/index.ts#L100)
+[src/object/index.ts:105](https://github.com/umatch-oficial/utils/blob/a9008ad/src/object/index.ts#L105)
 
 ---
 

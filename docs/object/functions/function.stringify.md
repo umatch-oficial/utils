@@ -16,14 +16,14 @@ the key and value to make all lines have the same width.
 
 ## Parameters
 
-| Parameter               | Type      | Default value | Description |
-| :---------------------- | :-------- | :------------ | :---------- |
-| `obj`                   | `unknown` | `undefined`   |             |
-| `options`?              | `object`  | `undefined`   |             |
-| `options.doubleQuotes`? | `boolean` | `undefined`   | -           |
-| `options.indent`?       | `number`  | `undefined`   | -           |
-| `options.pad`?          | `boolean` | `undefined`   | -           |
-| `inheritedIndent`?      | `string`  | `''`          | -           |
+| Parameter               | Type                                                                                        | Default value | Description |
+| :---------------------- | :------------------------------------------------------------------------------------------ | :------------ | :---------- |
+| `obj`                   | _readonly_ `unknown`[] \| [`Dictionary`](../../index/type-aliases/type-alias.Dictionary.md) | `undefined`   |             |
+| `options`?              | `object`                                                                                    | `undefined`   |             |
+| `options.doubleQuotes`? | `boolean`                                                                                   | `undefined`   | -           |
+| `options.indent`?       | `number`                                                                                    | `undefined`   | -           |
+| `options.pad`?          | `boolean`                                                                                   | `undefined`   | -           |
+| `inheritedIndent`?      | `string`                                                                                    | `''`          | -           |
 
 ## Returns
 
@@ -31,7 +31,7 @@ the key and value to make all lines have the same width.
 
 ## Source
 
-[src/object/index.ts:437](https://github.com/umatch-oficial/utils/blob/00cf87f/src/object/index.ts#L437)
+[src/object/index.ts:459](https://github.com/umatch-oficial/utils/blob/a9008ad/src/object/index.ts#L459)
 
 ---
 

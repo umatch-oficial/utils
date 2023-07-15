@@ -29,7 +29,7 @@ diff([1, 3, 7, 10]);
 
 ## Source
 
-[src/math/index.ts:17](https://github.com/umatch-oficial/utils/blob/00cf87f/src/math/index.ts#L17)
+[src/math/index.ts:17](https://github.com/umatch-oficial/utils/blob/a9008ad/src/math/index.ts#L17)
 
 ---
 

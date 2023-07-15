@@ -22,7 +22,7 @@ Returns whether obj is a boolean.
 
 ## Source
 
-[src/index.ts:197](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L197)
+[src/index.ts:197](https://github.com/umatch-oficial/utils/blob/a9008ad/src/index.ts#L197)
 
 ---
 

@@ -8,7 +8,7 @@
 
 > **isDeepEmpty**(`obj`): `obj is DeepEmpty`
 
-Returns whether the object is [deep empty]DeepEmpty.
+Returns whether the object is [deep empty][DeepEmpty](../type-aliases/type-alias.DeepEmpty.md).
 
 ## Parameters
 
@@ -22,7 +22,7 @@ Returns whether the object is [deep empty]DeepEmpty.
 
 ## Source
 
-[src/object/index.ts:265](https://github.com/umatch-oficial/utils/blob/00cf87f/src/object/index.ts#L265)
+[src/object/index.ts:270](https://github.com/umatch-oficial/utils/blob/a9008ad/src/object/index.ts#L270)
 
 ---
 

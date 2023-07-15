@@ -22,7 +22,7 @@ Returns whether obj is a number.
 
 ## Source
 
-[src/index.ts:248](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L248)
+[src/index.ts:249](https://github.com/umatch-oficial/utils/blob/a9008ad/src/index.ts#L249)
 
 ---
 

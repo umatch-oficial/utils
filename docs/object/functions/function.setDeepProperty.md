@@ -40,7 +40,7 @@ if some object in the path is an array, but the next key is not a number.
 
 ## Source
 
-[src/object/index.ts:382](https://github.com/umatch-oficial/utils/blob/00cf87f/src/object/index.ts#L382)
+[src/object/index.ts:387](https://github.com/umatch-oficial/utils/blob/a9008ad/src/object/index.ts#L387)
 
 ---
 

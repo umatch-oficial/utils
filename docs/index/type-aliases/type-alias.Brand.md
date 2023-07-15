@@ -23,7 +23,7 @@ Brands an object.
 
 ## Source
 
-[src/index.ts:103](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L103)
+[src/index.ts:103](https://github.com/umatch-oficial/utils/blob/a9008ad/src/index.ts#L103)
 
 ---
 

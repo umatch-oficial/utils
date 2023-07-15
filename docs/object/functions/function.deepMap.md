@@ -6,23 +6,24 @@
 
 # Function: deepMap()
 
-> **deepMap**\<`T`\>(`x`, `f`): `T`
+> **deepMap**\<`Value`, `T`\>(`x`, `f`): `T`
 
 Maps the function over deeply nested elements of the object,
 which are not arrays.
 
 ## Type parameters
 
-| Parameter                            |
-| :----------------------------------- |
-| `T` _extends_ _readonly_ `unknown`[] |
+| Parameter                                                                                  |
+| :----------------------------------------------------------------------------------------- |
+| `Value`                                                                                    |
+| `T` _extends_ [`DeepArray`](../../index/type-aliases/type-alias.DeepArray.md)\< `Value` \> |
 
 ## Parameters
 
-| Parameter | Type             |
-| :-------- | :--------------- |
-| `x`       | `T`              |
-| `f`       | (`val`) => `any` |
+| Parameter | Type                   |
+| :-------- | :--------------------- |
+| `x`       | `T`                    |
+| `f`       | (`value`) => `unknown` |
 
 ## Returns
 
@@ -30,7 +31,7 @@ which are not arrays.
 
 ## Source
 
-[src/object/index.ts:85](https://github.com/umatch-oficial/utils/blob/00cf87f/src/object/index.ts#L85)
+[src/object/index.ts:87](https://github.com/umatch-oficial/utils/blob/a9008ad/src/object/index.ts#L87)
 
 ---
 

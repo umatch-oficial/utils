@@ -29,7 +29,7 @@ Splits an array into chunks of equal size.
 
 ## Source
 
-[src/math/index.ts:164](https://github.com/umatch-oficial/utils/blob/00cf87f/src/math/index.ts#L164)
+[src/math/index.ts:164](https://github.com/umatch-oficial/utils/blob/a9008ad/src/math/index.ts#L164)
 
 ---
 

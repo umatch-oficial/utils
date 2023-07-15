@@ -18,7 +18,7 @@ Returns a union of the types in the tuple.
 
 ## Source
 
-[src/index.ts:173](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L173)
+[src/index.ts:173](https://github.com/umatch-oficial/utils/blob/a9008ad/src/index.ts#L173)
 
 ---
 

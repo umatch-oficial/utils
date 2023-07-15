@@ -14,7 +14,7 @@ Checks if a prop exists in obj and tells TypeScript that obj has this prop.
 
 | Parameter                   |
 | :-------------------------- |
-| `X` _extends_ \{}           |
+| `X`                         |
 | `Y` _extends_ `PropertyKey` |
 
 ## Parameters
@@ -30,7 +30,7 @@ Checks if a prop exists in obj and tells TypeScript that obj has this prop.
 
 ## Source
 
-[src/object/index.ts:246](https://github.com/umatch-oficial/utils/blob/00cf87f/src/object/index.ts#L246)
+[src/object/index.ts:252](https://github.com/umatch-oficial/utils/blob/a9008ad/src/object/index.ts#L252)
 
 ---
 

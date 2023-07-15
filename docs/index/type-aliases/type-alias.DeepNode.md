@@ -6,7 +6,7 @@
 
 # Type alias: DeepNode`<T>`
 
-> **DeepNode**: \<`T`\> `T` \| [`DeepArray`](type-alias.DeepArray.md)\< `T` \> \| [`DeepObject`](type-alias.DeepObject.md)\< `T` \>
+> **DeepNode**: \<`T`\> `T` \| _readonly_ [`DeepNode`](type-alias.DeepNode.md)\< `T` \>[] \| [`DeepObject`](type-alias.DeepObject.md)\< `T` \>
 
 A possibly deeply nested value.
 
@@ -18,7 +18,7 @@ A possibly deeply nested value.
 
 ## Source
 
-[src/index.ts:17](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L17)
+[src/index.ts:17](https://github.com/umatch-oficial/utils/blob/a9008ad/src/index.ts#L17)
 
 ---
 

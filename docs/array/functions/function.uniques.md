@@ -28,7 +28,7 @@ Returns a copy of an array without duplicates.
 
 ## Source
 
-[src/array/index.ts:388](https://github.com/umatch-oficial/utils/blob/00cf87f/src/array/index.ts#L388)
+[src/array/index.ts:391](https://github.com/umatch-oficial/utils/blob/a9008ad/src/array/index.ts#L391)
 
 ---
 

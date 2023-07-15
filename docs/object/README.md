@@ -11,6 +11,7 @@
 ### Type Aliases
 
 - [CamelToSnakeCaseKeys](type-aliases/type-alias.CamelToSnakeCaseKeys.md)
+- [DeepEmpty](type-aliases/type-alias.DeepEmpty.md)
 - [SnakeToCamelCaseKeys](type-aliases/type-alias.SnakeToCamelCaseKeys.md)
 
 ### Functions

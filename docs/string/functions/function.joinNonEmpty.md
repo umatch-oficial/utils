@@ -30,7 +30,7 @@ Joins an array of primitives, filtering out nulls, undefineds and empty strings.
 
 ## Source
 
-[src/string/index.ts:312](https://github.com/umatch-oficial/utils/blob/00cf87f/src/string/index.ts#L312)
+[src/string/index.ts:312](https://github.com/umatch-oficial/utils/blob/a9008ad/src/string/index.ts#L312)
 
 ---
 

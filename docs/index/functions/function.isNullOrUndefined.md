@@ -22,7 +22,7 @@ obj is undefined \| null
 
 ## Source
 
-[src/index.ts:241](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L241)
+[src/index.ts:242](https://github.com/umatch-oficial/utils/blob/a9008ad/src/index.ts#L242)
 
 ---
 

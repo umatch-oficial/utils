@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [12.0.0](https://github.com/umatch-oficial/utils/compare/v11.1.0...v12.0.0) (2023-07-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **object:** hasOwnProperty() no longer throws an error if the object doesn't have the hasOwnProperty method.
+* **object:** callbacks passed to extract() in the options (when using 'keys' or 'values' signature) must now be correctly typed, according to the input object.
+* **object:** the callback passed to deepMap() must now be correctly typed, according to the input array.
+* **index:** isKeyOf() now only accepts inputs with type 'object'.
+* **index:** the DeepObject type no longer includes DeepArray in the union.
+* **object:** stringify() no longer accepts inputs of 'unknown' type.
+
+* **object:** require input of stringify() to be typed ([f5b5a1a](https://github.com/umatch-oficial/utils/commit/f5b5a1ac59fe12defb99b99cf52a15a4041d4e7b))
+
+
+### Features
+
+* **index:** remove DeepObject from DeepArray ([e5c9fe8](https://github.com/umatch-oficial/utils/commit/e5c9fe81de670b82a9c387a6a54321ace8da2373))
+* **index:** restrict input of isKeyOf() to type 'object' ([33f5585](https://github.com/umatch-oficial/utils/commit/33f5585048bd38c9239e555408a01d8f4dcf75e2))
+* **object:** export DeepEmpty type ([9393f4b](https://github.com/umatch-oficial/utils/commit/9393f4b37c210d188d2cd69aca271fc67ee64a97))
+* **object:** improve safety of hasOwnProperty() ([2cc48eb](https://github.com/umatch-oficial/utils/commit/2cc48eb4248645b8c7b79d59bd787ddd17ea1076))
+* **object:** restrict type of callback passed to deepMap() ([fec876a](https://github.com/umatch-oficial/utils/commit/fec876a8bf873b214f47b563d09053705758bdcb))
+* **object:** restrict type of options passed to deepMap() ([175fc1e](https://github.com/umatch-oficial/utils/commit/175fc1e2059460e1d0efcbfea6e8e2e69ca6f524))
+* **string:** export DateTimeDict type ([c406123](https://github.com/umatch-oficial/utils/commit/c406123110b57ecd6735be099b87aa74acd2bb30))
+
 ## [11.1.0](https://github.com/umatch-oficial/utils/compare/v11.0.0...v11.1.0) (2023-07-15)
 
 

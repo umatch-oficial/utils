@@ -12,9 +12,9 @@ Returns whether key is a key of obj.
 
 ## Type parameters
 
-| Parameter |
-| :-------- |
-| `T`       |
+| Parameter              |
+| :--------------------- |
+| `T` _extends_ `object` |
 
 ## Parameters
 
@@ -29,7 +29,7 @@ Returns whether key is a key of obj.
 
 ## Source
 
-[src/index.ts:233](https://github.com/umatch-oficial/utils/blob/00cf87f/src/index.ts#L233)
+[src/index.ts:235](https://github.com/umatch-oficial/utils/blob/a9008ad/src/index.ts#L235)
 
 ---
 

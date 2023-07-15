@@ -38,14 +38,14 @@ if the given dictionary doesn't have entries for all possible units.
 
 ## Parameters
 
-| Parameter                  | Type                                                     | Description                                                                         |
-| :------------------------- | :------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| `date`                     | `string` \| `DateTime`                                   | If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true }). |
-| `options`?                 | `object`                                                 |                                                                                     |
-| `options.dictionary`?      | `DateTimeDict`                                           | Words to substitute. Default: english words                                         |
-| `options.pluralizer`?      | [`Pluralizer`](../type-aliases/type-alias.Pluralizer.md) | A pluralizer function. Default: adds 's' to the end the word                        |
-| `options.short`?           | `boolean`                                                | Whether to shorten the duration identifier (pick first letter)                      |
-| `options.unitsThresholds`? | _readonly_ _readonly_ [`DateTimeUnit`, `number`][]       | Threshold per unit                                                                  |
+| Parameter                  | Type                                                         | Description                                                                         |
+| :------------------------- | :----------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| `date`                     | `string` \| `DateTime`                                       | If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true }). |
+| `options`?                 | `object`                                                     |                                                                                     |
+| `options.dictionary`?      | [`DateTimeDict`](../type-aliases/type-alias.DateTimeDict.md) | Words to substitute. Default: english words                                         |
+| `options.pluralizer`?      | [`Pluralizer`](../type-aliases/type-alias.Pluralizer.md)     | A pluralizer function. Default: adds 's' to the end the word                        |
+| `options.short`?           | `boolean`                                                    | Whether to shorten the duration identifier (pick first letter)                      |
+| `options.unitsThresholds`? | _readonly_ _readonly_ [`DateTimeUnit`, `number`][]           | Threshold per unit                                                                  |
 
 ## Returns
 
@@ -53,7 +53,7 @@ if the given dictionary doesn't have entries for all possible units.
 
 ## Source
 
-[src/string/index.ts:231](https://github.com/umatch-oficial/utils/blob/00cf87f/src/string/index.ts#L231)
+[src/string/index.ts:231](https://github.com/umatch-oficial/utils/blob/a9008ad/src/string/index.ts#L231)
 
 ---
 
