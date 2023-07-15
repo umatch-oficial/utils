@@ -14,11 +14,11 @@ type IsReadonly<T extends readonly unknown[]> = T extends unknown[] ? false : tr
 /**
  * A possibly deeply nested value.
  */
-type DeepNode<T = unknown> = T | DeepArray<T> | DeepObject<T>;
+type DeepNode<T = unknown> = T | readonly DeepNode<T>[] | DeepObject<T>;
 /**
  * An array of possibly deeply nested values.
  */
-type DeepArray<T = unknown> = readonly DeepNode<T>[];
+type DeepArray<T = unknown> = readonly (T | DeepArray<T>)[];
 /**
  * An object, whose values may be deeply nested.
  */
