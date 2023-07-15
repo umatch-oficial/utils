@@ -59,7 +59,7 @@
   },
   "commit-and-tag-version": {
     "scripts": {
-      "precommit": "git add README.md"
+      "precommit": "git add *.md"
     }
   },
   "config": {
