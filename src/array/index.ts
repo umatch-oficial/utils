@@ -185,7 +185,7 @@ function formatMatrixToString(
  *
  * @throws if, for any element in the array, the key is not present or has a non-primitive value.
  */
-function groupBy<T extends readonly Dictionary[] | unknown, Key extends PropertyKey>(
+function groupBy<T extends readonly Dictionary[], Key extends PropertyKey>(
   array: T,
   key: Key,
 ): T extends readonly (infer D)[]

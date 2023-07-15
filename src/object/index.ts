@@ -225,7 +225,7 @@ function getDeepProperty(
   obj: Dictionary | readonly unknown[],
   str: string,
   sep = '.',
-): unknown | undefined {
+): unknown {
   if (!str) return undefined;
   // replace bracket with dot notation
   str = str.replace(/\[(\w+)]/, '.$1');

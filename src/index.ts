@@ -126,10 +126,7 @@ type Join<
 /**
  * Makes a Union between two types removing undefined.
  */
-type Union<
-  L extends unknown | undefined,
-  R extends unknown | undefined,
-> = L extends undefined
+type Union<L, R> = L extends undefined
   ? R extends undefined
     ? undefined
     : R
@@ -141,13 +138,13 @@ type Union<
  * to properties in it, using dot notation.
  */
 type NestedPaths<
-  O extends Dictionary | unknown,
+  T,
   Base extends PropertyKey | undefined = undefined,
   Prev extends PropertyKey | undefined = undefined,
-> = O extends Dictionary
+> = T extends Dictionary
   ? ValueOf<{
-      [K in keyof O]: O[K] extends Dictionary
-        ? NestedPaths<O[K], Union<Base, Prev>, Join<Prev, K>>
+      [K in keyof T]: T[K] extends Dictionary
+        ? NestedPaths<T[K], Union<Base, Prev>, Join<Prev, K>>
         : Union<Base, Union<Prev, Join<Prev, K>>>;
     }>
   : string;
@@ -155,10 +152,7 @@ type NestedPaths<
  * Takes an object and a path string that uses dot notation
  * and returns the type of the deep property at the path.
  */
-type TypeFromPath<
-  O extends Dictionary | unknown,
-  P extends string | unknown,
-> = P extends string
+type TypeFromPath<O, P extends string> = P extends string
   ? O extends Dictionary
     ? P extends keyof O
       ? O[P]

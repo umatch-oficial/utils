@@ -104,7 +104,7 @@ function formatStr(
   const wrapped = length ? center(str, length) : str;
   let fmt: Chalk = chalk;
   if (bold) fmt = fmt.bold;
-  if (color) fmt = fmt[color as ChalkColor];
+  if (color) fmt = fmt[color];
   if (bgColor) fmt = fmt[('bg' + capitalize(bgColor)) as ChalkColor];
   return fmt(wrapped);
 }
