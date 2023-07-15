@@ -249,17 +249,17 @@ function hasSameElements<X extends string | number>(a: X[], b: X[]): boolean {
 /**
  * Returns the intersection of two arrays.
  */
-function intersect<X extends string | number, Y extends string | number>(
-  a: readonly X[],
-  b: readonly (X | Y)[],
-): X[] {
+function intersect<
+  A extends readonly (string | number)[],
+  B extends readonly (string | number)[],
+>(a: A, b: B): (A[number] & B[number])[] {
   const result = [];
-  const map = {} as { [_ in X | Y]: boolean };
+  const map = {} as { [key: string]: boolean };
   for (let i = 0; i < b.length; i += 1) {
     map[b[i]] = true;
   }
   for (let i = 0; i < a.length; i += 1) {
-    if (a[i] in map) result.push(a[i] as X);
+    if (a[i] in map) result.push(a[i]);
   }
   return result;
 }
