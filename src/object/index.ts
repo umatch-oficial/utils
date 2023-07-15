@@ -101,15 +101,16 @@ function deepMap<Value, T extends DeepArray<Value>>(
  * with the rename option).
  */
 function extract<
-  const T extends Dictionary | unknown,
+  const T extends Dictionary,
+  K extends keyof T,
+  V extends ValueOf<T>,
   const Options extends
     | { custom: RegExp }
-    | { keys: (key: string) => boolean }
+    | { keys: (key: K) => boolean }
     | { keys: readonly string[] }
-    | { values: (value: any) => boolean }
+    | { values: (value: V) => boolean }
     | { prefix: string; rename?: boolean }
     | { suffix: string; rename?: boolean },
-  K extends keyof T,
 >(
   obj: T,
   options: Options,
@@ -148,7 +149,7 @@ function extract<
     ? [Pick<T, K>, Omit<T, K>]
     : Options extends { keys: (key: string) => boolean }
     ? [{ [_: string]: ValueOf<T> }, { [_: string]: ValueOf<T> }]
-    : Options extends { values: (value: unknown) => boolean }
+    : Options extends { values: (value: V) => boolean }
     ? [{ [_: string]: ValueOf<T> }, { [_: string]: ValueOf<T> }]
     : never
   : Dictionary;
