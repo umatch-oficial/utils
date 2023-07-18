@@ -19,6 +19,7 @@ import {
   type Flatten,
   type IsReadonly,
   type Join,
+  type KeysByType,
   type Merge,
   type NestedPaths,
   type OneOrArray,
@@ -221,6 +222,15 @@ test('Join', () => {
   const b: Join<'foo', 'bar'> = 'foo.bar';
   const c: Join<undefined, 'bar'> = 'bar';
   const d: Join<'foo', 'bar', '_'> = 'foo_bar';
+});
+
+test('KeysByType', () => {
+  type A = { a: boolean; b?: number; c: string; d: number };
+  type Test = KeysByType<A, number>;
+
+  const a: Test = 'b';
+  // @ts-expect-error
+  const b: Test = 'c';
 });
 
 test('Merge', () => {

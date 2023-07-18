@@ -68,6 +68,12 @@ type PickByType<T, Value> = {
   [K in keyof T as T[K] extends Value | undefined ? K : never]: T[K];
 };
 /**
+ * From T, picks keys whose values are of type U.
+ */
+type KeysByType<T, U> = {
+  [K in keyof T]: U extends T[K] ? K : never;
+}[keyof T];
+/**
  * Deep merges two dictionaries. Values from the right have higher priority.
  */
 type Merge<A, B> = {
@@ -299,6 +305,7 @@ export {
   type Flatten,
   type IsReadonly,
   type Join,
+  type KeysByType,
   type Merge,
   type NestedPaths,
   type OneOrArray,
