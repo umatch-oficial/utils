@@ -33,7 +33,7 @@ the first and last valid elements are not removed.
 
 ## Source
 
-[src/array/index.ts:368](https://github.com/umatch-oficial/utils/blob/a9008ad/src/array/index.ts#L368)
+[src/array/index.ts:368](https://github.com/umatch-oficial/utils/blob/618b1ef/src/array/index.ts#L368)
 
 ---
 

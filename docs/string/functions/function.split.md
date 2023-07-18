@@ -37,7 +37,7 @@ split('a,b,c', 1);
 
 ## Source
 
-[src/string/index.ts:499](https://github.com/umatch-oficial/utils/blob/a9008ad/src/string/index.ts#L499)
+[src/string/index.ts:499](https://github.com/umatch-oficial/utils/blob/618b1ef/src/string/index.ts#L499)
 
 ---
 

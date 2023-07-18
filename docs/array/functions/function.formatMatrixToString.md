@@ -29,7 +29,7 @@ Formats a 2D array as a table.
 
 ## Source
 
-[src/array/index.ts:158](https://github.com/umatch-oficial/utils/blob/a9008ad/src/array/index.ts#L158)
+[src/array/index.ts:158](https://github.com/umatch-oficial/utils/blob/618b1ef/src/array/index.ts#L158)
 
 ---
 

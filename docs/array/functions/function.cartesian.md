@@ -28,7 +28,7 @@ Returns the cartesian product of n arrays.
 
 ## Source
 
-[src/array/index.ts:26](https://github.com/umatch-oficial/utils/blob/a9008ad/src/array/index.ts#L26)
+[src/array/index.ts:26](https://github.com/umatch-oficial/utils/blob/618b1ef/src/array/index.ts#L26)
 
 ---
 

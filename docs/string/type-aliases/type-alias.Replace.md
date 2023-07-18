@@ -21,7 +21,7 @@ Replaces NewChar with Char in S.
 
 ## Source
 
-[src/string/index.ts:17](https://github.com/umatch-oficial/utils/blob/a9008ad/src/string/index.ts#L17)
+[src/string/index.ts:17](https://github.com/umatch-oficial/utils/blob/618b1ef/src/string/index.ts#L17)
 
 ---
 

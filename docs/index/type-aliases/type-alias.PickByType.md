@@ -4,22 +4,22 @@
 
 [@umatch/utils](../../API.md) > [index](../README.md) > PickByType
 
-# Type alias: PickByType`<T, Value>`
+# Type alias: PickByType`<T, U>`
 
-> **PickByType**: \<`T`, `Value`\> \{ [K in keyof T as T[K] extends Value \| undefined ? K : never]: T[K] }
+> **PickByType**: \<`T`, `U`\> \{ [K in keyof T as T[K] extends U \| undefined ? K : never]: T[K] }
 
-From T, pick a set of properties whose values are of some type.
+From T, picks properties whose values are of type U.
 
 ## Type parameters
 
 | Parameter |
 | :-------- |
 | `T`       |
-| `Value`   |
+| `U`       |
 
 ## Source
 
-[src/index.ts:67](https://github.com/umatch-oficial/utils/blob/a9008ad/src/index.ts#L67)
+[src/index.ts:67](https://github.com/umatch-oficial/utils/blob/618b1ef/src/index.ts#L67)
 
 ---
 

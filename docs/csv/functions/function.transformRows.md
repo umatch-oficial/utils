@@ -30,7 +30,7 @@ output file.
 
 ## Source
 
-[src/csv/index.ts:101](https://github.com/umatch-oficial/utils/blob/a9008ad/src/csv/index.ts#L101)
+[src/csv/index.ts:101](https://github.com/umatch-oficial/utils/blob/618b1ef/src/csv/index.ts#L101)
 
 ---
 

@@ -39,7 +39,7 @@ basicPluralizer('developer', 2);
 
 ## Source
 
-[src/string/index.ts:62](https://github.com/umatch-oficial/utils/blob/a9008ad/src/string/index.ts#L62)
+[src/string/index.ts:62](https://github.com/umatch-oficial/utils/blob/618b1ef/src/string/index.ts#L62)
 
 ---
 

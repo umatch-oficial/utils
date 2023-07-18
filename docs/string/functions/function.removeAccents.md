@@ -22,7 +22,7 @@ Replaces accented letters with their standard versions.
 
 ## Source
 
-[src/string/index.ts:457](https://github.com/umatch-oficial/utils/blob/a9008ad/src/string/index.ts#L457)
+[src/string/index.ts:457](https://github.com/umatch-oficial/utils/blob/618b1ef/src/string/index.ts#L457)
 
 ---
 

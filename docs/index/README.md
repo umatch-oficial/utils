@@ -21,6 +21,7 @@
 - [Flatten](type-aliases/type-alias.Flatten.md)
 - [IsReadonly](type-aliases/type-alias.IsReadonly.md)
 - [Join](type-aliases/type-alias.Join.md)
+- [KeysByType](type-aliases/type-alias.KeysByType.md)
 - [Merge](type-aliases/type-alias.Merge.md)
 - [NestedPaths](type-aliases/type-alias.NestedPaths.md)
 - [OneOrArray](type-aliases/type-alias.OneOrArray.md)

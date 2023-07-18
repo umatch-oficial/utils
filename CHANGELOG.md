@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [12.1.0](https://github.com/umatch-oficial/utils/compare/v12.0.0...v12.1.0) (2023-07-18)
+
+
+### Features
+
+* **index:** add KeysByType ([ed486c2](https://github.com/umatch-oficial/utils/commit/ed486c21815dcfde3b85552fdefb46c5fe609b18))
+
 ## [12.0.0](https://github.com/umatch-oficial/utils/compare/v11.1.0...v12.0.0) (2023-07-15)
 
 

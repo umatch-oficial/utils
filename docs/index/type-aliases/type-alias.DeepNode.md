@@ -18,7 +18,7 @@ A possibly deeply nested value.
 
 ## Source
 
-[src/index.ts:17](https://github.com/umatch-oficial/utils/blob/a9008ad/src/index.ts#L17)
+[src/index.ts:17](https://github.com/umatch-oficial/utils/blob/618b1ef/src/index.ts#L17)
 
 ---
 

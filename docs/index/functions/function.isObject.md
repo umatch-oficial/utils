@@ -24,7 +24,7 @@ To narrow this down to only plain objects, use [isPlainObject][isPlainObject](fu
 
 ## Source
 
-[src/index.ts:258](https://github.com/umatch-oficial/utils/blob/a9008ad/src/index.ts#L258)
+[src/index.ts:264](https://github.com/umatch-oficial/utils/blob/618b1ef/src/index.ts#L264)
 
 ---
 
