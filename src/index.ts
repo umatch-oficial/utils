@@ -61,11 +61,11 @@ type TransformValues<T, A, B> = {
  */
 type ExtendValues<T, A, B> = TransformValues<T, A, A | B>;
 /**
- * From T, pick a set of properties whose values are of some type.
+ * From T, picks properties whose values are of type U.
  */
 // https://stackoverflow.com/questions/46583883/typescript-pick-properties-with-a-defined-type
-type PickByType<T, Value> = {
-  [K in keyof T as T[K] extends Value | undefined ? K : never]: T[K];
+type PickByType<T, U> = {
+  [K in keyof T as T[K] extends U | undefined ? K : never]: T[K];
 };
 /**
  * From T, picks keys whose values are of type U.

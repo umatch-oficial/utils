@@ -261,7 +261,7 @@ test('Payload', () => {
 });
 
 test('PickByType', () => {
-  type A = { a: boolean; b: number; c: string; d: number };
+  type A = { a: boolean; b?: number; c: string; d: number };
 
   const a: PickByType<A, number> = { b: 1, d: 2 };
   // @ts-expect-error
@@ -276,26 +276,24 @@ test('Subtract', () => {
 });
 
 test('TransformValues', () => {
-  type T = { a: number; b: string };
+  type T = { a: number; b?: string };
   type Test = TransformValues<T, number, boolean>;
 
   const a: Test = { a: true, b: '' };
   const b: Test = {
     // @ts-expect-error
     a: 1,
-    b: '',
   };
 });
 
 test('TransformValuesByKey', () => {
-  type T = { a: number; b: string };
+  type T = { a: number; b?: string };
   type Test = TransformValuesByKey<T, 'a', boolean>;
 
   const a: Test = { a: true, b: '' };
   const b: Test = {
     // @ts-expect-error
     a: 1,
-    b: '',
   };
 });
 
