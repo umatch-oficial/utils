@@ -32,7 +32,7 @@ if the arrays don't have the same length.
 
 ## Source
 
-[src/array/index.ts:416](https://github.com/umatch-oficial/utils/blob/618b1ef/src/array/index.ts#L416)
+[src/array/index.ts:416](https://github.com/umatch-oficial/utils/blob/51f6213/src/array/index.ts#L416)
 
 ---
 

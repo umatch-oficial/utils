@@ -19,7 +19,7 @@ Asserts two types are equal.
 
 ## Source
 
-[src/index.ts:115](https://github.com/umatch-oficial/utils/blob/618b1ef/src/index.ts#L115)
+[src/index.ts:115](https://github.com/umatch-oficial/utils/blob/51f6213/src/index.ts#L115)
 
 ---
 

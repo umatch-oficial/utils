@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [12.1.1](https://github.com/umatch-oficial/utils/compare/v12.1.0...v12.1.1) (2023-08-11)
+
+
+### Bug Fixes
+
+* **string:** fix type of 'def' parameter of parseNumber() ([51f6213](https://github.com/umatch-oficial/utils/commit/51f6213254730a16d26ebf15cca95872f1481a50))
+
 ## [12.1.0](https://github.com/umatch-oficial/utils/compare/v12.0.0...v12.1.0) (2023-07-18)
 
 

@@ -31,7 +31,7 @@ present in the second array.
 
 ## Source
 
-[src/array/index.ts:57](https://github.com/umatch-oficial/utils/blob/618b1ef/src/array/index.ts#L57)
+[src/array/index.ts:57](https://github.com/umatch-oficial/utils/blob/51f6213/src/array/index.ts#L57)
 
 ---
 

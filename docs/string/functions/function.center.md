@@ -30,7 +30,7 @@ extra space.
 
 ## Source
 
-[src/string/index.ts:74](https://github.com/umatch-oficial/utils/blob/618b1ef/src/string/index.ts#L74)
+[src/string/index.ts:74](https://github.com/umatch-oficial/utils/blob/51f6213/src/string/index.ts#L74)
 
 ---
 

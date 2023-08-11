@@ -25,7 +25,7 @@ Some words should not be capitalized, depending on the language.
 
 ## Source
 
-[src/string/index.ts:676](https://github.com/umatch-oficial/utils/blob/618b1ef/src/string/index.ts#L676)
+[src/string/index.ts:680](https://github.com/umatch-oficial/utils/blob/51f6213/src/string/index.ts#L680)
 
 ---
 

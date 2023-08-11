@@ -32,7 +32,7 @@ reference.
 
 ## Source
 
-[src/object/index.ts:66](https://github.com/umatch-oficial/utils/blob/618b1ef/src/object/index.ts#L66)
+[src/object/index.ts:66](https://github.com/umatch-oficial/utils/blob/51f6213/src/object/index.ts#L66)
 
 ---
 

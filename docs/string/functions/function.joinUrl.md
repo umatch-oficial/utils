@@ -31,7 +31,7 @@ joinUrl('https://abc.com/', 'example/');
 
 ## Source
 
-[src/string/index.ts:333](https://github.com/umatch-oficial/utils/blob/618b1ef/src/string/index.ts#L333)
+[src/string/index.ts:333](https://github.com/umatch-oficial/utils/blob/51f6213/src/string/index.ts#L333)
 
 ---
 

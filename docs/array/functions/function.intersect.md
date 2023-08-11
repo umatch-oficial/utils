@@ -30,7 +30,7 @@ Returns the intersection of two arrays.
 
 ## Source
 
-[src/array/index.ts:255](https://github.com/umatch-oficial/utils/blob/618b1ef/src/array/index.ts#L255)
+[src/array/index.ts:255](https://github.com/umatch-oficial/utils/blob/51f6213/src/array/index.ts#L255)
 
 ---
 

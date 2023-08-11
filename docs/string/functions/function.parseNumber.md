@@ -6,7 +6,7 @@
 
 # Function: parseNumber()
 
-> **parseNumber**(`str`, `def`?): `number`
+> **parseNumber**\<`T`\>(`str`, `def`?): `T` _extends_ `null` ? `number` \| `null` : `number`
 
 Parses a number from the string.
 
@@ -14,20 +14,26 @@ Parses a number from the string.
 
 if it fails to parse and there is no default value.
 
+## Type parameters
+
+| Parameter                        | Default  |
+| :------------------------------- | :------- |
+| `T` _extends_ `null` \| `number` | `number` |
+
 ## Parameters
 
 | Parameter | Type                              |
 | :-------- | :-------------------------------- |
 | `str`     | `undefined` \| `null` \| `string` |
-| `def`?    | `number`                          |
+| `def`?    | `T`                               |
 
 ## Returns
 
-`number`
+`T` _extends_ `null` ? `number` \| `null` : `number`
 
 ## Source
 
-[src/string/index.ts:443](https://github.com/umatch-oficial/utils/blob/618b1ef/src/string/index.ts#L443)
+[src/string/index.ts:443](https://github.com/umatch-oficial/utils/blob/51f6213/src/string/index.ts#L443)
 
 ---
 
