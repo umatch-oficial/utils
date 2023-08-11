@@ -440,12 +440,16 @@ function parseFunctionCall(str: string): [string, Primitive[]] {
  *
  * @throws if it fails to parse and there is no default value.
  */
-function parseNumber(str: string | null | undefined, def?: number): number {
+function parseNumber<T extends number | null = number>(
+  str: string | null | undefined,
+  def?: T,
+): T extends null ? number | null : number {
   const parsed = Number(str);
   if (Number.isNaN(parsed)) {
     if (def === undefined) {
       throw new Error(`Failed to parse number from string '${str}'`);
     }
+    // @ts-expect-error conditional return
     return def;
   }
   return parsed;
