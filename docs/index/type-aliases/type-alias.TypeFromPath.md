@@ -20,7 +20,7 @@ and returns the type of the deep property at the path.
 
 ## Source
 
-[src/index.ts:163](https://github.com/umatch-oficial/utils/blob/51f6213/src/index.ts#L163)
+[src/index.ts:163](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/index.ts#L163)
 
 ---
 

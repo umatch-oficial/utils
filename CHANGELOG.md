@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [12.2.0](https://github.com/umatch-oficial/utils/compare/v12.1.1...v12.2.0) (2023-09-18)
+
+
+### Features
+
+* **math:** add averageProperty() and minProperty() ([1dcf13d](https://github.com/umatch-oficial/utils/commit/1dcf13de1b2807d65155d3ec4820f5ba0a6475cb))
+
 ## [12.1.1](https://github.com/umatch-oficial/utils/compare/v12.1.0...v12.1.1) (2023-08-11)
 
 

@@ -22,7 +22,7 @@ Converts a string to Sentence case.
 
 ## Source
 
-[src/string/index.ts:607](https://github.com/umatch-oficial/utils/blob/51f6213/src/string/index.ts#L607)
+[src/string/index.ts:607](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/string/index.ts#L607)
 
 ---
 

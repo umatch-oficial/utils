@@ -22,7 +22,7 @@ Returns the sum of the elements in the array.
 
 ## Source
 
-[src/math/index.ts:180](https://github.com/umatch-oficial/utils/blob/51f6213/src/math/index.ts#L180)
+[src/math/index.ts:204](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/math/index.ts#L204)
 
 ---
 

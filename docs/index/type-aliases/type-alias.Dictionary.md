@@ -20,7 +20,7 @@
 
 ## Source
 
-[src/index.ts:2](https://github.com/umatch-oficial/utils/blob/51f6213/src/index.ts#L2)
+[src/index.ts:2](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/index.ts#L2)
 
 ---
 

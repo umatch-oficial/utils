@@ -6,22 +6,22 @@
 
 # Function: sumProperty()
 
-> **sumProperty**\<`T`\>(`array`, `property`): `number`
+> **sumProperty**\<`Prop`\>(`array`, `property`): `number`
 
 Returns the sum of the given property of the elements in the array.
 
 ## Type parameters
 
-| Parameter         |
-| :---------------- |
-| `T` _extends_ \{} |
+| Parameter                      |
+| :----------------------------- |
+| `Prop` _extends_ `PropertyKey` |
 
 ## Parameters
 
-| Parameter  | Type             |
-| :--------- | :--------------- |
-| `array`    | _readonly_ `T`[] |
-| `property` | _keyof_ `T`      |
+| Parameter  | Type                                          |
+| :--------- | :-------------------------------------------- |
+| `array`    | _readonly_ `{ [K in PropertyKey]: number }`[] |
+| `property` | `Prop`                                        |
 
 ## Returns
 
@@ -29,7 +29,7 @@ Returns the sum of the given property of the elements in the array.
 
 ## Source
 
-[src/math/index.ts:187](https://github.com/umatch-oficial/utils/blob/51f6213/src/math/index.ts#L187)
+[src/math/index.ts:211](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/math/index.ts#L211)
 
 ---
 

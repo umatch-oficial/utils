@@ -27,7 +27,7 @@ Returns a random number from the normal distribution between min and max.
 
 ## Source
 
-[src/math/index.ts:113](https://github.com/umatch-oficial/utils/blob/51f6213/src/math/index.ts#L113)
+[src/math/index.ts:137](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/math/index.ts#L137)
 
 ---
 

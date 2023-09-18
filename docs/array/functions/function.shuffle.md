@@ -28,7 +28,7 @@ Returns a shuffled copy of the array.
 
 ## Source
 
-[src/array/index.ts:326](https://github.com/umatch-oficial/utils/blob/51f6213/src/array/index.ts#L326)
+[src/array/index.ts:326](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/array/index.ts#L326)
 
 ---
 

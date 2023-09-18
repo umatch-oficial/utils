@@ -46,7 +46,7 @@ formatTime({ hours: 0, minutes: 10, seconds: 5, milliseconds: 300 }, { parts: 2 
 
 ## Source
 
-[src/string/index.ts:131](https://github.com/umatch-oficial/utils/blob/51f6213/src/string/index.ts#L131)
+[src/string/index.ts:131](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/string/index.ts#L131)
 
 ---
 

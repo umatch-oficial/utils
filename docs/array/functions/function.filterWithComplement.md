@@ -31,7 +31,7 @@ removed by the filter).
 
 ## Source
 
-[src/array/index.ts:119](https://github.com/umatch-oficial/utils/blob/51f6213/src/array/index.ts#L119)
+[src/array/index.ts:119](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/array/index.ts#L119)
 
 ---
 

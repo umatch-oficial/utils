@@ -2,13 +2,13 @@
 
 ---
 
-[@umatch/utils](../../API.md) > [math](../README.md) > maxProperty
+[@umatch/utils](../../API.md) > [math](../README.md) > averageProperty
 
-# Function: maxProperty()
+# Function: averageProperty()
 
-> **maxProperty**\<`Prop`\>(`array`, `property`): `number`
+> **averageProperty**\<`Prop`\>(`array`, `property`): `number`
 
-Returns the maximum value of the given property of the elements in the array.
+Returns the average of the given property of the elements in the array.
 
 ## Type parameters
 
@@ -29,7 +29,7 @@ Returns the maximum value of the given property of the elements in the array.
 
 ## Source
 
-[src/math/index.ts:54](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/math/index.ts#L54)
+[src/math/index.ts:13](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/math/index.ts#L13)
 
 ---
 

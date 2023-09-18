@@ -16,7 +16,7 @@ Returns a random number from the normal distribution.
 
 ## Source
 
-[src/math/index.ts:157](https://github.com/umatch-oficial/utils/blob/51f6213/src/math/index.ts#L157)
+[src/math/index.ts:181](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/math/index.ts#L181)
 
 ---
 

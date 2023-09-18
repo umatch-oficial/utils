@@ -28,7 +28,7 @@ Returns the transposed array.
 
 ## Source
 
-[src/array/index.ts:356](https://github.com/umatch-oficial/utils/blob/51f6213/src/array/index.ts#L356)
+[src/array/index.ts:356](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/array/index.ts#L356)
 
 ---
 

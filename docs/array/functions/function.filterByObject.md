@@ -31,7 +31,7 @@ pairs in the template.
 
 ## Source
 
-[src/array/index.ts:101](https://github.com/umatch-oficial/utils/blob/51f6213/src/array/index.ts#L101)
+[src/array/index.ts:101](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/array/index.ts#L101)
 
 ---
 

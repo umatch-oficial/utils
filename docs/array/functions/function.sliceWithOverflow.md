@@ -33,7 +33,7 @@ Same as slice, but overflows to guarantee there are (end - start) elements.
 
 ## Source
 
-[src/array/index.ts:342](https://github.com/umatch-oficial/utils/blob/51f6213/src/array/index.ts#L342)
+[src/array/index.ts:342](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/array/index.ts#L342)
 
 ---
 

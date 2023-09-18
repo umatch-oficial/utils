@@ -18,7 +18,7 @@ Returns an union of the input type and an array of the input type.
 
 ## Source
 
-[src/index.ts:8](https://github.com/umatch-oficial/utils/blob/51f6213/src/index.ts#L8)
+[src/index.ts:8](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/index.ts#L8)
 
 ---
 

@@ -11,10 +11,12 @@
 ### Functions
 
 - [average](functions/function.average.md)
+- [averageProperty](functions/function.averageProperty.md)
 - [diff](functions/function.diff.md)
 - [divmod](functions/function.divmod.md)
 - [limitToRange](functions/function.limitToRange.md)
 - [maxProperty](functions/function.maxProperty.md)
+- [minProperty](functions/function.minProperty.md)
 - [nthElement](functions/function.nthElement.md)
 - [pickRandom](functions/function.pickRandom.md)
 - [pickWeighted](functions/function.pickWeighted.md)
