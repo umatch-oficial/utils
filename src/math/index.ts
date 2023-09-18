@@ -8,6 +8,17 @@ function average(array: readonly number[]): number {
 }
 
 /**
+ * Returns the average of the given property of the elements in the array.
+ */
+function averageProperty<Prop extends PropertyKey>(
+  array: readonly { [K in Prop]: number }[],
+  property: Prop,
+): number {
+  if (array.length === 0) throw new Error('Cannot average an empty array');
+  return array.reduce((total, element) => total + element[property], 0) / array.length;
+}
+
+/**
  * Returns the difference between each element and the previous in an array.
  *
  * @example
@@ -46,6 +57,19 @@ function maxProperty<Prop extends PropertyKey>(
 ): number {
   return array.reduce(
     (max, element) => (element[property] > max ? element[property] : max),
+    0,
+  );
+}
+
+/**
+ * Returns the minimum value of the given property of the elements in the array.
+ */
+function minProperty<Prop extends PropertyKey>(
+  array: readonly { [K in Prop]: number }[],
+  property: Prop,
+): number {
+  return array.reduce(
+    (min, element) => (element[property] < min ? element[property] : min),
     0,
   );
 }
@@ -184,19 +208,21 @@ function sum(array: readonly number[]): number {
 /**
  * Returns the sum of the given property of the elements in the array.
  */
-function sumProperty<T extends { [key: string]: number }>(
-  array: readonly T[],
-  property: keyof T,
+function sumProperty<Prop extends PropertyKey>(
+  array: readonly { [K in Prop]: number }[],
+  property: Prop,
 ): number {
   return array.reduce((total, element) => total + element[property], 0);
 }
 
 export {
   average,
+  averageProperty,
   diff,
   divmod,
   limitToRange,
   maxProperty,
+  minProperty,
   nthElement,
   pickRandom,
   pickWeighted,
