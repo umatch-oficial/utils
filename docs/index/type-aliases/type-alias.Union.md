@@ -19,7 +19,7 @@ Makes a Union between two types removing undefined.
 
 ## Source
 
-[src/index.ts:137](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/index.ts#L137)
+[src/index.ts:137](https://github.com/umatch-oficial/utils/blob/a4be831/src/index.ts#L137)
 
 ---
 

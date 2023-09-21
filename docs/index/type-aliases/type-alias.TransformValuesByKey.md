@@ -20,7 +20,7 @@ Changes the type of value to B for keys in A
 
 ## Source
 
-[src/index.ts:50](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/index.ts#L50)
+[src/index.ts:50](https://github.com/umatch-oficial/utils/blob/a4be831/src/index.ts#L50)
 
 ---
 

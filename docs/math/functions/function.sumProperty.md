@@ -29,7 +29,7 @@ Returns the sum of the given property of the elements in the array.
 
 ## Source
 
-[src/math/index.ts:211](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/math/index.ts#L211)
+[src/math/index.ts:256](https://github.com/umatch-oficial/utils/blob/a4be831/src/math/index.ts#L256)
 
 ---
 

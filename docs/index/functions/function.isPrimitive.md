@@ -22,7 +22,7 @@ Returns whether obj is a primitive data type.
 
 ## Source
 
-[src/index.ts:271](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/index.ts#L271)
+[src/index.ts:271](https://github.com/umatch-oficial/utils/blob/a4be831/src/index.ts#L271)
 
 ---
 

@@ -23,7 +23,7 @@ Joins words as in a sentence.
 
 ## Source
 
-[src/string/index.ts:284](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/string/index.ts#L284)
+[src/string/index.ts:284](https://github.com/umatch-oficial/utils/blob/a4be831/src/string/index.ts#L284)
 
 ---
 

@@ -29,7 +29,7 @@ Returns the maximum value of the given property of the elements in the array.
 
 ## Source
 
-[src/math/index.ts:54](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/math/index.ts#L54)
+[src/math/index.ts:83](https://github.com/umatch-oficial/utils/blob/a4be831/src/math/index.ts#L83)
 
 ---
 

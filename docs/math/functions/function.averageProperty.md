@@ -29,7 +29,7 @@ Returns the average of the given property of the elements in the array.
 
 ## Source
 
-[src/math/index.ts:13](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/math/index.ts#L13)
+[src/math/index.ts:13](https://github.com/umatch-oficial/utils/blob/a4be831/src/math/index.ts#L13)
 
 ---
 

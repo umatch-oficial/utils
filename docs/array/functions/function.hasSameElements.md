@@ -31,7 +31,7 @@ Returns whether 2 arrays have the same elements, regardless of order.
 
 ## Source
 
-[src/array/index.ts:230](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/array/index.ts#L230)
+[src/array/index.ts:230](https://github.com/umatch-oficial/utils/blob/a4be831/src/array/index.ts#L230)
 
 ---
 

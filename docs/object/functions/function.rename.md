@@ -30,7 +30,7 @@ Returns a copy of an object, with renamed first-level keys.
 
 ## Source
 
-[src/object/index.ts:356](https://github.com/umatch-oficial/utils/blob/1dcf13d/src/object/index.ts#L356)
+[src/object/index.ts:356](https://github.com/umatch-oficial/utils/blob/a4be831/src/object/index.ts#L356)
 
 ---
 

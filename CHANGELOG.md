@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [12.3.0](https://github.com/umatch-oficial/utils/compare/v12.2.0...v12.3.0) (2023-09-21)
+
+
+### Features
+
+* **math:** add hashNumber() and randomOrder() ([a4be831](https://github.com/umatch-oficial/utils/commit/a4be8315d199224dcc80fc8460c7a36ed3ef7f43))
+
 ## [12.2.0](https://github.com/umatch-oficial/utils/compare/v12.1.1...v12.2.0) (2023-09-18)
 
 
