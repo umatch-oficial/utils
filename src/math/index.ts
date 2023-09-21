@@ -42,6 +42,35 @@ function divmod(x: number, y: number): [number, number] {
 }
 
 /**
+ * Returns a hash of the number with a fixed length using the given characters.
+ *
+ * Hashes of consecutive numbers only differ by 1 character.
+ *
+ * @param {number} number
+ * @param {number} length
+ * @param {string} [characters] Characters to use in the hash. Default: lowercase alphabet
+ * @param {number[]} [order] An array of numbers from 0 to length-1 in any order. Default: [0,1,2,...]
+ * @returns {string}
+ */
+function hashNumber(
+  number: number,
+  length: number,
+  characters: string = 'abcdefghijklmnopqrstuvwxyz',
+  order?: number[],
+): string {
+  if (!order) order = Array.from({ length }).map((_, i) => i);
+
+  const numbers = new Array(length).fill(0) as number[];
+  for (let i = 0; number > 0; i += 1) {
+    const position = order[i % length];
+    numbers[position] = numbers[position] + (number % characters.length);
+    number = Math.floor(number / characters.length);
+  }
+
+  return numbers.map((n) => characters[n % characters.length]).join('');
+}
+
+/**
  * Returns the number or min/max if it is below/above the thresholds, respectively.
  */
 function limitToRange(num: number, lower: number, upper: number): number {
@@ -153,6 +182,22 @@ function randomNumber(min?: number, max?: number): number {
 }
 
 /**
+ * Returns an array of numbers in a random order determined by the seed.
+ *
+ * @example
+ * // returns [1, 3, 2, 0, 4]
+ * randomOrder(5, 1)
+ */
+function randomOrder(length: number, seed: number): number[] {
+  const order = Array.from({ length }).map((_, i) => i);
+  for (let i = 0; i < length; i += 1) {
+    const j = (seed ^ (i + 1)) % length;
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+  return order;
+}
+
+/**
  * Returns a list of integers from *start* to *end*.
  * (similar to python's range)
  *
@@ -220,6 +265,7 @@ export {
   averageProperty,
   diff,
   divmod,
+  hashNumber,
   limitToRange,
   maxProperty,
   minProperty,
@@ -229,6 +275,7 @@ export {
   randomInteger,
   randomNormal,
   randomNumber,
+  randomOrder,
   range,
   round,
   sampleNormal,

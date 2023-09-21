@@ -2,6 +2,7 @@ import {
   average,
   diff,
   divmod,
+  hashNumber,
   limitToRange,
   maxProperty,
   nthElement,
@@ -9,6 +10,7 @@ import {
   pickWeighted,
   randomInteger,
   randomNumber,
+  randomOrder,
   range,
   round,
   splitInChunks,
@@ -30,6 +32,18 @@ test('diff()', () => {
 
 test('divmod()', () => {
   expect(divmod(69, 42)).toEqual([1, 27]);
+});
+
+test('hashNumber()', () => {
+  const lengths = [2, 3, 4];
+  for (const length of lengths) {
+    const map = new Map<string, number>();
+    for (let i = 0; i < 26 ** length; i += 1) {
+      const hash = hashNumber(i, length);
+      if (map.get(hash)) throw new Error(`Failed at ${i}`);
+      map.set(hash, 1);
+    }
+  }
 });
 
 describe.each([
@@ -131,6 +145,16 @@ describe.each([
     const avg = average(results);
     const expectedAvg = average([atLeast, atMost]);
     expectToBeClose(avg, expectedAvg);
+  });
+});
+
+describe.each([
+  [5, 0, [0, 2, 3, 4, 1]],
+  [5, 1, [1, 3, 2, 0, 4]],
+  [5, 123456, [1, 0, 4, 2, 3]],
+])('randomOrder()', (length, seed, output) => {
+  test(`randomOrder(${length}, ${seed}) = [${output.join(', ')}]`, () => {
+    expect(randomOrder(length, seed)).toEqual(output);
   });
 });
 
