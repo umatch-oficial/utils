@@ -30,7 +30,7 @@ Copies an object excluding some keys.
 
 ## Source
 
-[src/object/index.ts:335](https://github.com/umatch-oficial/utils/blob/a4be831/src/object/index.ts#L335)
+[src/object/index.ts:335](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/object/index.ts#L335)
 
 ---
 

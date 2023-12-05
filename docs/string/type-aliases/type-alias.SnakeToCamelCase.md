@@ -19,7 +19,7 @@ Converts a string from snake to camel case.
 
 ## Source
 
-[src/string/index.ts:573](https://github.com/umatch-oficial/utils/blob/a4be831/src/string/index.ts#L573)
+[src/string/index.ts:573](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/string/index.ts#L573)
 
 ---
 

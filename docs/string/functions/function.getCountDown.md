@@ -40,7 +40,7 @@ if the given dictionary doesn't have entries for all possible units.
 
 | Parameter                  | Type                                                         | Description                                                                         |
 | :------------------------- | :----------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| `date`                     | `string` \| `DateTime`                                       | If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true }). |
+| `date`                     | `string` \| `DateTime`\< `boolean` \>                        | If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true }). |
 | `options`?                 | `object`                                                     |                                                                                     |
 | `options.dictionary`?      | [`DateTimeDict`](../type-aliases/type-alias.DateTimeDict.md) | Words to substitute. Default: english words                                         |
 | `options.pluralizer`?      | [`Pluralizer`](../type-aliases/type-alias.Pluralizer.md)     | A pluralizer function. Default: adds 's' to the end the word                        |
@@ -53,7 +53,7 @@ if the given dictionary doesn't have entries for all possible units.
 
 ## Source
 
-[src/string/index.ts:231](https://github.com/umatch-oficial/utils/blob/a4be831/src/string/index.ts#L231)
+[src/string/index.ts:231](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/string/index.ts#L231)
 
 ---
 

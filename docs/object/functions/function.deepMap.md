@@ -31,7 +31,7 @@ which are not arrays.
 
 ## Source
 
-[src/object/index.ts:87](https://github.com/umatch-oficial/utils/blob/a4be831/src/object/index.ts#L87)
+[src/object/index.ts:87](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/object/index.ts#L87)
 
 ---
 

@@ -38,7 +38,7 @@ if, for any element in the array, the key is not present or has a non-primitive 
 
 ## Source
 
-[src/array/index.ts:188](https://github.com/umatch-oficial/utils/blob/a4be831/src/array/index.ts#L188)
+[src/array/index.ts:188](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/array/index.ts#L188)
 
 ---
 

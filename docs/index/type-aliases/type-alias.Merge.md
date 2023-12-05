@@ -19,7 +19,7 @@ Deep merges two dictionaries. Values from the right have higher priority.
 
 ## Source
 
-[src/index.ts:79](https://github.com/umatch-oficial/utils/blob/a4be831/src/index.ts#L79)
+[src/index.ts:79](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/index.ts#L79)
 
 ---
 

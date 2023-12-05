@@ -23,7 +23,7 @@ accumulator and consecutive uppercase letters in a buffer.
 
 ## Source
 
-[src/string/index.ts:618](https://github.com/umatch-oficial/utils/blob/a4be831/src/string/index.ts#L618)
+[src/string/index.ts:618](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/string/index.ts#L618)
 
 ---
 

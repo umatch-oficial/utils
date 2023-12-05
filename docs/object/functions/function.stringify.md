@@ -31,7 +31,7 @@ the key and value to make all lines have the same width.
 
 ## Source
 
-[src/object/index.ts:459](https://github.com/umatch-oficial/utils/blob/a4be831/src/object/index.ts#L459)
+[src/object/index.ts:459](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/object/index.ts#L459)
 
 ---
 

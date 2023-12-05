@@ -35,7 +35,7 @@ Uses bluebird.map to limit concurrency.
 
 ## Source
 
-[src/array/index.ts:83](https://github.com/umatch-oficial/utils/blob/a4be831/src/array/index.ts#L83)
+[src/array/index.ts:83](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/array/index.ts#L83)
 
 ---
 

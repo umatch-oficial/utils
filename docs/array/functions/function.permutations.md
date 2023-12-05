@@ -30,7 +30,7 @@ without repeated elements.<br>
 
 ## Source
 
-[src/array/index.ts:285](https://github.com/umatch-oficial/utils/blob/a4be831/src/array/index.ts#L285)
+[src/array/index.ts:285](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/array/index.ts#L285)
 
 ---
 

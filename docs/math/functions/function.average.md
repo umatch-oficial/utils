@@ -22,7 +22,7 @@ Returns the average of an array of numbers.
 
 ## Source
 
-[src/math/index.ts:6](https://github.com/umatch-oficial/utils/blob/a4be831/src/math/index.ts#L6)
+[src/math/index.ts:6](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/math/index.ts#L6)
 
 ---
 

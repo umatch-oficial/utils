@@ -28,7 +28,7 @@ Picks a random option from an array of { option, weight }.
 
 ## Source
 
-[src/math/index.ts:130](https://github.com/umatch-oficial/utils/blob/a4be831/src/math/index.ts#L130)
+[src/math/index.ts:130](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/math/index.ts#L130)
 
 ---
 

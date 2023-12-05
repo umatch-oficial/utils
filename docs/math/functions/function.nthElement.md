@@ -36,7 +36,7 @@ nthElement([0, 1, 2, 3], 5);
 
 ## Source
 
-[src/math/index.ts:113](https://github.com/umatch-oficial/utils/blob/a4be831/src/math/index.ts#L113)
+[src/math/index.ts:113](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/math/index.ts#L113)
 
 ---
 

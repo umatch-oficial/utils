@@ -21,7 +21,7 @@ to properties in it, using dot notation.
 
 ## Source
 
-[src/index.ts:148](https://github.com/umatch-oficial/utils/blob/a4be831/src/index.ts#L148)
+[src/index.ts:148](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/index.ts#L148)
 
 ---
 

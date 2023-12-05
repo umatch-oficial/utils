@@ -30,7 +30,7 @@ Removes an item from an array.
 
 ## Source
 
-[src/array/index.ts:313](https://github.com/umatch-oficial/utils/blob/a4be831/src/array/index.ts#L313)
+[src/array/index.ts:313](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/array/index.ts#L313)
 
 ---
 

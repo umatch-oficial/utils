@@ -30,7 +30,7 @@ Checks if a prop exists in obj and tells TypeScript that obj has this prop.
 
 ## Source
 
-[src/object/index.ts:252](https://github.com/umatch-oficial/utils/blob/a4be831/src/object/index.ts#L252)
+[src/object/index.ts:252](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/object/index.ts#L252)
 
 ---
 

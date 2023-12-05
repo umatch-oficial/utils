@@ -19,7 +19,7 @@ From T, picks keys whose values are of type U.
 
 ## Source
 
-[src/index.ts:73](https://github.com/umatch-oficial/utils/blob/a4be831/src/index.ts#L73)
+[src/index.ts:73](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/index.ts#L73)
 
 ---
 

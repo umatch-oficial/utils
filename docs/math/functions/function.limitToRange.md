@@ -27,7 +27,7 @@ Returns the number or min/max if it is below/above the thresholds, respectively.
 
 ## Source
 
-[src/math/index.ts:76](https://github.com/umatch-oficial/utils/blob/a4be831/src/math/index.ts#L76)
+[src/math/index.ts:76](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/math/index.ts#L76)
 
 ---
 

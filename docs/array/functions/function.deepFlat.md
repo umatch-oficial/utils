@@ -28,7 +28,7 @@ Array.flat() for n-dimensional arrays.
 
 ## Source
 
-[src/array/index.ts:45](https://github.com/umatch-oficial/utils/blob/a4be831/src/array/index.ts#L45)
+[src/array/index.ts:45](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/array/index.ts#L45)
 
 ---
 

@@ -27,7 +27,7 @@ Formats a string according to options.
 
 ## Source
 
-[src/string/index.ts:94](https://github.com/umatch-oficial/utils/blob/a4be831/src/string/index.ts#L94)
+[src/string/index.ts:94](https://github.com/umatch-oficial/utils/blob/fe3e40a/src/string/index.ts#L94)
 
 ---
 
