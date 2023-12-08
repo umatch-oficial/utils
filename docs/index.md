@@ -1,4 +1,4 @@
-**@umatch/utils** • [Readme](docs/index.md) \| [Modules](docs/modules.md)
+**@umatch/utils** • [Readme](index.md) \| [Modules](modules.md)
 
 ***
 
