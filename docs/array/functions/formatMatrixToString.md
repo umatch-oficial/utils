@@ -26,7 +26,7 @@ Formats a 2D array as a table.
 
 ## Source
 
-[src/array/index.ts:158](https://github.com/umatch-oficial/utils/blob/1c5b195/src/array/index.ts#L158)
+[src/array/index.ts:158](https://github.com/umatch-oficial/utils/blob/c1935bc/src/array/index.ts#L158)
 
 ***
 

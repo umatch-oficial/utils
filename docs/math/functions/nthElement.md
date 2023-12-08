@@ -33,7 +33,7 @@ nthElement([0,1,2,3], 5)
 
 ## Source
 
-[src/math/index.ts:113](https://github.com/umatch-oficial/utils/blob/1c5b195/src/math/index.ts#L113)
+[src/math/index.ts:113](https://github.com/umatch-oficial/utils/blob/c1935bc/src/math/index.ts#L113)
 
 ***
 

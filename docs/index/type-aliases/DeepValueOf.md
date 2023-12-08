@@ -16,7 +16,7 @@ Returns a union of the values of a deeply nested object.
 
 ## Source
 
-[src/index.ts:33](https://github.com/umatch-oficial/utils/blob/1c5b195/src/index.ts#L33)
+[src/index.ts:33](https://github.com/umatch-oficial/utils/blob/c1935bc/src/index.ts#L33)
 
 ***
 

@@ -28,7 +28,7 @@ reference.
 
 ## Source
 
-[src/object/index.ts:66](https://github.com/umatch-oficial/utils/blob/1c5b195/src/object/index.ts#L66)
+[src/object/index.ts:66](https://github.com/umatch-oficial/utils/blob/c1935bc/src/object/index.ts#L66)
 
 ***
 

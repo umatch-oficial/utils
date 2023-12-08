@@ -20,7 +20,7 @@ Excludes types present in B from A.
 
 ## Source
 
-[src/index.ts:95](https://github.com/umatch-oficial/utils/blob/1c5b195/src/index.ts#L95)
+[src/index.ts:95](https://github.com/umatch-oficial/utils/blob/c1935bc/src/index.ts#L95)
 
 ***
 

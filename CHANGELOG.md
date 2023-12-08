@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [12.4.0](https://github.com/umatch-oficial/utils/compare/v12.3.1...v12.4.0) (2023-12-08)
+
+
+### Features
+
+* **array:** add sort() ([c1935bc](https://github.com/umatch-oficial/utils/commit/c1935bcfb83564499e3316935ba07c72643f0230))
+
 ## [12.3.1](https://github.com/umatch-oficial/utils/compare/v12.3.0...v12.3.1) (2023-12-05)
 
 ## [12.3.0](https://github.com/umatch-oficial/utils/compare/v12.2.0...v12.3.0) (2023-09-21)

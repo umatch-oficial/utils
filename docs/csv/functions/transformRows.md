@@ -35,7 +35,7 @@ Parsing options
 
 ## Source
 
-[src/csv/index.ts:101](https://github.com/umatch-oficial/utils/blob/1c5b195/src/csv/index.ts#L101)
+[src/csv/index.ts:101](https://github.com/umatch-oficial/utils/blob/c1935bc/src/csv/index.ts#L101)
 
 ***
 

@@ -29,7 +29,7 @@ present in the second array.
 
 ## Source
 
-[src/array/index.ts:57](https://github.com/umatch-oficial/utils/blob/1c5b195/src/array/index.ts#L57)
+[src/array/index.ts:57](https://github.com/umatch-oficial/utils/blob/c1935bc/src/array/index.ts#L57)
 
 ***
 

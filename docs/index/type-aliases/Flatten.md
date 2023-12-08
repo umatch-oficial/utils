@@ -18,7 +18,7 @@ Flattens a tuple.
 
 ## Source
 
-[src/index.ts:39](https://github.com/umatch-oficial/utils/blob/1c5b195/src/index.ts#L39)
+[src/index.ts:39](https://github.com/umatch-oficial/utils/blob/c1935bc/src/index.ts#L39)
 
 ***
 

@@ -20,7 +20,7 @@ Returns whether obj is null or undefined.
 
 ## Source
 
-[src/index.ts:248](https://github.com/umatch-oficial/utils/blob/1c5b195/src/index.ts#L248)
+[src/index.ts:248](https://github.com/umatch-oficial/utils/blob/c1935bc/src/index.ts#L248)
 
 ***
 

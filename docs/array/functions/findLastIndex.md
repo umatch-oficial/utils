@@ -29,7 +29,7 @@ but not in Node.
 
 ## Source
 
-[src/array/index.ts:145](https://github.com/umatch-oficial/utils/blob/1c5b195/src/array/index.ts#L145)
+[src/array/index.ts:145](https://github.com/umatch-oficial/utils/blob/c1935bc/src/array/index.ts#L145)
 
 ***
 

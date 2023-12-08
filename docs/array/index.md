@@ -26,6 +26,7 @@
 - [remove](functions/remove.md)
 - [shuffle](functions/shuffle.md)
 - [sliceWithOverflow](functions/sliceWithOverflow.md)
+- [sort](functions/sort.md)
 - [subtract](functions/subtract.md)
 - [transpose](functions/transpose.md)
 - [trim](functions/trim.md)
