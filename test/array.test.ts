@@ -1,3 +1,5 @@
+// noinspection JSUnusedLocalSymbols
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   cartesian,
   deepFlat,
@@ -15,12 +17,29 @@ import {
   remove,
   shuffle,
   sliceWithOverflow,
+  sort,
   transpose,
   trim,
   uniques,
   zip,
 } from '../src/array';
 import { stringify } from '../src/object';
+
+type Fruit = {
+  color: 'green' | 'red' | 'yellow';
+  name: string;
+  size: number;
+  taste?: 'heavenly' | 'sour' | 'sweet' | 'tangy' | 'zesty';
+};
+
+const FRUITS: Fruit[] = [
+  { name: 'watermelon', size: 3, color: 'green', taste: 'sweet' },
+  { name: 'strawberry', size: 1, color: 'red', taste: 'heavenly' },
+  { name: 'melon', size: 3, color: 'yellow' },
+  { name: 'apple', size: 2, color: 'red', taste: 'sour' },
+  { name: 'grape', size: 1, color: 'green' },
+  { name: 'banana', size: 2, color: 'yellow' },
+];
 
 test('cartesian()', () => {
   expect(cartesian(['a', 'b'] as const, [1, 2] as const, [true]).sort()).toEqual(
@@ -64,10 +83,10 @@ test('filterByObject()', () => {
 });
 
 describe('filterWithComplement()', () => {
-  test('filterWithComplement(integers, x < 2)', () => {
+  test('integers', () => {
     expect(filterWithComplement([1, 2, 3], (x: number) => x < 2)).toEqual([[1], [2, 3]]);
   });
-  test('filterWithComplement(dates, day < 10)', () => {
+  test('dates', () => {
     expect(
       filterWithComplement(
         [new Date('2022-01-10'), new Date('2022-01-20'), new Date('2022-01-30')],
@@ -98,16 +117,16 @@ describe.each([
     'color',
     {
       green: [
+        { name: 'watermelon', size: 3, color: 'green', taste: 'sweet' },
         { name: 'grape', size: 1, color: 'green' },
-        { name: 'watermelon', size: 3, color: 'green' },
       ],
       red: [
-        { name: 'apple', size: 2, color: 'red' },
-        { name: 'strawberry', size: 1, color: 'red' },
+        { name: 'strawberry', size: 1, color: 'red', taste: 'heavenly' },
+        { name: 'apple', size: 2, color: 'red', taste: 'sour' },
       ],
       yellow: [
-        { name: 'banana', size: 2, color: 'yellow' },
         { name: 'melon', size: 3, color: 'yellow' },
+        { name: 'banana', size: 2, color: 'yellow' },
       ],
     },
   ],
@@ -115,28 +134,20 @@ describe.each([
     'size',
     {
       1: [
+        { name: 'strawberry', size: 1, color: 'red', taste: 'heavenly' },
         { name: 'grape', size: 1, color: 'green' },
-        { name: 'strawberry', size: 1, color: 'red' },
       ],
       2: [
-        { name: 'apple', size: 2, color: 'red' },
+        { name: 'apple', size: 2, color: 'red', taste: 'sour' },
         { name: 'banana', size: 2, color: 'yellow' },
       ],
       3: [
+        { name: 'watermelon', size: 3, color: 'green', taste: 'sweet' },
         { name: 'melon', size: 3, color: 'yellow' },
-        { name: 'watermelon', size: 3, color: 'green' },
       ],
     },
   ],
 ] as const)('groupBy()', (key, output) => {
-  const FRUITS = [
-    { name: 'apple', size: 2, color: 'red' },
-    { name: 'banana', size: 2, color: 'yellow' },
-    { name: 'grape', size: 1, color: 'green' },
-    { name: 'melon', size: 3, color: 'yellow' },
-    { name: 'strawberry', size: 1, color: 'red' },
-    { name: 'watermelon', size: 3, color: 'green' },
-  ] as const;
   test(`groupBy(FRUITS, '${key}')`, () => {
     expect(groupBy(FRUITS, key)).toEqual(output);
   });
@@ -211,6 +222,82 @@ test('shuffle()', () => {
 
 test('sliceWithOverflow()', () => {
   expect(sliceWithOverflow([1, 2, 3], 2, 5)).toEqual([3, 1, 2]);
+});
+
+describe('sort()', () => {
+  test('single key ascending', () => {
+    const fruits = structuredClone(FRUITS);
+    const sorted = sort(fruits, [['name', 'asc']]);
+    const names = sorted.map((fruit) => fruit.name);
+    expect(names).toEqual([
+      'apple',
+      'banana',
+      'grape',
+      'melon',
+      'strawberry',
+      'watermelon',
+    ]);
+  });
+
+  test('single key descending', () => {
+    const fruits = structuredClone(FRUITS);
+    const sorted = sort(fruits, [['name', 'desc']]);
+    const names = sorted.map((fruit) => fruit.name);
+    expect(names).toEqual([
+      'watermelon',
+      'strawberry',
+      'melon',
+      'grape',
+      'banana',
+      'apple',
+    ]);
+  });
+
+  test('multiple keys', () => {
+    const fruits = structuredClone(FRUITS);
+    const sorted = sort(fruits, [
+      ['color', 'asc'],
+      ['size', 'desc'],
+    ]);
+    const names = sorted.map((fruit) => fruit.name);
+    expect(names).toEqual([
+      'watermelon',
+      'grape',
+      'apple',
+      'strawberry',
+      'melon',
+      'banana',
+    ]);
+  });
+
+  test('with transform function', () => {
+    const fruits = structuredClone(FRUITS);
+    const sorted = sort(fruits, [['name', 'asc', (name: string) => name.length]]);
+    const names = sorted.map((fruit) => fruit.name);
+    expect(names).toEqual([
+      'melon',
+      'apple',
+      'grape',
+      'banana',
+      'watermelon',
+      'strawberry',
+    ]);
+  });
+
+  test('type signature', () => {
+    const a = (fruits: Fruit[]) =>
+      sort(fruits, [
+        ['size', 'asc'],
+        ['name', 'desc', (name: string) => name.length],
+      ]);
+    const b = (fruits: Fruit[]) =>
+      sort(fruits, [
+        // @ts-expect-error the order must be 'asc' or 'desc'
+        ['size', 'ascii'],
+        // @ts-expect-error the callback must adhere to the type of the key
+        ['name', 'desc', (name: number) => name],
+      ]);
+  });
 });
 
 test('transpose()', () => {

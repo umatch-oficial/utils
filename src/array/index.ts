@@ -351,6 +351,43 @@ function sliceWithOverflow(array: unknown[], start: number, end: number): unknow
 }
 
 /**
+ * Sorts an array based on the provided keys and sort orders.
+ *
+ * The keys are compared in the order they are provided, and the first
+ * one to return a non-zero value determines the order of the
+ * elements. If the value of a key is not a primitive, a transform
+ * function must be provided.
+ *
+ * @template T
+ * @param array The array to be sorted.
+ * @param sortOrders An array of keys, the order for each key, and an
+ * optional transform function.
+ * @return The sorted array.
+ */
+function sort<T>(
+  array: T[],
+  sortOrders: Array<
+    {
+      [K in keyof T]-?: [K, 'asc' | 'desc', ((value: T[K]) => number)?];
+    }[keyof T]
+  >,
+): T[] {
+  return array.sort((a, b) => {
+    for (const [key, order, transform] of sortOrders) {
+      const leftVal = transform ? transform(a[key]) : a[key];
+      const rightVal = transform ? transform(b[key]) : b[key];
+
+      if (leftVal < rightVal) {
+        return order === 'asc' ? -1 : 1;
+      } else if (leftVal > rightVal) {
+        return order === 'asc' ? 1 : -1;
+      }
+    }
+    return 0;
+  });
+}
+
+/**
  * Returns the transposed array.
  */
 function transpose<T>(array: readonly (readonly T[])[]): T[][] {
@@ -444,6 +481,7 @@ export {
   remove,
   shuffle,
   sliceWithOverflow,
+  sort,
   subtract,
   transpose,
   trim,
