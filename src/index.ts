@@ -54,7 +54,7 @@ type TransformValuesByKey<T, A extends keyof T, B> = {
  * Changes the type of values matching A to B
  */
 type TransformValues<T, A, B> = {
-  [K in keyof T]: T[K] extends A ? B : T[K] extends A | undefined ? B | undefined : T[K];
+  [K in keyof T]: A extends T[K] ? B | Exclude<T[K], A> : T[K];
 };
 /**
  * Changes the type of values matching A to A | B
