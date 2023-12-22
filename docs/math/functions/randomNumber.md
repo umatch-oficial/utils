@@ -25,7 +25,7 @@ If only 1 valued is passed, uses 0 and value.
 
 ## Source
 
-[src/math/index.ts:177](https://github.com/umatch-oficial/utils/blob/c1935bc/src/math/index.ts#L177)
+[src/math/index.ts:177](https://github.com/umatch-oficial/utils/blob/6e00801/src/math/index.ts#L177)
 
 ***
 

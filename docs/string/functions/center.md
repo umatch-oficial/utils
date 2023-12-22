@@ -27,7 +27,7 @@ extra space.
 
 ## Source
 
-[src/string/index.ts:74](https://github.com/umatch-oficial/utils/blob/c1935bc/src/string/index.ts#L74)
+[src/string/index.ts:74](https://github.com/umatch-oficial/utils/blob/6e00801/src/string/index.ts#L74)
 
 ***
 

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [12.4.1](https://github.com/umatch-oficial/utils/compare/v12.4.0...v12.4.1) (2023-12-22)
+
+
+### Bug Fixes
+
+* **index:** fix TransformValues for nullable values ([6e00801](https://github.com/umatch-oficial/utils/commit/6e008010bec7c3336af2eeb63392606109dadb84))
+
 ## [12.4.0](https://github.com/umatch-oficial/utils/compare/v12.3.1...v12.4.0) (2023-12-08)
 
 

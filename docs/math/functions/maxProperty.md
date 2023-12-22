@@ -26,7 +26,7 @@ Returns the maximum value of the given property of the elements in the array.
 
 ## Source
 
-[src/math/index.ts:83](https://github.com/umatch-oficial/utils/blob/c1935bc/src/math/index.ts#L83)
+[src/math/index.ts:83](https://github.com/umatch-oficial/utils/blob/6e00801/src/math/index.ts#L83)
 
 ***
 

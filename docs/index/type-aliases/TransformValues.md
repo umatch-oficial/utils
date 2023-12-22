@@ -6,7 +6,7 @@
 
 # Type alias: TransformValues\<T, A, B\>
 
-> **TransformValues**\<`T`, `A`, `B`\>: `{ [K in keyof T]: T[K] extends A ? B : T[K] extends A | undefined ? B | undefined : T[K] }`
+> **TransformValues**\<`T`, `A`, `B`\>: `{ [K in keyof T]: A extends T[K] ? B | Exclude<T[K], A> : T[K] }`
 
 Changes the type of values matching A to B
 
@@ -20,7 +20,7 @@ Changes the type of values matching A to B
 
 ## Source
 
-[src/index.ts:56](https://github.com/umatch-oficial/utils/blob/c1935bc/src/index.ts#L56)
+[src/index.ts:56](https://github.com/umatch-oficial/utils/blob/6e00801/src/index.ts#L56)
 
 ***
 

@@ -30,7 +30,7 @@ Parsing options
 
 ## Source
 
-[src/csv/index.ts:131](https://github.com/umatch-oficial/utils/blob/c1935bc/src/csv/index.ts#L131)
+[src/csv/index.ts:131](https://github.com/umatch-oficial/utils/blob/6e00801/src/csv/index.ts#L131)
 
 ***
 

@@ -20,7 +20,7 @@ Joins two strings or numbers unless either one is undefined.
 
 ## Source
 
-[src/index.ts:123](https://github.com/umatch-oficial/utils/blob/c1935bc/src/index.ts#L123)
+[src/index.ts:123](https://github.com/umatch-oficial/utils/blob/6e00801/src/index.ts#L123)
 
 ***
 

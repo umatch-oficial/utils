@@ -20,7 +20,7 @@ Returns the sum of the elements in the array.
 
 ## Source
 
-[src/math/index.ts:249](https://github.com/umatch-oficial/utils/blob/c1935bc/src/math/index.ts#L249)
+[src/math/index.ts:249](https://github.com/umatch-oficial/utils/blob/6e00801/src/math/index.ts#L249)
 
 ***
 

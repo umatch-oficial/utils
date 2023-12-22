@@ -30,7 +30,7 @@ if it fails to parse and there is no default value.
 
 ## Source
 
-[src/string/index.ts:443](https://github.com/umatch-oficial/utils/blob/c1935bc/src/string/index.ts#L443)
+[src/string/index.ts:443](https://github.com/umatch-oficial/utils/blob/6e00801/src/string/index.ts#L443)
 
 ***
 

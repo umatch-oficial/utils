@@ -29,7 +29,7 @@ randomOrder(5, 1)
 
 ## Source
 
-[src/math/index.ts:191](https://github.com/umatch-oficial/utils/blob/c1935bc/src/math/index.ts#L191)
+[src/math/index.ts:191](https://github.com/umatch-oficial/utils/blob/6e00801/src/math/index.ts#L191)
 
 ***
 
