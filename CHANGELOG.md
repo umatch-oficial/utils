@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [12.4.2](https://github.com/umatch-oficial/utils/compare/v12.4.1...v12.4.2) (2024-01-11)
+
+
+### Bug Fixes
+
+* **object:** typing of rename() ([7d512db](https://github.com/umatch-oficial/utils/commit/7d512db19029e6287111cdcab394a219f21ae8f2))
+
 ## [12.4.1](https://github.com/umatch-oficial/utils/compare/v12.4.0...v12.4.1) (2023-12-22)
 
 

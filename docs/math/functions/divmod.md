@@ -22,7 +22,7 @@ Returns the quotient and remainder of x/y.
 
 ## Source
 
-[src/math/index.ts:40](https://github.com/umatch-oficial/utils/blob/6e00801/src/math/index.ts#L40)
+[src/math/index.ts:40](https://github.com/umatch-oficial/utils/blob/7d512db/src/math/index.ts#L40)
 
 ***
 

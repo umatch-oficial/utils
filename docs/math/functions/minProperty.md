@@ -26,7 +26,7 @@ Returns the minimum value of the given property of the elements in the array.
 
 ## Source
 
-[src/math/index.ts:96](https://github.com/umatch-oficial/utils/blob/6e00801/src/math/index.ts#L96)
+[src/math/index.ts:96](https://github.com/umatch-oficial/utils/blob/7d512db/src/math/index.ts#L96)
 
 ***
 

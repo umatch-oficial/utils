@@ -38,7 +38,7 @@ if an unexpected strategy is provided.
 
 ## Source
 
-[src/object/index.ts:312](https://github.com/umatch-oficial/utils/blob/6e00801/src/object/index.ts#L312)
+[src/object/index.ts:312](https://github.com/umatch-oficial/utils/blob/7d512db/src/object/index.ts#L312)
 
 ***
 

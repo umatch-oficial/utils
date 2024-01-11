@@ -24,7 +24,7 @@ Renames all keys to snake case.
 
 ## Source
 
-[src/object/index.ts:426](https://github.com/umatch-oficial/utils/blob/6e00801/src/object/index.ts#L426)
+[src/object/index.ts:433](https://github.com/umatch-oficial/utils/blob/7d512db/src/object/index.ts#L433)
 
 ***
 

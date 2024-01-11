@@ -26,7 +26,7 @@ Returns whether key is a key of obj.
 
 ## Source
 
-[src/index.ts:241](https://github.com/umatch-oficial/utils/blob/6e00801/src/index.ts#L241)
+[src/index.ts:241](https://github.com/umatch-oficial/utils/blob/7d512db/src/index.ts#L241)
 
 ***
 

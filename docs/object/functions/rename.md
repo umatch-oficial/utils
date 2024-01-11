@@ -6,7 +6,7 @@
 
 # Function: rename()
 
-> **rename**\<`T`, `Mapper`\>(`obj`, `mapper`): `Mapper` extends [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`string`\> ? `{ [K in keyof T as K extends keyof Mapper ? Mapper[K] : K]: T[K] }` : `Object`
+> **rename**\<`T`, `Mapper`\>(`obj`, `mapper`): `Mapper` extends [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`string`\> ? `{ [K in Exclude<keyof T, ValueOf<Mapper>> as K extends keyof Mapper ? Mapper[K] : K]: T[K] }` : `Object`
 
 Returns a copy of an object, with renamed first-level keys.
 
@@ -24,11 +24,11 @@ Returns a copy of an object, with renamed first-level keys.
 
 ## Returns
 
-`Mapper` extends [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`string`\> ? `{ [K in keyof T as K extends keyof Mapper ? Mapper[K] : K]: T[K] }` : `Object`
+`Mapper` extends [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`string`\> ? `{ [K in Exclude<keyof T, ValueOf<Mapper>> as K extends keyof Mapper ? Mapper[K] : K]: T[K] }` : `Object`
 
 ## Source
 
-[src/object/index.ts:356](https://github.com/umatch-oficial/utils/blob/6e00801/src/object/index.ts#L356)
+[src/object/index.ts:356](https://github.com/umatch-oficial/utils/blob/7d512db/src/object/index.ts#L356)
 
 ***
 

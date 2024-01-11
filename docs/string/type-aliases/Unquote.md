@@ -18,7 +18,7 @@ Removes quotes from the start and end of a string.
 
 ## Source
 
-[src/string/index.ts:38](https://github.com/umatch-oficial/utils/blob/6e00801/src/string/index.ts#L38)
+[src/string/index.ts:38](https://github.com/umatch-oficial/utils/blob/7d512db/src/string/index.ts#L38)
 
 ***
 

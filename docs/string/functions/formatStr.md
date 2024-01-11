@@ -38,7 +38,7 @@ Pad string on both sides up to this length
 
 ## Source
 
-[src/string/index.ts:94](https://github.com/umatch-oficial/utils/blob/6e00801/src/string/index.ts#L94)
+[src/string/index.ts:94](https://github.com/umatch-oficial/utils/blob/7d512db/src/string/index.ts#L94)
 
 ***
 

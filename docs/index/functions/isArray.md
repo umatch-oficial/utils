@@ -22,7 +22,7 @@ Uses Array.isArray().
 
 ## Source
 
-[src/index.ts:196](https://github.com/umatch-oficial/utils/blob/6e00801/src/index.ts#L196)
+[src/index.ts:196](https://github.com/umatch-oficial/utils/blob/7d512db/src/index.ts#L196)
 
 ***
 

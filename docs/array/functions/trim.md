@@ -30,7 +30,7 @@ the first and last valid elements are not removed.
 
 ## Source
 
-[src/array/index.ts:405](https://github.com/umatch-oficial/utils/blob/6e00801/src/array/index.ts#L405)
+[src/array/index.ts:405](https://github.com/umatch-oficial/utils/blob/7d512db/src/array/index.ts#L405)
 
 ***
 

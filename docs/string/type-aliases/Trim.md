@@ -16,7 +16,7 @@ Trims both ends of a string.
 
 ## Source
 
-[src/string/index.ts:30](https://github.com/umatch-oficial/utils/blob/6e00801/src/string/index.ts#L30)
+[src/string/index.ts:30](https://github.com/umatch-oficial/utils/blob/7d512db/src/string/index.ts#L30)
 
 ***
 
