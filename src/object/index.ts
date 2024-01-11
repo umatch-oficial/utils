@@ -353,11 +353,18 @@ function pick(obj: Dictionary, keys: readonly string[]): Dictionary {
 /**
  * Returns a copy of an object, with renamed first-level keys.
  */
-function rename<T, Mapper extends { [_ in keyof T]?: string } | ((a: string) => string)>(
+function rename<
+  T,
+  const Mapper extends { [_ in keyof T]?: string } | ((a: string) => string),
+>(
   obj: T,
   mapper: Mapper,
 ): Mapper extends Dictionary<string>
-  ? { [K in keyof T as K extends keyof Mapper ? Mapper[K] : K]: T[K] }
+  ? {
+      [K in Exclude<keyof T, ValueOf<Mapper>> as K extends keyof Mapper
+        ? Mapper[K]
+        : K]: T[K];
+    }
   : { [_: string]: ValueOf<T> };
 function rename(
   obj: Dictionary,
