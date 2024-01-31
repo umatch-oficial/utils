@@ -1,3 +1,6 @@
+import { type Equals } from '../index';
+import { hasOwnProperty } from '../object';
+
 const { cos, floor, log, PI, random, sqrt, trunc } = Math;
 
 /**
@@ -10,12 +13,26 @@ function average(array: readonly number[]): number {
 /**
  * Returns the average of the given property of the elements in the array.
  */
-function averageProperty<Prop extends PropertyKey>(
-  array: readonly { [K in Prop]: number }[],
-  property: Prop,
-): number {
-  if (array.length === 0) throw new Error('Cannot average an empty array');
-  return array.reduce((total, element) => total + element[property], 0) / array.length;
+function averageProperty<
+  T extends readonly unknown[],
+  Prop extends {
+    [K in keyof T[number]]: Equals<T[number][K], number> extends true ? K : never;
+  }[keyof T[number]],
+>(array: T, property: Prop): number | null {
+  if (!array.length) return null;
+
+  function isObjectWithProperty(obj: unknown): obj is { [K in Prop]: number } {
+    return hasOwnProperty(obj, property) && typeof obj[property] === 'number';
+  }
+  if (!array.every(isObjectWithProperty))
+    throw new Error('Property does not exist in every element');
+
+  return (
+    ((array as ReadonlyArray<{ [K in Prop]: number }>).reduce(
+      (total, element) => total + element[property],
+      array[0][property],
+    ) as number) / array.length
+  );
 }
 
 /**
@@ -79,28 +96,78 @@ function limitToRange(num: number, lower: number, upper: number): number {
 
 /**
  * Returns the maximum value of the given property of the elements in the array.
+ *
+ * The property must be a number, string or Date consistently across all elements.
  */
-function maxProperty<Prop extends PropertyKey>(
-  array: readonly { [K in Prop]: number }[],
-  property: Prop,
-): number {
-  return array.reduce(
+function maxProperty<
+  T extends readonly unknown[],
+  Prop extends {
+    [K in keyof T[number]]: Equals<T[number][K], Date> extends true
+      ? K
+      : Equals<T[number][K], number> extends true
+      ? K
+      : Equals<T[number][K], string> extends true
+      ? K
+      : never;
+  }[keyof T[number]],
+>(array: T, property: Prop): T[number][Prop] | null {
+  if (array['length'] === 0) return null;
+
+  function isObjectWithProperty(
+    obj: unknown,
+  ): obj is { [K in Prop]: Date | number | string } {
+    return (
+      hasOwnProperty(obj, property) &&
+      (typeof obj[property] === 'number' ||
+        typeof obj[property] === 'string' ||
+        obj[property] instanceof Date)
+    );
+  }
+  if (!array.every(isObjectWithProperty))
+    throw new Error('Property does not exist in every element');
+
+  return (array as ReadonlyArray<{ [K in Prop]: Date | number | string }>).reduce(
     (max, element) => (element[property] > max ? element[property] : max),
-    0,
-  );
+    array[0][property],
+  ) as T[number][Prop];
 }
 
 /**
  * Returns the minimum value of the given property of the elements in the array.
+ *
+ * The property must be a number, string or Date consistently across all elements.
  */
-function minProperty<Prop extends PropertyKey>(
-  array: readonly { [K in Prop]: number }[],
-  property: Prop,
-): number {
-  return array.reduce(
+function minProperty<
+  T extends readonly unknown[],
+  Prop extends {
+    [K in keyof T[number]]: Equals<T[number][K], Date> extends true
+      ? K
+      : Equals<T[number][K], number> extends true
+      ? K
+      : Equals<T[number][K], string> extends true
+      ? K
+      : never;
+  }[keyof T[number]],
+>(array: T, property: Prop): T[number][Prop] | null {
+  if (array['length'] === 0) return null;
+
+  function isObjectWithProperty(
+    obj: unknown,
+  ): obj is { [K in Prop]: Date | number | string } {
+    return (
+      hasOwnProperty(obj, property) &&
+      (typeof obj[property] === 'number' ||
+        typeof obj[property] === 'string' ||
+        obj[property] instanceof Date)
+    );
+  }
+  if (!array.every(isObjectWithProperty))
+    throw new Error('Property does not exist in every element');
+
+  return (array as ReadonlyArray<{ [K in Prop]: Date | number | string }>).reduce(
     (min, element) => (element[property] < min ? element[property] : min),
-    0,
-  );
+    array[0][property],
+  ) as T[number][Prop];
 }
 
 /**

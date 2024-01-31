@@ -168,7 +168,7 @@ function formatMatrixToString(
     .map((row) =>
       row
         .map((col, i) => {
-          const size = maxSizePerColumn[i];
+          const size = maxSizePerColumn[i] ?? 0;
           return center ? stringUtils.center(col, size) : col.padEnd(size);
         })
         .join(elementSeparator),

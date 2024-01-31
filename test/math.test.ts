@@ -58,6 +58,31 @@ describe.each([
 
 test('maxProperty()', () => {
   expect(maxProperty([{ a: 1 }, { a: 2 }, { a: 3 }], 'a')).toEqual(3);
+  expect(
+    maxProperty(
+      [
+        { a: new Date('2022-01-10') },
+        { a: new Date('2022-01-20') },
+        { a: new Date('2022-01-30') },
+      ],
+      'a',
+    )!.getTime(),
+  ).toEqual(new Date('2022-01-30').getTime());
+
+  expect(maxProperty([], 'a')).toEqual(null);
+
+  // @ts-expect-error property is not consistent
+  maxProperty([{ a: 1 }, { a: 2 }, { a: '3' }], 'a');
+
+  expect(() => {
+    // @ts-expect-error property does not exist
+    maxProperty([{ a: 1 }, { a: 2 }, { a: 3 }], 'b');
+  }).toThrow('Property does not exist');
+
+  expect(() => {
+    // @ts-expect-error property is not a number, string or Date
+    maxProperty([{ a: true }, { a: false }, { a: true }], 'a');
+  }).toThrow('Property does not exist');
 });
 
 test('nthElement()', () => {
