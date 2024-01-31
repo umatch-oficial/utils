@@ -253,7 +253,8 @@ function hasOwnProperty<X, Y extends PropertyKey>(
   obj: X,
   prop: Y,
 ): obj is X & Record<Y, unknown> {
-  return isObject(obj) && obj.hasOwnProperty(prop);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  return !isNullOrUndefined(obj) && (Object.hasOwn(obj as object, prop) as boolean);
 }
 
 /**
