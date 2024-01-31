@@ -40,7 +40,7 @@ with the rename option).
 
 ## Source
 
-[src/object/index.ts:105](https://github.com/umatch-oficial/utils/blob/7d512db/src/object/index.ts#L105)
+[src/object/index.ts:105](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/object/index.ts#L105)
 
 ***
 

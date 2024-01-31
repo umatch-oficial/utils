@@ -12,6 +12,7 @@
 
 - [CamelToSnakeCase](type-aliases/CamelToSnakeCase.md)
 - [DateTimeDict](type-aliases/DateTimeDict.md)
+- [JoinNonEmpty](type-aliases/JoinNonEmpty.md)
 - [Pluralizer](type-aliases/Pluralizer.md)
 - [Replace](type-aliases/Replace.md)
 - [SnakeToCamelCase](type-aliases/SnakeToCamelCase.md)

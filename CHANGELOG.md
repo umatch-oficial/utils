@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [13.0.0](https://github.com/umatch-oficial/utils/compare/v12.4.2...v13.0.0) (2024-01-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* **math:** averageProperty(), maxProperty() and minProperty() now return null if the array is empty, instead of throwing an error; and throw an error if the property does not exist or is incorrectly typed for any element of the array.
+
+### Features
+
+* **math:** fix and improve average/min/max-Property() ([0788145](https://github.com/umatch-oficial/utils/commit/078814567e2a89390d3ff91a6d8213560468447f))
+
+
+### Bug Fixes
+
+* **object:** fix hasOwnProperty() ([78d5bf4](https://github.com/umatch-oficial/utils/commit/78d5bf4ba3673dc41982468d116ed0af29f138dc))
+
 ## [12.4.2](https://github.com/umatch-oficial/utils/compare/v12.4.1...v12.4.2) (2024-01-11)
 
 

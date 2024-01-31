@@ -20,7 +20,7 @@ Returns whether obj is a plain object.
 
 ## Source
 
-[src/index.ts:225](https://github.com/umatch-oficial/utils/blob/7d512db/src/index.ts#L225)
+[src/index.ts:225](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/index.ts#L225)
 
 ***
 

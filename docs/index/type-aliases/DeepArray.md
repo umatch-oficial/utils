@@ -16,7 +16,7 @@ An array of possibly deeply nested values.
 
 ## Source
 
-[src/index.ts:21](https://github.com/umatch-oficial/utils/blob/7d512db/src/index.ts#L21)
+[src/index.ts:21](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/index.ts#L21)
 
 ***
 

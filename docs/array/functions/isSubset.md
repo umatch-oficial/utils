@@ -22,7 +22,7 @@ Returns whether the small array is a subset of the large array.
 
 ## Source
 
-[src/array/index.ts:273](https://github.com/umatch-oficial/utils/blob/7d512db/src/array/index.ts#L273)
+[src/array/index.ts:273](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/array/index.ts#L273)
 
 ***
 

@@ -41,7 +41,7 @@ Parsing options
 
 ## Source
 
-[src/csv/index.ts:71](https://github.com/umatch-oficial/utils/blob/7d512db/src/csv/index.ts#L71)
+[src/csv/index.ts:71](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/csv/index.ts#L71)
 
 ***
 

@@ -6,7 +6,7 @@
 
 # Function: remove()
 
-> **remove**\<`T`, `X`\>(`array`, `item`): `{ readonly [K in keyof T]: unknown }` extends `T` ? `Remove`\<`T`, `X`\> : `T`
+> **remove**\<`T`, `X`\>(`array`, `item`): `{ readonly [K in keyof T]: unknown }` extends `T` ? [`Remove`](../type-aliases/Remove.md)\<`T`, `X`\> : `T`
 
 Removes an item from an array.
 
@@ -24,11 +24,11 @@ Removes an item from an array.
 
 ## Returns
 
-`{ readonly [K in keyof T]: unknown }` extends `T` ? `Remove`\<`T`, `X`\> : `T`
+`{ readonly [K in keyof T]: unknown }` extends `T` ? [`Remove`](../type-aliases/Remove.md)\<`T`, `X`\> : `T`
 
 ## Source
 
-[src/array/index.ts:313](https://github.com/umatch-oficial/utils/blob/7d512db/src/array/index.ts#L313)
+[src/array/index.ts:313](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/array/index.ts#L313)
 
 ***
 

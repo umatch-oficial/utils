@@ -6,7 +6,7 @@
 
 # Function: zip()
 
-> **zip**\<`T`\>(...`arrays`): `Zip`\<`T`\>
+> **zip**\<`T`\>(...`arrays`): [`Zip`](../type-aliases/Zip.md)\<`T`\>
 
 Zips arrays. (equivalent of python's zip)
 
@@ -20,7 +20,7 @@ Zips arrays. (equivalent of python's zip)
 
 ## Returns
 
-`Zip`\<`T`\>
+[`Zip`](../type-aliases/Zip.md)\<`T`\>
 
 ## Throws
 
@@ -28,7 +28,7 @@ if the arrays don't have the same length.
 
 ## Source
 
-[src/array/index.ts:453](https://github.com/umatch-oficial/utils/blob/7d512db/src/array/index.ts#L453)
+[src/array/index.ts:453](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/array/index.ts#L453)
 
 ***
 

@@ -6,7 +6,7 @@
 
 # Function: joinNonEmpty()
 
-> **joinNonEmpty**\<`T`, `Sep`\>(`array`, `separator`?): `JoinNonEmpty`\<`T`, `Sep`\>
+> **joinNonEmpty**\<`T`, `Sep`\>(`array`, `separator`?): [`JoinNonEmpty`](../type-aliases/JoinNonEmpty.md)\<`T`, `Sep`\>
 
 Joins an array of primitives, filtering out nulls, undefineds and empty strings.
 
@@ -24,11 +24,11 @@ Joins an array of primitives, filtering out nulls, undefineds and empty strings.
 
 ## Returns
 
-`JoinNonEmpty`\<`T`, `Sep`\>
+[`JoinNonEmpty`](../type-aliases/JoinNonEmpty.md)\<`T`, `Sep`\>
 
 ## Source
 
-[src/string/index.ts:312](https://github.com/umatch-oficial/utils/blob/7d512db/src/string/index.ts#L312)
+[src/string/index.ts:312](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/string/index.ts#L312)
 
 ***
 

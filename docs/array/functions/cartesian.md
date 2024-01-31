@@ -6,7 +6,7 @@
 
 # Function: cartesian()
 
-> **cartesian**\<`Y`\>(...`arrays`): `Cartesian`\<`Y`\>
+> **cartesian**\<`Y`\>(...`arrays`): [`Cartesian`](../type-aliases/Cartesian.md)\<`Y`\>
 
 Returns the cartesian product of n arrays.
 
@@ -20,11 +20,11 @@ Returns the cartesian product of n arrays.
 
 ## Returns
 
-`Cartesian`\<`Y`\>
+[`Cartesian`](../type-aliases/Cartesian.md)\<`Y`\>
 
 ## Source
 
-[src/array/index.ts:26](https://github.com/umatch-oficial/utils/blob/7d512db/src/array/index.ts#L26)
+[src/array/index.ts:26](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/array/index.ts#L26)
 
 ***
 

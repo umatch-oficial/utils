@@ -6,27 +6,29 @@
 
 # Function: averageProperty()
 
-> **averageProperty**\<`Prop`\>(`array`, `property`): `number`
+> **averageProperty**\<`T`, `Prop`\>(`array`, `property`): `number` \| `null`
 
 Returns the average of the given property of the elements in the array.
 
 ## Type parameters
 
-• **Prop** extends `PropertyKey`
+• **T** extends readonly `unknown`[]
+
+• **Prop** extends `string` \| `number` \| `symbol`
 
 ## Parameters
 
-• **array**: readonly `{ [K in PropertyKey]: number }`[]
+• **array**: `T`
 
 • **property**: `Prop`
 
 ## Returns
 
-`number`
+`number` \| `null`
 
 ## Source
 
-[src/math/index.ts:13](https://github.com/umatch-oficial/utils/blob/7d512db/src/math/index.ts#L13)
+[src/math/index.ts:16](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/math/index.ts#L16)
 
 ***
 

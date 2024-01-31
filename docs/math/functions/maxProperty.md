@@ -6,27 +6,31 @@
 
 # Function: maxProperty()
 
-> **maxProperty**\<`Prop`\>(`array`, `property`): `number`
+> **maxProperty**\<`T`, `Prop`\>(`array`, `property`): `T`\[`number`\]\[`Prop`\] \| `null`
 
 Returns the maximum value of the given property of the elements in the array.
 
+The property must be a number, string or Date consistently across all elements.
+
 ## Type parameters
 
-• **Prop** extends `PropertyKey`
+• **T** extends readonly `unknown`[]
+
+• **Prop** extends `string` \| `number` \| `symbol`
 
 ## Parameters
 
-• **array**: readonly `{ [K in PropertyKey]: number }`[]
+• **array**: `T`
 
 • **property**: `Prop`
 
 ## Returns
 
-`number`
+`T`\[`number`\]\[`Prop`\] \| `null`
 
 ## Source
 
-[src/math/index.ts:83](https://github.com/umatch-oficial/utils/blob/7d512db/src/math/index.ts#L83)
+[src/math/index.ts:102](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/math/index.ts#L102)
 
 ***
 

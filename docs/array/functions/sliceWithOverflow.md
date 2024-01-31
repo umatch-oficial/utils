@@ -28,7 +28,7 @@ Same as slice, but overflows to guarantee there are (end - start) elements.
 
 ## Source
 
-[src/array/index.ts:342](https://github.com/umatch-oficial/utils/blob/7d512db/src/array/index.ts#L342)
+[src/array/index.ts:342](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/array/index.ts#L342)
 
 ***
 

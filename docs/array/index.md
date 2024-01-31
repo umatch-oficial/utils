@@ -8,6 +8,14 @@
 
 ## Index
 
+### Type Aliases
+
+- [Append](type-aliases/Append.md)
+- [Cartesian](type-aliases/Cartesian.md)
+- [Remove](type-aliases/Remove.md)
+- [Uniques](type-aliases/Uniques.md)
+- [Zip](type-aliases/Zip.md)
+
 ### Functions
 
 - [cartesian](functions/cartesian.md)

@@ -16,7 +16,7 @@ Applies CamelToSnakeCase on the keys of an object.
 
 ## Source
 
-[src/object/index.ts:426](https://github.com/umatch-oficial/utils/blob/7d512db/src/object/index.ts#L426)
+[src/object/index.ts:427](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/object/index.ts#L427)
 
 ***
 
