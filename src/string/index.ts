@@ -714,6 +714,7 @@ export {
   titleCase,
   type CamelToSnakeCase,
   type DateTimeDict,
+  type JoinNonEmpty,
   type Pluralizer,
   type Replace,
   type SnakeToCamelCase,

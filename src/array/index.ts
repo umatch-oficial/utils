@@ -487,4 +487,9 @@ export {
   trim,
   uniques,
   zip,
+  type Append,
+  type Cartesian,
+  type Remove,
+  type Uniques,
+  type Zip,
 };
