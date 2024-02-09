@@ -192,10 +192,7 @@ function groupBy<T extends readonly Dictionary[], Key extends PropertyKey>(
   ? Key extends keyof D
     ? D[Key] extends string | number | boolean
       ? {
-          [Value in D[Key] as Value extends boolean ? Value & string : Value]: Extract<
-            D,
-            { [K in Key]: Value }
-          >[];
+          [Value in D[Key] as Value extends boolean ? Value & string : Value]: Array<D>;
         }
       : never
     : { [_: PropertyKey]: D[] }
