@@ -20,7 +20,7 @@ An object, whose values may be deeply nested.
 
 ## Source
 
-[src/index.ts:25](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/index.ts#L25)
+[src/index.ts:25](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/index.ts#L25)
 
 ***
 

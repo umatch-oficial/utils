@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [13.0.1](https://github.com/umatch-oficial/utils/compare/v13.0.0...v13.0.1) (2024-02-09)
+
+
+### Bug Fixes
+
+* **array:** return type of groupBy() ([c6d91fc](https://github.com/umatch-oficial/utils/commit/c6d91fc4011aca31b55f98be11cb5a0906121da1))
+
 ## [13.0.0](https://github.com/umatch-oficial/utils/compare/v12.4.2...v13.0.0) (2024-01-31)
 
 

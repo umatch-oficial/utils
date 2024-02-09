@@ -16,7 +16,7 @@
 
 ## Source
 
-[src/array/index.ts:439](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/array/index.ts#L439)
+[src/array/index.ts:436](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/array/index.ts#L436)
 
 ***
 

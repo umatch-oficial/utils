@@ -28,7 +28,7 @@ Removes an item from an array.
 
 ## Source
 
-[src/array/index.ts:313](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/array/index.ts#L313)
+[src/array/index.ts:310](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/array/index.ts#L310)
 
 ***
 

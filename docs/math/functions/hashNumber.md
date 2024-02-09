@@ -32,7 +32,7 @@ An array of numbers from 0 to length-1 in any order. Default: [0,1,2,...]
 
 ## Source
 
-[src/math/index.ts:72](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/math/index.ts#L72)
+[src/math/index.ts:72](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/math/index.ts#L72)
 
 ***
 

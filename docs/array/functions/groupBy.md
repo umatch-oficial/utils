@@ -6,7 +6,7 @@
 
 # Function: groupBy()
 
-> **groupBy**\<`T`, `Key`\>(`array`, `key`): `T` extends readonly infer D[] ? `Key` extends keyof `D` ? `D`\[`Key`\] extends `string` \| `number` \| `boolean` ? `{ [Value in D[Key] as Value extends boolean ? Value & string : Value]: Extract<D, { [K in Key]: Value }>[] }` : `never` : `Object` : [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`T`\>
+> **groupBy**\<`T`, `Key`\>(`array`, `key`): `T` extends readonly infer D[] ? `Key` extends keyof `D` ? `D`\[`Key`\] extends `string` \| `number` \| `boolean` ? `{ [Value in D[Key] as Value extends boolean ? Value & string : Value]: D[] }` : `never` : `Object` : [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`T`\>
 
 Groups the elements in an array by the value of the specified key.
 
@@ -28,7 +28,7 @@ an index of the resulting object as a string.
 
 ## Returns
 
-`T` extends readonly infer D[] ? `Key` extends keyof `D` ? `D`\[`Key`\] extends `string` \| `number` \| `boolean` ? `{ [Value in D[Key] as Value extends boolean ? Value & string : Value]: Extract<D, { [K in Key]: Value }>[] }` : `never` : `Object` : [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`T`\>
+`T` extends readonly infer D[] ? `Key` extends keyof `D` ? `D`\[`Key`\] extends `string` \| `number` \| `boolean` ? `{ [Value in D[Key] as Value extends boolean ? Value & string : Value]: D[] }` : `never` : `Object` : [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`T`\>
 
 ## Throws
 
@@ -36,7 +36,7 @@ if, for any element in the array, the key is not present or has a non-primitive 
 
 ## Source
 
-[src/array/index.ts:188](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/array/index.ts#L188)
+[src/array/index.ts:188](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/array/index.ts#L188)
 
 ***
 

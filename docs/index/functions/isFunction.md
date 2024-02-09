@@ -20,7 +20,7 @@ Returns whether obj is a function.
 
 ## Source
 
-[src/index.ts:218](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/index.ts#L218)
+[src/index.ts:218](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/index.ts#L218)
 
 ***
 

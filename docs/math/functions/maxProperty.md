@@ -30,7 +30,7 @@ The property must be a number, string or Date consistently across all elements.
 
 ## Source
 
-[src/math/index.ts:102](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/math/index.ts#L102)
+[src/math/index.ts:102](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/math/index.ts#L102)
 
 ***
 

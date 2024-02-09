@@ -26,7 +26,7 @@ Words to skip. Default: english skip words (articles, prepositions, etc.)
 
 ## Source
 
-[src/string/index.ts:680](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/string/index.ts#L680)
+[src/string/index.ts:680](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/string/index.ts#L680)
 
 ***
 

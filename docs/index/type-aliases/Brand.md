@@ -24,7 +24,7 @@ Brands an object.
 
 ## Source
 
-[src/index.ts:109](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/index.ts#L109)
+[src/index.ts:109](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/index.ts#L109)
 
 ***
 

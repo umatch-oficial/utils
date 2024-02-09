@@ -38,7 +38,7 @@ The sorted array.
 
 ## Source
 
-[src/array/index.ts:367](https://github.com/umatch-oficial/utils/blob/f37b7e4/src/array/index.ts#L367)
+[src/array/index.ts:364](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/array/index.ts#L364)
 
 ***
 
