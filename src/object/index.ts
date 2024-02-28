@@ -10,12 +10,7 @@ import {
   type Merge,
   type ValueOf,
 } from '../index';
-import {
-  camelCase,
-  snakeCase,
-  type CamelToSnakeCase,
-  type SnakeToCamelCase,
-} from '../string';
+import { camelCase, snakeCase, type SnakeCase, type CamelCase } from '../string';
 
 /**
  * Copies an object and applies a function to all values. If keys is
@@ -42,16 +37,16 @@ function apply(
 }
 
 /**
- * Applies SnakeToCamelCase on the keys of an object.
+ * Applies camelCase on the keys of an object.
  */
-type SnakeToCamelCaseKeys<T extends Dictionary> = {
-  [K in keyof T as SnakeToCamelCase<K & string>]: T[K];
+type CamelCaseKeys<T extends Dictionary> = {
+  [K in keyof T as CamelCase<K & string>]: T[K];
 };
 
 /**
  * Renames all keys to camel case.
  */
-function camelCaseKeys<T extends Dictionary>(obj: T): SnakeToCamelCaseKeys<T>;
+function camelCaseKeys<T extends Dictionary>(obj: T): CamelCaseKeys<T>;
 function camelCaseKeys(obj: Dictionary): Dictionary {
   return rename(obj, camelCase);
 }
@@ -422,16 +417,16 @@ function setDeepProperty(
 }
 
 /**
- * Applies CamelToSnakeCase on the keys of an object.
+ * Applies snake_case on the keys of an object.
  */
-type CamelToSnakeCaseKeys<T extends Dictionary> = {
-  [K in keyof T as CamelToSnakeCase<K & string>]: T[K];
+type SnakeCaseKeys<T extends Dictionary> = {
+  [K in keyof T as SnakeCase<K & string>]: T[K];
 };
 
 /**
  * Renames all keys to snake case.
  */
-function snakeCaseKeys<T extends Dictionary>(obj: T): CamelToSnakeCaseKeys<T>;
+function snakeCaseKeys<T extends Dictionary>(obj: T): SnakeCaseKeys<T>;
 function snakeCaseKeys(obj: Dictionary): Dictionary {
   return rename(obj, snakeCase);
 }
@@ -511,7 +506,7 @@ export {
   setDeepProperty,
   snakeCaseKeys,
   stringify,
-  type CamelToSnakeCaseKeys,
+  type CamelCaseKeys,
   type DeepEmpty,
-  type SnakeToCamelCaseKeys,
+  type SnakeCaseKeys,
 };

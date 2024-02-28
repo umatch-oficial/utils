@@ -16,8 +16,8 @@ import {
   setDeepProperty,
   snakeCaseKeys,
   stringify,
-  type CamelToSnakeCaseKeys,
-  type SnakeToCamelCaseKeys,
+  type SnakeCaseKeys,
+  type CamelCaseKeys,
 } from '../src/object';
 
 describe.each([
@@ -221,14 +221,14 @@ describe.each([
   });
 });
 
-test('CamelToSnakeCaseKeys', () => {
+test('SnakeCaseKeys', () => {
   type T = { fooBar: number };
 
-  const a: CamelToSnakeCaseKeys<T> = { foo_bar: 1 };
+  const a: SnakeCaseKeys<T> = { foo_bar: 1 };
 });
 
-test('SnakeToCamelCaseKeys', () => {
+test('CamelCaseKeys', () => {
   type T = { foo_bar: number };
 
-  const a: SnakeToCamelCaseKeys<T> = { fooBar: 1 };
+  const a: CamelCaseKeys<T> = { fooBar: 1 };
 });

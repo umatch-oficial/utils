@@ -4,6 +4,7 @@ import { DateTime } from 'luxon';
 
 import {
   basicPluralizer,
+  camelCase,
   capitalize,
   center,
   formatStr,
@@ -16,20 +17,17 @@ import {
   parseBool,
   parseFunctionCall,
   parseNumber,
+  pascalCase,
   removeAccents,
   rsplit,
-  split,
-  uncapitalize,
-  camelCase,
-  pascalCase,
   sentenceCase,
   snakeCase,
+  split,
   titleCase,
-  type CamelToSnakeCase,
   type Replace,
-  type SnakeToCamelCase,
   type Trim,
   type Unquote,
+  uncapitalize,
 } from '../src/string';
 
 describe.each([
@@ -233,45 +231,156 @@ test('uncapitalize()', () => {
   expect(uncapitalize('HELLO')).toBe('hELLO');
 });
 
-describe.each([
-  [camelCase, 'camelCase', 'camelCase'],
-  [camelCase, 'PascalCase', 'pascalCase'],
-  [camelCase, 'snake_case', 'snakeCase'],
-  [pascalCase, 'camelCase', 'CamelCase'],
-  [pascalCase, 'PascalCase', 'PascalCase'],
-  [pascalCase, 'snake_case', 'SnakeCase'],
-  [snakeCase, 'camelCase', 'camel_case'],
-  [snakeCase, 'PascalCase', 'pascal_case'],
-  [snakeCase, 'snake_case', 'snake_case'],
-  [sentenceCase, 'Title Case', 'Title case'],
-  [titleCase, 'the man, the woman', 'The Man, the Woman'],
-  [sentenceCase, 'the man, the woman', 'The man, the woman'],
-  // accented letters — this tests the regex for all case functions
-  [pascalCase, 'associação atlética', 'AssociaçãoAtlética'],
-])('Case functions', (func, input, output) => {
-  test(`${func.name}('${input}') = '${output}'`, () => {
-    expect(func(input)).toBe(output);
+describe('Case functions', () => {
+  const fooBarCamel = 'fooBar';
+  const fooBarKebab = 'foo-bar';
+  const fooBarPascal = 'FooBar';
+  const fooBarSentence = 'Foo bar';
+  const fooBarSnake = 'foo_bar';
+  const fooBarTitle = 'Foo Bar';
+
+  describe('camelCase', () => {
+    test('camel to camel', () => {
+      const actual: typeof fooBarCamel = camelCase(fooBarCamel);
+      expect(actual).toBe(fooBarCamel);
+    });
+    test('kebab to camel', () => {
+      const actual: typeof fooBarCamel = camelCase(fooBarKebab);
+      expect(actual).toBe(fooBarCamel);
+    });
+    test('Pascal to camel', () => {
+      const actual: typeof fooBarCamel = camelCase(fooBarPascal);
+      expect(actual).toBe(fooBarCamel);
+    });
+    test('snake to camel', () => {
+      const actual: typeof fooBarCamel = camelCase(fooBarSnake);
+      expect(actual).toBe(fooBarCamel);
+    });
+    test('Sentence to camel', () => {
+      const actual: typeof fooBarCamel = camelCase(fooBarSentence);
+      expect(actual).toBe(fooBarCamel);
+    });
+    test('Title to camel', () => {
+      const actual: typeof fooBarCamel = camelCase(fooBarTitle);
+      expect(actual).toBe(fooBarCamel);
+    });
   });
-});
+  describe('PascalCase', () => {
+    test('camel to Pascal', () => {
+      const actual: typeof fooBarPascal = pascalCase(fooBarCamel);
+      expect(actual).toBe(fooBarPascal);
+    });
+    test('kebab to Pascal', () => {
+      const actual: typeof fooBarPascal = pascalCase(fooBarKebab);
+      expect(actual).toBe(fooBarPascal);
+    });
+    test('Pascal to Pascal', () => {
+      const actual: typeof fooBarPascal = pascalCase(fooBarPascal);
+      expect(actual).toBe(fooBarPascal);
+    });
+    test('snake to Pascal', () => {
+      const actual: typeof fooBarPascal = pascalCase(fooBarSnake);
+      expect(actual).toBe(fooBarPascal);
+    });
+    test('Sentence to Pascal', () => {
+      const actual: typeof fooBarPascal = pascalCase(fooBarSentence);
+      expect(actual).toBe(fooBarPascal);
+    });
+    test('Title to Pascal', () => {
+      const actual: typeof fooBarPascal = pascalCase(fooBarTitle);
+      expect(actual).toBe(fooBarPascal);
+    });
+  });
+  describe('Sentence case', () => {
+    test('camel to Sentence', () => {
+      const actual: typeof fooBarSentence = sentenceCase(fooBarCamel);
+      expect(actual).toBe(fooBarSentence);
+    });
+    test('kebab to Sentence', () => {
+      const actual: typeof fooBarSentence = sentenceCase(fooBarKebab);
+      expect(actual).toBe(fooBarSentence);
+    });
+    test('Pascal to Sentence', () => {
+      const actual: typeof fooBarSentence = sentenceCase(fooBarPascal);
+      expect(actual).toBe(fooBarSentence);
+    });
+    test('snake to Sentence', () => {
+      const actual: typeof fooBarSentence = sentenceCase(fooBarSnake);
+      expect(actual).toBe(fooBarSentence);
+    });
+    test('Sentence to Sentence', () => {
+      const actual: typeof fooBarSentence = sentenceCase(fooBarSentence);
+      expect(actual).toBe(fooBarSentence);
+    });
+    test('Title to Sentence', () => {
+      const actual: typeof fooBarSentence = sentenceCase(fooBarTitle);
+      expect(actual).toBe(fooBarSentence);
+    });
+  });
+  describe('snake_case', () => {
+    test('camel to snake', () => {
+      const actual: typeof fooBarSnake = snakeCase(fooBarCamel);
+      expect(actual).toBe(fooBarSnake);
+    });
+    test('kebab to snake', () => {
+      const actual: typeof fooBarSnake = snakeCase(fooBarKebab);
+      expect(actual).toBe(fooBarSnake);
+    });
+    test('Pascal to snake', () => {
+      const actual: typeof fooBarSnake = snakeCase(fooBarPascal);
+      expect(actual).toBe(fooBarSnake);
+    });
+    test('snake to snake', () => {
+      const actual: typeof fooBarSnake = snakeCase(fooBarSnake);
+      expect(actual).toBe(fooBarSnake);
+    });
+    test('Sentence to snake', () => {
+      const actual: typeof fooBarSnake = snakeCase(fooBarSentence);
+      expect(actual).toBe(fooBarSnake);
+    });
+    test('Title to snake', () => {
+      const actual: typeof fooBarSnake = snakeCase(fooBarTitle);
+      expect(actual).toBe(fooBarSnake);
+    });
+  });
+  describe('Title Case', () => {
+    test('camel to Title', () => {
+      const actual: typeof fooBarTitle = titleCase(fooBarCamel);
+      expect(actual).toBe(fooBarTitle);
+    });
+    test('kebab to Title', () => {
+      const actual: typeof fooBarTitle = titleCase(fooBarKebab);
+      expect(actual).toBe(fooBarTitle);
+    });
+    test('Pascal to Title', () => {
+      const actual: typeof fooBarTitle = titleCase(fooBarPascal);
+      expect(actual).toBe(fooBarTitle);
+    });
+    test('snake to Title', () => {
+      const actual: typeof fooBarTitle = titleCase(fooBarSnake);
+      expect(actual).toBe(fooBarTitle);
+    });
+    test('Sentence to Title', () => {
+      const actual: typeof fooBarTitle = titleCase(fooBarSentence);
+      expect(actual).toBe(fooBarTitle);
+    });
+    test('Title to Title', () => {
+      const actual: typeof fooBarTitle = titleCase(fooBarTitle);
+      expect(actual).toBe(fooBarTitle);
+    });
+  });
 
-test('CamelToSnakeCase', () => {
-  type A = 'fooBar';
-  type B = 'fooBARBaz';
-
-  const a: CamelToSnakeCase<A> = 'foo_bar';
-  const b: CamelToSnakeCase<B> = 'foo_bar_baz';
+  test('accented letters', () => {
+    const expected = 'associaçãoAtlética';
+    const actual: typeof expected = camelCase('associação atlética');
+    expect(actual).toBe(expected);
+  });
 });
 
 test('Replace', () => {
   type T = 'banana';
 
   const a: Replace<T, 'b', ''> = 'anana';
-});
-
-test('SnakeToCamelCase', () => {
-  type T = 'foo_bar';
-
-  const a: SnakeToCamelCase<T> = 'fooBar';
 });
 
 test('Trim', () => {

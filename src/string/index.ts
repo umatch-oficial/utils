@@ -565,78 +565,133 @@ function toCase(
   };
 }
 
-const _camelCase = toCase(uncapitalize, capitalize, '');
-const _pascalCase = toCase(capitalize, capitalize, '');
-const _snakeCase = toCase(uncapitalize, uncapitalize, '_');
+/**
+ * Returns the last letter of a string.
+ */
+type LastLetter<
+  S extends string,
+  Previous extends string = '',
+> = S extends `${infer First}${infer Rest}`
+  ? Rest extends ''
+    ? S
+    : LastLetter<Rest, First>
+  : Previous;
 
 /**
- * Converts a string from snake to camel case.
+ * Converts a string to camelCase.
  */
-type SnakeToCamelCase<
+type CamelCase<
   S extends string,
   Acc extends string = '',
-> = S extends `${infer H}_${infer T}`
-  ? SnakeToCamelCase<Capitalize<T>, `${Acc}${H}`>
-  : S extends `${infer H}${infer T}`
-  ? SnakeToCamelCase<T, `${Acc}${H}`>
+> = S extends `${infer First}${infer Rest}`
+  ? Acc extends ''
+    ? CamelCase<Rest, Lowercase<First>>
+    : First extends '_' | ' ' | '-'
+    ? CamelCase<Capitalize<Rest>, Acc>
+    : CamelCase<Rest, `${Acc}${First}`>
   : Acc;
 
 /**
- * Converts a string to camelCase.
- *
- * *Warning*: the whole string is considered as one, so if you want to
- * apply the function to parts of a string individually, you must
- * split it and map the function over each unit according to your needs.
+ * Converts a string to PascalCase.
  */
-function camelCase<S extends string>(str: S): SnakeToCamelCase<S> {
-  return _camelCase(str) as SnakeToCamelCase<S>;
-}
-
-/**
- * Converts a string to camelCase.
- *
- * *Warning*: the whole string is considered as one, so if you want to
- * apply the function to parts of a string individually, you must
- * split it and map the function over each unit according to your needs.
- */
-function pascalCase(str: string): string {
-  return _pascalCase(str);
-}
+type PascalCase<
+  S extends string,
+  Acc extends string = '',
+> = S extends `${infer First}${infer Rest}`
+  ? Acc extends ''
+    ? PascalCase<Rest, Uppercase<First>>
+    : First extends '_' | ' ' | '-'
+    ? PascalCase<Capitalize<Rest>, Acc>
+    : PascalCase<Rest, `${Acc}${First}`>
+  : Acc;
 
 /**
  * Converts a string to Sentence case.
  */
-function sentenceCase(str: string): string {
-  const [first, ...rest] = str.split(/(\s)/);
-  return [capitalize(first), ...rest.map(uncapitalize)].join('');
-}
-
-/**
- * Converts a string from camel to snake case.
- *
- * Iterates one letter at a time, keeping the result in an
- * accumulator and consecutive uppercase letters in a buffer.
- */
-type CamelToSnakeCase<
+type SentenceCase<
   S extends string,
   Acc extends string = '',
-  Buffer extends string = '',
 > = S extends `${infer First}${infer Rest}`
-  ? CamelToSnakeCase<
-      Rest,
-      First extends Uppercase<First>
-        ? Rest extends `${infer Second}${infer _}`
-          ? Second extends Lowercase<Second>
-            ? JoinNonEmpty<[Acc, Buffer, Lowercase<First>], '_'>
-            : Acc
-          : JoinNonEmpty<[Acc, Buffer, Lowercase<First>], '_'>
-        : `${Acc}${First}`,
-      // if the first letter is uppercase, add it to the buffer,
-      // otherwise reset the buffer
-      First extends Uppercase<First> ? `${Buffer}${Lowercase<First>}` : ''
-    >
-  : Acc & string;
+  ? Acc extends ''
+    ? SentenceCase<Rest, Uppercase<First>>
+    : First extends '_' | ' ' | '-'
+    ? SentenceCase<Rest, `${Acc} `>
+    : First extends Uppercase<First>
+    ? LastLetter<Acc> extends ' '
+      ? SentenceCase<Rest, `${Acc}${Lowercase<First>}`>
+      : SentenceCase<Rest, `${Acc} ${Lowercase<First>}`>
+    : SentenceCase<Rest, `${Acc}${First}`>
+  : Acc;
 
+/**
+ * Converts a string to snake_case.
+ */
+type SnakeCase<
+  S extends string,
+  Acc extends string = '',
+> = S extends `${infer First}${infer Rest}`
+  ? Acc extends ''
+    ? SnakeCase<Rest, Lowercase<First>>
+    : First extends '_' | ' ' | '-'
+    ? SnakeCase<Capitalize<Rest>, `${Acc}_`>
+    : First extends Uppercase<First>
+    ? LastLetter<Acc> extends '_'
+      ? SnakeCase<Rest, `${Acc}${Lowercase<First>}`>
+      : SnakeCase<Rest, `${Acc}_${Lowercase<First>}`>
+    : SnakeCase<Rest, `${Acc}${First}`>
+  : Acc;
+
+/**
+ * Converts a string to Title Case.
+ */
+type TitleCase<
+  S extends string,
+  Acc extends string = '',
+> = S extends `${infer First}${infer Rest}`
+  ? Acc extends ''
+    ? TitleCase<Rest, Uppercase<First>>
+    : First extends '_' | ' ' | '-'
+    ? TitleCase<Capitalize<Rest>, `${Acc} `>
+    : First extends Uppercase<First>
+    ? LastLetter<Acc> extends ' '
+      ? TitleCase<Rest, `${Acc}${First}`>
+      : TitleCase<Rest, `${Acc} ${First}`>
+    : TitleCase<Rest, `${Acc}${First}`>
+  : Acc;
+
+const _camelCase = toCase(uncapitalize, capitalize, '');
+/**
+ * Converts a string to camelCase.
+ *
+ * *Warning*: the whole string is considered as one, so if you want to
+ * apply the function to parts of a string individually, you must
+ * split it and map the function over each unit according to your needs.
+ */
+function camelCase<S extends string>(str: S): CamelCase<S> {
+  return _camelCase(str) as CamelCase<S>;
+}
+
+const _pascalCase = toCase(capitalize, capitalize, '');
+/**
+ * Converts a string to PascalCase.
+ *
+ * *Warning*: the whole string is considered as one, so if you want to
+ * apply the function to parts of a string individually, you must
+ * split it and map the function over each unit according to your needs.
+ */
+function pascalCase<S extends string>(str: S): PascalCase<S> {
+  return _pascalCase(str) as PascalCase<S>;
+}
+
+const _sentenceCase = toCase(capitalize, uncapitalize, ' ');
+/**
+ * Converts a string to Sentence case.
+ */
+function sentenceCase<S extends string>(str: S): SentenceCase<S> {
+  return _sentenceCase(str) as SentenceCase<S>;
+}
+
+const _snakeCase = toCase(uncapitalize, uncapitalize, '_');
 /**
  * Converts a string to snake_case.
  *
@@ -644,8 +699,8 @@ type CamelToSnakeCase<
  * apply the function to parts of a string individually, you must
  * split it and map the function over each unit according to your needs.
  */
-function snakeCase<S extends string>(str: S): CamelToSnakeCase<S> {
-  return _snakeCase(str) as CamelToSnakeCase<S>;
+function snakeCase<S extends string>(str: S): SnakeCase<S> {
+  return _snakeCase(str) as SnakeCase<S>;
 }
 
 const ENGLISH_SKIP_WORDS = [
@@ -676,18 +731,17 @@ const ENGLISH_SKIP_WORDS = [
  *
  * Some words should not be capitalized, depending on the language.
  *
- * @param {string} str
- * @param {string[]} [skipWords] Words to skip. Default: english skip words (articles, prepositions, etc.)
+ * @param str
+ * @param [skipWords] Words to skip. Default: english skip words (articles, prepositions, etc.)
  */
-function titleCase(
-  str: string,
+function titleCase<S extends string>(
+  str: S,
   skipWords: readonly string[] = ENGLISH_SKIP_WORDS,
-): string {
+): TitleCase<S> {
   const otherWordsFunction = (word: string) =>
     skipWords.includes(word.toLowerCase()) ? word : capitalize(word);
 
-  const [first, ...rest] = str.split(/(\s)/);
-  return [capitalize(first), ...rest.map(otherWordsFunction)].join('');
+  return toCase(capitalize, otherWordsFunction, ' ')(str) as TitleCase<S>;
 }
 
 export {
@@ -708,18 +762,22 @@ export {
   rsplit,
   split,
   uncapitalize,
+  type DateTimeDict,
+  type JoinNonEmpty,
+  type LastLetter,
+  type Pluralizer,
+  type Replace,
+  type Trim,
+  type Unquote,
   // case functions
   camelCase,
   pascalCase,
   sentenceCase,
   snakeCase,
   titleCase,
-  type CamelToSnakeCase,
-  type DateTimeDict,
-  type JoinNonEmpty,
-  type Pluralizer,
-  type Replace,
-  type SnakeToCamelCase,
-  type Trim,
-  type Unquote,
+  type CamelCase,
+  type PascalCase,
+  type SentenceCase,
+  type SnakeCase,
+  type TitleCase,
 };
