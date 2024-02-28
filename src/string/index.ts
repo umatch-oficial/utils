@@ -282,6 +282,8 @@ function getCountDown(
  * Joins words as in a sentence.
  */
 function join(parts: readonly string[], and = '&'): string {
+  if (!parts.length) return '';
+
   const firstParts = parts.slice(0, -1);
   const lastPart = parts.slice(-1)[0];
   if (firstParts.length === 0) return lastPart;
