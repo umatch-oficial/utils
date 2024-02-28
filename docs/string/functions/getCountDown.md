@@ -61,7 +61,7 @@ if the given dictionary doesn't have entries for all possible units.
 
 ## Source
 
-[src/string/index.ts:231](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/string/index.ts#L231)
+[src/string/index.ts:231](https://github.com/umatch-oficial/utils/blob/1813ff9/src/string/index.ts#L231)
 
 ***
 

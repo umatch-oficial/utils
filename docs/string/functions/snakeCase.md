@@ -6,7 +6,7 @@
 
 # Function: snakeCase()
 
-> **snakeCase**\<`S`\>(`str`): [`CamelToSnakeCase`](../type-aliases/CamelToSnakeCase.md)\<`S`\>
+> **snakeCase**\<`S`\>(`str`): [`SnakeCase`](../type-aliases/SnakeCase.md)\<`S`\>
 
 Converts a string to snake_case.
 
@@ -24,11 +24,11 @@ split it and map the function over each unit according to your needs.
 
 ## Returns
 
-[`CamelToSnakeCase`](../type-aliases/CamelToSnakeCase.md)\<`S`\>
+[`SnakeCase`](../type-aliases/SnakeCase.md)\<`S`\>
 
 ## Source
 
-[src/string/index.ts:645](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/string/index.ts#L645)
+[src/string/index.ts:702](https://github.com/umatch-oficial/utils/blob/1813ff9/src/string/index.ts#L702)
 
 ***
 

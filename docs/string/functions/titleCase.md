@@ -6,15 +6,19 @@
 
 # Function: titleCase()
 
-> **titleCase**(`str`, `skipWords`?): `string`
+> **titleCase**\<`S`\>(`str`, `skipWords`?): [`TitleCase`](../type-aliases/TitleCase.md)\<`S`\>
 
 Converts a string to Title Case.
 
 Some words should not be capitalized, depending on the language.
 
+## Type parameters
+
+• **S** extends `string`
+
 ## Parameters
 
-• **str**: `string`
+• **str**: `S`
 
 • **skipWords?**: readonly `string`[]= `ENGLISH_SKIP_WORDS`
 
@@ -22,11 +26,11 @@ Words to skip. Default: english skip words (articles, prepositions, etc.)
 
 ## Returns
 
-`string`
+[`TitleCase`](../type-aliases/TitleCase.md)\<`S`\>
 
 ## Source
 
-[src/string/index.ts:680](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/string/index.ts#L680)
+[src/string/index.ts:737](https://github.com/umatch-oficial/utils/blob/1813ff9/src/string/index.ts#L737)
 
 ***
 

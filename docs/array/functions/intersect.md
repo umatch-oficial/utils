@@ -28,7 +28,7 @@ Returns the intersection of two arrays.
 
 ## Source
 
-[src/array/index.ts:252](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/array/index.ts#L252)
+[src/array/index.ts:252](https://github.com/umatch-oficial/utils/blob/1813ff9/src/array/index.ts#L252)
 
 ***
 

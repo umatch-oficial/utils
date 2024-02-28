@@ -28,7 +28,7 @@ Copies an object excluding some keys.
 
 ## Source
 
-[src/object/index.ts:336](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/object/index.ts#L336)
+[src/object/index.ts:331](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L331)
 
 ***
 

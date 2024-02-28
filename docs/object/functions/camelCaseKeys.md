@@ -6,7 +6,7 @@
 
 # Function: camelCaseKeys()
 
-> **camelCaseKeys**\<`T`\>(`obj`): [`SnakeToCamelCaseKeys`](../type-aliases/SnakeToCamelCaseKeys.md)\<`T`\>
+> **camelCaseKeys**\<`T`\>(`obj`): [`CamelCaseKeys`](../type-aliases/CamelCaseKeys.md)\<`T`\>
 
 Renames all keys to camel case.
 
@@ -20,11 +20,11 @@ Renames all keys to camel case.
 
 ## Returns
 
-[`SnakeToCamelCaseKeys`](../type-aliases/SnakeToCamelCaseKeys.md)\<`T`\>
+[`CamelCaseKeys`](../type-aliases/CamelCaseKeys.md)\<`T`\>
 
 ## Source
 
-[src/object/index.ts:54](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/object/index.ts#L54)
+[src/object/index.ts:49](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L49)
 
 ***
 

@@ -39,7 +39,7 @@ Used to keep track of the current indent during recursion
 
 ## Source
 
-[src/object/index.ts:467](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/object/index.ts#L467)
+[src/object/index.ts:462](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L462)
 
 ***
 

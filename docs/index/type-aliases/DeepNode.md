@@ -16,7 +16,7 @@ A possibly deeply nested value.
 
 ## Source
 
-[src/index.ts:17](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/index.ts#L17)
+[src/index.ts:17](https://github.com/umatch-oficial/utils/blob/1813ff9/src/index.ts#L17)
 
 ***
 

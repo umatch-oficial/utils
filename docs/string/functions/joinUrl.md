@@ -29,7 +29,7 @@ joinUrl('https://abc.com/', 'example/')
 
 ## Source
 
-[src/string/index.ts:333](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/string/index.ts#L333)
+[src/string/index.ts:335](https://github.com/umatch-oficial/utils/blob/1813ff9/src/string/index.ts#L335)
 
 ***
 

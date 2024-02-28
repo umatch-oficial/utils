@@ -20,7 +20,7 @@ Returns whether the object is [deep empty][DeepEmpty](../type-aliases/DeepEmpty.
 
 ## Source
 
-[src/object/index.ts:271](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/object/index.ts#L271)
+[src/object/index.ts:266](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L266)
 
 ***
 

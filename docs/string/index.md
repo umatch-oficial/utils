@@ -10,12 +10,16 @@
 
 ### Type Aliases
 
-- [CamelToSnakeCase](type-aliases/CamelToSnakeCase.md)
+- [CamelCase](type-aliases/CamelCase.md)
 - [DateTimeDict](type-aliases/DateTimeDict.md)
 - [JoinNonEmpty](type-aliases/JoinNonEmpty.md)
+- [LastLetter](type-aliases/LastLetter.md)
+- [PascalCase](type-aliases/PascalCase.md)
 - [Pluralizer](type-aliases/Pluralizer.md)
 - [Replace](type-aliases/Replace.md)
-- [SnakeToCamelCase](type-aliases/SnakeToCamelCase.md)
+- [SentenceCase](type-aliases/SentenceCase.md)
+- [SnakeCase](type-aliases/SnakeCase.md)
+- [TitleCase](type-aliases/TitleCase.md)
 - [Trim](type-aliases/Trim.md)
 - [Unquote](type-aliases/Unquote.md)
 

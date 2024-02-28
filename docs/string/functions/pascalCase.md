@@ -6,25 +6,29 @@
 
 # Function: pascalCase()
 
-> **pascalCase**(`str`): `string`
+> **pascalCase**\<`S`\>(`str`): [`PascalCase`](../type-aliases/PascalCase.md)\<`S`\>
 
-Converts a string to camelCase.
+Converts a string to PascalCase.
 
 *Warning*: the whole string is considered as one, so if you want to
 apply the function to parts of a string individually, you must
 split it and map the function over each unit according to your needs.
 
+## Type parameters
+
+• **S** extends `string`
+
 ## Parameters
 
-• **str**: `string`
+• **str**: `S`
 
 ## Returns
 
-`string`
+[`PascalCase`](../type-aliases/PascalCase.md)\<`S`\>
 
 ## Source
 
-[src/string/index.ts:600](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/string/index.ts#L600)
+[src/string/index.ts:682](https://github.com/umatch-oficial/utils/blob/1813ff9/src/string/index.ts#L682)
 
 ***
 

@@ -10,9 +10,9 @@
 
 ### Type Aliases
 
-- [CamelToSnakeCaseKeys](type-aliases/CamelToSnakeCaseKeys.md)
+- [CamelCaseKeys](type-aliases/CamelCaseKeys.md)
 - [DeepEmpty](type-aliases/DeepEmpty.md)
-- [SnakeToCamelCaseKeys](type-aliases/SnakeToCamelCaseKeys.md)
+- [SnakeCaseKeys](type-aliases/SnakeCaseKeys.md)
 
 ### Functions
 

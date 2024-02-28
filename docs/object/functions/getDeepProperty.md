@@ -31,7 +31,7 @@ getDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]')
 
 ## Source
 
-[src/object/index.ts:232](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/object/index.ts#L232)
+[src/object/index.ts:227](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L227)
 
 ***
 

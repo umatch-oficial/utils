@@ -6,21 +6,25 @@
 
 # Function: sentenceCase()
 
-> **sentenceCase**(`str`): `string`
+> **sentenceCase**\<`S`\>(`str`): [`SentenceCase`](../type-aliases/SentenceCase.md)\<`S`\>
 
 Converts a string to Sentence case.
 
+## Type parameters
+
+• **S** extends `string`
+
 ## Parameters
 
-• **str**: `string`
+• **str**: `S`
 
 ## Returns
 
-`string`
+[`SentenceCase`](../type-aliases/SentenceCase.md)\<`S`\>
 
 ## Source
 
-[src/string/index.ts:607](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/string/index.ts#L607)
+[src/string/index.ts:690](https://github.com/umatch-oficial/utils/blob/1813ff9/src/string/index.ts#L690)
 
 ***
 

@@ -37,7 +37,7 @@ if some object in the path is an array, but the next key is not a number.
 
 ## Source
 
-[src/object/index.ts:395](https://github.com/umatch-oficial/utils/blob/c6d91fc/src/object/index.ts#L395)
+[src/object/index.ts:390](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L390)
 
 ***
 

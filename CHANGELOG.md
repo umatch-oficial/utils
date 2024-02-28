@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [14.0.0](https://github.com/umatch-oficial/utils/compare/v13.0.1...v14.0.0) (2024-02-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **string:** titleCase() and snakeCase() now work as expected on camel, kebab, pascal and snake-cased strings. All case functions' return types no longer reflect the correct behavior when the string includes consecutive uppercase letters. SnakeToCamelCaseKeys has been renamed to CamelCaseKeys. CamelToSnakeCaseKeys has been renamed to SnakeCaseKeys.
+
+### Bug Fixes
+
+* **string:** fix case functions ([1813ff9](https://github.com/umatch-oficial/utils/commit/1813ff9750be05a2e8e16d703c5b08562aaf0d0d))
+* **string:** return '' instead of undefined on join() when passed an empty array ([408e87e](https://github.com/umatch-oficial/utils/commit/408e87ee64dc172534ad8dda84de8e6b295aaf20))
+
 ## [13.0.1](https://github.com/umatch-oficial/utils/compare/v13.0.0...v13.0.1) (2024-02-09)
 
 
