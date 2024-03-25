@@ -3,6 +3,7 @@ import {
   isNullOrUndefined,
   isObject,
   isPlainObject,
+  isPrimitive,
   isString,
   type DeepArray,
   type DeepNode,
@@ -10,6 +11,7 @@ import {
   type Merge,
   type ValueOf,
 } from '../index';
+import { sumProperty } from '../math';
 import { camelCase, snakeCase, type SnakeCase, type CamelCase } from '../string';
 
 /**
@@ -432,62 +434,180 @@ function snakeCaseKeys(obj: Dictionary): Dictionary {
 }
 
 /**
- * Used by stringify().
- * @private
- */
-function _unknownToString(
-  value: unknown,
-  options: { indent?: number; pad?: boolean; doubleQuotes?: boolean },
-  indenter: string,
-  quote: string,
-): string {
-  return isArray(value) || isPlainObject(value)
-    ? stringify(value, options, indenter)
-    : isString(value)
-    ? `${quote}${value}${quote}`
-    : String(value);
-}
-
-/**
- * Similar to JSON.stringify(), but optionally pads entries between
- * the key and value to make all lines have the same width.
+ * Similar to JSON.stringify(), with some additional formatting options.
  *
  * @param obj
  * @param [options]
- * @param {number} [options.indent = 2] The size of the indent. Default: 2
- * @param {boolean} [options.pad = false] Whether to pad entries. Default: false
- * @param {boolean} [options.doubleQuotes = true]  Use double quotes. Default: true
- * @param {string} [inheritedIndent = ""] Used to keep track of the current indent during recursion
+ * @param {boolean} [options.doubleQuotes = true] Use double quotes. Default: true.
+ * @param {number} [options.indentSize = 2] Size of the indent. Default: 2.
+ * @param {number} [options.length] Maximum length of a line. Default: the longest key +
+ * primitive value pair in the object.
+ * @param {boolean} [options.pad = false] Add padding between keys and values. Default:
+ * false
+ * @param {string} [options.wrap = 'chop'] Chop or wrap arrays. Chop means inserting a
+ * line break between each element, while wrapping inserts line breaks only as necessary
+ * to respect the length option. If the length is undefined, 'chop' is used. Default:
+ * 'chop if long'.
  */
 function stringify(
   obj: Dictionary | readonly unknown[],
-  options?: { indent?: number; pad?: boolean; doubleQuotes?: boolean },
-  inheritedIndent = '',
+  options?: {
+    doubleQuotes?: boolean;
+    indentSize?: number;
+    length?: number;
+    pad?: boolean;
+    wrap?: 'chop' | 'chop if long' | 'wrap if long';
+  },
 ): string {
-  const opts = { indent: 2, pad: false, doubleQuotes: true, ...options };
-  const { indent, pad, doubleQuotes } = opts;
-  const quote = doubleQuotes ? '"' : "'";
+  const indentSize = options?.indentSize ?? 2;
+  if (indentSize < 0) throw new Error('Indent must be positive');
 
-  const indenter = inheritedIndent + ' '.repeat(indent);
-  let start: string, end: string, formattedEntries: string[];
-  if (isPlainObject(obj)) {
-    [start, end] = ['{', '}'];
-
-    // padding
-    const maxKeyLength = Math.max(...Object.keys(obj).map((key) => key.length));
-    formattedEntries = Object.entries(obj).map(([key, value], _) => {
-      const spacer = ' '.repeat(pad && indent > 0 ? maxKeyLength - key.length : 0);
-      const stringifiedValue = _unknownToString(value, opts, indenter, quote);
-      return `${quote}${key}${quote}: ${spacer}${stringifiedValue}`;
-    });
+  let length;
+  if (options?.length) {
+    length = options.length;
   } else {
-    [start, end] = ['[', ']'];
-    formattedEntries = obj.map((value) => _unknownToString(value, opts, indenter, quote));
-  }
+    length = Object.entries(obj).reduce<number | undefined>((acc, [key, value]) => {
+      if (!isPrimitive(value)) return undefined;
 
-  const separator = indent === 0 ? ' ' : '\n';
-  const entriesStr = formattedEntries.join(',' + separator + indenter);
-  return start + separator + indenter + entriesStr + separator + inheritedIndent + end;
+      const indenter = ' '.repeat(indentSize);
+      const stringifiedValue = isString(value) ? `"${value}"` : String(value);
+      const stringifiedEntry = `${indenter}"${key}": ${stringifiedValue}`;
+
+      const entryLength = stringifiedEntry.length;
+      return acc ? (entryLength > acc ? entryLength : acc) : entryLength;
+    }, undefined);
+  }
+  return _stringify(
+    obj,
+    {
+      indentSize,
+      length,
+      pad: options?.pad ?? false,
+      wrap: options?.wrap ?? 'chop if long',
+      quote: options?.doubleQuotes === false ? "'" : '"',
+    },
+    0,
+  );
+}
+
+/**
+ * Recursive implementation of stringify().
+ * @private
+ */
+function _stringify(
+  obj: unknown,
+  options: {
+    indentSize: number;
+    length?: number;
+    pad: boolean;
+    quote: string;
+    wrap: 'chop' | 'chop if long' | 'wrap if long';
+  },
+  level: number,
+  keyLength = 0,
+): string {
+  const { indentSize, length, pad, quote, wrap } = options;
+
+  const shouldBreak = indentSize > 0;
+  const lineBreak = '\n';
+  const previousIndent = ' '.repeat(indentSize * level);
+  const indent = ' '.repeat(indentSize * (level + 1));
+
+  if (isPlainObject(obj)) {
+    const formattedEntries = Object.entries(obj).map(([key, value]) => {
+      const stringifiedKey = `${indent}${quote}${key}${quote}`;
+      const stringifiedValue = _stringify(
+        value,
+        options,
+        level + 1,
+        stringifiedKey.length,
+      );
+      const parts = [stringifiedKey, ': ', stringifiedValue];
+      const totalLength = sumProperty(parts, 'length');
+      if (pad && length && totalLength < length) {
+        const spacerLength = length - totalLength;
+        const padding = ' '.repeat(spacerLength);
+        parts.splice(2, 0, padding);
+      }
+      return parts.join('');
+    });
+
+    const separator = shouldBreak ? lineBreak : ' ';
+    const entriesStr = formattedEntries.join(',' + separator);
+    return '{' + separator + entriesStr + separator + previousIndent + '}';
+  } else if (isArray(obj)) {
+    const chopArray = (array: ReadonlyArray<unknown>): string => {
+      const formattedEntries = array.map((value) =>
+        isPrimitive(value)
+          ? indent + unknownToString(value)
+          : indent + _stringify(value, options, level + 1),
+      );
+      return (
+        '[' +
+        lineBreak +
+        formattedEntries.join(',' + lineBreak) +
+        lineBreak +
+        previousIndent +
+        ']'
+      );
+    };
+
+    if (wrap === 'chop') return chopArray(obj);
+
+    const formattedEntries = obj.map((value) => _stringify(value, options, level + 1));
+    const formatted = '[ ' + formattedEntries.join(', ') + ' ]';
+    const isMultiline = formatted.includes(lineBreak);
+    if (!length) {
+      // there's no length - wrap cannot be used
+      if (isMultiline) {
+        return chopArray(obj);
+      } else {
+        return formatted;
+      }
+    } else {
+      const wrapArray = (array: ReadonlyArray<unknown>): string => {
+        let line = '[';
+        let position = keyLength + 2 + line.length;
+        for (let i = 0; i < array.length; i += 1) {
+          const isLastEntry = i === array.length - 1;
+          const entry = _stringify(array[i], options, level);
+
+          if (isLastEntry) {
+            if (position + entry.length + 3 > length) {
+              line += lineBreak + indent + entry;
+            } else {
+              line += ' ' + entry;
+            }
+          } else {
+            if (position + entry.length + 2 > length) {
+              line += lineBreak + indent + entry + ',';
+              position = indent.length + entry.length;
+            } else {
+              line += ' ' + entry + ',';
+              position += entry.length + 2;
+            }
+          }
+        }
+        return line + ' ]';
+      };
+      const totalLength = formatted.length + keyLength + 2;
+      if (isMultiline || totalLength > length) {
+        if (wrap === 'chop if long') {
+          return chopArray(obj);
+        } else {
+          return wrapArray(obj);
+        }
+      } else {
+        return formatted;
+      }
+    }
+  } else {
+    return unknownToString(obj);
+  }
+}
+
+function unknownToString(value: unknown): string {
+  return isString(value) ? `"${value}"` : String(value);
 }
 
 export {

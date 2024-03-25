@@ -181,43 +181,95 @@ test('snakeCaseKeys()', () => {
   expect(snakeCaseKeys({ fooBar: 1, barFoo: 2 })).toEqual({ foo_bar: 1, bar_foo: 2 });
 });
 
-describe.each([
-  [{ indent: 0, pad: false }, '{ "a": 1, "deep": [ { "b": [ 3, 4 ] }, "test" ] }'],
-  [{ indent: 0, pad: true }, '{ "a": 1, "deep": [ { "b": [ 3, 4 ] }, "test" ] }'],
-  [
-    { indent: 2, pad: false },
-    `{
-  "a": 1,
+describe('stringify()', () => {
+  test('no indent', () => {
+    expect(
+      stringify({ flat: 1, deep: [{ array: [3, 4] }, 'string'] }, { indentSize: 0 }),
+    ).toBe('{ "flat": 1, "deep": [ { "array": [ 3, 4 ] }, "string" ] }');
+  });
+  test('deep', () => {
+    expect(stringify({ flat: 1, deep: [{ array: [3, 4] }, 'string'] })).toBe(
+      `{
+  "flat": 1,
   "deep": [
     {
-      "b": [
-        3,
-        4
-      ]
+      "array": [ 3, 4 ]
     },
-    "test"
+    "string"
   ]
 }`,
-  ],
-  [
-    { indent: 2, pad: true },
-    `{
-  "a":    1,
-  "deep": [
-    {
-      "b": [
-        3,
-        4
-      ]
-    },
-    "test"
-  ]
+    );
+  });
+  test('padding', () => {
+    expect(
+      stringify(
+        {
+          apple: 'red',
+          banana: 'yellow',
+          grape: 'green',
+        },
+        { pad: true },
+      ),
+    ).toBe(
+      `{
+  "apple":     "red",
+  "banana": "yellow",
+  "grape":   "green"
 }`,
+    );
+  });
+  test('wrapping - chop', () => {
+    expect(
+      stringify(
+        {
+          array: [1, 2],
+          string: 'test',
+        },
+        { wrap: 'chop' },
+      ),
+    ).toBe(`{
+  "array": [
+    1,
+    2
   ],
-])('stringify()', (options, output) => {
-  const obj = { a: 1, deep: [{ b: [3, 4] }, 'test'] };
-  test(JSON.stringify(options), () => {
-    expect(stringify(obj, options)).toBe(output);
+  "string": "test"
+}`);
+  });
+  test('wrapping - chop if long', () => {
+    expect(
+      stringify(
+        {
+          array: [1, 2, 3, 4, 5],
+          string: 'test',
+        },
+        { wrap: 'chop if long' },
+      ),
+    ).toBe(`{
+  "array": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "string": "test"
+}`);
+  });
+  test('wrapping - wrap if long', () => {
+    expect(
+      stringify(
+        {
+          array: [1, 2, 3, 4, 5, 6, 7, 8],
+          string: 'test',
+        },
+        { wrap: 'wrap if long' },
+      ),
+    ).toBe(`{
+  "array": [ 1, 2,
+    3, 4, 5, 6, 7,
+    8 ],
+  "string": "test"
+}`);
   });
 });
 
