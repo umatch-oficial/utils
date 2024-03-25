@@ -50,6 +50,7 @@
 - [isObject](functions/isObject.md)
 - [isPlainObject](functions/isPlainObject.md)
 - [isPrimitive](functions/isPrimitive.md)
+- [isPrimitiveArray](functions/isPrimitiveArray.md)
 - [isString](functions/isString.md)
 
 ***

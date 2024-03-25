@@ -24,7 +24,7 @@ Renames all keys to camel case.
 
 ## Source
 
-[src/object/index.ts:49](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L49)
+[src/object/index.ts:51](https://github.com/umatch-oficial/utils/blob/7369e19/src/object/index.ts#L51)
 
 ***
 

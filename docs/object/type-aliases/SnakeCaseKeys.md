@@ -16,7 +16,7 @@ Applies snake_case on the keys of an object.
 
 ## Source
 
-[src/object/index.ts:422](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L422)
+[src/object/index.ts:424](https://github.com/umatch-oficial/utils/blob/7369e19/src/object/index.ts#L424)
 
 ***
 

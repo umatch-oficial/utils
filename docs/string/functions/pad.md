@@ -24,7 +24,7 @@ Inserts spaces between left and right to achieve the desired length.
 
 ## Source
 
-[src/string/index.ts:342](https://github.com/umatch-oficial/utils/blob/1813ff9/src/string/index.ts#L342)
+[src/string/index.ts:342](https://github.com/umatch-oficial/utils/blob/7369e19/src/string/index.ts#L342)
 
 ***
 

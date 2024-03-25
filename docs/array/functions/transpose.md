@@ -24,7 +24,7 @@ Returns the transposed array.
 
 ## Source
 
-[src/array/index.ts:390](https://github.com/umatch-oficial/utils/blob/1813ff9/src/array/index.ts#L390)
+[src/array/index.ts:390](https://github.com/umatch-oficial/utils/blob/7369e19/src/array/index.ts#L390)
 
 ***
 

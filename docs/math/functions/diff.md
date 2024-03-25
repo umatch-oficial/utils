@@ -27,7 +27,7 @@ diff([1,3,7,10])
 
 ## Source
 
-[src/math/index.ts:45](https://github.com/umatch-oficial/utils/blob/1813ff9/src/math/index.ts#L45)
+[src/math/index.ts:45](https://github.com/umatch-oficial/utils/blob/7369e19/src/math/index.ts#L45)
 
 ***
 

@@ -6,10 +6,9 @@
 
 # Function: stringify()
 
-> **stringify**(`obj`, `options`?, `inheritedIndent`?): `string`
+> **stringify**(`obj`, `options`?): `string`
 
-Similar to JSON.stringify(), but optionally pads entries between
-the key and value to make all lines have the same width.
+Similar to JSON.stringify(), with some additional formatting options.
 
 ## Parameters
 
@@ -19,19 +18,28 @@ the key and value to make all lines have the same width.
 
 • **options\.doubleQuotes?**: `boolean`
 
-Use double quotes. Default: true
+Use double quotes. Default: true.
 
-• **options\.indent?**: `number`
+• **options\.indentSize?**: `number`
 
-The size of the indent. Default: 2
+Size of the indent. Default: 2.
+
+• **options\.length?**: `number`
+
+Maximum length of a line. Default: the longest key +
+primitive value pair in the object.
 
 • **options\.pad?**: `boolean`
 
-Whether to pad entries. Default: false
+Add padding between keys and values. Default:
+false
 
-• **inheritedIndent?**: `string`= `''`
+• **options\.wrap?**: `"chop"` \| `"chop if long"` \| `"wrap if long"`
 
-Used to keep track of the current indent during recursion
+Chop or wrap arrays. Chop means inserting a
+line break between each element, while wrapping inserts line breaks only as necessary
+to respect the length option. If the length is undefined, 'chop' is used. Default:
+'chop if long'.
 
 ## Returns
 
@@ -39,7 +47,7 @@ Used to keep track of the current indent during recursion
 
 ## Source
 
-[src/object/index.ts:462](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L462)
+[src/object/index.ts:452](https://github.com/umatch-oficial/utils/blob/7369e19/src/object/index.ts#L452)
 
 ***
 

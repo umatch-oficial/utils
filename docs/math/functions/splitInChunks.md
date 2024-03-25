@@ -26,7 +26,7 @@ Splits an array into chunks of equal size.
 
 ## Source
 
-[src/math/index.ts:300](https://github.com/umatch-oficial/utils/blob/1813ff9/src/math/index.ts#L300)
+[src/math/index.ts:300](https://github.com/umatch-oficial/utils/blob/7369e19/src/math/index.ts#L300)
 
 ***
 

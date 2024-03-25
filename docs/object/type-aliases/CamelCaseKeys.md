@@ -16,7 +16,7 @@ Applies camelCase on the keys of an object.
 
 ## Source
 
-[src/object/index.ts:42](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L42)
+[src/object/index.ts:44](https://github.com/umatch-oficial/utils/blob/7369e19/src/object/index.ts#L44)
 
 ***
 

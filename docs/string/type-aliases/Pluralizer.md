@@ -22,7 +22,7 @@
 
 ## Source
 
-[src/string/index.ts:12](https://github.com/umatch-oficial/utils/blob/1813ff9/src/string/index.ts#L12)
+[src/string/index.ts:12](https://github.com/umatch-oficial/utils/blob/7369e19/src/string/index.ts#L12)
 
 ***
 

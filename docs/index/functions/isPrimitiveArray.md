@@ -2,13 +2,11 @@
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / isNumber
+[@umatch/utils](../../modules.md) / [index](../index.md) / isPrimitiveArray
 
-# Function: isNumber()
+# Function: isPrimitiveArray()
 
-> **isNumber**(`obj`): `obj is number`
-
-Returns whether obj is a number.
+> **isPrimitiveArray**(`obj`): `obj is Primitive[]`
 
 ## Parameters
 
@@ -16,11 +14,11 @@ Returns whether obj is a number.
 
 ## Returns
 
-`obj is number`
+`obj is Primitive[]`
 
 ## Source
 
-[src/index.ts:255](https://github.com/umatch-oficial/utils/blob/7369e19/src/index.ts#L255)
+[src/index.ts:278](https://github.com/umatch-oficial/utils/blob/7369e19/src/index.ts#L278)
 
 ***
 
