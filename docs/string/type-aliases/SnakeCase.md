@@ -18,7 +18,7 @@ Converts a string to snake_case.
 
 ## Source
 
-[src/string/index.ts:629](https://github.com/umatch-oficial/utils/blob/1813ff9/src/string/index.ts#L629)
+[src/string/index.ts:629](https://github.com/umatch-oficial/utils/blob/0b3210d/src/string/index.ts#L629)
 
 ***
 

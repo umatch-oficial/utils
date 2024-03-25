@@ -29,7 +29,7 @@ which are not arrays.
 
 ## Source
 
-[src/object/index.ts:82](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L82)
+[src/object/index.ts:84](https://github.com/umatch-oficial/utils/blob/0b3210d/src/object/index.ts#L84)
 
 ***
 

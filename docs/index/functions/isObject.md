@@ -22,7 +22,7 @@ To narrow this down to only plain objects, use [isPlainObject][isPlainObject](is
 
 ## Source
 
-[src/index.ts:264](https://github.com/umatch-oficial/utils/blob/1813ff9/src/index.ts#L264)
+[src/index.ts:264](https://github.com/umatch-oficial/utils/blob/0b3210d/src/index.ts#L264)
 
 ***
 

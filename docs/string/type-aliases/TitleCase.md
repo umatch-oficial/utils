@@ -18,7 +18,7 @@ Converts a string to Title Case.
 
 ## Source
 
-[src/string/index.ts:647](https://github.com/umatch-oficial/utils/blob/1813ff9/src/string/index.ts#L647)
+[src/string/index.ts:647](https://github.com/umatch-oficial/utils/blob/0b3210d/src/string/index.ts#L647)
 
 ***
 

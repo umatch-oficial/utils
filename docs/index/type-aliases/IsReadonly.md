@@ -16,7 +16,7 @@ Returns whether an array is readonly.
 
 ## Source
 
-[src/index.ts:12](https://github.com/umatch-oficial/utils/blob/1813ff9/src/index.ts#L12)
+[src/index.ts:12](https://github.com/umatch-oficial/utils/blob/0b3210d/src/index.ts#L12)
 
 ***
 

@@ -33,7 +33,7 @@ specified, only applies the function to those keys.
 
 ## Source
 
-[src/object/index.ts:19](https://github.com/umatch-oficial/utils/blob/1813ff9/src/object/index.ts#L19)
+[src/object/index.ts:21](https://github.com/umatch-oficial/utils/blob/0b3210d/src/object/index.ts#L21)
 
 ***
 

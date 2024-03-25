@@ -2,13 +2,11 @@
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / isBoolean
+[@umatch/utils](../../modules.md) / [index](../index.md) / isPrimitiveArray
 
-# Function: isBoolean()
+# Function: isPrimitiveArray()
 
-> **isBoolean**(`obj`): `obj is boolean`
-
-Returns whether obj is a boolean.
+> **isPrimitiveArray**(`obj`): `obj is Primitive[]`
 
 ## Parameters
 
@@ -16,11 +14,11 @@ Returns whether obj is a boolean.
 
 ## Returns
 
-`obj is boolean`
+`obj is Primitive[]`
 
 ## Source
 
-[src/index.ts:203](https://github.com/umatch-oficial/utils/blob/0b3210d/src/index.ts#L203)
+[src/index.ts:278](https://github.com/umatch-oficial/utils/blob/0b3210d/src/index.ts#L278)
 
 ***
 

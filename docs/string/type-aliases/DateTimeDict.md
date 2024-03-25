@@ -24,7 +24,7 @@
 
 ## Source
 
-[src/string/index.ts:200](https://github.com/umatch-oficial/utils/blob/1813ff9/src/string/index.ts#L200)
+[src/string/index.ts:200](https://github.com/umatch-oficial/utils/blob/0b3210d/src/string/index.ts#L200)
 
 ***
 

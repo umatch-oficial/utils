@@ -26,7 +26,7 @@ If 2 values are passed, uses [start, end[.
 
 ## Source
 
-[src/math/index.ts:274](https://github.com/umatch-oficial/utils/blob/1813ff9/src/math/index.ts#L274)
+[src/math/index.ts:274](https://github.com/umatch-oficial/utils/blob/0b3210d/src/math/index.ts#L274)
 
 ***
 

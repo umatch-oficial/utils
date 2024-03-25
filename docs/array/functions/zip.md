@@ -28,7 +28,7 @@ if the arrays don't have the same length.
 
 ## Source
 
-[src/array/index.ts:450](https://github.com/umatch-oficial/utils/blob/1813ff9/src/array/index.ts#L450)
+[src/array/index.ts:450](https://github.com/umatch-oficial/utils/blob/0b3210d/src/array/index.ts#L450)
 
 ***
 
