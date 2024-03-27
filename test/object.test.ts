@@ -182,25 +182,23 @@ test('snakeCaseKeys()', () => {
 });
 
 describe('stringify()', () => {
-  test('no indent', () => {
+  test('no indent', () =>
     expect(
-      stringify({ flat: 1, deep: [{ array: [3, 4] }, 'string'] }, { indentSize: 0 }),
-    ).toBe('{ "flat": 1, "deep": [ { "array": [ 3, 4 ] }, "string" ] }');
-  });
-  test('deep', () => {
-    expect(stringify({ flat: 1, deep: [{ array: [3, 4] }, 'string'] })).toBe(
-      `{
+      stringify({ flat: 1, deep: [{ array: [1, 2, 3] }, 'string'] }, { indentSize: 0 }),
+    ).toBe('{ "flat": 1, "deep": [ { "array": [ 1, 2, 3 ] }, "string" ] }'));
+
+  test('deep', () =>
+    expect(stringify({ flat: 1, deep: [{ array: [1, 2, 3] }, 'string'] })).toBe(`{
   "flat": 1,
   "deep": [
     {
-      "array": [ 3, 4 ]
+      "array": [ 1, 2, 3 ]
     },
     "string"
   ]
-}`,
-    );
-  });
-  test('padding', () => {
+}`));
+
+  test('padding', () =>
     expect(
       stringify(
         {
@@ -210,37 +208,57 @@ describe('stringify()', () => {
         },
         { pad: true },
       ),
-    ).toBe(
-      `{
+    ).toBe(`{
   "apple":     "red",
   "banana": "yellow",
   "grape":   "green"
-}`,
-    );
-  });
-  test('wrapping - chop', () => {
+}`));
+
+  test('wrapping - no length (chopped)', () =>
+    expect(
+      stringify({
+        array: ['multiline\nstring'],
+      }),
+    ).toBe(`{
+  "array": [
+    "multiline
+string"
+  ]
+}`));
+
+  test('wrapping - no length (wrapped)', () =>
+    expect(
+      stringify({
+        array: [1, 2, 3],
+      }),
+    ).toBe(`{
+  "array": [ 1, 2, 3 ]
+}`));
+
+  test('wrapping - chop', () =>
     expect(
       stringify(
         {
-          array: [1, 2],
-          string: 'test',
+          array: [1, 2, 3],
+          string: 'long string',
         },
         { wrap: 'chop' },
       ),
     ).toBe(`{
   "array": [
     1,
-    2
+    2,
+    3
   ],
-  "string": "test"
-}`);
-  });
-  test('wrapping - chop if long', () => {
+  "string": "long string"
+}`));
+
+  test('wrapping - chop if long (long)', () =>
     expect(
       stringify(
         {
-          array: [1, 2, 3, 4, 5],
-          string: 'test',
+          array: [1, 2, 3],
+          string: 'short',
         },
         { wrap: 'chop if long' },
       ),
@@ -248,19 +266,31 @@ describe('stringify()', () => {
   "array": [
     1,
     2,
-    3,
-    4,
-    5
+    3
   ],
-  "string": "test"
-}`);
-  });
-  test('wrapping - wrap if long', () => {
+  "string": "short"
+}`));
+
+  test('wrapping - chop if long (short)', () =>
+    expect(
+      stringify(
+        {
+          array: [1, 2, 3],
+          string: 'long string',
+        },
+        { wrap: 'chop if long' },
+      ),
+    ).toBe(`{
+  "array": [ 1, 2, 3 ],
+  "string": "long string"
+}`));
+
+  test('wrapping - wrap if long (long)', () =>
     expect(
       stringify(
         {
           array: [1, 2, 3, 4, 5, 6, 7, 8],
-          string: 'test',
+          string: 'short',
         },
         { wrap: 'wrap if long' },
       ),
@@ -268,9 +298,22 @@ describe('stringify()', () => {
   "array": [ 1, 2,
     3, 4, 5, 6, 7,
     8 ],
-  "string": "test"
-}`);
-  });
+  "string": "short"
+}`));
+
+  test('wrapping - wrap if long (short)', () =>
+    expect(
+      stringify(
+        {
+          array: [1, 2, 3],
+          string: 'long string',
+        },
+        { wrap: 'wrap if long' },
+      ),
+    ).toBe(`{
+  "array": [ 1, 2, 3 ],
+  "string": "long string"
+}`));
 });
 
 test('SnakeCaseKeys', () => {
