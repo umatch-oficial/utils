@@ -6,7 +6,7 @@
 
 # Type alias: TypeFromPath\<O, P\>
 
-> **TypeFromPath**\<`O`, `P`\>: `P` extends `string` ? `O` extends [`Dictionary`](Dictionary.md) ? `P` extends keyof `O` ? `O`\[`P`\] : `P` extends \`${infer H}.${infer T}\` ? `H` extends keyof `O` ? [`TypeFromPath`](TypeFromPath.md)\<`O`\[`H`\], `T`\> : `never` : `never` : `never` : `unknown`
+> **TypeFromPath**\<`O`, `P`\>: `P` extends \`${infer H}.${infer T}\` ? { [K in keyof O]: K extends string | number | bigint | boolean | null | undefined ? \`${K}\` extends H ? TypeFromPath<O[K], T> : never : never }\[keyof `O`\] : { [K in keyof O]: K extends string | number | bigint | boolean | null | undefined ? \`${K}\` extends P ? O[K] : never : never }\[keyof `O`\]
 
 Takes an object and a path string that uses dot notation
 and returns the type of the deep property at the path.
@@ -19,7 +19,7 @@ and returns the type of the deep property at the path.
 
 ## Source
 
-[src/index.ts:163](https://github.com/umatch-oficial/utils/blob/7369e19/src/index.ts#L163)
+[src/index.ts:163](https://github.com/umatch-oficial/utils/blob/4c813c4/src/index.ts#L163)
 
 ***
 

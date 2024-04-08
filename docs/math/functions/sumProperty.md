@@ -26,7 +26,7 @@ Returns the sum of the given property of the elements in the array.
 
 ## Source
 
-[src/math/index.ts:323](https://github.com/umatch-oficial/utils/blob/7369e19/src/math/index.ts#L323)
+[src/math/index.ts:323](https://github.com/umatch-oficial/utils/blob/4c813c4/src/math/index.ts#L323)
 
 ***
 

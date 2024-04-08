@@ -18,7 +18,7 @@ From T, picks properties whose values are of type U.
 
 ## Source
 
-[src/index.ts:67](https://github.com/umatch-oficial/utils/blob/7369e19/src/index.ts#L67)
+[src/index.ts:67](https://github.com/umatch-oficial/utils/blob/4c813c4/src/index.ts#L67)
 
 ***
 

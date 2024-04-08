@@ -26,7 +26,7 @@ without repeated elements.<br>
 
 ## Source
 
-[src/array/index.ts:282](https://github.com/umatch-oficial/utils/blob/7369e19/src/array/index.ts#L282)
+[src/array/index.ts:282](https://github.com/umatch-oficial/utils/blob/4c813c4/src/array/index.ts#L282)
 
 ***
 

@@ -16,7 +16,7 @@ Returns a union of the values of an object, similar to 'keyof'.
 
 ## Source
 
-[src/index.ts:29](https://github.com/umatch-oficial/utils/blob/7369e19/src/index.ts#L29)
+[src/index.ts:29](https://github.com/umatch-oficial/utils/blob/4c813c4/src/index.ts#L29)
 
 ***
 

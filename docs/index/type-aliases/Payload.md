@@ -10,7 +10,7 @@
 
 ## Source
 
-[src/index.ts:3](https://github.com/umatch-oficial/utils/blob/7369e19/src/index.ts#L3)
+[src/index.ts:3](https://github.com/umatch-oficial/utils/blob/4c813c4/src/index.ts#L3)
 
 ***
 

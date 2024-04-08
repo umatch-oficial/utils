@@ -17,7 +17,7 @@ arrays, empty objects or deep empty objects.
 
 ## Source
 
-[src/object/index.ts:261](https://github.com/umatch-oficial/utils/blob/7369e19/src/object/index.ts#L261)
+[src/object/index.ts:261](https://github.com/umatch-oficial/utils/blob/4c813c4/src/object/index.ts#L261)
 
 ***
 

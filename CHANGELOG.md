@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [16.0.0](https://github.com/umatch-oficial/utils/compare/v14.0.0...v16.0.0) (2024-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **object:** the 'indent' option has been renamed to 'indentSize'
+and the output is fundamentally altered.
+
+### Features
+
+* **object:** add 'length' and 'wrap' options to stringify() and refactor implementation ([7369e19](https://github.com/umatch-oficial/utils/commit/7369e19ae34fdd237549f0c40024d40db06ee611))
+
+
+### Bug Fixes
+
+* **index:** allow non-string keys in TypeFromPath ([4c813c4](https://github.com/umatch-oficial/utils/commit/4c813c41d66903372f74cc739777feaac4c685b1))
+
 ## [15.0.0](https://github.com/umatch-oficial/utils/compare/v14.0.0...v15.0.0) (2024-03-25)
 
 

@@ -20,7 +20,7 @@ Returns whether obj is a Date.
 
 ## Source
 
-[src/index.ts:210](https://github.com/umatch-oficial/utils/blob/7369e19/src/index.ts#L210)
+[src/index.ts:213](https://github.com/umatch-oficial/utils/blob/4c813c4/src/index.ts#L213)
 
 ***
 
