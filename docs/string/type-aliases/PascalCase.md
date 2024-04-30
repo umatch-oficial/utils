@@ -18,7 +18,7 @@ Converts a string to PascalCase.
 
 ## Source
 
-[src/string/index.ts:597](https://github.com/umatch-oficial/utils/blob/4c813c4/src/string/index.ts#L597)
+[src/string/index.ts:596](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L596)
 
 ***
 

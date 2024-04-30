@@ -69,7 +69,7 @@ formatTime(
 
 ## Source
 
-[src/string/index.ts:131](https://github.com/umatch-oficial/utils/blob/4c813c4/src/string/index.ts#L131)
+[src/string/index.ts:130](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L130)
 
 ***
 

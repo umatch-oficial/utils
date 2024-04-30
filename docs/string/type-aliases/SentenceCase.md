@@ -18,7 +18,7 @@ Converts a string to Sentence case.
 
 ## Source
 
-[src/string/index.ts:611](https://github.com/umatch-oficial/utils/blob/4c813c4/src/string/index.ts#L611)
+[src/string/index.ts:610](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L610)
 
 ***
 

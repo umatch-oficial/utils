@@ -18,7 +18,7 @@ From T, picks keys whose values are of type U.
 
 ## Source
 
-[src/index.ts:73](https://github.com/umatch-oficial/utils/blob/4c813c4/src/index.ts#L73)
+[src/index.ts:73](https://github.com/umatch-oficial/utils/blob/ed8915b/src/index.ts#L73)
 
 ***
 

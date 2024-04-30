@@ -25,7 +25,7 @@ in-depth explanation.
 
 ## Source
 
-[src/math/index.ts:285](https://github.com/umatch-oficial/utils/blob/4c813c4/src/math/index.ts#L285)
+[src/math/index.ts:285](https://github.com/umatch-oficial/utils/blob/ed8915b/src/math/index.ts#L285)
 
 ***
 

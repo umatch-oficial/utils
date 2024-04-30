@@ -8,8 +8,8 @@
 
 > **basicPluralizer**(`word`, `quantity`?, `plural`?): `string`
 
-Pluralizes the word if *quantity* is undefined, 0 or
-greater than 1. Uses the given plural or adds an 's' to the end.
+Pluralizes the word if *quantity* is undefined or not 1. Uses the
+given plural or adds an 's' to the end.
 
 ## Parameters
 
@@ -36,7 +36,7 @@ basicPluralizer('developer', 2)
 
 ## Source
 
-[src/string/index.ts:62](https://github.com/umatch-oficial/utils/blob/4c813c4/src/string/index.ts#L62)
+[src/string/index.ts:62](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L62)
 
 ***
 

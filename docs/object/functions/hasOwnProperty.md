@@ -28,7 +28,7 @@ Checks if a prop exists in obj and tells TypeScript that obj has this prop.
 
 ## Source
 
-[src/object/index.ts:249](https://github.com/umatch-oficial/utils/blob/4c813c4/src/object/index.ts#L249)
+[src/object/index.ts:249](https://github.com/umatch-oficial/utils/blob/ed8915b/src/object/index.ts#L249)
 
 ***
 

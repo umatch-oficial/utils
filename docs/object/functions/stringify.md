@@ -47,7 +47,7 @@ to respect the length option. If the length is undefined, 'chop' is used. Defaul
 
 ## Source
 
-[src/object/index.ts:452](https://github.com/umatch-oficial/utils/blob/4c813c4/src/object/index.ts#L452)
+[src/object/index.ts:452](https://github.com/umatch-oficial/utils/blob/ed8915b/src/object/index.ts#L452)
 
 ***
 
