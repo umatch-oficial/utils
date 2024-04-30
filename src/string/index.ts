@@ -226,7 +226,7 @@ type DateTimeDict = { [_ in DateTimeUnit]?: string } & {
  * @param [options.short] Whether to shorten the duration identifier (pick first letter)
  * @param [options.unitsThresholds] Threshold per unit
  *
- * @throws if the given dictionary doesn't have entries for all possible units.
+ * @throws {Error} if the given dictionary doesn't have entries for all possible units.
  */
 function getCountDown(
   date: string | DateTime,
@@ -347,7 +347,7 @@ function pad(left: string, right: string, length: number): string {
 /**
  * Parses a boolean from the string.
  *
- * @throws if it fails to parse and there is no default value.
+ * @throws {Error} if it fails to parse and there is no default value.
  */
 function parseBool(str: string | null | undefined, def?: boolean): boolean {
   switch ((str ?? '').toLowerCase().trim()) {
@@ -440,7 +440,7 @@ function parseFunctionCall(str: string): [string, Primitive[]] {
 /**
  * Parses a number from the string.
  *
- * @throws if it fails to parse and there is no default value.
+ * @throws {Error} if it fails to parse and there is no default value.
  */
 function parseNumber<T extends number | null = number>(
   str: string | null | undefined,

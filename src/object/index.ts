@@ -305,7 +305,7 @@ function _merge(
  * except when both objects hold an array on the same key and the
  * strategy is set to "concat", in which case both arrays are merged.
  *
- * @throws if an unexpected strategy is provided.
+ * @throws {Error} if an unexpected strategy is provided.
  */
 function merge<A, B extends Partial<A> | Dictionary>(
   target: A,
@@ -387,7 +387,7 @@ function rename(
  * // returns { a: { b: [2,3,5] } }
  * setDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]', 5)
  *
- * @throws if some object in the path is an array, but the next key is not a number.
+ * @throws {Error} if some object in the path is an array, but the next key is not a number.
  */
 function setDeepProperty(
   obj: Dictionary | readonly unknown[],

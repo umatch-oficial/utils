@@ -183,7 +183,7 @@ function formatMatrixToString(
  * for every object in the array. If the value is boolean, it becomes
  * an index of the resulting object as a string.
  *
- * @throws if, for any element in the array, the key is not present or has a non-primitive value.
+ * @throws {Error} if, for any element in the array, the key is not present or has a non-primitive value.
  */
 function groupBy<T extends readonly Dictionary[], Key extends PropertyKey>(
   array: T,
@@ -445,7 +445,7 @@ type Zip<
 /**
  * Zips arrays. (equivalent of python's zip)
  *
- * @throws if the arrays don't have the same length.
+ * @throws {Error} if the arrays don't have the same length.
  */
 function zip<T extends readonly (readonly unknown[])[]>(...arrays: T): Zip<T>;
 function zip(...arrays: readonly (readonly unknown[])[]): unknown[] {
