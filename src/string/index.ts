@@ -48,8 +48,8 @@ type Unquote<S extends string, Quote extends "'" | '"' = "'" | '"'> = "'" extend
   : S;
 
 /**
- * Pluralizes the word if *quantity* is undefined, 0 or
- * greater than 1. Uses the given plural or adds an 's' to the end.
+ * Pluralizes the word if *quantity* is undefined or not 1. Uses the
+ * given plural or adds an 's' to the end.
  *
  * @example
  * // returns 'developers'
@@ -60,8 +60,7 @@ type Unquote<S extends string, Quote extends "'" | '"' = "'" | '"'> = "'" extend
  * basicPluralizer('developer', 2)
  */
 function basicPluralizer(word: string, quantity?: number, plural?: string): string {
-  const shouldPluralize =
-    quantity === undefined || quantity === 0 || Math.abs(quantity) > 1;
+  const shouldPluralize = quantity === undefined || Math.abs(quantity) !== 1;
   return shouldPluralize ? plural ?? `${word}s` : word;
 }
 
