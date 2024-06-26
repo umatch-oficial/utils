@@ -2,11 +2,11 @@
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / Pluralizer
+[@umatch/utils](../../modules.md) / [string](../index.md) / ToPlural
 
-# Type alias: Pluralizer
+# Type alias: ToPlural
 
-> **Pluralizer**: (`word`, `quantity`?, `plural`?) => `string`
+> **ToPlural**: (`word`, `quantity`?, `plural`?) => `string`
 
 ## Parameters
 
@@ -22,7 +22,7 @@
 
 ## Source
 
-[src/string/index.ts:12](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L12)
+[src/string/index.ts:13](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L13)
 
 ***
 

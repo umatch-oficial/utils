@@ -28,7 +28,7 @@ split it and map the function over each unit according to your needs.
 
 ## Source
 
-[src/string/index.ts:681](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L681)
+[src/string/index.ts:704](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L704)
 
 ***
 

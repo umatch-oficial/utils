@@ -29,7 +29,7 @@ parseFunctionCall("foo(1, 'bar', true) + 1") // returns ["", []]
 
 ## Source
 
-[src/string/index.ts:376](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L376)
+[src/string/index.ts:399](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L399)
 
 ***
 

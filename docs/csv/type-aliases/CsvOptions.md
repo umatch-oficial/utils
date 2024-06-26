@@ -28,7 +28,7 @@
 
 ## Source
 
-[src/csv/index.ts:15](https://github.com/umatch-oficial/utils/blob/ed8915b/src/csv/index.ts#L15)
+[src/csv/index.ts:15](https://github.com/umatch-oficial/utils/blob/6b2757d/src/csv/index.ts#L15)
 
 ***
 

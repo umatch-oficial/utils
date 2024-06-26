@@ -18,7 +18,7 @@ Converts a string to camelCase.
 
 ## Source
 
-[src/string/index.ts:582](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L582)
+[src/string/index.ts:605](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L605)
 
 ***
 

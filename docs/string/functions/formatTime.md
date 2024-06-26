@@ -47,7 +47,7 @@ Words to substitute. Default: english words
 
 The number of parts to include in the output. Default: 2
 
-• **options\.pluralizer?**: [`Pluralizer`](../type-aliases/Pluralizer.md)
+• **options\.pluralizer?**: [`ToPlural`](../type-aliases/ToPlural.md)
 
 A pluralizer function. Default: adds 's' to the end the word
 
@@ -69,7 +69,7 @@ formatTime(
 
 ## Source
 
-[src/string/index.ts:130](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L130)
+[src/string/index.ts:153](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L153)
 
 ***
 

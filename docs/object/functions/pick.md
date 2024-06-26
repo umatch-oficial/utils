@@ -31,7 +31,7 @@ not present, it receives the value of undefined.
 
 ## Source
 
-[src/object/index.ts:345](https://github.com/umatch-oficial/utils/blob/ed8915b/src/object/index.ts#L345)
+[src/object/index.ts:345](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L345)
 
 ***
 

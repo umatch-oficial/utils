@@ -2,11 +2,11 @@
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / basicPluralizer
+[@umatch/utils](../../modules.md) / [string](../index.md) / plural
 
-# Function: basicPluralizer()
+# Function: plural()
 
-> **basicPluralizer**(`word`, `quantity`?, `plural`?): `string`
+> **plural**(`word`, `quantity`?, `plural`?): `string`
 
 Pluralizes the word if *quantity* is undefined or not 1. Uses the
 given plural or adds an 's' to the end.
@@ -27,16 +27,16 @@ given plural or adds an 's' to the end.
 
 ```ts
 // returns 'developers'
-basicPluralizer('developer')
+plural('developer')
 // returns 'developer'
-basicPluralizer('developer', 1)
+plural('developer', 1)
 // returns 'developers'
-basicPluralizer('developer', 2)
+plural('developer', 2)
 ```
 
 ## Source
 
-[src/string/index.ts:62](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L62)
+[src/string/index.ts:13](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L13)
 
 ***
 

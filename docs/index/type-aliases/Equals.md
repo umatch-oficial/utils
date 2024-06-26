@@ -18,7 +18,7 @@ Asserts two types are equal.
 
 ## Source
 
-[src/index.ts:115](https://github.com/umatch-oficial/utils/blob/ed8915b/src/index.ts#L115)
+[src/index.ts:115](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L115)
 
 ***
 

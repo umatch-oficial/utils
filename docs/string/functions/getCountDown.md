@@ -27,7 +27,7 @@ If date is a string, it is parsed with DateTime.fromISO(string, { setZone: true 
 
 Words to substitute. Default: english words
 
-• **options\.pluralizer?**: [`Pluralizer`](../type-aliases/Pluralizer.md)
+• **options\.pluralizer?**: [`ToPlural`](../type-aliases/ToPlural.md)
 
 A pluralizer function. Default: adds 's' to the end the word
 
@@ -61,7 +61,7 @@ if the given dictionary doesn't have entries for all possible units.
 
 ## Source
 
-[src/string/index.ts:230](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L230)
+[src/string/index.ts:253](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L253)
 
 ***
 

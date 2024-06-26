@@ -28,7 +28,7 @@ Returns a copy of an object, with renamed first-level keys.
 
 ## Source
 
-[src/object/index.ts:354](https://github.com/umatch-oficial/utils/blob/ed8915b/src/object/index.ts#L354)
+[src/object/index.ts:354](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L354)
 
 ***
 

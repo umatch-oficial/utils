@@ -26,7 +26,7 @@ if it fails to parse and there is no default value.
 
 ## Source
 
-[src/string/index.ts:351](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L351)
+[src/string/index.ts:374](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L374)
 
 ***
 

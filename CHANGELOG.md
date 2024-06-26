@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [17.0.0](https://github.com/umatch-oficial/utils/compare/v16.0.1...v17.0.0) (2024-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **string:** renamed basicPluralizer() to plural() and Pluralizer to ToPlural
+
+### Features
+
+* **string:** add ordinal() ([6b2757d](https://github.com/umatch-oficial/utils/commit/6b2757d640ed14eadad20895ae9e1ea3ab055e41))
+* **string:** rename basicPluralizer() to plural() and Pluralizer to ToPlural ([ab72433](https://github.com/umatch-oficial/utils/commit/ab72433a7360e2f69ec2249867eb348114c4cad6))
+
 ## [16.0.1](https://github.com/umatch-oficial/utils/compare/v16.0.0...v16.0.1) (2024-04-30)
 
 

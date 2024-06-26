@@ -28,7 +28,7 @@ Joins an array of primitives, filtering out nulls, undefineds and empty strings.
 
 ## Source
 
-[src/string/index.ts:313](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L313)
+[src/string/index.ts:336](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L336)
 
 ***
 

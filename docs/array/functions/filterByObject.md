@@ -29,7 +29,7 @@ pairs in the template.
 
 ## Source
 
-[src/array/index.ts:101](https://github.com/umatch-oficial/utils/blob/ed8915b/src/array/index.ts#L101)
+[src/array/index.ts:101](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L101)
 
 ***
 

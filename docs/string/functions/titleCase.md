@@ -30,7 +30,7 @@ Words to skip. Default: english skip words (articles, prepositions, etc.)
 
 ## Source
 
-[src/string/index.ts:736](https://github.com/umatch-oficial/utils/blob/ed8915b/src/string/index.ts#L736)
+[src/string/index.ts:759](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L759)
 
 ***
 
