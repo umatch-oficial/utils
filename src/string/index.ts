@@ -9,6 +9,7 @@ import type { Primitive } from '../index';
 import type { DateTimeUnit } from 'luxon';
 
 type ChalkColor = typeof ForegroundColor;
+type ToOrdinal = (num: number) => string;
 type ToPlural = (word: string, quantity?: number, plural?: string) => string;
 
 /**
@@ -46,6 +47,24 @@ type Unquote<S extends string, Quote extends "'" | '"' = "'" | '"'> = "'" extend
   : S extends `"${infer Middle}"`
   ? Middle
   : S;
+
+/**
+ * Returns the ordinal of a number.
+ */
+const ordinal: ToOrdinal = (num: number): string => {
+  const j = num % 10;
+  const k = num % 100;
+  if (j === 1 && k !== 11) {
+    return num + 'st';
+  }
+  if (j === 2 && k !== 12) {
+    return num + 'nd';
+  }
+  if (j === 3 && k !== 13) {
+    return num + 'rd';
+  }
+  return num + 'th';
+};
 
 /**
  * Pluralizes the word if *quantity* is undefined or not 1. Uses the
@@ -756,6 +775,7 @@ export {
   join,
   joinNonEmpty,
   joinUrl,
+  ordinal,
   pad,
   parseBool,
   parseFunctionCall,
@@ -769,6 +789,7 @@ export {
   type JoinNonEmpty,
   type LastLetter,
   type Replace,
+  type ToOrdinal,
   type ToPlural,
   type Trim,
   type Unquote,

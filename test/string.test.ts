@@ -12,6 +12,7 @@ import {
   join,
   joinNonEmpty,
   joinUrl,
+  ordinal,
   pad,
   parseBool,
   parseFunctionCall,
@@ -144,6 +145,22 @@ describe.each([
   const output = 'https://abc.com/example';
   test(`joinUrl(${JSON.stringify(parts)}) = '${output}'`, () => {
     expect(joinUrl(...parts)).toBe(output);
+  });
+});
+
+describe.each([
+  [1, '1st'],
+  [2, '2nd'],
+  [3, '3rd'],
+  [4, '4th'],
+  [11, '11th'],
+  [12, '12th'],
+  [13, '13th'],
+  [14, '14th'],
+  [111, '111th'],
+])('ordinal()', (num, res) => {
+  test(`ordinal(${num}) = ${res}`, () => {
+    expect(ordinal(num)).toBe(res);
   });
 });
 
