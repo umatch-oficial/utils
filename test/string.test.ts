@@ -3,7 +3,6 @@
 import { DateTime } from 'luxon';
 
 import {
-  basicPluralizer,
   camelCase,
   capitalize,
   center,
@@ -18,16 +17,17 @@ import {
   parseFunctionCall,
   parseNumber,
   pascalCase,
+  plural,
   removeAccents,
   rsplit,
   sentenceCase,
   snakeCase,
   split,
   titleCase,
+  uncapitalize,
   type Replace,
   type Trim,
   type Unquote,
-  uncapitalize,
 } from '../src/string';
 
 describe.each([
@@ -36,11 +36,11 @@ describe.each([
   ['person', 1, undefined, 'person'],
   ['person', 2, undefined, 'persons'],
   ['person', 2, 'people', 'people'],
-])('basicPluralizer()', (word, quantity, plural, res) => {
-  test(`basicPluralizer('${word}'${quantity ? `, ${quantity}` : ''}${
-    plural ? `, '${plural}'` : ''
+])('plural()', (word, quantity, pluralVersion, res) => {
+  test(`plural('${word}'${quantity ? `, ${quantity}` : ''}${
+    pluralVersion ? `, '${pluralVersion}'` : ''
   }) = ${res}`, () => {
-    expect(basicPluralizer(word, quantity, plural)).toBe(res);
+    expect(plural(word, quantity, pluralVersion)).toBe(res);
   });
 });
 

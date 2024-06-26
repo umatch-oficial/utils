@@ -9,7 +9,7 @@ import type { Primitive } from '../index';
 import type { DateTimeUnit } from 'luxon';
 
 type ChalkColor = typeof ForegroundColor;
-type Pluralizer = (word: string, quantity?: number, plural?: string) => string;
+type ToPlural = (word: string, quantity?: number, plural?: string) => string;
 
 /**
  * Replaces NewChar with Char in S.
@@ -53,16 +53,20 @@ type Unquote<S extends string, Quote extends "'" | '"' = "'" | '"'> = "'" extend
  *
  * @example
  * // returns 'developers'
- * basicPluralizer('developer')
+ * plural('developer')
  * // returns 'developer'
- * basicPluralizer('developer', 1)
+ * plural('developer', 1)
  * // returns 'developers'
- * basicPluralizer('developer', 2)
+ * plural('developer', 2)
  */
-function basicPluralizer(word: string, quantity?: number, plural?: string): string {
+const plural: ToPlural = (
+  word: string,
+  quantity?: number,
+  pluralVersion?: string,
+): string => {
   const shouldPluralize = quantity === undefined || Math.abs(quantity) !== 1;
-  return shouldPluralize ? plural ?? `${word}s` : word;
-}
+  return shouldPluralize ? pluralVersion ?? `${word}s` : word;
+};
 
 /**
  * Pads a string on both sides to achieve the desired length.
@@ -143,14 +147,14 @@ function formatTime(
       millisecond: string;
     };
     parts?: number;
-    pluralizer?: Pluralizer;
+    pluralizer?: ToPlural;
     short?: boolean;
   },
 ): string {
   const { hours, minutes, seconds, milliseconds } = time;
   const { parts, pluralize, dictionary, short } = {
     parts: 2,
-    pluralize: basicPluralizer,
+    pluralize: plural,
     ...options,
   };
   const { and, hour, minute, second, millisecond } = {
@@ -231,7 +235,7 @@ function getCountDown(
   date: string | DateTime,
   options?: {
     dictionary?: DateTimeDict;
-    pluralizer?: Pluralizer;
+    pluralizer?: ToPlural;
     short?: boolean;
     unitsThresholds?: readonly (readonly [DateTimeUnit, number])[];
   },
@@ -242,7 +246,7 @@ function getCountDown(
       hour: 'hour',
       minute: 'minute',
     },
-    pluralize: basicPluralizer,
+    pluralize: plural,
     ...options,
   };
   const now = DateTime.now();
@@ -744,7 +748,6 @@ function titleCase<S extends string>(
 }
 
 export {
-  basicPluralizer,
   capitalize,
   center,
   formatStr,
@@ -757,6 +760,7 @@ export {
   parseBool,
   parseFunctionCall,
   parseNumber,
+  plural,
   removeAccents,
   rsplit,
   split,
@@ -764,8 +768,8 @@ export {
   type DateTimeDict,
   type JoinNonEmpty,
   type LastLetter,
-  type Pluralizer,
   type Replace,
+  type ToPlural,
   type Trim,
   type Unquote,
   // case functions
