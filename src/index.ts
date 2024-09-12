@@ -159,22 +159,12 @@ type NestedPaths<
 /**
  * Takes an object and a path string that uses dot notation
  * and returns the type of the deep property at the path.
+ *
+ * The object must only contain string keys.
  */
 type TypeFromPath<O, P extends string> = P extends `${infer H}.${infer T}`
-  ? {
-      [K in keyof O]: K extends string | number | bigint | boolean | null | undefined
-        ? `${K}` extends H
-          ? TypeFromPath<O[K], T>
-          : never
-        : never;
-    }[keyof O]
-  : {
-      [K in keyof O]: K extends string | number | bigint | boolean | null | undefined
-        ? `${K}` extends P
-          ? O[K]
-          : never
-        : never;
-    }[keyof O];
+  ? TypeFromPath<O[H & keyof O], T>
+  : O[P & keyof O];
 /**
  * Returns a union of the types in the tuple.
  */
