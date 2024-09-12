@@ -1,23 +1,21 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / TupleToUnion
+[@umatch/utils](../../api.md) / [index](../README.md) / TupleToUnion
 
-# Type alias: TupleToUnion\<T\>
+# Type Alias: TupleToUnion\<T\>
 
-> **TupleToUnion**\<`T`\>: `T` extends `unknown`[] ? `T`\[`number`\] : `T`
+```ts
+type TupleToUnion<T>: T extends unknown[] ? T[number] : T;
+```
 
 Returns a union of the types in the tuple.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
-## Source
+## Defined in
 
-[src/index.ts:182](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L182)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:172](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L172)

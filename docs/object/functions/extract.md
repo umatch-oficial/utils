@@ -1,12 +1,24 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / extract
+[@umatch/utils](../../api.md) / [object](../README.md) / extract
 
 # Function: extract()
 
-> **extract**\<`T`, `K`, `V`, `Options`\>(`obj`, `options`): `T` extends [`Dictionary`](../../index/type-aliases/Dictionary.md) ? `Options` extends `Object` ? [{ [Key in keyof T as Key extends \`${Prefix & string}${infer Rest}\` ? Options extends Object ? Key : Rest : never]: T[Key] }, { [Key in keyof T as Key extends \`${Prefix & string}${infer _}\` ? never : Key]: T[Key] }] : `Options` extends `Object` ? [{ [Key in keyof T as Key extends \`${infer Rest}${Suffix & string}\` ? Options extends Object ? Key : Rest : never]: T[Key] }, { [Key in keyof T as Key extends \`${infer _}${Suffix & string}\` ? never : Key]: T[Key] }] : `Options` extends `Object` ? [`Pick`\<`T`, `K`\>, `Omit`\<`T`, `K`\>] : `Options` extends `Object` ? [`Object`, `Object`] : `Options` extends `Object` ? [`Object`, `Object`] : `never` : [`Dictionary`](../../index/type-aliases/Dictionary.md)
+```ts
+function extract<T, K, V, Options>(obj, options): T extends Dictionary ? Options extends {
+  prefix: infer Prefix;
+ } ? [{ [Key in keyof T as Key extends `${Prefix & string}${infer Rest}` ? Options extends Object ? Key : Rest : never]: T[Key] }, { [Key in keyof T as Key extends `${Prefix & string}${infer _}` ? never : Key]: T[Key] }] : Options extends {
+  suffix: infer Suffix;
+ } ? [{ [Key in keyof T as Key extends `${infer Rest}${Suffix & string}` ? Options extends Object ? Key : Rest : never]: T[Key] }, { [Key in keyof T as Key extends `${infer _}${Suffix & string}` ? never : Key]: T[Key] }] : Options extends {
+  keys: readonly K[];
+ } ? [Pick<T, K>, Omit<T, K>] : Options extends {
+  keys: (key) => boolean;
+ } ? [{}, {}] : Options extends {
+  values: (value) => boolean;
+ } ? [{}, {}] : never : Dictionary
+```
 
 Dynamic version of pick.
 
@@ -18,15 +30,35 @@ function to filter values. If the rule is a prefix or suffix,
 removes the prefix/suffix from the matched keys (can be turned off
 with the rename option).
 
-## Type parameters
+## Type Parameters
 
-• **T** extends [`Dictionary`](../../index/type-aliases/Dictionary.md)
+• **T** *extends* [`Dictionary`](../../index/type-aliases/Dictionary.md)
 
-• **K** extends `string` \| `number` \| `symbol`
+• **K** *extends* `string` \| `number` \| `symbol`
 
-• **V** extends `unknown`
+• **V** *extends* `unknown`
 
-• **Options** extends `Object` \| `Object` \| `Object` \| `Object` \| `Object` \| `Object`
+• **Options** *extends* 
+  \| \{
+  `custom`: `RegExp`;
+ \}
+  \| \{
+  `keys`: (`key`) => `boolean`;
+ \}
+  \| \{
+  `keys`: readonly `string`[];
+ \}
+  \| \{
+  `values`: (`value`) => `boolean`;
+ \}
+  \| \{
+  `prefix`: `string`;
+  `rename`: `boolean`;
+ \}
+  \| \{
+  `rename`: `boolean`;
+  `suffix`: `string`;
+ \}
 
 ## Parameters
 
@@ -36,12 +68,18 @@ with the rename option).
 
 ## Returns
 
-`T` extends [`Dictionary`](../../index/type-aliases/Dictionary.md) ? `Options` extends `Object` ? [{ [Key in keyof T as Key extends \`${Prefix & string}${infer Rest}\` ? Options extends Object ? Key : Rest : never]: T[Key] }, { [Key in keyof T as Key extends \`${Prefix & string}${infer _}\` ? never : Key]: T[Key] }] : `Options` extends `Object` ? [{ [Key in keyof T as Key extends \`${infer Rest}${Suffix & string}\` ? Options extends Object ? Key : Rest : never]: T[Key] }, { [Key in keyof T as Key extends \`${infer _}${Suffix & string}\` ? never : Key]: T[Key] }] : `Options` extends `Object` ? [`Pick`\<`T`, `K`\>, `Omit`\<`T`, `K`\>] : `Options` extends `Object` ? [`Object`, `Object`] : `Options` extends `Object` ? [`Object`, `Object`] : `never` : [`Dictionary`](../../index/type-aliases/Dictionary.md)
+`T` *extends* [`Dictionary`](../../index/type-aliases/Dictionary.md) ? `Options` *extends* \{
+  `prefix`: infer Prefix;
+ \} ? [\{ \[Key in keyof T as Key extends \`$\{Prefix & string\}$\{infer Rest\}\` ? Options extends Object ? Key : Rest : never\]: T\[Key\] \}, \{ \[Key in keyof T as Key extends \`$\{Prefix & string\}$\{infer \_\}\` ? never : Key\]: T\[Key\] \}] : `Options` *extends* \{
+  `suffix`: infer Suffix;
+ \} ? [\{ \[Key in keyof T as Key extends \`$\{infer Rest\}$\{Suffix & string\}\` ? Options extends Object ? Key : Rest : never\]: T\[Key\] \}, \{ \[Key in keyof T as Key extends \`$\{infer \_\}$\{Suffix & string\}\` ? never : Key\]: T\[Key\] \}] : `Options` *extends* \{
+  `keys`: readonly `K`[];
+ \} ? [`Pick`\<`T`, `K`\>, `Omit`\<`T`, `K`\>] : `Options` *extends* \{
+  `keys`: (`key`) => `boolean`;
+ \} ? [\{\}, \{\}] : `Options` *extends* \{
+  `values`: (`value`) => `boolean`;
+ \} ? [\{\}, \{\}] : `never` : [`Dictionary`](../../index/type-aliases/Dictionary.md)
 
-## Source
+## Defined in
 
-[src/object/index.ts:102](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L102)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:102](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L102)

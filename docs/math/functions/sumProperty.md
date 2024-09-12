@@ -1,18 +1,20 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / sumProperty
+[@umatch/utils](../../api.md) / [math](../README.md) / sumProperty
 
 # Function: sumProperty()
 
-> **sumProperty**\<`Prop`\>(`array`, `property`): `number`
+```ts
+function sumProperty<Prop>(array, property): number
+```
 
 Returns the sum of the given property of the elements in the array.
 
-## Type parameters
+## Type Parameters
 
-• **Prop** extends `PropertyKey`
+• **Prop** *extends* `PropertyKey`
 
 ## Parameters
 
@@ -24,10 +26,6 @@ Returns the sum of the given property of the elements in the array.
 
 `number`
 
-## Source
+## Defined in
 
-[src/math/index.ts:323](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L323)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:323](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L323)

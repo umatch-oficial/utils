@@ -1,12 +1,18 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / hashNumber
+[@umatch/utils](../../api.md) / [math](../README.md) / hashNumber
 
 # Function: hashNumber()
 
-> **hashNumber**(`number`, `length`, `characters`?, `order`?): `string`
+```ts
+function hashNumber(
+   number, 
+   length, 
+   characters?, 
+   order?): string
+```
 
 Returns a hash of the number with a fixed length using the given characters.
 
@@ -18,7 +24,7 @@ Hashes of consecutive numbers only differ by 1 character.
 
 • **length**: `number`
 
-• **characters?**: `string`= `'abcdefghijklmnopqrstuvwxyz'`
+• **characters?**: `string` = `'abcdefghijklmnopqrstuvwxyz'`
 
 Characters to use in the hash. Default: lowercase alphabet
 
@@ -30,10 +36,6 @@ An array of numbers from 0 to length-1 in any order. Default: [0,1,2,...]
 
 `string`
 
-## Source
+## Defined in
 
-[src/math/index.ts:72](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L72)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:72](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L72)

@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / average
+[@umatch/utils](../../api.md) / [math](../README.md) / average
 
 # Function: average()
 
-> **average**(`array`): `number`
+```ts
+function average(array): number
+```
 
 Returns the average of an array of numbers.
 
@@ -18,10 +20,6 @@ Returns the average of an array of numbers.
 
 `number`
 
-## Source
+## Defined in
 
-[src/math/index.ts:9](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L9)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:9](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L9)

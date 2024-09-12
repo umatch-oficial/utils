@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / range
+[@umatch/utils](../../api.md) / [math](../README.md) / range
 
 # Function: range()
 
-> **range**(`start`, `end`?): `number`[]
+```ts
+function range(start, end?): number[]
+```
 
 Returns a list of integers from *start* to *end*.
 (similar to python's range)
@@ -24,10 +26,6 @@ If 2 values are passed, uses [start, end[.
 
 `number`[]
 
-## Source
+## Defined in
 
-[src/math/index.ts:274](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L274)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:274](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L274)

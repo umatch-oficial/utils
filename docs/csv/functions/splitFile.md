@@ -1,12 +1,17 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [csv](../index.md) / splitFile
+[@umatch/utils](../../api.md) / [csv](../README.md) / splitFile
 
 # Function: splitFile()
 
-> **splitFile**(`input`, `outputs`, `options`?): `void`
+```ts
+function splitFile(
+   input, 
+   outputs, 
+   options?): void
+```
 
 Splits a file into multiple others.
 
@@ -16,7 +21,7 @@ Splits a file into multiple others.
 
 The path to the input file
 
-• **outputs**: `Object`
+• **outputs**
 
 A mapping of output file names to the columns that should be included in that file
 
@@ -28,10 +33,6 @@ Parsing options
 
 `void`
 
-## Source
+## Defined in
 
-[src/csv/index.ts:131](https://github.com/umatch-oficial/utils/blob/6b2757d/src/csv/index.ts#L131)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/csv/index.ts:131](https://github.com/umatch-oficial/utils/blob/main/src/csv/index.ts#L131)

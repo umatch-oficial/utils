@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / camelCase
+[@umatch/utils](../../api.md) / [string](../README.md) / camelCase
 
 # Function: camelCase()
 
-> **camelCase**\<`S`\>(`str`): [`CamelCase`](../type-aliases/CamelCase.md)\<`S`\>
+```ts
+function camelCase<S>(str): CamelCase<S>
+```
 
 Converts a string to camelCase.
 
@@ -14,9 +16,9 @@ Converts a string to camelCase.
 apply the function to parts of a string individually, you must
 split it and map the function over each unit according to your needs.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
 ## Parameters
 
@@ -26,10 +28,6 @@ split it and map the function over each unit according to your needs.
 
 [`CamelCase`](../type-aliases/CamelCase.md)\<`S`\>
 
-## Source
+## Defined in
 
-[src/string/index.ts:692](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L692)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:692](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L692)

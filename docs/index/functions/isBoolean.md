@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / isBoolean
+[@umatch/utils](../../api.md) / [index](../README.md) / isBoolean
 
 # Function: isBoolean()
 
-> **isBoolean**(`obj`): `obj is boolean`
+```ts
+function isBoolean(obj): obj is boolean
+```
 
 Returns whether obj is a boolean.
 
@@ -18,10 +20,6 @@ Returns whether obj is a boolean.
 
 `obj is boolean`
 
-## Source
+## Defined in
 
-[src/index.ts:206](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L206)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:196](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L196)

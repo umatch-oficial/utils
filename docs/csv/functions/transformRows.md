@@ -1,12 +1,18 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [csv](../index.md) / transformRows
+[@umatch/utils](../../api.md) / [csv](../README.md) / transformRows
 
 # Function: transformRows()
 
-> **transformRows**(`input`, `output`, `mapValues`, `csvOptions`?): `void`
+```ts
+function transformRows(
+   input, 
+   output, 
+   mapValues, 
+   csvOptions?): void
+```
 
 Applies the mapValues function to all rows, then saves to the
 output file.
@@ -21,7 +27,7 @@ The path to the input file
 
 The path to the output file
 
-• **mapValues**: (`args`) => `any`
+• **mapValues**
 
 A function that takes the index, header and value of a row and returns a string
 
@@ -33,10 +39,6 @@ Parsing options
 
 `void`
 
-## Source
+## Defined in
 
-[src/csv/index.ts:101](https://github.com/umatch-oficial/utils/blob/6b2757d/src/csv/index.ts#L101)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/csv/index.ts:101](https://github.com/umatch-oficial/utils/blob/main/src/csv/index.ts#L101)

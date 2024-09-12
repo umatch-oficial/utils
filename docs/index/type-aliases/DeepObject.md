@@ -1,27 +1,25 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / DeepObject
+[@umatch/utils](../../api.md) / [index](../README.md) / DeepObject
 
-# Type alias: DeepObject\<T\>
+# Type Alias: DeepObject\<T\>
 
-> **DeepObject**\<`T`\>: `Object`
+```ts
+type DeepObject<T>: {};
+```
 
 An object, whose values may be deeply nested.
 
-## Type parameters
+## Type Parameters
 
 • **T** = `unknown`
 
-## Index signature
+## Index Signature
 
  \[`_`: `string`\]: [`DeepNode`](DeepNode.md)\<`T`\>
 
-## Source
+## Defined in
 
-[src/index.ts:25](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L25)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:25](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L25)

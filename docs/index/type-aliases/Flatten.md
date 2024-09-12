@@ -1,25 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / Flatten
+[@umatch/utils](../../api.md) / [index](../README.md) / Flatten
 
-# Type alias: Flatten\<Y, Acc\>
+# Type Alias: Flatten\<Y, Acc\>
 
-> **Flatten**\<`Y`, `Acc`\>: `Y` extends readonly [infer H, `...(infer T)`] ? `H` extends readonly `unknown`[] ? [`Flatten`](Flatten.md)\<`T`, readonly [`...Acc`, `H`\[`number`\]]\> : [`Flatten`](Flatten.md)\<`T`, readonly [`...Acc`, `H`]\> : `Acc`
+```ts
+type Flatten<Y, Acc>: Y extends readonly [infer H, ...(infer T)] ? H extends readonly unknown[] ? Flatten<T, readonly [...Acc, H[number]]> : Flatten<T, readonly [...Acc, H]> : Acc;
+```
 
 Flattens a tuple.
 
-## Type parameters
+## Type Parameters
 
-• **Y** extends readonly `unknown`[]
+• **Y** *extends* readonly `unknown`[]
 
-• **Acc** extends readonly `unknown`[] = []
+• **Acc** *extends* readonly `unknown`[] = []
 
-## Source
+## Defined in
 
-[src/index.ts:39](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L39)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:39](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L39)

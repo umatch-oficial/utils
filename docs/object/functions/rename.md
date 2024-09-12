@@ -1,20 +1,22 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / rename
+[@umatch/utils](../../api.md) / [object](../README.md) / rename
 
 # Function: rename()
 
-> **rename**\<`T`, `Mapper`\>(`obj`, `mapper`): `Mapper` extends [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`string`\> ? `{ [K in Exclude<keyof T, ValueOf<Mapper>> as K extends keyof Mapper ? Mapper[K] : K]: T[K] }` : `Object`
+```ts
+function rename<T, Mapper>(obj, mapper): Mapper extends Dictionary<string> ? { [K in Exclude<keyof T, ValueOf<Mapper>> as K extends keyof Mapper ? Mapper[K] : K]: T[K] } : {}
+```
 
 Returns a copy of an object, with renamed first-level keys.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
-• **Mapper** extends `{ [_ in string | number | symbol]?: string }` \| (`a`) => `string`
+• **Mapper** *extends* \{ \[\_ in string \| number \| symbol\]?: string \} \| (`a`) => `string`
 
 ## Parameters
 
@@ -24,12 +26,8 @@ Returns a copy of an object, with renamed first-level keys.
 
 ## Returns
 
-`Mapper` extends [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`string`\> ? `{ [K in Exclude<keyof T, ValueOf<Mapper>> as K extends keyof Mapper ? Mapper[K] : K]: T[K] }` : `Object`
+`Mapper` *extends* [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`string`\> ? `{ [K in Exclude<keyof T, ValueOf<Mapper>> as K extends keyof Mapper ? Mapper[K] : K]: T[K] }` : \{\}
 
-## Source
+## Defined in
 
-[src/object/index.ts:354](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L354)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:354](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L354)

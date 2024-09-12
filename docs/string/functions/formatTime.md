@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / formatTime
+[@umatch/utils](../../api.md) / [string](../README.md) / formatTime
 
 # Function: formatTime()
 
-> **formatTime**(`time`, `options`?): `string`
+```ts
+function formatTime(time, options?): string
+```
 
 Formats the duration-like object, using up to the specified number
 of parts starting from the largest non-zero unit. Values are
@@ -15,43 +17,43 @@ and 10 seconds, for example.
 
 ## Parameters
 
-• **time**: `Object`
+• **time**
 
 Duration-like object
 
-• **time\.hours?**: `number`
+• **time.hours?**: `number`
 
-• **time\.milliseconds?**: `number`
+• **time.milliseconds?**: `number`
 
-• **time\.minutes?**: `number`
+• **time.minutes?**: `number`
 
-• **time\.seconds?**: `number`
+• **time.seconds?**: `number`
 
-• **options?**: `Object`
+• **options?**
 
-• **options\.dictionary?**: `Object`
+• **options.dictionary?**
 
 Words to substitute. Default: english words
 
-• **options\.dictionary\.and?**: `string`
+• **options.dictionary.and?**: `string`
 
-• **options\.dictionary\.hour?**: `string`
+• **options.dictionary.hour?**: `string`
 
-• **options\.dictionary\.millisecond?**: `string`
+• **options.dictionary.millisecond?**: `string`
 
-• **options\.dictionary\.minute?**: `string`
+• **options.dictionary.minute?**: `string`
 
-• **options\.dictionary\.second?**: `string`
+• **options.dictionary.second?**: `string`
 
-• **options\.parts?**: `number`
+• **options.parts?**: `number`
 
 The number of parts to include in the output. Default: 2
 
-• **options\.pluralizer?**: [`ToPlural`](../type-aliases/ToPlural.md)
+• **options.pluralizer?**: [`ToPlural`](../type-aliases/ToPlural.md)
 
 A pluralizer function. Default: adds 's' to the end the word
 
-• **options\.short?**: `boolean`
+• **options.short?**: `boolean`
 
 ## Returns
 
@@ -67,10 +69,6 @@ formatTime(
 )
 ```
 
-## Source
+## Defined in
 
-[src/string/index.ts:153](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L153)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:153](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L153)

@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / parseBool
+[@umatch/utils](../../api.md) / [string](../README.md) / parseBool
 
 # Function: parseBool()
 
-> **parseBool**(`str`, `def`?): `boolean`
+```ts
+function parseBool(str, def?): boolean
+```
 
 Parses a boolean from the string.
 
@@ -24,10 +26,6 @@ Parses a boolean from the string.
 
 if it fails to parse and there is no default value.
 
-## Source
+## Defined in
 
-[src/string/index.ts:374](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L374)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:374](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L374)

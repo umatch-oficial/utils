@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / stringify
+[@umatch/utils](../../api.md) / [object](../README.md) / stringify
 
 # Function: stringify()
 
-> **stringify**(`obj`, `options`?): `string`
+```ts
+function stringify(obj, options?): string
+```
 
 Similar to JSON.stringify(), with some additional formatting options.
 
@@ -14,27 +16,27 @@ Similar to JSON.stringify(), with some additional formatting options.
 
 • **obj**: readonly `unknown`[] \| [`Dictionary`](../../index/type-aliases/Dictionary.md)
 
-• **options?**: `Object`
+• **options?**
 
-• **options\.doubleQuotes?**: `boolean`
+• **options.doubleQuotes?**: `boolean`
 
 Use double quotes. Default: true.
 
-• **options\.indentSize?**: `number`
+• **options.indentSize?**: `number`
 
 Size of the indent. Default: 2.
 
-• **options\.length?**: `number`
+• **options.length?**: `number`
 
 Maximum length of a line. Default: the longest key +
 primitive value pair in the object.
 
-• **options\.pad?**: `boolean`
+• **options.pad?**: `boolean`
 
 Add padding between keys and values. Default:
 false
 
-• **options\.wrap?**: `"chop"` \| `"chop if long"` \| `"wrap if long"`
+• **options.wrap?**: `"chop"` \| `"chop if long"` \| `"wrap if long"`
 
 Chop or wrap arrays. Chop means inserting a
 line break between each element, while wrapping inserts line breaks only as necessary
@@ -45,10 +47,6 @@ to respect the length option. If the length is undefined, 'chop' is used. Defaul
 
 `string`
 
-## Source
+## Defined in
 
-[src/object/index.ts:452](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L452)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:452](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L452)

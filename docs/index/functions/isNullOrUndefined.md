@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / isNullOrUndefined
+[@umatch/utils](../../api.md) / [index](../README.md) / isNullOrUndefined
 
 # Function: isNullOrUndefined()
 
-> **isNullOrUndefined**(`obj`): `obj is undefined | null`
+```ts
+function isNullOrUndefined(obj): obj is undefined | null
+```
 
 Returns whether obj is null or undefined.
 
@@ -16,12 +18,8 @@ Returns whether obj is null or undefined.
 
 ## Returns
 
-`obj is undefined | null`
+obj is undefined \| null
 
-## Source
+## Defined in
 
-[src/index.ts:251](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L251)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:241](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L241)

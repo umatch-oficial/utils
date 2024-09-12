@@ -1,23 +1,21 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / SnakeCaseKeys
+[@umatch/utils](../../api.md) / [object](../README.md) / SnakeCaseKeys
 
-# Type alias: SnakeCaseKeys\<T\>
+# Type Alias: SnakeCaseKeys\<T\>
 
-> **SnakeCaseKeys**\<`T`\>: `{ [K in keyof T as SnakeCase<K & string>]: T[K] }`
+```ts
+type SnakeCaseKeys<T>: { [K in keyof T as SnakeCase<K & string>]: T[K] };
+```
 
 Applies snake_case on the keys of an object.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends [`Dictionary`](../../index/type-aliases/Dictionary.md)
+• **T** *extends* [`Dictionary`](../../index/type-aliases/Dictionary.md)
 
-## Source
+## Defined in
 
-[src/object/index.ts:424](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L424)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:424](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L424)

@@ -1,36 +1,34 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / deepMap
+[@umatch/utils](../../api.md) / [object](../README.md) / deepMap
 
 # Function: deepMap()
 
-> **deepMap**\<`Value`, `T`\>(`x`, `f`): `T`
+```ts
+function deepMap<Value, T>(x, f): T
+```
 
 Maps the function over deeply nested elements of the object,
 which are not arrays.
 
-## Type parameters
+## Type Parameters
 
 • **Value**
 
-• **T** extends [`DeepArray`](../../index/type-aliases/DeepArray.md)\<`Value`\>
+• **T** *extends* [`DeepArray`](../../index/type-aliases/DeepArray.md)\<`Value`\>
 
 ## Parameters
 
 • **x**: `T`
 
-• **f**: (`value`) => `unknown`
+• **f**
 
 ## Returns
 
 `T`
 
-## Source
+## Defined in
 
-[src/object/index.ts:84](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L84)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:84](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L84)

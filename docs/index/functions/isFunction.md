@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / isFunction
+[@umatch/utils](../../api.md) / [index](../README.md) / isFunction
 
 # Function: isFunction()
 
-> **isFunction**(`obj`): `obj is Function`
+```ts
+function isFunction(obj): obj is Function
+```
 
 Returns whether obj is a function.
 
@@ -18,10 +20,6 @@ Returns whether obj is a function.
 
 `obj is Function`
 
-## Source
+## Defined in
 
-[src/index.ts:221](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L221)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:211](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L211)

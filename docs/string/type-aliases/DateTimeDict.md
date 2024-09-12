@@ -1,31 +1,39 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / DateTimeDict
+[@umatch/utils](../../api.md) / [string](../README.md) / DateTimeDict
 
-# Type alias: DateTimeDict
+# Type Alias: DateTimeDict
 
-> **DateTimeDict**: `{ [_ in DateTimeUnit]?: string }` & `Object`
+```ts
+type DateTimeDict: { [_ in DateTimeUnit]?: string } & {
+  day: string;
+  hour: string;
+  minute: string;
+};
+```
 
 ## Type declaration
 
 ### day
 
-> **day**: `string`
+```ts
+day: string;
+```
 
 ### hour
 
-> **hour**: `string`
+```ts
+hour: string;
+```
 
 ### minute
 
-> **minute**: `string`
+```ts
+minute: string;
+```
 
-## Source
+## Defined in
 
-[src/string/index.ts:222](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L222)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:222](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L222)

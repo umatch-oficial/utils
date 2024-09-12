@@ -1,22 +1,24 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / minProperty
+[@umatch/utils](../../api.md) / [math](../README.md) / minProperty
 
 # Function: minProperty()
 
-> **minProperty**\<`T`, `Prop`\>(`array`, `property`): `T`\[`number`\]\[`Prop`\] \| `null`
+```ts
+function minProperty<T, Prop>(array, property): T[number][Prop] | null
+```
 
 Returns the minimum value of the given property of the elements in the array.
 
 The property must be a number, string or Date consistently across all elements.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
-• **Prop** extends `string` \| `number` \| `symbol`
+• **Prop** *extends* `string` \| `number` \| `symbol`
 
 ## Parameters
 
@@ -28,10 +30,6 @@ The property must be a number, string or Date consistently across all elements.
 
 `T`\[`number`\]\[`Prop`\] \| `null`
 
-## Source
+## Defined in
 
-[src/math/index.ts:140](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L140)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:140](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L140)

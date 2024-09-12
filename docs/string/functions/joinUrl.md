@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / joinUrl
+[@umatch/utils](../../api.md) / [string](../README.md) / joinUrl
 
 # Function: joinUrl()
 
-> **joinUrl**(...`parts`): `string`
+```ts
+function joinUrl(...parts): string
+```
 
 Joins parts of a URL with '/'.
 
@@ -27,10 +29,6 @@ Removes / from the beginning and end of each part before joining.
 joinUrl('https://abc.com/', 'example/')
 ```
 
-## Source
+## Defined in
 
-[src/string/index.ts:357](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L357)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:357](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L357)

@@ -1,21 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / filterByObject
+[@umatch/utils](../../api.md) / [array](../README.md) / filterByObject
 
 # Function: filterByObject()
 
-> **filterByObject**\<`O`, `T`\>(`array`, `template`): `O` & `T`[]
+```ts
+function filterByObject<O, T>(array, template): O & T[]
+```
 
 Filters an array of objects, ensuring they contain all key:value
 pairs in the template.
 
-## Type parameters
+## Type Parameters
 
-• **O** extends [`Dictionary`](../../index/type-aliases/Dictionary.md)
+• **O** *extends* [`Dictionary`](../../index/type-aliases/Dictionary.md)
 
-• **T** extends [`Dictionary`](../../index/type-aliases/Dictionary.md)
+• **T** *extends* [`Dictionary`](../../index/type-aliases/Dictionary.md)
 
 ## Parameters
 
@@ -27,10 +29,6 @@ pairs in the template.
 
 `O` & `T`[]
 
-## Source
+## Defined in
 
-[src/array/index.ts:101](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L101)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:101](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L101)

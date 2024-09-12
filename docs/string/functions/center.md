@@ -1,12 +1,17 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / center
+[@umatch/utils](../../api.md) / [string](../README.md) / center
 
 # Function: center()
 
-> **center**(`str`, `length`, `character`): `string`
+```ts
+function center(
+   str, 
+   length, 
+   character): string
+```
 
 Pads a string on both sides to achieve the desired length.
 
@@ -19,16 +24,12 @@ extra space.
 
 • **length**: `number`
 
-• **character**: `string`= `' '`
+• **character**: `string` = `' '`
 
 ## Returns
 
 `string`
 
-## Source
+## Defined in
 
-[src/string/index.ts:96](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L96)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:96](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L96)

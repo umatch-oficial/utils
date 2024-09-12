@@ -1,23 +1,21 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / Zip
+[@umatch/utils](../../api.md) / [array](../README.md) / Zip
 
-# Type alias: Zip\<T, Acc\>
+# Type Alias: Zip\<T, Acc\>
 
-> **Zip**\<`T`, `Acc`\>: `T` extends readonly [readonly infer A[], `...(infer B)`] ? `B` extends readonly readonly `unknown`[][] ? [`Zip`](Zip.md)\<`B`, [`Append`](Append.md)\<`Acc`, `A`\>\> : `never` : `Acc`[]
+```ts
+type Zip<T, Acc>: T extends readonly [readonly infer A[], ...(infer B)] ? B extends readonly readonly unknown[][] ? Zip<B, Append<Acc, A>> : never : Acc[];
+```
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly readonly `unknown`[][]
+• **T** *extends* readonly readonly `unknown`[][]
 
-• **Acc** extends readonly `unknown`[] = []
+• **Acc** *extends* readonly `unknown`[] = []
 
-## Source
+## Defined in
 
-[src/array/index.ts:436](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L436)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:436](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L436)

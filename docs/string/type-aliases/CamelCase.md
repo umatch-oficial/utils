@@ -1,25 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / CamelCase
+[@umatch/utils](../../api.md) / [string](../README.md) / CamelCase
 
-# Type alias: CamelCase\<S, Acc\>
+# Type Alias: CamelCase\<S, Acc\>
 
-> **CamelCase**\<`S`, `Acc`\>: `S` extends \`${infer First}${infer Rest}\` ? `Acc` extends `""` ? [`CamelCase`](CamelCase.md)\<`Rest`, `Lowercase`\<`First`\>\> : `First` extends `"_"` \| `" "` \| `"-"` ? [`CamelCase`](CamelCase.md)\<`Capitalize`\<`Rest`\>, `Acc`\> : [`CamelCase`](CamelCase.md)\<`Rest`, \`${Acc}${First}\`\> : `Acc`
+```ts
+type CamelCase<S, Acc>: S extends `${infer First}${infer Rest}` ? Acc extends "" ? CamelCase<Rest, Lowercase<First>> : First extends "_" | " " | "-" ? CamelCase<Capitalize<Rest>, Acc> : CamelCase<Rest, `${Acc}${First}`> : Acc;
+```
 
 Converts a string to camelCase.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
-• **Acc** extends `string` = `""`
+• **Acc** *extends* `string` = `""`
 
-## Source
+## Defined in
 
-[src/string/index.ts:605](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L605)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:605](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L605)

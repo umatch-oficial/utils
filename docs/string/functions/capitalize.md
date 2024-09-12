@@ -1,18 +1,20 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / capitalize
+[@umatch/utils](../../api.md) / [string](../README.md) / capitalize
 
 # Function: capitalize()
 
-> **capitalize**\<`S`\>(`str`): `Capitalize`\<`S`\>
+```ts
+function capitalize<S>(str): Capitalize<S>
+```
 
 Converts the first character of a string to uppercase.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
 ## Parameters
 
@@ -22,10 +24,6 @@ Converts the first character of a string to uppercase.
 
 `Capitalize`\<`S`\>
 
-## Source
+## Defined in
 
-[src/string/index.ts:540](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L540)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:540](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L540)

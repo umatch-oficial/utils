@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / sort
+[@umatch/utils](../../api.md) / [array](../README.md) / sort
 
 # Function: sort()
 
-> **sort**\<`T`\>(`array`, `sortOrders`): `T`[]
+```ts
+function sort<T>(array, sortOrders): T[]
+```
 
 Sorts an array based on the provided keys and sort orders.
 
@@ -15,7 +17,7 @@ one to return a non-zero value determines the order of the
 elements. If the value of a key is not a primitive, a transform
 function must be provided.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
@@ -25,7 +27,7 @@ function must be provided.
 
 The array to be sorted.
 
-• **sortOrders**: `{ [K in string | number | symbol]-?: [K, "asc" | "desc", Function?] }`\[keyof `T`\][]
+• **sortOrders**: \{ \[K in string \| number \| symbol\]-?: \[K, "asc" \| "desc", Function?\] \}\[keyof `T`\][]
 
 An array of keys, the order for each key, and an
 optional transform function.
@@ -36,10 +38,6 @@ optional transform function.
 
 The sorted array.
 
-## Source
+## Defined in
 
-[src/array/index.ts:364](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L364)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:364](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L364)

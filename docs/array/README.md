@@ -1,8 +1,8 @@
-**@umatch/utils** • [Readme](../index.md) \| [Modules](../modules.md)
+[**About this project**](../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../modules.md) / array
+[@umatch/utils](../api.md) / array
 
 # array
 
@@ -40,7 +40,3 @@
 - [trim](functions/trim.md)
 - [uniques](functions/uniques.md)
 - [zip](functions/zip.md)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)

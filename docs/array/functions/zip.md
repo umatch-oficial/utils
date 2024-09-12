@@ -1,18 +1,20 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / zip
+[@umatch/utils](../../api.md) / [array](../README.md) / zip
 
 # Function: zip()
 
-> **zip**\<`T`\>(...`arrays`): [`Zip`](../type-aliases/Zip.md)\<`T`\>
+```ts
+function zip<T>(...arrays): Zip<T>
+```
 
 Zips arrays. (equivalent of python's zip)
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly readonly unknown[][]
+• **T** *extends* readonly readonly `unknown`[][]
 
 ## Parameters
 
@@ -26,10 +28,6 @@ Zips arrays. (equivalent of python's zip)
 
 if the arrays don't have the same length.
 
-## Source
+## Defined in
 
-[src/array/index.ts:450](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L450)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:450](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L450)

@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / ordinal
+[@umatch/utils](../../api.md) / [string](../README.md) / ordinal
 
 # Function: ordinal()
 
-> **ordinal**(`num`): `string`
+```ts
+function ordinal(num): string
+```
 
 Returns the ordinal of a number.
 
@@ -18,10 +20,6 @@ Returns the ordinal of a number.
 
 `string`
 
-## Source
+## Defined in
 
-[src/string/index.ts:12](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L12)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:54](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L54)

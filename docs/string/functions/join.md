@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / join
+[@umatch/utils](../../api.md) / [string](../README.md) / join
 
 # Function: join()
 
-> **join**(`parts`, `and`): `string`
+```ts
+function join(parts, and): string
+```
 
 Joins words as in a sentence.
 
@@ -14,16 +16,12 @@ Joins words as in a sentence.
 
 • **parts**: readonly `string`[]
 
-• **and**: `string`= `'&'`
+• **and**: `string` = `'&'`
 
 ## Returns
 
 `string`
 
-## Source
+## Defined in
 
-[src/string/index.ts:306](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L306)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:306](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L306)

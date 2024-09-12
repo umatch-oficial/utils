@@ -1,17 +1,15 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / Payload
+[@umatch/utils](../../api.md) / [index](../README.md) / Payload
 
-# Type alias: Payload
+# Type Alias: Payload
 
-> **Payload**: [`Dictionary`](Dictionary.md)\<[`Primitive`](Primitive.md)\>
+```ts
+type Payload: Dictionary<Primitive>;
+```
 
-## Source
+## Defined in
 
-[src/index.ts:3](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L3)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:3](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L3)

@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / removeAccents
+[@umatch/utils](../../api.md) / [string](../README.md) / removeAccents
 
 # Function: removeAccents()
 
-> **removeAccents**(`str`): `string`
+```ts
+function removeAccents(str): string
+```
 
 Replaces accented letters with their standard versions.
 
@@ -18,10 +20,6 @@ Replaces accented letters with their standard versions.
 
 `string`
 
-## Source
+## Defined in
 
-[src/string/index.ts:485](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L485)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:485](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L485)

@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [time](../index.md) / sleep
+[@umatch/utils](../../api.md) / [time](../README.md) / sleep
 
 # Function: sleep()
 
-> **sleep**(`duration`): `Promise`\<`void`\>
+```ts
+function sleep(duration): Promise<void>
+```
 
 Sleep for a given duration.
 
@@ -18,10 +20,6 @@ Sleep for a given duration.
 
 `Promise`\<`void`\>
 
-## Source
+## Defined in
 
-[src/time/index.ts:8](https://github.com/umatch-oficial/utils/blob/6b2757d/src/time/index.ts#L8)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/time/index.ts:8](https://github.com/umatch-oficial/utils/blob/main/src/time/index.ts#L8)

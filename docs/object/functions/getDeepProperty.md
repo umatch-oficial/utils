@@ -1,12 +1,17 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / getDeepProperty
+[@umatch/utils](../../api.md) / [object](../README.md) / getDeepProperty
 
 # Function: getDeepProperty()
 
-> **getDeepProperty**(`obj`, `str`, `sep`): `unknown`
+```ts
+function getDeepProperty(
+   obj, 
+   str, 
+   sep): unknown
+```
 
 Returns a deep property of an object given a path-like string.
 
@@ -16,7 +21,7 @@ Returns a deep property of an object given a path-like string.
 
 • **str**: `string`
 
-• **sep**: `string`= `'.'`
+• **sep**: `string` = `'.'`
 
 ## Returns
 
@@ -29,10 +34,6 @@ Returns a deep property of an object given a path-like string.
 getDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]')
 ```
 
-## Source
+## Defined in
 
-[src/object/index.ts:229](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L229)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:229](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L229)

@@ -1,37 +1,38 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / filter
+[@umatch/utils](../../api.md) / [array](../README.md) / filter
 
 # Function: filter()
 
-> **filter**\<`T`\>(`array`, `callback`, `concurrency`): `Promise`\<`T`\[`number`\][]\>
+```ts
+function filter<T>(
+   array, 
+   callback, 
+concurrency): Promise<T[number][]>
+```
 
 Same as Array.filter, but accepts async callbacks.
 
 Uses bluebird.map to limit concurrency.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
 ## Parameters
 
 • **array**: `T`
 
-• **callback**: (`x`) => `Promise`\<`boolean`\>
+• **callback**
 
-• **concurrency**: `number`= `50`
+• **concurrency**: `number` = `50`
 
 ## Returns
 
 `Promise`\<`T`\[`number`\][]\>
 
-## Source
+## Defined in
 
-[src/array/index.ts:83](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L83)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:83](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L83)

@@ -1,12 +1,17 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / rsplit
+[@umatch/utils](../../api.md) / [string](../README.md) / rsplit
 
 # Function: rsplit()
 
-> **rsplit**(`str`, `n`?, `sep`?): `string`[]
+```ts
+function rsplit(
+   str, 
+   n?, 
+   sep?): string[]
+```
 
 Splits a string starting from the right, stops after n splits.
 (equivalent of python's rsplit)
@@ -15,11 +20,11 @@ Splits a string starting from the right, stops after n splits.
 
 • **str**: `undefined` \| `null` \| `string`
 
-• **n?**: `number`= `-1`
+• **n?**: `number` = `-1`
 
 number of splits
 
-• **sep?**: `string`= `','`
+• **sep?**: `string` = `','`
 
 separator
 
@@ -36,10 +41,6 @@ rsplit("a,b,c")
 rsplit("a,b,c", 1)
 ```
 
-## Source
+## Defined in
 
-[src/string/index.ts:503](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L503)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:503](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L503)

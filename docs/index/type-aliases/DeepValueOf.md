@@ -1,23 +1,21 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / DeepValueOf
+[@umatch/utils](../../api.md) / [index](../README.md) / DeepValueOf
 
-# Type alias: DeepValueOf\<T\>
+# Type Alias: DeepValueOf\<T\>
 
-> **DeepValueOf**\<`T`\>: `T` extends `Object` ? [`DeepValueOf`](DeepValueOf.md)\<`T`\[keyof `T`\]\> : `T`
+```ts
+type DeepValueOf<T>: T extends {} ? DeepValueOf<T[keyof T]> : T;
+```
 
 Returns a union of the values of a deeply nested object.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
-## Source
+## Defined in
 
-[src/index.ts:33](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L33)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:33](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L33)

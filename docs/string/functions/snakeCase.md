@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / snakeCase
+[@umatch/utils](../../api.md) / [string](../README.md) / snakeCase
 
 # Function: snakeCase()
 
-> **snakeCase**\<`S`\>(`str`): [`SnakeCase`](../type-aliases/SnakeCase.md)\<`S`\>
+```ts
+function snakeCase<S>(str): SnakeCase<S>
+```
 
 Converts a string to snake_case.
 
@@ -14,9 +16,9 @@ Converts a string to snake_case.
 apply the function to parts of a string individually, you must
 split it and map the function over each unit according to your needs.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
 ## Parameters
 
@@ -26,10 +28,6 @@ split it and map the function over each unit according to your needs.
 
 [`SnakeCase`](../type-aliases/SnakeCase.md)\<`S`\>
 
-## Source
+## Defined in
 
-[src/string/index.ts:724](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L724)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:724](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L724)

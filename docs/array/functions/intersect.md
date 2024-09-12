@@ -1,20 +1,22 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / intersect
+[@umatch/utils](../../api.md) / [array](../README.md) / intersect
 
 # Function: intersect()
 
-> **intersect**\<`A`, `B`\>(`a`, `b`): `A`\[`number`\] & `B`\[`number`\][]
+```ts
+function intersect<A, B>(a, b): A[number] & B[number][]
+```
 
 Returns the intersection of two arrays.
 
-## Type parameters
+## Type Parameters
 
-• **A** extends readonly (`string` \| `number`)[]
+• **A** *extends* readonly (`string` \| `number`)[]
 
-• **B** extends readonly (`string` \| `number`)[]
+• **B** *extends* readonly (`string` \| `number`)[]
 
 ## Parameters
 
@@ -26,10 +28,6 @@ Returns the intersection of two arrays.
 
 `A`\[`number`\] & `B`\[`number`\][]
 
-## Source
+## Defined in
 
-[src/array/index.ts:252](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L252)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:252](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L252)

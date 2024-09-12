@@ -1,26 +1,26 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / TypeFromPath
+[@umatch/utils](../../api.md) / [index](../README.md) / TypeFromPath
 
-# Type alias: TypeFromPath\<O, P\>
+# Type Alias: TypeFromPath\<O, P\>
 
-> **TypeFromPath**\<`O`, `P`\>: `P` extends \`${infer H}.${infer T}\` ? { [K in keyof O]: K extends string | number | bigint | boolean | null | undefined ? \`${K}\` extends H ? TypeFromPath<O[K], T> : never : never }\[keyof `O`\] : { [K in keyof O]: K extends string | number | bigint | boolean | null | undefined ? \`${K}\` extends P ? O[K] : never : never }\[keyof `O`\]
+```ts
+type TypeFromPath<O, P>: P extends `${infer H}.${infer T}` ? TypeFromPath<O[H & keyof O], T> : O[P & keyof O];
+```
 
 Takes an object and a path string that uses dot notation
 and returns the type of the deep property at the path.
 
-## Type parameters
+The object must only contain string keys.
+
+## Type Parameters
 
 • **O**
 
-• **P** extends `string`
+• **P** *extends* `string`
 
-## Source
+## Defined in
 
-[src/index.ts:163](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L163)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:165](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L165)

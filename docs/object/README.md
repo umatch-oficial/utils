@@ -1,8 +1,8 @@
-**@umatch/utils** • [Readme](../index.md) \| [Modules](../modules.md)
+[**About this project**](../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../modules.md) / object
+[@umatch/utils](../api.md) / object
 
 # object
 
@@ -31,7 +31,3 @@
 - [setDeepProperty](functions/setDeepProperty.md)
 - [snakeCaseKeys](functions/snakeCaseKeys.md)
 - [stringify](functions/stringify.md)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)

@@ -1,27 +1,25 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / Join
+[@umatch/utils](../../api.md) / [index](../README.md) / Join
 
-# Type alias: Join\<L, R, Sep\>
+# Type Alias: Join\<L, R, Sep\>
 
-> **Join**\<`L`, `R`, `Sep`\>: `L` extends `string` \| `number` ? `R` extends `string` \| `number` ? \`${L}${Sep}${R}\` : `L` : `R` extends `string` \| `number` ? `R` : `undefined`
+```ts
+type Join<L, R, Sep>: L extends string | number ? R extends string | number ? `${L}${Sep}${R}` : L : R extends string | number ? R : undefined;
+```
 
 Joins two strings or numbers unless either one is undefined.
 
-## Type parameters
+## Type Parameters
 
-• **L** extends `PropertyKey` \| `undefined` = `undefined`
+• **L** *extends* `PropertyKey` \| `undefined` = `undefined`
 
-• **R** extends `PropertyKey` \| `undefined` = `undefined`
+• **R** *extends* `PropertyKey` \| `undefined` = `undefined`
 
-• **Sep** extends `string` = `"."`
+• **Sep** *extends* `string` = `"."`
 
-## Source
+## Defined in
 
-[src/index.ts:123](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L123)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:123](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L123)

@@ -1,33 +1,35 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / formatMatrixToString
+[@umatch/utils](../../api.md) / [array](../README.md) / formatMatrixToString
 
 # Function: formatMatrixToString()
 
-> **formatMatrixToString**(`array`, `center`, `elementSeparator`, `lineSeparator`): `string`
+```ts
+function formatMatrixToString(
+   array, 
+   center, 
+   elementSeparator, 
+   lineSeparator): string
+```
 
 Formats a 2D array as a table.
 
 ## Parameters
 
-• **array**: readonly readonly (string \| number)[][]
+• **array**: readonly readonly (`string` \| `number`)[][]
 
-• **center**: `boolean`= `true`
+• **center**: `boolean` = `true`
 
-• **elementSeparator**: `string`= `' | '`
+• **elementSeparator**: `string` = ' \| '
 
-• **lineSeparator**: `string`= `'\n'`
+• **lineSeparator**: `string` = '\n'
 
 ## Returns
 
 `string`
 
-## Source
+## Defined in
 
-[src/array/index.ts:158](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L158)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:158](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L158)

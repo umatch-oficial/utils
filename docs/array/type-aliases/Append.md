@@ -1,23 +1,21 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / Append
+[@umatch/utils](../../api.md) / [array](../README.md) / Append
 
-# Type alias: Append\<T, Element\>
+# Type Alias: Append\<T, Element\>
 
-> **Append**\<`T`, `Element`\>: [`IsReadonly`](../../index/type-aliases/IsReadonly.md)\<`T`\> extends `true` ? readonly [`...T`, `Element`] : [`...T`, `Element`]
+```ts
+type Append<T, Element>: IsReadonly<T> extends true ? readonly [...T, Element] : [...T, Element];
+```
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
 • **Element**
 
-## Source
+## Defined in
 
-[src/array/index.ts:432](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L432)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:432](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L432)

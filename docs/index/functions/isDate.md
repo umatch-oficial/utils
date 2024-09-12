@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / isDate
+[@umatch/utils](../../api.md) / [index](../README.md) / isDate
 
 # Function: isDate()
 
-> **isDate**(`obj`): `obj is Date`
+```ts
+function isDate(obj): obj is Date
+```
 
 Returns whether obj is a Date.
 
@@ -18,10 +20,6 @@ Returns whether obj is a Date.
 
 `obj is Date`
 
-## Source
+## Defined in
 
-[src/index.ts:213](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L213)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:203](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L203)

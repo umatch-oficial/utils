@@ -1,16 +1,18 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / TransformValues
+[@umatch/utils](../../api.md) / [index](../README.md) / TransformValues
 
-# Type alias: TransformValues\<T, A, B\>
+# Type Alias: TransformValues\<T, A, B\>
 
-> **TransformValues**\<`T`, `A`, `B`\>: `{ [K in keyof T]: A extends T[K] ? B | Exclude<T[K], A> : T[K] }`
+```ts
+type TransformValues<T, A, B>: { [K in keyof T]: A extends T[K] ? B | Exclude<T[K], A> : T[K] };
+```
 
 Changes the type of values matching A to B
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
@@ -18,10 +20,6 @@ Changes the type of values matching A to B
 
 • **B**
 
-## Source
+## Defined in
 
-[src/index.ts:56](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L56)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:56](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L56)

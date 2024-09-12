@@ -1,21 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / diff
+[@umatch/utils](../../api.md) / [array](../README.md) / diff
 
 # Function: diff()
 
-> **diff**\<`X`, `Y`\>(`a`, `b`): [`IsReadonly`](../../index/type-aliases/IsReadonly.md)\<`X`\> extends `true` ? [`IsReadonly`](../../index/type-aliases/IsReadonly.md)\<`Y`\> extends `true` ? [`Subtract`](../../index/type-aliases/Subtract.md)\<`X`, `Y`\> : `Y` : `X`
+```ts
+function diff<X, Y>(a, b): IsReadonly<X> extends true ? IsReadonly<Y> extends true ? Subtract<X, Y> : Y : X
+```
 
 Returns a copy of the first array, without including elements
 present in the second array.
 
-## Type parameters
+## Type Parameters
 
-• **X** extends readonly (`string` \| `number`)[]
+• **X** *extends* readonly (`string` \| `number`)[]
 
-• **Y** extends readonly (`string` \| `number`)[]
+• **Y** *extends* readonly (`string` \| `number`)[]
 
 ## Parameters
 
@@ -25,12 +27,8 @@ present in the second array.
 
 ## Returns
 
-[`IsReadonly`](../../index/type-aliases/IsReadonly.md)\<`X`\> extends `true` ? [`IsReadonly`](../../index/type-aliases/IsReadonly.md)\<`Y`\> extends `true` ? [`Subtract`](../../index/type-aliases/Subtract.md)\<`X`, `Y`\> : `Y` : `X`
+[`IsReadonly`](../../index/type-aliases/IsReadonly.md)\<`X`\> *extends* `true` ? [`IsReadonly`](../../index/type-aliases/IsReadonly.md)\<`Y`\> *extends* `true` ? [`Subtract`](../../index/type-aliases/Subtract.md)\<`X`, `Y`\> : `Y` : `X`
 
-## Source
+## Defined in
 
-[src/array/index.ts:57](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L57)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:57](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L57)

@@ -1,20 +1,22 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / averageProperty
+[@umatch/utils](../../api.md) / [math](../README.md) / averageProperty
 
 # Function: averageProperty()
 
-> **averageProperty**\<`T`, `Prop`\>(`array`, `property`): `number` \| `null`
+```ts
+function averageProperty<T, Prop>(array, property): number | null
+```
 
 Returns the average of the given property of the elements in the array.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
-• **Prop** extends `string` \| `number` \| `symbol`
+• **Prop** *extends* `string` \| `number` \| `symbol`
 
 ## Parameters
 
@@ -26,10 +28,6 @@ Returns the average of the given property of the elements in the array.
 
 `number` \| `null`
 
-## Source
+## Defined in
 
-[src/math/index.ts:16](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L16)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:16](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L16)

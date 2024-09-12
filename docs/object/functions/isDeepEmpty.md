@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / isDeepEmpty
+[@umatch/utils](../../api.md) / [object](../README.md) / isDeepEmpty
 
 # Function: isDeepEmpty()
 
-> **isDeepEmpty**(`obj`): `obj is DeepEmpty`
+```ts
+function isDeepEmpty(obj): obj is DeepEmpty
+```
 
 Returns whether the object is [deep empty][DeepEmpty](../type-aliases/DeepEmpty.md).
 
@@ -18,10 +20,6 @@ Returns whether the object is [deep empty][DeepEmpty](../type-aliases/DeepEmpty.
 
 `obj is DeepEmpty`
 
-## Source
+## Defined in
 
-[src/object/index.ts:268](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L268)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:268](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L268)

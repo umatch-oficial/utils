@@ -1,8 +1,8 @@
-**@umatch/utils** • [Readme](../index.md) \| [Modules](../modules.md)
+[**About this project**](../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../modules.md) / string
+[@umatch/utils](../api.md) / string
 
 # string
 
@@ -49,7 +49,3 @@
 - [split](functions/split.md)
 - [titleCase](functions/titleCase.md)
 - [uncapitalize](functions/uncapitalize.md)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)

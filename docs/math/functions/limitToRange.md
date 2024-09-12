@@ -1,12 +1,17 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / limitToRange
+[@umatch/utils](../../api.md) / [math](../README.md) / limitToRange
 
 # Function: limitToRange()
 
-> **limitToRange**(`num`, `lower`, `upper`): `number`
+```ts
+function limitToRange(
+   num, 
+   lower, 
+   upper): number
+```
 
 Returns the number or min/max if it is below/above the thresholds, respectively.
 
@@ -22,10 +27,6 @@ Returns the number or min/max if it is below/above the thresholds, respectively.
 
 `number`
 
-## Source
+## Defined in
 
-[src/math/index.ts:93](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L93)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:93](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L93)

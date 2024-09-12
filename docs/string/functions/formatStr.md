@@ -1,34 +1,36 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / formatStr
+[@umatch/utils](../../api.md) / [string](../README.md) / formatStr
 
 # Function: formatStr()
 
-> **formatStr**(`str`?, `options`?): `string`
+```ts
+function formatStr(str?, options?): string
+```
 
 Formats a string according to options.
 
 ## Parameters
 
-• **str?**: `string`= `''`
+• **str?**: `string` = `''`
 
-• **options?**: `Object`= `{}`
+• **options?** = `{}`
 
-• **options\.bgColor?**: `ForegroundColor`
+• **options.bgColor?**: `ForegroundColor`
 
 Background color
 
-• **options\.bold?**: `boolean`
+• **options.bold?**: `boolean`
 
 Whether to make it bold
 
-• **options\.color?**: `ForegroundColor`
+• **options.color?**: `ForegroundColor`
 
 Text color
 
-• **options\.length?**: `number`
+• **options.length?**: `number`
 
 Pad string on both sides up to this length
 
@@ -36,10 +38,6 @@ Pad string on both sides up to this length
 
 `string`
 
-## Source
+## Defined in
 
-[src/string/index.ts:116](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L116)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:116](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L116)

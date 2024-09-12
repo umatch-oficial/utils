@@ -1,20 +1,22 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / hasOwnProperty
+[@umatch/utils](../../api.md) / [object](../README.md) / hasOwnProperty
 
 # Function: hasOwnProperty()
 
-> **hasOwnProperty**\<`X`, `Y`\>(`obj`, `prop`): `obj is X & Record<Y, unknown>`
+```ts
+function hasOwnProperty<X, Y>(obj, prop): obj is X & Record<Y, unknown>
+```
 
 Checks if a prop exists in obj and tells TypeScript that obj has this prop.
 
-## Type parameters
+## Type Parameters
 
 • **X**
 
-• **Y** extends `PropertyKey`
+• **Y** *extends* `PropertyKey`
 
 ## Parameters
 
@@ -26,10 +28,6 @@ Checks if a prop exists in obj and tells TypeScript that obj has this prop.
 
 `obj is X & Record<Y, unknown>`
 
-## Source
+## Defined in
 
-[src/object/index.ts:249](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L249)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:249](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L249)

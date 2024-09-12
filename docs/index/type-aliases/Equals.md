@@ -1,25 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / Equals
+[@umatch/utils](../../api.md) / [index](../README.md) / Equals
 
-# Type alias: Equals\<X, Y\>
+# Type Alias: Equals\<X, Y\>
 
-> **Equals**\<`X`, `Y`\>: \<`T`\>() => `T` extends `X` ? `1` : `2` extends \<`T`\>() => `T` extends `Y` ? `1` : `2` ? `true` : `false`
+```ts
+type Equals<X, Y>: <T>() => T extends X ? 1 : 2 extends <T>() => T extends Y ? 1 : 2 ? true : false;
+```
 
 Asserts two types are equal.
 
-## Type parameters
+## Type Parameters
 
 • **X**
 
 • **Y**
 
-## Source
+## Defined in
 
-[src/index.ts:115](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L115)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:115](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L115)

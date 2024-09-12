@@ -1,18 +1,20 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / shuffle
+[@umatch/utils](../../api.md) / [array](../README.md) / shuffle
 
 # Function: shuffle()
 
-> **shuffle**\<`T`\>(`array`): `T` extends readonly infer \_[] ? `T` : `never`
+```ts
+function shuffle<T>(array): T extends readonly infer _[] ? T : never
+```
 
 Returns a shuffled copy of the array.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
 ## Parameters
 
@@ -20,12 +22,8 @@ Returns a shuffled copy of the array.
 
 ## Returns
 
-`T` extends readonly infer \_[] ? `T` : `never`
+`T` *extends* readonly infer \_[] ? `T` : `never`
 
-## Source
+## Defined in
 
-[src/array/index.ts:323](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L323)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:323](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L323)

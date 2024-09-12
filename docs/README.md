@@ -1,4 +1,4 @@
-**About this project** • [**Docs**](docs/api.md)
+**About this project** • [**Docs**](api.md)
 
 ***
 

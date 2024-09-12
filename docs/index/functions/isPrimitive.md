@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / isPrimitive
+[@umatch/utils](../../api.md) / [index](../README.md) / isPrimitive
 
 # Function: isPrimitive()
 
-> **isPrimitive**(`obj`): `obj is Primitive`
+```ts
+function isPrimitive(obj): obj is Primitive
+```
 
 Returns whether obj is a primitive data type.
 
@@ -18,10 +20,6 @@ Returns whether obj is a primitive data type.
 
 `obj is Primitive`
 
-## Source
+## Defined in
 
-[src/index.ts:274](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L274)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:264](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L264)

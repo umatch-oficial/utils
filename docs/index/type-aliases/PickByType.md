@@ -1,25 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / PickByType
+[@umatch/utils](../../api.md) / [index](../README.md) / PickByType
 
-# Type alias: PickByType\<T, U\>
+# Type Alias: PickByType\<T, U\>
 
-> **PickByType**\<`T`, `U`\>: `{ [K in keyof T as T[K] extends U | undefined ? K : never]: T[K] }`
+```ts
+type PickByType<T, U>: { [K in keyof T as T[K] extends U | undefined ? K : never]: T[K] };
+```
 
 From T, picks properties whose values are of type U.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
 • **U**
 
-## Source
+## Defined in
 
-[src/index.ts:67](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L67)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:67](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L67)

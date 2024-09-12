@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / diff
+[@umatch/utils](../../api.md) / [math](../README.md) / diff
 
 # Function: diff()
 
-> **diff**(`array`): `number`[]
+```ts
+function diff(array): number[]
+```
 
 Returns the difference between each element and the previous in an array.
 
@@ -25,10 +27,6 @@ Returns the difference between each element and the previous in an array.
 diff([1,3,7,10])
 ```
 
-## Source
+## Defined in
 
-[src/math/index.ts:45](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L45)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:45](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L45)

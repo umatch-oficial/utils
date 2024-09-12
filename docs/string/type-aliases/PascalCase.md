@@ -1,25 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / PascalCase
+[@umatch/utils](../../api.md) / [string](../README.md) / PascalCase
 
-# Type alias: PascalCase\<S, Acc\>
+# Type Alias: PascalCase\<S, Acc\>
 
-> **PascalCase**\<`S`, `Acc`\>: `S` extends \`${infer First}${infer Rest}\` ? `Acc` extends `""` ? [`PascalCase`](PascalCase.md)\<`Rest`, `Uppercase`\<`First`\>\> : `First` extends `"_"` \| `" "` \| `"-"` ? [`PascalCase`](PascalCase.md)\<`Capitalize`\<`Rest`\>, `Acc`\> : [`PascalCase`](PascalCase.md)\<`Rest`, \`${Acc}${First}\`\> : `Acc`
+```ts
+type PascalCase<S, Acc>: S extends `${infer First}${infer Rest}` ? Acc extends "" ? PascalCase<Rest, Uppercase<First>> : First extends "_" | " " | "-" ? PascalCase<Capitalize<Rest>, Acc> : PascalCase<Rest, `${Acc}${First}`> : Acc;
+```
 
 Converts a string to PascalCase.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
-• **Acc** extends `string` = `""`
+• **Acc** *extends* `string` = `""`
 
-## Source
+## Defined in
 
-[src/string/index.ts:619](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L619)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:619](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L619)

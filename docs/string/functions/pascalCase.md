@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / pascalCase
+[@umatch/utils](../../api.md) / [string](../README.md) / pascalCase
 
 # Function: pascalCase()
 
-> **pascalCase**\<`S`\>(`str`): [`PascalCase`](../type-aliases/PascalCase.md)\<`S`\>
+```ts
+function pascalCase<S>(str): PascalCase<S>
+```
 
 Converts a string to PascalCase.
 
@@ -14,9 +16,9 @@ Converts a string to PascalCase.
 apply the function to parts of a string individually, you must
 split it and map the function over each unit according to your needs.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
 ## Parameters
 
@@ -26,10 +28,6 @@ split it and map the function over each unit according to your needs.
 
 [`PascalCase`](../type-aliases/PascalCase.md)\<`S`\>
 
-## Source
+## Defined in
 
-[src/string/index.ts:704](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L704)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:704](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L704)

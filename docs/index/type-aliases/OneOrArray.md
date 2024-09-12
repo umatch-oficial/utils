@@ -1,23 +1,21 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / OneOrArray
+[@umatch/utils](../../api.md) / [index](../README.md) / OneOrArray
 
-# Type alias: OneOrArray\<T\>
+# Type Alias: OneOrArray\<T\>
 
-> **OneOrArray**\<`T`\>: `T` \| readonly `T`[]
+```ts
+type OneOrArray<T>: T | readonly T[];
+```
 
 Returns an union of the input type and an array of the input type.
 
-## Type parameters
+## Type Parameters
 
 • **T** = `unknown`
 
-## Source
+## Defined in
 
-[src/index.ts:8](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L8)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:8](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L8)

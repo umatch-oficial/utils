@@ -1,18 +1,20 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / nthElement
+[@umatch/utils](../../api.md) / [math](../README.md) / nthElement
 
 # Function: nthElement()
 
-> **nthElement**\<`T`\>(`array`, `n`): `T`\[`number`\]
+```ts
+function nthElement<T>(array, n): T[number]
+```
 
 Returns the nth element with overflow.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
 ## Parameters
 
@@ -31,10 +33,6 @@ Returns the nth element with overflow.
 nthElement([0,1,2,3], 5)
 ```
 
-## Source
+## Defined in
 
-[src/math/index.ts:180](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L180)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:180](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L180)

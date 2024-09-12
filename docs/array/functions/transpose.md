@@ -1,31 +1,29 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / transpose
+[@umatch/utils](../../api.md) / [array](../README.md) / transpose
 
 # Function: transpose()
 
-> **transpose**\<`T`\>(`array`): `T`[][]
+```ts
+function transpose<T>(array): T[][]
+```
 
 Returns the transposed array.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
 ## Parameters
 
-• **array**: readonly readonly T[][]
+• **array**: readonly readonly `T`[][]
 
 ## Returns
 
 `T`[][]
 
-## Source
+## Defined in
 
-[src/array/index.ts:390](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L390)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:390](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L390)

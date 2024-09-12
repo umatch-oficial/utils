@@ -1,25 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / Union
+[@umatch/utils](../../api.md) / [index](../README.md) / Union
 
-# Type alias: Union\<L, R\>
+# Type Alias: Union\<L, R\>
 
-> **Union**\<`L`, `R`\>: `L` extends `undefined` ? `R` extends `undefined` ? `undefined` : `R` : `R` extends `undefined` ? `L` : `L` \| `R`
+```ts
+type Union<L, R>: L extends undefined ? R extends undefined ? undefined : R : R extends undefined ? L : L | R;
+```
 
 Makes a Union between two types removing undefined.
 
-## Type parameters
+## Type Parameters
 
 • **L**
 
 • **R**
 
-## Source
+## Defined in
 
-[src/index.ts:137](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L137)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:137](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L137)

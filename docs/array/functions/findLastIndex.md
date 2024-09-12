@@ -1,36 +1,34 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / findLastIndex
+[@umatch/utils](../../api.md) / [array](../README.md) / findLastIndex
 
 # Function: findLastIndex()
 
-> **findLastIndex**\<`T`\>(`array`, `predicate`): `number`
+```ts
+function findLastIndex<T>(array, predicate): number
+```
 
 Same as Array.prototype.findIndex, but starting from the end.
 
 Array.prototype.findLastIndex is already available in some runtimes,
 but not in Node.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
 ## Parameters
 
 • **array**: `T`
 
-• **predicate**: (`value`, `index`, `arr`) => `boolean`
+• **predicate**
 
 ## Returns
 
 `number`
 
-## Source
+## Defined in
 
-[src/array/index.ts:145](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L145)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:145](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L145)

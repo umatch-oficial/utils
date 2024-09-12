@@ -1,22 +1,28 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / hasSameElements
+[@umatch/utils](../../api.md) / [array](../README.md) / hasSameElements
 
 # Function: hasSameElements()
 
-> **hasSameElements**\<`X`, `A`, `B`\>(`a`, `b`): [`Equals`](../../index/type-aliases/Equals.md)\<`A`\[`number`\], `B`\[`number`\]\> extends `true` ? `A` extends `Object` ? `B` extends `Object` ? [`Equals`](../../index/type-aliases/Equals.md)\<`ALen`, `BLen`\> extends `true` ? `true` : `false` : `false` : `false` : `false`
+```ts
+function hasSameElements<X, A, B>(a, b): Equals<A[number], B[number]> extends true ? A extends {
+  length: infer ALen;
+ } ? B extends {
+  length: infer BLen;
+ } ? Equals<ALen, BLen> extends true ? true : false : false : false : false
+```
 
 Returns whether 2 arrays have the same elements, regardless of order.
 
-## Type parameters
+## Type Parameters
 
-• **X** extends `string` \| `number`
+• **X** *extends* `string` \| `number`
 
-• **A** extends readonly `X`[]
+• **A** *extends* readonly `X`[]
 
-• **B** extends readonly `X`[]
+• **B** *extends* readonly `X`[]
 
 ## Parameters
 
@@ -26,12 +32,12 @@ Returns whether 2 arrays have the same elements, regardless of order.
 
 ## Returns
 
-[`Equals`](../../index/type-aliases/Equals.md)\<`A`\[`number`\], `B`\[`number`\]\> extends `true` ? `A` extends `Object` ? `B` extends `Object` ? [`Equals`](../../index/type-aliases/Equals.md)\<`ALen`, `BLen`\> extends `true` ? `true` : `false` : `false` : `false` : `false`
+[`Equals`](../../index/type-aliases/Equals.md)\<`A`\[`number`\], `B`\[`number`\]\> *extends* `true` ? `A` *extends* \{
+  `length`: infer ALen;
+ \} ? `B` *extends* \{
+  `length`: infer BLen;
+ \} ? [`Equals`](../../index/type-aliases/Equals.md)\<`ALen`, `BLen`\> *extends* `true` ? `true` : `false` : `false` : `false` : `false`
 
-## Source
+## Defined in
 
-[src/array/index.ts:227](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L227)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:227](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L227)

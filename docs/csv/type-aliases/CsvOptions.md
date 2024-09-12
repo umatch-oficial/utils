@@ -1,35 +1,46 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [csv](../index.md) / CsvOptions
+[@umatch/utils](../../api.md) / [csv](../README.md) / CsvOptions
 
-# Type alias: CsvOptions
+# Type Alias: CsvOptions
 
-> **CsvOptions**: `Object`
+```ts
+type CsvOptions: {
+  encoding: BufferEncoding;
+  endMessage: string;
+  headers: boolean;
+  separator: string;
+};
+```
 
 ## Type declaration
 
 ### encoding?
 
-> **encoding**?: `BufferEncoding`
+```ts
+optional encoding: BufferEncoding;
+```
 
 ### endMessage?
 
-> **endMessage**?: `string`
+```ts
+optional endMessage: string;
+```
 
 ### headers?
 
-> **headers**?: `boolean`
+```ts
+optional headers: boolean;
+```
 
 ### separator?
 
-> **separator**?: `string`
+```ts
+optional separator: string;
+```
 
-## Source
+## Defined in
 
-[src/csv/index.ts:15](https://github.com/umatch-oficial/utils/blob/6b2757d/src/csv/index.ts#L15)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/csv/index.ts:15](https://github.com/umatch-oficial/utils/blob/main/src/csv/index.ts#L15)

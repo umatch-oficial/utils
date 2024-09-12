@@ -1,29 +1,27 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / Replace
+[@umatch/utils](../../api.md) / [string](../README.md) / Replace
 
-# Type alias: Replace\<S, Char, NewChar, Acc\>
+# Type Alias: Replace\<S, Char, NewChar, Acc\>
 
-> **Replace**\<`S`, `Char`, `NewChar`, `Acc`\>: `S` extends \`${infer Before}${Char}${infer After}\` ? [`Replace`](Replace.md)\<`After`, `Char`, `NewChar`, \`${Acc}${Before}${NewChar}\`\> : `Acc` extends `""` ? `S` : \`${Acc}${S}\`
+```ts
+type Replace<S, Char, NewChar, Acc>: S extends `${infer Before}${Char}${infer After}` ? Replace<After, Char, NewChar, `${Acc}${Before}${NewChar}`> : Acc extends "" ? S : `${Acc}${S}`;
+```
 
 Replaces NewChar with Char in S.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
-• **Char** extends `string`
+• **Char** *extends* `string`
 
-• **NewChar** extends `string`
+• **NewChar** *extends* `string`
 
-• **Acc** extends `string` = `""`
+• **Acc** *extends* `string` = `""`
 
-## Source
+## Defined in
 
-[src/string/index.ts:18](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L18)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:18](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L18)

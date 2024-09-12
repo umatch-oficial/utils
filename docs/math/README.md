@@ -1,8 +1,8 @@
-**@umatch/utils** • [Readme](../index.md) \| [Modules](../modules.md)
+[**About this project**](../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../modules.md) / math
+[@umatch/utils](../api.md) / math
 
 # math
 
@@ -31,7 +31,3 @@
 - [splitInChunks](functions/splitInChunks.md)
 - [sum](functions/sum.md)
 - [sumProperty](functions/sumProperty.md)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)

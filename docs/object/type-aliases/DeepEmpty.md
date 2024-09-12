@@ -1,24 +1,22 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / DeepEmpty
+[@umatch/utils](../../api.md) / [object](../README.md) / DeepEmpty
 
-# Type alias: DeepEmpty
+# Type Alias: DeepEmpty
 
-> **DeepEmpty**: `Object`
+```ts
+type DeepEmpty: {};
+```
 
 A deep empty object only has values that are empty strings, empty
 arrays, empty objects or deep empty objects.
 
-## Index signature
+## Index Signature
 
  \[`key`: `PropertyKey`\]: `""` \| readonly [] \| `Record`\<`PropertyKey`, `never`\> \| [`DeepEmpty`](DeepEmpty.md)
 
-## Source
+## Defined in
 
-[src/object/index.ts:261](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L261)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:261](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L261)

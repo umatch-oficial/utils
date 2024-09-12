@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / sampleNormal
+[@umatch/utils](../../api.md) / [math](../README.md) / sampleNormal
 
 # Function: sampleNormal()
 
-> **sampleNormal**(): `number`
+```ts
+function sampleNormal(): number
+```
 
 Returns a random number from the normal distribution.
 
@@ -14,10 +16,6 @@ Returns a random number from the normal distribution.
 
 `number`
 
-## Source
+## Defined in
 
-[src/math/index.ts:293](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L293)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:293](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L293)

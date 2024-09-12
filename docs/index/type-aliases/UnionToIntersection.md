@@ -1,21 +1,19 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / UnionToIntersection
+[@umatch/utils](../../api.md) / [index](../README.md) / UnionToIntersection
 
-# Type alias: UnionToIntersection\<T\>
+# Type Alias: UnionToIntersection\<T\>
 
-> **UnionToIntersection**\<`T`\>: `T` extends `never` ? `never` : (`arg`) => `void` extends (`arg`) => `void` ? `I` : `never`
+```ts
+type UnionToIntersection<T>: T extends never ? never : (arg) => void extends (arg) => void ? I : never;
+```
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
-## Source
+## Defined in
 
-[src/index.ts:183](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L183)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:173](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L173)

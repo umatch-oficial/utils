@@ -1,18 +1,20 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / cartesian
+[@umatch/utils](../../api.md) / [array](../README.md) / cartesian
 
 # Function: cartesian()
 
-> **cartesian**\<`Y`\>(...`arrays`): [`Cartesian`](../type-aliases/Cartesian.md)\<`Y`\>
+```ts
+function cartesian<Y>(...arrays): Cartesian<Y>
+```
 
 Returns the cartesian product of n arrays.
 
-## Type parameters
+## Type Parameters
 
-• **Y** extends readonly readonly unknown[][]
+• **Y** *extends* readonly readonly `unknown`[][]
 
 ## Parameters
 
@@ -22,10 +24,6 @@ Returns the cartesian product of n arrays.
 
 [`Cartesian`](../type-aliases/Cartesian.md)\<`Y`\>
 
-## Source
+## Defined in
 
-[src/array/index.ts:26](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L26)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:26](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L26)

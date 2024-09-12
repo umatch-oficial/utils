@@ -1,25 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / SnakeCase
+[@umatch/utils](../../api.md) / [string](../README.md) / SnakeCase
 
-# Type alias: SnakeCase\<S, Acc\>
+# Type Alias: SnakeCase\<S, Acc\>
 
-> **SnakeCase**\<`S`, `Acc`\>: `S` extends \`${infer First}${infer Rest}\` ? `Acc` extends `""` ? [`SnakeCase`](SnakeCase.md)\<`Rest`, `Lowercase`\<`First`\>\> : `First` extends `"_"` \| `" "` \| `"-"` ? [`SnakeCase`](SnakeCase.md)\<`Capitalize`\<`Rest`\>, \`${Acc}_\`\> : `First` extends `Uppercase`\<`First`\> ? [`LastLetter`](LastLetter.md)\<`Acc`\> extends `"_"` ? [`SnakeCase`](SnakeCase.md)\<`Rest`, \`${Acc}${Lowercase<First>}\`\> : [`SnakeCase`](SnakeCase.md)\<`Rest`, \`${Acc}_${Lowercase<First>}\`\> : [`SnakeCase`](SnakeCase.md)\<`Rest`, \`${Acc}${First}\`\> : `Acc`
+```ts
+type SnakeCase<S, Acc>: S extends `${infer First}${infer Rest}` ? Acc extends "" ? SnakeCase<Rest, Lowercase<First>> : First extends "_" | " " | "-" ? SnakeCase<Capitalize<Rest>, `${Acc}_`> : First extends Uppercase<First> ? LastLetter<Acc> extends "_" ? SnakeCase<Rest, `${Acc}${Lowercase<First>}`> : SnakeCase<Rest, `${Acc}_${Lowercase<First>}`> : SnakeCase<Rest, `${Acc}${First}`> : Acc;
+```
 
 Converts a string to snake_case.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
-• **Acc** extends `string` = `""`
+• **Acc** *extends* `string` = `""`
 
-## Source
+## Defined in
 
-[src/string/index.ts:651](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L651)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:651](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L651)

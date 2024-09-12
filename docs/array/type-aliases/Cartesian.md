@@ -1,23 +1,21 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / Cartesian
+[@umatch/utils](../../api.md) / [array](../README.md) / Cartesian
 
-# Type alias: Cartesian\<Arrays, Acc\>
+# Type Alias: Cartesian\<Arrays, Acc\>
 
-> **Cartesian**\<`Arrays`, `Acc`\>: `Arrays` extends readonly [readonly infer H[], `...(infer T)`] ? [`Cartesian`](Cartesian.md)\<`T`, [`...Acc`, `H`]\> : `Acc`[]
+```ts
+type Cartesian<Arrays, Acc>: Arrays extends readonly [readonly infer H[], ...(infer T)] ? Cartesian<T, [...Acc, H]> : Acc[];
+```
 
-## Type parameters
+## Type Parameters
 
-• **Arrays** extends readonly `unknown`[]
+• **Arrays** *extends* readonly `unknown`[]
 
-• **Acc** extends `unknown`[] = []
+• **Acc** *extends* `unknown`[] = []
 
-## Source
+## Defined in
 
-[src/array/index.ts:16](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L16)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:16](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L16)

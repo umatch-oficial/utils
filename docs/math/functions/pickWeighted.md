@@ -1,18 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / pickWeighted
+[@umatch/utils](../../api.md) / [math](../README.md) / pickWeighted
 
 # Function: pickWeighted()
 
-> **pickWeighted**\<`T`\>(`options`): `T`\[`"option"`\]
+```ts
+function pickWeighted<T>(options): T["option"]
+```
 
 Picks a random option from an array of { option, weight }.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends `Object`
+• **T** *extends* \{
+  `option`: `unknown`;
+  `weight`: `number`;
+ \}
 
 ## Parameters
 
@@ -22,10 +27,6 @@ Picks a random option from an array of { option, weight }.
 
 `T`\[`"option"`\]
 
-## Source
+## Defined in
 
-[src/math/index.ts:197](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L197)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:197](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L197)

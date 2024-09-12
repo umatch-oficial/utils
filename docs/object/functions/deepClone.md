@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / deepClone
+[@umatch/utils](../../api.md) / [object](../README.md) / deepClone
 
 # Function: deepClone()
 
-> **deepClone**\<`T`\>(`obj`): `T`
+```ts
+function deepClone<T>(obj): T
+```
 
 Returns a deep clone of the object.
 
@@ -14,7 +16,7 @@ Similar to structuredClone, except that it only treats plain
 objects and arrays as values, and copies all other types by
 reference.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
@@ -26,10 +28,6 @@ reference.
 
 `T`
 
-## Source
+## Defined in
 
-[src/object/index.ts:63](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L63)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:63](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L63)

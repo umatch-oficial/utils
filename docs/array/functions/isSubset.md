@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / isSubset
+[@umatch/utils](../../api.md) / [array](../README.md) / isSubset
 
 # Function: isSubset()
 
-> **isSubset**(`small`, `large`): `boolean`
+```ts
+function isSubset(small, large): boolean
+```
 
 Returns whether the small array is a subset of the large array.
 
@@ -20,10 +22,6 @@ Returns whether the small array is a subset of the large array.
 
 `boolean`
 
-## Source
+## Defined in
 
-[src/array/index.ts:270](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L270)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:270](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L270)

@@ -1,12 +1,18 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / setDeepProperty
+[@umatch/utils](../../api.md) / [object](../README.md) / setDeepProperty
 
 # Function: setDeepProperty()
 
-> **setDeepProperty**(`obj`, `str`, `value`, `sep`): `unknown`
+```ts
+function setDeepProperty(
+   obj, 
+   str, 
+   value, 
+   sep): unknown
+```
 
 Sets a deep property of an object given a path-like string.
 
@@ -18,7 +24,7 @@ Sets a deep property of an object given a path-like string.
 
 • **value**: `unknown`
 
-• **sep**: `string`= `'.'`
+• **sep**: `string` = `'.'`
 
 ## Returns
 
@@ -35,10 +41,6 @@ setDeepProperty({ a: { b: [2,3,9] } }, 'a.b[2]', 5)
 
 if some object in the path is an array, but the next key is not a number.
 
-## Source
+## Defined in
 
-[src/object/index.ts:392](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L392)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:392](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L392)

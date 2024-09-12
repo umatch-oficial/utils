@@ -1,18 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / sliceWithOverflow
+[@umatch/utils](../../api.md) / [array](../README.md) / sliceWithOverflow
 
 # Function: sliceWithOverflow()
 
-> **sliceWithOverflow**\<`T`\>(`array`, `start`, `end`): `T` extends readonly infer \_[] ? `T` : `never`
+```ts
+function sliceWithOverflow<T>(
+   array, 
+   start, 
+   end): T extends readonly infer _[] ? T : never
+```
 
 Same as slice, but overflows to guarantee there are (end - start) elements.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
 ## Parameters
 
@@ -24,12 +29,8 @@ Same as slice, but overflows to guarantee there are (end - start) elements.
 
 ## Returns
 
-`T` extends readonly infer \_[] ? `T` : `never`
+`T` *extends* readonly infer \_[] ? `T` : `never`
 
-## Source
+## Defined in
 
-[src/array/index.ts:339](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L339)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:339](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L339)

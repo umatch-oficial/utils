@@ -1,25 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / JoinNonEmpty
+[@umatch/utils](../../api.md) / [string](../README.md) / JoinNonEmpty
 
-# Type alias: JoinNonEmpty\<T, Sep, Acc\>
+# Type Alias: JoinNonEmpty\<T, Sep, Acc\>
 
-> **JoinNonEmpty**\<`T`, `Sep`, `Acc`\>: `T` extends readonly [infer Element, `...(infer Rest extends readonly Primitive[])`] ? `null` \| `undefined` extends `Element` ? [`JoinNonEmpty`](JoinNonEmpty.md)\<`Rest`, `Sep`, `Acc`\> : `Element` extends `string` ? [`Trim`](Trim.md)\<`Element`\> extends `""` ? [`JoinNonEmpty`](JoinNonEmpty.md)\<`Rest`, `Sep`, `Acc`\> : `Acc` extends `""` ? [`JoinNonEmpty`](JoinNonEmpty.md)\<`Rest`, `Sep`, `Element`\> : [`JoinNonEmpty`](JoinNonEmpty.md)\<`Rest`, `Sep`, \`${Acc}${Sep}${Element}\`\> : `Acc` extends `""` ? [`JoinNonEmpty`](JoinNonEmpty.md)\<`Rest`, `Sep`, `Element` & `string`\> : [`JoinNonEmpty`](JoinNonEmpty.md)\<`Rest`, `Sep`, \`${Acc}${Sep}${Element & string}\`\> : `Acc`
+```ts
+type JoinNonEmpty<T, Sep, Acc>: T extends readonly [infer Element, ...(infer Rest extends readonly Primitive[])] ? null | undefined extends Element ? JoinNonEmpty<Rest, Sep, Acc> : Element extends string ? Trim<Element> extends "" ? JoinNonEmpty<Rest, Sep, Acc> : Acc extends "" ? JoinNonEmpty<Rest, Sep, Element> : JoinNonEmpty<Rest, Sep, `${Acc}${Sep}${Element}`> : Acc extends "" ? JoinNonEmpty<Rest, Sep, Element & string> : JoinNonEmpty<Rest, Sep, `${Acc}${Sep}${Element & string}`> : Acc;
+```
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly [`Primitive`](../../index/type-aliases/Primitive.md)[]
+• **T** *extends* readonly [`Primitive`](../../index/type-aliases/Primitive.md)[]
 
-• **Sep** extends `string` = `""`
+• **Sep** *extends* `string` = `""`
 
-• **Acc** extends `string` = `""`
+• **Acc** *extends* `string` = `""`
 
-## Source
+## Defined in
 
-[src/string/index.ts:315](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L315)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:315](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L315)

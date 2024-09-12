@@ -1,18 +1,20 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / uncapitalize
+[@umatch/utils](../../api.md) / [string](../README.md) / uncapitalize
 
 # Function: uncapitalize()
 
-> **uncapitalize**\<`S`\>(`str`): `Uncapitalize`\<`S`\>
+```ts
+function uncapitalize<S>(str): Uncapitalize<S>
+```
 
 Converts the first character of a string to lowercase.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
 ## Parameters
 
@@ -22,10 +24,6 @@ Converts the first character of a string to lowercase.
 
 `Uncapitalize`\<`S`\>
 
-## Source
+## Defined in
 
-[src/string/index.ts:550](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L550)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:550](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L550)

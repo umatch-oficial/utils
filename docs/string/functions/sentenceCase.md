@@ -1,18 +1,20 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / sentenceCase
+[@umatch/utils](../../api.md) / [string](../README.md) / sentenceCase
 
 # Function: sentenceCase()
 
-> **sentenceCase**\<`S`\>(`str`): [`SentenceCase`](../type-aliases/SentenceCase.md)\<`S`\>
+```ts
+function sentenceCase<S>(str): SentenceCase<S>
+```
 
 Converts a string to Sentence case.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
 ## Parameters
 
@@ -22,10 +24,6 @@ Converts a string to Sentence case.
 
 [`SentenceCase`](../type-aliases/SentenceCase.md)\<`S`\>
 
-## Source
+## Defined in
 
-[src/string/index.ts:712](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L712)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:712](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L712)

@@ -1,16 +1,18 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / deepFlat
+[@umatch/utils](../../api.md) / [array](../README.md) / deepFlat
 
 # Function: deepFlat()
 
-> **deepFlat**\<`T`\>(`array`): ([`DeepObject`](../../index/type-aliases/DeepObject.md)\<`T`\> \| `T`)[]
+```ts
+function deepFlat<T>(array): (DeepObject<T> | T)[]
+```
 
 Array.flat() for n-dimensional arrays.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
@@ -22,10 +24,6 @@ Array.flat() for n-dimensional arrays.
 
 ([`DeepObject`](../../index/type-aliases/DeepObject.md)\<`T`\> \| `T`)[]
 
-## Source
+## Defined in
 
-[src/array/index.ts:45](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L45)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:45](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L45)

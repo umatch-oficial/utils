@@ -1,23 +1,21 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / Trim
+[@umatch/utils](../../api.md) / [string](../README.md) / Trim
 
-# Type alias: Trim\<S\>
+# Type Alias: Trim\<S\>
 
-> **Trim**\<`S`\>: `S` extends \` ${infer After}\` ? [`Trim`](Trim.md)\<`After`\> : `S` extends \`${infer Before} \` ? [`Trim`](Trim.md)\<`Before`\> : `S`
+```ts
+type Trim<S>: S extends ` ${infer After}` ? Trim<After> : S extends `${infer Before} ` ? Trim<Before> : S;
+```
 
 Trims both ends of a string.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
-## Source
+## Defined in
 
-[src/string/index.ts:31](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L31)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:31](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L31)

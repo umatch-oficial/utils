@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / ToPlural
+[@umatch/utils](../../api.md) / [string](../README.md) / ToPlural
 
-# Type alias: ToPlural
+# Type Alias: ToPlural()
 
-> **ToPlural**: (`word`, `quantity`?, `plural`?) => `string`
+```ts
+type ToPlural: (word, quantity?, plural?) => string;
+```
 
 ## Parameters
 
@@ -20,10 +22,6 @@
 
 `string`
 
-## Source
+## Defined in
 
-[src/string/index.ts:13](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L13)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:13](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L13)

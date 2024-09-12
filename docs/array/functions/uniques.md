@@ -1,18 +1,20 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / uniques
+[@umatch/utils](../../api.md) / [array](../README.md) / uniques
 
 # Function: uniques()
 
-> **uniques**\<`T`\>(`array`): `{ readonly [K in keyof T]: unknown }` extends `T` ? [`Uniques`](../type-aliases/Uniques.md)\<`T`\> : `T`
+```ts
+function uniques<T>(array): { readonly [K in keyof T]: unknown } extends T ? Uniques<T> : T
+```
 
 Returns a copy of an array without duplicates.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
 ## Parameters
 
@@ -20,12 +22,8 @@ Returns a copy of an array without duplicates.
 
 ## Returns
 
-`{ readonly [K in keyof T]: unknown }` extends `T` ? [`Uniques`](../type-aliases/Uniques.md)\<`T`\> : `T`
+`{ readonly [K in keyof T]: unknown }` *extends* `T` ? [`Uniques`](../type-aliases/Uniques.md)\<`T`\> : `T`
 
-## Source
+## Defined in
 
-[src/array/index.ts:425](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L425)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:425](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L425)

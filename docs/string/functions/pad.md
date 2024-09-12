@@ -1,12 +1,17 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / pad
+[@umatch/utils](../../api.md) / [string](../README.md) / pad
 
 # Function: pad()
 
-> **pad**(`left`, `right`, `length`): `string`
+```ts
+function pad(
+   left, 
+   right, 
+   length): string
+```
 
 Inserts spaces between left and right to achieve the desired length.
 
@@ -22,10 +27,6 @@ Inserts spaces between left and right to achieve the desired length.
 
 `string`
 
-## Source
+## Defined in
 
-[src/string/index.ts:364](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L364)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:364](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L364)

@@ -1,20 +1,22 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / omit
+[@umatch/utils](../../api.md) / [object](../README.md) / omit
 
 # Function: omit()
 
-> **omit**\<`T`, `K`\>(`obj`, `keys`): `Omit`\<`T`, `K`\>
+```ts
+function omit<T, K>(obj, keys): Omit<T, K>
+```
 
 Copies an object excluding some keys.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
-• **K** extends `string` \| `number` \| `symbol`
+• **K** *extends* `string` \| `number` \| `symbol`
 
 ## Parameters
 
@@ -26,10 +28,6 @@ Copies an object excluding some keys.
 
 `Omit`\<`T`, `K`\>
 
-## Source
+## Defined in
 
-[src/object/index.ts:333](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L333)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:333](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L333)

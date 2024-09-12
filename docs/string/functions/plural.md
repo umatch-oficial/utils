@@ -1,12 +1,17 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / plural
+[@umatch/utils](../../api.md) / [string](../README.md) / plural
 
 # Function: plural()
 
-> **plural**(`word`, `quantity`?, `plural`?): `string`
+```ts
+function plural(
+   word, 
+   quantity?, 
+   plural?): string
+```
 
 Pluralizes the word if *quantity* is undefined or not 1. Uses the
 given plural or adds an 's' to the end.
@@ -34,10 +39,6 @@ plural('developer', 1)
 plural('developer', 2)
 ```
 
-## Source
+## Defined in
 
-[src/string/index.ts:13](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L13)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:81](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L81)

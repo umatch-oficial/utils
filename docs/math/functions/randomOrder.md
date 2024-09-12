@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / randomOrder
+[@umatch/utils](../../api.md) / [math](../README.md) / randomOrder
 
 # Function: randomOrder()
 
-> **randomOrder**(`length`, `seed`): `number`[]
+```ts
+function randomOrder(length, seed): number[]
+```
 
 Returns an array of numbers in a random order determined by the seed.
 
@@ -27,10 +29,6 @@ Returns an array of numbers in a random order determined by the seed.
 randomOrder(5, 1)
 ```
 
-## Source
+## Defined in
 
-[src/math/index.ts:258](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L258)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:258](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L258)

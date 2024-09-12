@@ -1,18 +1,20 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / isKeyOf
+[@umatch/utils](../../api.md) / [index](../README.md) / isKeyOf
 
 # Function: isKeyOf()
 
-> **isKeyOf**\<`T`\>(`obj`, `key`): `key is keyof T`
+```ts
+function isKeyOf<T>(obj, key): key is keyof T
+```
 
 Returns whether key is a key of obj.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends `object`
+• **T** *extends* `object`
 
 ## Parameters
 
@@ -24,10 +26,6 @@ Returns whether key is a key of obj.
 
 `key is keyof T`
 
-## Source
+## Defined in
 
-[src/index.ts:244](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L244)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:234](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L234)

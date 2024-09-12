@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / isArray
+[@umatch/utils](../../api.md) / [index](../README.md) / isArray
 
 # Function: isArray()
 
-> **isArray**(`obj`): `obj is readonly unknown[]`
+```ts
+function isArray(obj): obj is readonly unknown[]
+```
 
 Returns whether obj is an array.
 
@@ -20,10 +22,6 @@ Uses Array.isArray().
 
 `obj is readonly unknown[]`
 
-## Source
+## Defined in
 
-[src/index.ts:199](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L199)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:189](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L189)

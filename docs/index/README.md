@@ -1,8 +1,8 @@
-**@umatch/utils** • [Readme](../index.md) \| [Modules](../modules.md)
+[**About this project**](../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../modules.md) / index
+[@umatch/utils](../api.md) / index
 
 # index
 
@@ -51,7 +51,3 @@
 - [isPlainObject](functions/isPlainObject.md)
 - [isPrimitive](functions/isPrimitive.md)
 - [isString](functions/isString.md)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)

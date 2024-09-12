@@ -1,18 +1,20 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / splitInChunks
+[@umatch/utils](../../api.md) / [math](../README.md) / splitInChunks
 
 # Function: splitInChunks()
 
-> **splitInChunks**\<`T`\>(`array`, `size`): `T`\[`number`\][][]
+```ts
+function splitInChunks<T>(array, size): T[number][][]
+```
 
 Splits an array into chunks of equal size.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
 ## Parameters
 
@@ -24,10 +26,6 @@ Splits an array into chunks of equal size.
 
 `T`\[`number`\][][]
 
-## Source
+## Defined in
 
-[src/math/index.ts:300](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L300)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:300](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L300)

@@ -1,27 +1,25 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / Subtract
+[@umatch/utils](../../api.md) / [index](../README.md) / Subtract
 
-# Type alias: Subtract\<A, B, Acc\>
+# Type Alias: Subtract\<A, B, Acc\>
 
-> **Subtract**\<`A`, `B`, `Acc`\>: `A` extends readonly [infer H, `...(infer T)`] ? `H` extends `B`\[`number`\] ? [`Subtract`](Subtract.md)\<`T`, `B`, `Acc`\> : [`Subtract`](Subtract.md)\<`T`, `B`, readonly [`...Acc`, `H`]\> : `Acc`
+```ts
+type Subtract<A, B, Acc>: A extends readonly [infer H, ...(infer T)] ? H extends B[number] ? Subtract<T, B, Acc> : Subtract<T, B, readonly [...Acc, H]> : Acc;
+```
 
 Excludes types present in B from A.
 
-## Type parameters
+## Type Parameters
 
-• **A** extends readonly `unknown`[]
+• **A** *extends* readonly `unknown`[]
 
-• **B** extends readonly `unknown`[]
+• **B** *extends* readonly `unknown`[]
 
-• **Acc** extends readonly `unknown`[] = []
+• **Acc** *extends* readonly `unknown`[] = []
 
-## Source
+## Defined in
 
-[src/index.ts:95](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L95)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:95](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L95)

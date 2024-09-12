@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / ToOrdinal
+[@umatch/utils](../../api.md) / [string](../README.md) / ToOrdinal
 
-# Type alias: ToOrdinal
+# Type Alias: ToOrdinal()
 
-> **ToOrdinal**: (`num`) => `string`
+```ts
+type ToOrdinal: (num) => string;
+```
 
 ## Parameters
 
@@ -16,10 +18,6 @@
 
 `string`
 
-## Source
+## Defined in
 
-[src/string/index.ts:12](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L12)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:12](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L12)

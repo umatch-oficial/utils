@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / isString
+[@umatch/utils](../../api.md) / [index](../README.md) / isString
 
 # Function: isString()
 
-> **isString**(`obj`): `obj is string`
+```ts
+function isString(obj): obj is string
+```
 
 Returns whether obj is a string.
 
@@ -18,10 +20,6 @@ Returns whether obj is a string.
 
 `obj is string`
 
-## Source
+## Defined in
 
-[src/index.ts:284](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L284)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:274](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L274)

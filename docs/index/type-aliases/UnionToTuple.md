@@ -1,23 +1,21 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / UnionToTuple
+[@umatch/utils](../../api.md) / [index](../README.md) / UnionToTuple
 
-# Type alias: UnionToTuple\<T, Acc\>
+# Type Alias: UnionToTuple\<T, Acc\>
 
-> **UnionToTuple**\<`T`, `Acc`\>: [`UnionToIntersection`](UnionToIntersection.md)\<`T` extends `never` ? `never` : (`arg`) => `T`\> extends (`_`) => infer W ? [`UnionToTuple`](UnionToTuple.md)\<`Exclude`\<`T`, `W`\>, [`W`, `...Acc`]\> : `Acc`
+```ts
+type UnionToTuple<T, Acc>: UnionToIntersection<T extends never ? never : (arg) => T> extends (_) => infer W ? UnionToTuple<Exclude<T, W>, [W, ...Acc]> : Acc;
+```
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
-• **Acc** extends `unknown`[] = []
+• **Acc** *extends* `unknown`[] = []
 
-## Source
+## Defined in
 
-[src/index.ts:188](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L188)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:178](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L178)

@@ -1,23 +1,21 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / IsReadonly
+[@umatch/utils](../../api.md) / [index](../README.md) / IsReadonly
 
-# Type alias: IsReadonly\<T\>
+# Type Alias: IsReadonly\<T\>
 
-> **IsReadonly**\<`T`\>: `T` extends `unknown`[] ? `false` : `true`
+```ts
+type IsReadonly<T>: T extends unknown[] ? false : true;
+```
 
 Returns whether an array is readonly.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
-## Source
+## Defined in
 
-[src/index.ts:12](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L12)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:12](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L12)

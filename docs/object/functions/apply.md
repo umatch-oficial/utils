@@ -1,40 +1,41 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / apply
+[@umatch/utils](../../api.md) / [object](../README.md) / apply
 
 # Function: apply()
 
-> **apply**\<`T`, `R`, `Keys`\>(`obj`, `func`, `keys`?): `Keys` extends `undefined` ? `{ [K in keyof T]: R }` : `{ [K in keyof T]: K extends Keys[number] ? R : T[K] }`
+```ts
+function apply<T, R, Keys>(
+   obj, 
+   func, 
+   keys?): Keys extends undefined ? { [K in keyof T]: R } : { [K in keyof T]: K extends Keys[number] ? R : T[K] }
+```
 
 Copies an object and applies a function to all values. If keys is
 specified, only applies the function to those keys.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends [`Dictionary`](../../index/type-aliases/Dictionary.md)
+• **T** *extends* [`Dictionary`](../../index/type-aliases/Dictionary.md)
 
 • **R**
 
-• **Keys** extends readonly keyof `T`[]
+• **Keys** *extends* readonly keyof `T`[]
 
 ## Parameters
 
 • **obj**: `T`
 
-• **func**: (`val`) => `R`
+• **func**
 
 • **keys?**: `Keys`
 
 ## Returns
 
-`Keys` extends `undefined` ? `{ [K in keyof T]: R }` : `{ [K in keyof T]: K extends Keys[number] ? R : T[K] }`
+`Keys` *extends* `undefined` ? `{ [K in keyof T]: R }` : `{ [K in keyof T]: K extends Keys[number] ? R : T[K] }`
 
-## Source
+## Defined in
 
-[src/object/index.ts:21](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L21)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:21](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L21)

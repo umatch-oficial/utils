@@ -1,12 +1,16 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [index](../index.md) / Brand
+[@umatch/utils](../../api.md) / [index](../README.md) / Brand
 
-# Type alias: Brand\<T, B\>
+# Type Alias: Brand\<T, B\>
 
-> **Brand**\<`T`, `B`\>: `T` & `Object`
+```ts
+type Brand<T, B>: T & {
+  __brand: B;
+};
+```
 
 Brands an object.
 
@@ -14,18 +18,16 @@ Brands an object.
 
 ### \_\_brand
 
-> **\_\_brand**: `B`
+```ts
+__brand: B;
+```
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
-• **B** extends `string`
+• **B** *extends* `string`
 
-## Source
+## Defined in
 
-[src/index.ts:109](https://github.com/umatch-oficial/utils/blob/6b2757d/src/index.ts#L109)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/index.ts:109](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L109)

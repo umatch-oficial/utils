@@ -1,12 +1,17 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [object](../index.md) / merge
+[@umatch/utils](../../api.md) / [object](../README.md) / merge
 
 # Function: merge()
 
-> **merge**\<`A`, `B`\>(`target`, `source`, `strategy`?): [`Merge`](../../index/type-aliases/Merge.md)\<`A`, `B`\>
+```ts
+function merge<A, B>(
+   target, 
+   source, 
+strategy?): Merge<A, B>
+```
 
 Deep merges two objects.
 
@@ -14,11 +19,11 @@ Values from the second object override those in the first one,
 except when both objects hold an array on the same key and the
 strategy is set to "concat", in which case both arrays are merged.
 
-## Type parameters
+## Type Parameters
 
 • **A**
 
-• **B** extends [`Dictionary`](../../index/type-aliases/Dictionary.md) \| `Partial`\<`A`\>
+• **B** *extends* [`Dictionary`](../../index/type-aliases/Dictionary.md) \| `Partial`\<`A`\>
 
 ## Parameters
 
@@ -36,10 +41,6 @@ strategy is set to "concat", in which case both arrays are merged.
 
 if an unexpected strategy is provided.
 
-## Source
+## Defined in
 
-[src/object/index.ts:310](https://github.com/umatch-oficial/utils/blob/6b2757d/src/object/index.ts#L310)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/object/index.ts:310](https://github.com/umatch-oficial/utils/blob/main/src/object/index.ts#L310)

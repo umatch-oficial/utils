@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / groupBy
+[@umatch/utils](../../api.md) / [array](../README.md) / groupBy
 
 # Function: groupBy()
 
-> **groupBy**\<`T`, `Key`\>(`array`, `key`): `T` extends readonly infer D[] ? `Key` extends keyof `D` ? `D`\[`Key`\] extends `string` \| `number` \| `boolean` ? `{ [Value in D[Key] as Value extends boolean ? Value & string : Value]: D[] }` : `never` : `Object` : [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`T`\>
+```ts
+function groupBy<T, Key>(array, key): T extends readonly infer D[] ? Key extends keyof D ? D[Key] extends string | number | boolean ? { [Value in D[Key] as Value extends boolean ? Value & string : Value]: D[] } : never : {} : Dictionary<T>
+```
 
 Groups the elements in an array by the value of the specified key.
 
@@ -14,11 +16,11 @@ The key must have a primitive value (boolean, number or string)
 for every object in the array. If the value is boolean, it becomes
 an index of the resulting object as a string.
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly [`Dictionary`](../../index/type-aliases/Dictionary.md)[]
+• **T** *extends* readonly [`Dictionary`](../../index/type-aliases/Dictionary.md)[]
 
-• **Key** extends `PropertyKey`
+• **Key** *extends* `PropertyKey`
 
 ## Parameters
 
@@ -28,16 +30,12 @@ an index of the resulting object as a string.
 
 ## Returns
 
-`T` extends readonly infer D[] ? `Key` extends keyof `D` ? `D`\[`Key`\] extends `string` \| `number` \| `boolean` ? `{ [Value in D[Key] as Value extends boolean ? Value & string : Value]: D[] }` : `never` : `Object` : [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`T`\>
+`T` *extends* readonly infer D[] ? `Key` *extends* keyof `D` ? `D`\[`Key`\] *extends* `string` \| `number` \| `boolean` ? `{ [Value in D[Key] as Value extends boolean ? Value & string : Value]: D[] }` : `never` : \{\} : [`Dictionary`](../../index/type-aliases/Dictionary.md)\<`T`\>
 
 ## Throws
 
 if, for any element in the array, the key is not present or has a non-primitive value.
 
-## Source
+## Defined in
 
-[src/array/index.ts:188](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L188)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:188](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L188)

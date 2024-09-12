@@ -1,20 +1,22 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [array](../index.md) / permutations
+[@umatch/utils](../../api.md) / [array](../README.md) / permutations
 
 # Function: permutations()
 
-> **permutations**\<`T`\>(`array`): `T` extends readonly infer R[] ? [`R`, `R`][] : `never`
+```ts
+function permutations<T>(array): T extends readonly infer R[] ? [R, R][] : never
+```
 
 Returns all length-2 tuples of the elements, in sorted order,
 without repeated elements.<br>
 (equivalent of python's itertools' combinations)
 
-## Type parameters
+## Type Parameters
 
-• **T** extends readonly `unknown`[]
+• **T** *extends* readonly `unknown`[]
 
 ## Parameters
 
@@ -22,12 +24,8 @@ without repeated elements.<br>
 
 ## Returns
 
-`T` extends readonly infer R[] ? [`R`, `R`][] : `never`
+`T` *extends* readonly infer R[] ? [`R`, `R`][] : `never`
 
-## Source
+## Defined in
 
-[src/array/index.ts:282](https://github.com/umatch-oficial/utils/blob/6b2757d/src/array/index.ts#L282)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/array/index.ts:282](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L282)

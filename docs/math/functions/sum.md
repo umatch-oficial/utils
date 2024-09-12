@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / sum
+[@umatch/utils](../../api.md) / [math](../README.md) / sum
 
 # Function: sum()
 
-> **sum**(`array`): `number`
+```ts
+function sum(array): number
+```
 
 Returns the sum of the elements in the array.
 
@@ -18,10 +20,6 @@ Returns the sum of the elements in the array.
 
 `number`
 
-## Source
+## Defined in
 
-[src/math/index.ts:316](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L316)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:316](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L316)

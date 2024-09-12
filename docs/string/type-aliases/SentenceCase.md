@@ -1,25 +1,23 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [string](../index.md) / SentenceCase
+[@umatch/utils](../../api.md) / [string](../README.md) / SentenceCase
 
-# Type alias: SentenceCase\<S, Acc\>
+# Type Alias: SentenceCase\<S, Acc\>
 
-> **SentenceCase**\<`S`, `Acc`\>: `S` extends \`${infer First}${infer Rest}\` ? `Acc` extends `""` ? [`SentenceCase`](SentenceCase.md)\<`Rest`, `Uppercase`\<`First`\>\> : `First` extends `"_"` \| `" "` \| `"-"` ? [`SentenceCase`](SentenceCase.md)\<`Rest`, \`${Acc} \`\> : `First` extends `Uppercase`\<`First`\> ? [`LastLetter`](LastLetter.md)\<`Acc`\> extends `" "` ? [`SentenceCase`](SentenceCase.md)\<`Rest`, \`${Acc}${Lowercase<First>}\`\> : [`SentenceCase`](SentenceCase.md)\<`Rest`, \`${Acc} ${Lowercase<First>}\`\> : [`SentenceCase`](SentenceCase.md)\<`Rest`, \`${Acc}${First}\`\> : `Acc`
+```ts
+type SentenceCase<S, Acc>: S extends `${infer First}${infer Rest}` ? Acc extends "" ? SentenceCase<Rest, Uppercase<First>> : First extends "_" | " " | "-" ? SentenceCase<Rest, `${Acc} `> : First extends Uppercase<First> ? LastLetter<Acc> extends " " ? SentenceCase<Rest, `${Acc}${Lowercase<First>}`> : SentenceCase<Rest, `${Acc} ${Lowercase<First>}`> : SentenceCase<Rest, `${Acc}${First}`> : Acc;
+```
 
 Converts a string to Sentence case.
 
-## Type parameters
+## Type Parameters
 
-• **S** extends `string`
+• **S** *extends* `string`
 
-• **Acc** extends `string` = `""`
+• **Acc** *extends* `string` = `""`
 
-## Source
+## Defined in
 
-[src/string/index.ts:633](https://github.com/umatch-oficial/utils/blob/6b2757d/src/string/index.ts#L633)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/string/index.ts:633](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L633)

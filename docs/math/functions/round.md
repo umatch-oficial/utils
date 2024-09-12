@@ -1,12 +1,14 @@
-**@umatch/utils** • [Readme](../../index.md) \| [Modules](../../modules.md)
+[**About this project**](../../README.md) • **Docs**
 
 ***
 
-[@umatch/utils](../../modules.md) / [math](../index.md) / round
+[@umatch/utils](../../api.md) / [math](../README.md) / round
 
 # Function: round()
 
-> **round**(`number`, `digits`): `number`
+```ts
+function round(number, digits): number
+```
 
 Returns the number rounded to the specified amount of digits.
 
@@ -17,16 +19,12 @@ in-depth explanation.
 
 • **number**: `number`
 
-• **digits**: `number`= `1`
+• **digits**: `number` = `1`
 
 ## Returns
 
 `number`
 
-## Source
+## Defined in
 
-[src/math/index.ts:285](https://github.com/umatch-oficial/utils/blob/6b2757d/src/math/index.ts#L285)
-
-***
-
-Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+[src/math/index.ts:285](https://github.com/umatch-oficial/utils/blob/main/src/math/index.ts#L285)
