@@ -20,4 +20,4 @@ Returns the last letter of a string.
 
 ## Defined in
 
-[src/string/index.ts:593](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L593)
+[src/string/index.ts:595](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L595)

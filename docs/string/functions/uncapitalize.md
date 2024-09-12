@@ -26,4 +26,4 @@ Converts the first character of a string to lowercase.
 
 ## Defined in
 
-[src/string/index.ts:550](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L550)
+[src/string/index.ts:552](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L552)

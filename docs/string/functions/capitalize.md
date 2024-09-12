@@ -26,4 +26,4 @@ Converts the first character of a string to uppercase.
 
 ## Defined in
 
-[src/string/index.ts:540](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L540)
+[src/string/index.ts:542](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L542)

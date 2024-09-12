@@ -32,4 +32,4 @@ if it fails to parse and there is no default value.
 
 ## Defined in
 
-[src/string/index.ts:467](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L467)
+[src/string/index.ts:469](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L469)

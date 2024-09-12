@@ -23,4 +23,4 @@ The object must only contain string keys.
 
 ## Defined in
 
-[src/index.ts:165](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L165)
+[src/index.ts:164](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L164)

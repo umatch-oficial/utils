@@ -22,4 +22,4 @@ Joins two strings or numbers unless either one is undefined.
 
 ## Defined in
 
-[src/index.ts:123](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L123)
+[src/index.ts:122](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L122)

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [17.0.1](https://github.com/umatch-oficial/utils/compare/v17.0.0...v17.0.1) (2024-09-12)
+
+
+### Bug Fixes
+
+* **index:** disallow non-string keys in TypeFromPath ([645da01](https://github.com/umatch-oficial/utils/commit/645da01a5ad2218699f2db2ea36f84002049c92c))
+
 ## [17.0.0](https://github.com/umatch-oficial/utils/compare/v16.0.1...v17.0.0) (2024-06-26)
 
 

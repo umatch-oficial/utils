@@ -43,4 +43,4 @@ split("a,b,c", 1)
 
 ## Defined in
 
-[src/string/index.ts:527](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L527)
+[src/string/index.ts:529](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L529)

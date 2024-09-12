@@ -18,4 +18,4 @@ type UnionToTuple<T, Acc>: UnionToIntersection<T extends never ? never : (arg) =
 
 ## Defined in
 
-[src/index.ts:178](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L178)
+[src/index.ts:177](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L177)

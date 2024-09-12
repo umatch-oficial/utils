@@ -20,4 +20,4 @@ Converts a string to camelCase.
 
 ## Defined in
 
-[src/string/index.ts:605](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L605)
+[src/string/index.ts:607](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L607)

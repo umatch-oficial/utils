@@ -30,4 +30,4 @@ if the arrays don't have the same length.
 
 ## Defined in
 
-[src/array/index.ts:450](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L450)
+[src/array/index.ts:449](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L449)

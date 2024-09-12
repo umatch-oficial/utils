@@ -20,4 +20,4 @@ Converts a string to snake_case.
 
 ## Defined in
 
-[src/string/index.ts:651](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L651)
+[src/string/index.ts:653](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L653)

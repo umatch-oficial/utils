@@ -18,4 +18,4 @@ type Zip<T, Acc>: T extends readonly [readonly infer A[], ...(infer B)] ? B exte
 
 ## Defined in
 
-[src/array/index.ts:436](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L436)
+[src/array/index.ts:435](https://github.com/umatch-oficial/utils/blob/main/src/array/index.ts#L435)

@@ -26,4 +26,4 @@ Converts a string to Sentence case.
 
 ## Defined in
 
-[src/string/index.ts:712](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L712)
+[src/string/index.ts:714](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L714)

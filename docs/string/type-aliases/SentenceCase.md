@@ -20,4 +20,4 @@ Converts a string to Sentence case.
 
 ## Defined in
 
-[src/string/index.ts:633](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L633)
+[src/string/index.ts:635](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L635)

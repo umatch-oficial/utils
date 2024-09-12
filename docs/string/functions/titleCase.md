@@ -32,4 +32,4 @@ Words to skip. Default: english skip words (articles, prepositions, etc.)
 
 ## Defined in
 
-[src/string/index.ts:759](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L759)
+[src/string/index.ts:761](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L761)

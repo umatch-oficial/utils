@@ -23,4 +23,4 @@ to properties in it, using dot notation.
 
 ## Defined in
 
-[src/index.ts:148](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L148)
+[src/index.ts:147](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L147)

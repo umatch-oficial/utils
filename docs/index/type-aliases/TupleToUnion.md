@@ -18,4 +18,4 @@ Returns a union of the types in the tuple.
 
 ## Defined in
 
-[src/index.ts:172](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L172)
+[src/index.ts:171](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L171)

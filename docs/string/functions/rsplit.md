@@ -43,4 +43,4 @@ rsplit("a,b,c", 1)
 
 ## Defined in
 
-[src/string/index.ts:503](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L503)
+[src/string/index.ts:505](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L505)

@@ -16,4 +16,4 @@ type UnionToIntersection<T>: T extends never ? never : (arg) => void extends (ar
 
 ## Defined in
 
-[src/index.ts:173](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L173)
+[src/index.ts:172](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L172)

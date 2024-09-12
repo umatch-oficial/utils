@@ -20,4 +20,4 @@ Converts a string to Title Case.
 
 ## Defined in
 
-[src/string/index.ts:669](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L669)
+[src/string/index.ts:671](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L671)

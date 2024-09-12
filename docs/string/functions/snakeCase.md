@@ -30,4 +30,4 @@ split it and map the function over each unit according to your needs.
 
 ## Defined in
 
-[src/string/index.ts:724](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L724)
+[src/string/index.ts:726](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L726)

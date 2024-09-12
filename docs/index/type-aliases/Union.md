@@ -20,4 +20,4 @@ Makes a Union between two types removing undefined.
 
 ## Defined in
 
-[src/index.ts:137](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L137)
+[src/index.ts:136](https://github.com/umatch-oficial/utils/blob/main/src/index.ts#L136)

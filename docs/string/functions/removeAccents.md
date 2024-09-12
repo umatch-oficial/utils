@@ -22,4 +22,4 @@ Replaces accented letters with their standard versions.
 
 ## Defined in
 
-[src/string/index.ts:485](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L485)
+[src/string/index.ts:487](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L487)

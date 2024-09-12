@@ -20,4 +20,4 @@ Converts a string to PascalCase.
 
 ## Defined in
 
-[src/string/index.ts:619](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L619)
+[src/string/index.ts:621](https://github.com/umatch-oficial/utils/blob/main/src/string/index.ts#L621)
