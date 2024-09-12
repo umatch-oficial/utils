@@ -105,10 +105,10 @@ function maxProperty<
     [K in keyof T[number]]: Equals<T[number][K], Date> extends true
       ? K
       : Equals<T[number][K], number> extends true
-      ? K
-      : Equals<T[number][K], string> extends true
-      ? K
-      : never;
+        ? K
+        : Equals<T[number][K], string> extends true
+          ? K
+          : never;
   }[keyof T[number]],
 >(array: T, property: Prop): T[number][Prop] | null {
   if (array['length'] === 0) return null;
@@ -143,10 +143,10 @@ function minProperty<
     [K in keyof T[number]]: Equals<T[number][K], Date> extends true
       ? K
       : Equals<T[number][K], number> extends true
-      ? K
-      : Equals<T[number][K], string> extends true
-      ? K
-      : never;
+        ? K
+        : Equals<T[number][K], string> extends true
+          ? K
+          : never;
   }[keyof T[number]],
 >(array: T, property: Prop): T[number][Prop] | null {
   if (array['length'] === 0) return null;

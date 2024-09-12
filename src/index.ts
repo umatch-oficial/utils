@@ -86,8 +86,8 @@ type Merge<A, B> = {
         : B[K] // K is keyof both
       : B[K] // K is keyof B, but not A
     : K extends keyof A
-    ? A[K] // K is keyof A, but not B
-    : never; // impossible
+      ? A[K] // K is keyof A, but not B
+      : never; // impossible
 };
 /**
  * Excludes types present in B from A.
@@ -112,9 +112,8 @@ type Brand<T, B extends string> = T & { __brand: B };
  * Asserts two types are equal.
  */
 // https://github.com/Microsoft/TypeScript/issues/27024#issuecomment-421529650
-type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2
-  ? true
-  : false;
+type Equals<X, Y> =
+  (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
 
 /**
  * Joins two strings or numbers unless either one is undefined.
@@ -129,8 +128,8 @@ type Join<
     ? `${L}${Sep}${R}`
     : L
   : R extends string | number
-  ? R
-  : undefined;
+    ? R
+    : undefined;
 /**
  * Makes a Union between two types removing undefined.
  */
@@ -139,8 +138,8 @@ type Union<L, R> = L extends undefined
     ? undefined
     : R
   : R extends undefined
-  ? L
-  : L | R;
+    ? L
+    : L | R;
 /**
  * Takes an object and returns a union of all the deep paths
  * to properties in it, using dot notation.
@@ -175,11 +174,12 @@ type UnionToIntersection<T> = (T extends never ? never : (arg: T) => void) exten
 ) => void
   ? I
   : never;
-type UnionToTuple<T, Acc extends unknown[] = []> = UnionToIntersection<
-  T extends never ? never : (arg: T) => T
-> extends (_: never) => infer W
-  ? UnionToTuple<Exclude<T, W>, [W, ...Acc]>
-  : Acc;
+type UnionToTuple<T, Acc extends unknown[] = []> =
+  UnionToIntersection<T extends never ? never : (arg: T) => T> extends (
+    _: never,
+  ) => infer W
+    ? UnionToTuple<Exclude<T, W>, [W, ...Acc]>
+    : Acc;
 
 /**
  * Returns whether obj is an array.
@@ -207,7 +207,7 @@ function isDate(obj: unknown): obj is Date {
 /**
  * Returns whether obj is a function.
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 function isFunction(obj: unknown): obj is Function {
   return typeof obj === 'function';
 }

@@ -429,9 +429,8 @@ function uniques(array: unknown[]): unknown[] {
   return Array.from(new Set(array));
 }
 
-type Append<T extends readonly unknown[], Element> = IsReadonly<T> extends true
-  ? readonly [...T, Element]
-  : [...T, Element];
+type Append<T extends readonly unknown[], Element> =
+  IsReadonly<T> extends true ? readonly [...T, Element] : [...T, Element];
 
 type Zip<
   T extends readonly (readonly unknown[])[],

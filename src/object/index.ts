@@ -130,27 +130,27 @@ function extract<
         },
       ]
     : Options extends { suffix: infer Suffix }
-    ? [
-        {
-          [Key in keyof T as Key extends `${infer Rest}${Suffix & string}`
-            ? Options extends { rename: false }
-              ? Key
-              : Rest
-            : never]: T[Key];
-        },
-        {
-          [Key in keyof T as Key extends `${infer _}${Suffix & string}`
-            ? never
-            : Key]: T[Key];
-        },
-      ]
-    : Options extends { keys: readonly K[] }
-    ? [Pick<T, K>, Omit<T, K>]
-    : Options extends { keys: (key: string) => boolean }
-    ? [{ [_: string]: ValueOf<T> }, { [_: string]: ValueOf<T> }]
-    : Options extends { values: (value: V) => boolean }
-    ? [{ [_: string]: ValueOf<T> }, { [_: string]: ValueOf<T> }]
-    : never
+      ? [
+          {
+            [Key in keyof T as Key extends `${infer Rest}${Suffix & string}`
+              ? Options extends { rename: false }
+                ? Key
+                : Rest
+              : never]: T[Key];
+          },
+          {
+            [Key in keyof T as Key extends `${infer _}${Suffix & string}`
+              ? never
+              : Key]: T[Key];
+          },
+        ]
+      : Options extends { keys: readonly K[] }
+        ? [Pick<T, K>, Omit<T, K>]
+        : Options extends { keys: (key: string) => boolean }
+          ? [{ [_: string]: ValueOf<T> }, { [_: string]: ValueOf<T> }]
+          : Options extends { values: (value: V) => boolean }
+            ? [{ [_: string]: ValueOf<T> }, { [_: string]: ValueOf<T> }]
+            : never
   : Dictionary;
 function extract(
   obj: Dictionary,
@@ -250,7 +250,7 @@ function hasOwnProperty<X, Y extends PropertyKey>(
   obj: X,
   prop: Y,
 ): obj is X & Record<Y, unknown> {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   return !isNullOrUndefined(obj) && (Object.hasOwn(obj as object, prop) as boolean);
 }
 
@@ -269,15 +269,15 @@ function isDeepEmpty(obj: unknown): obj is DeepEmpty {
   return isNullOrUndefined(obj)
     ? false
     : isArray(obj)
-    ? obj.length === 0
-    : isString(obj)
-    ? obj === ''
-    : isObject(obj)
-    ? Object.values(obj).reduce<boolean>(
-        (isEmpty, value) => isEmpty && isDeepEmpty(value),
-        true,
-      )
-    : false;
+      ? obj.length === 0
+      : isString(obj)
+        ? obj === ''
+        : isObject(obj)
+          ? Object.values(obj).reduce<boolean>(
+              (isEmpty, value) => isEmpty && isDeepEmpty(value),
+              true,
+            )
+          : false;
 }
 
 function _merge(

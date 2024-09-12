@@ -23,16 +23,16 @@ type Replace<
 > = S extends `${infer Before}${Char}${infer After}`
   ? Replace<After, Char, NewChar, `${Acc}${Before}${NewChar}`>
   : Acc extends ''
-  ? S
-  : `${Acc}${S}`;
+    ? S
+    : `${Acc}${S}`;
 /**
  * Trims both ends of a string.
  */
 type Trim<S extends string> = S extends ` ${infer After}`
   ? Trim<After>
   : S extends `${infer Before} `
-  ? Trim<Before>
-  : S;
+    ? Trim<Before>
+    : S;
 /**
  * Removes quotes from the start and end of a string.
  */
@@ -40,13 +40,13 @@ type Unquote<S extends string, Quote extends "'" | '"' = "'" | '"'> = "'" extend
   ? S extends `'${infer Middle}'`
     ? Middle
     : '"' extends Quote
-    ? S extends `"${infer Middle}"`
-      ? Middle
+      ? S extends `"${infer Middle}"`
+        ? Middle
+        : S
       : S
-    : S
   : S extends `"${infer Middle}"`
-  ? Middle
-  : S;
+    ? Middle
+    : S;
 
 /**
  * Returns the ordinal of a number.
@@ -84,7 +84,7 @@ const plural: ToPlural = (
   pluralVersion?: string,
 ): string => {
   const shouldPluralize = quantity === undefined || Math.abs(quantity) !== 1;
-  return shouldPluralize ? pluralVersion ?? `${word}s` : word;
+  return shouldPluralize ? (pluralVersion ?? `${word}s`) : word;
 };
 
 /**
@@ -320,14 +320,14 @@ type JoinNonEmpty<
   ? null | undefined extends Element
     ? JoinNonEmpty<Rest, Sep, Acc>
     : Element extends string
-    ? Trim<Element> extends ''
-      ? JoinNonEmpty<Rest, Sep, Acc>
+      ? Trim<Element> extends ''
+        ? JoinNonEmpty<Rest, Sep, Acc>
+        : Acc extends ''
+          ? JoinNonEmpty<Rest, Sep, Element>
+          : JoinNonEmpty<Rest, Sep, `${Acc}${Sep}${Element}`>
       : Acc extends ''
-      ? JoinNonEmpty<Rest, Sep, Element>
-      : JoinNonEmpty<Rest, Sep, `${Acc}${Sep}${Element}`>
-    : Acc extends ''
-    ? JoinNonEmpty<Rest, Sep, Element & string>
-    : JoinNonEmpty<Rest, Sep, `${Acc}${Sep}${Element & string}`>
+        ? JoinNonEmpty<Rest, Sep, Element & string>
+        : JoinNonEmpty<Rest, Sep, `${Acc}${Sep}${Element & string}`>
   : Acc;
 
 /**
@@ -449,9 +449,11 @@ function parseFunctionCall(str: string): [string, Primitive[]] {
   const parsedArgs = args.map((arg) => {
     try {
       return parseNumber(arg);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {}
     try {
       return parseBool(arg);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {}
 
     return arg.replace(/^['"]/, '').replace(/['"]$/, '');
@@ -609,8 +611,8 @@ type CamelCase<
   ? Acc extends ''
     ? CamelCase<Rest, Lowercase<First>>
     : First extends '_' | ' ' | '-'
-    ? CamelCase<Capitalize<Rest>, Acc>
-    : CamelCase<Rest, `${Acc}${First}`>
+      ? CamelCase<Capitalize<Rest>, Acc>
+      : CamelCase<Rest, `${Acc}${First}`>
   : Acc;
 
 /**
@@ -623,8 +625,8 @@ type PascalCase<
   ? Acc extends ''
     ? PascalCase<Rest, Uppercase<First>>
     : First extends '_' | ' ' | '-'
-    ? PascalCase<Capitalize<Rest>, Acc>
-    : PascalCase<Rest, `${Acc}${First}`>
+      ? PascalCase<Capitalize<Rest>, Acc>
+      : PascalCase<Rest, `${Acc}${First}`>
   : Acc;
 
 /**
@@ -637,12 +639,12 @@ type SentenceCase<
   ? Acc extends ''
     ? SentenceCase<Rest, Uppercase<First>>
     : First extends '_' | ' ' | '-'
-    ? SentenceCase<Rest, `${Acc} `>
-    : First extends Uppercase<First>
-    ? LastLetter<Acc> extends ' '
-      ? SentenceCase<Rest, `${Acc}${Lowercase<First>}`>
-      : SentenceCase<Rest, `${Acc} ${Lowercase<First>}`>
-    : SentenceCase<Rest, `${Acc}${First}`>
+      ? SentenceCase<Rest, `${Acc} `>
+      : First extends Uppercase<First>
+        ? LastLetter<Acc> extends ' '
+          ? SentenceCase<Rest, `${Acc}${Lowercase<First>}`>
+          : SentenceCase<Rest, `${Acc} ${Lowercase<First>}`>
+        : SentenceCase<Rest, `${Acc}${First}`>
   : Acc;
 
 /**
@@ -655,12 +657,12 @@ type SnakeCase<
   ? Acc extends ''
     ? SnakeCase<Rest, Lowercase<First>>
     : First extends '_' | ' ' | '-'
-    ? SnakeCase<Capitalize<Rest>, `${Acc}_`>
-    : First extends Uppercase<First>
-    ? LastLetter<Acc> extends '_'
-      ? SnakeCase<Rest, `${Acc}${Lowercase<First>}`>
-      : SnakeCase<Rest, `${Acc}_${Lowercase<First>}`>
-    : SnakeCase<Rest, `${Acc}${First}`>
+      ? SnakeCase<Capitalize<Rest>, `${Acc}_`>
+      : First extends Uppercase<First>
+        ? LastLetter<Acc> extends '_'
+          ? SnakeCase<Rest, `${Acc}${Lowercase<First>}`>
+          : SnakeCase<Rest, `${Acc}_${Lowercase<First>}`>
+        : SnakeCase<Rest, `${Acc}${First}`>
   : Acc;
 
 /**
@@ -673,12 +675,12 @@ type TitleCase<
   ? Acc extends ''
     ? TitleCase<Rest, Uppercase<First>>
     : First extends '_' | ' ' | '-'
-    ? TitleCase<Capitalize<Rest>, `${Acc} `>
-    : First extends Uppercase<First>
-    ? LastLetter<Acc> extends ' '
-      ? TitleCase<Rest, `${Acc}${First}`>
-      : TitleCase<Rest, `${Acc} ${First}`>
-    : TitleCase<Rest, `${Acc}${First}`>
+      ? TitleCase<Capitalize<Rest>, `${Acc} `>
+      : First extends Uppercase<First>
+        ? LastLetter<Acc> extends ' '
+          ? TitleCase<Rest, `${Acc}${First}`>
+          : TitleCase<Rest, `${Acc} ${First}`>
+        : TitleCase<Rest, `${Acc}${First}`>
   : Acc;
 
 const _camelCase = toCase(uncapitalize, capitalize, '');
